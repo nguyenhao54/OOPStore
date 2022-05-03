@@ -57,7 +57,7 @@ public class TextField extends JTextField {
 
     public TextField() {
         setBorder(new EmptyBorder(20, 3, 23, 3));
-        setSelectionColor(new Color(76, 204, 255));
+        setSelectionColor(new Color(55,99,168));
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent me) {
@@ -127,7 +127,7 @@ public class TextField extends JTextField {
             g2.setColor(new Color(150, 150, 150));
         }
         g2.fillRect(2, height - spaceHelperText - 1, width - 4, 1);
-//        createHintText(g2);
+     createHintText(g2);
         createLineStyle(g2);
         createHelperText(g2);
         g2.dispose();
@@ -165,7 +165,7 @@ public class TextField extends JTextField {
                 size = width * location;
             }
             double x = (width - size) / 2;
-            g2.fillRect((int) (x + 2), height - 2, (int) size, 2);
+            g2.fillRect((int) (x + 2), height -2, (int) size, 2);
         }
     }
 

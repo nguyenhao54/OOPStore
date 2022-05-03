@@ -42,13 +42,14 @@ public class Menu extends JPanel {
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.INBOX, "Shirt", "Blank page", "Faq", "Invoice", "Profile", "Pricing", "Timeline"));
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.LOCK_OUTLINE, "Coat", "Login", "Register"));
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ERROR_OUTLINE, "Error", "404", "500"));
-        addTitle("STATISTIC");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.WHATSHOT, "UI Kit", "Accordion", "Alerts", "Badges", "Breadcrumbs", "Buttons", "Button group"));
-       
-        addTitle("BILLINGS");
+             addTitle("BILLINGS");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PAYMENT, "View", "Blank page", "Faq", "Invoice", "Profile", "Pricing", "Timeline"));
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.LOCK_OUTLINE, "Authentication", "Login", "Register"));
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ERROR_OUTLINE, "Error", "404", "500"));
+        addTitle("STATISTIC");
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.WHATSHOT, "UI Kit", "Accordion", "Alerts", "Badges", "Breadcrumbs", "Buttons", "Button group"));
+       
+   
         
         
     }

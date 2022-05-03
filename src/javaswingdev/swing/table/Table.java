@@ -9,6 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
 
 public class Table extends JTable {
 
@@ -27,17 +28,38 @@ public class Table extends JTable {
         setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable jtable, Object o, boolean selected, boolean bln1, int i, int i1) {
+                if(o instanceof ModelAction){
+                    ModelAction data=(ModelAction) o;
+                     Action cell= new Action(data);
+                        if (selected) {
+                        cell.setForeground(SystemColor.MAIN_COLOR_1);
+                        } else {
+                   
+                        cell.setForeground(new Color(102, 102, 102));
+                         }
+                        return cell;
+                }
+             
+                else{
                 Component com = super.getTableCellRendererComponent(jtable, o, selected, bln1, i, i1);
                 com.setBackground(Color.WHITE);
                 setBorder(noFocusBorder);
                 if (selected) {
-                    com.setForeground(SystemColor.MAIN_COLOR_1);
+                    com.setForeground(SystemColor.MAIN_COLOR_1);    
                 } else {
                     com.setForeground(new Color(102, 102, 102));
                 }
                 return com;
+               }
             }
         });
+    }
+    @Override
+    public TableCellEditor getCellEditor(int row,int col){
+        if(col==5){
+            return new TableCellAction();
+        }
+        else return super.getCellEditor(row,col);
     }
 
     public void addRow(Object[] row) {

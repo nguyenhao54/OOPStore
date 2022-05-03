@@ -4,10 +4,9 @@
  */
 package javaswingdev.form;
 
-/**
- *
- * @author T460S
- */
+import javaswingdev.swing.table.EventAction;
+import javaswingdev.main.Add;
+import model.ModelStaff;
 public class Form_Staff extends javax.swing.JPanel {
 
     /**
@@ -16,9 +15,24 @@ public class Form_Staff extends javax.swing.JPanel {
     public Form_Staff() {
         initComponents();
         initTable();
+        
     }
   private void initTable() {
+          EventAction eventAction = new EventAction() {
+            @Override
+            public void delete(ModelStaff staff) {
+              System.out.println("delete");
+            }
+
+            @Override
+            public void update(ModelStaff staff) {
+                  System.out.println("update");
+            }
+        };
         table.fixTable(jScrollPane1);
+        table.addRow(new ModelStaff(1, "Bora", "Male", "334344", 300).toRowTable(eventAction));
+        table.addRow(new ModelStaff(2, "Bora", "Male", "334344", 300).toRowTable(eventAction));
+        table.addRow(new ModelStaff(3, "Bora", "Male", "334344", 300).toRowTable(eventAction));
         table.addRow(new Object[]{"1", "Mike Bhand", "mikebhand@gmail.com", "Admin", "25 Apr,2018"});
         table.addRow(new Object[]{"2", "Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
         table.addRow(new Object[]{"3", "Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
@@ -60,11 +74,11 @@ public class Form_Staff extends javax.swing.JPanel {
 
             },
             new String [] {
-                "#", "Name", "Email", "Position", "Date Join"
+                "#", "Name", "Email", "Position", "Date Join", " Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -117,7 +131,8 @@ public class Form_Staff extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
-                        .addComponent(textFieldAnimation1, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(textFieldAnimation1, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -134,7 +149,7 @@ public class Form_Staff extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        // TODO add your handling code here:
+        new Add().setVisible(true);
     }//GEN-LAST:event_button1ActionPerformed
 
     private void textFieldAnimation1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldAnimation1FocusGained

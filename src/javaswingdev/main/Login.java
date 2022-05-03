@@ -35,13 +35,13 @@ public class Login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(380, 200));
+        setLocation(new java.awt.Point(440, 205));
         setMinimumSize(new java.awt.Dimension(950, 616));
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(950, 616));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bg.setBackground(new java.awt.Color(241, 241, 241));
+        bg.setBackground(new java.awt.Color(245, 245, 245));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         bg.add(titleBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -68,8 +68,10 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("Forgot password?");
 
-        txtPass.setForeground(new java.awt.Color(153, 153, 153));
-        txtPass.setText("12345");
+        txtPass.setForeground(new java.awt.Color(0, 0, 0));
+        txtPass.setLabelText("Password");
+        txtPass.setLineColor(new java.awt.Color(102, 102, 102));
+        txtPass.setSelectionColor(new java.awt.Color(55, 99, 168));
         txtPass.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtPassFocusGained(evt);
@@ -79,8 +81,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        txtUser.setForeground(new java.awt.Color(153, 153, 153));
-        txtUser.setText("username");
+        txtUser.setForeground(new java.awt.Color(0, 0, 0));
+        txtUser.setLabelText("Username");
+        txtUser.setLineColor(new java.awt.Color(102, 102, 102));
         txtUser.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtUserFocusGained(evt);
@@ -127,9 +130,9 @@ public class Login extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -141,10 +144,11 @@ public class Login extends javax.swing.JFrame {
                 .addGap(133, 133, 133))
         );
 
-        bg.add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, -1, 430));
+        bg.add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, -1, 460));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(99, 99, 159));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_add_user_male_20px_3.png"))); // NOI18N
         jLabel4.setText("GROUP OOP");
         bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 260, 140));
 
@@ -158,31 +162,19 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_button1ActionPerformed
 
     private void txtUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserFocusGained
-           if(txtUser.getText().equals("username")){
-            txtUser.setText("");
-            txtUser.setForeground(new Color(0,0,0));
-          }
+        
     }//GEN-LAST:event_txtUserFocusGained
 
     private void txtUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserFocusLost
-           if(txtUser.getText().equals("")){
-           txtUser.setText("username");
-            txtUser.setForeground(new Color(153,153,153));
-          }
+         
     }//GEN-LAST:event_txtUserFocusLost
 
     private void txtPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusGained
-           if(txtPass.getText().equals("12345")){
-           txtPass.setText("");
-            txtPass.setForeground(new Color(0,0,0));
-          }
+        
     }//GEN-LAST:event_txtPassFocusGained
 
     private void txtPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusLost
-        if(txtPass.getText().equals("")){
-           txtPass.setText("12345");
-            txtPass.setForeground(new Color(153,153,153));
-          }
+      
     }//GEN-LAST:event_txtPassFocusLost
 
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed

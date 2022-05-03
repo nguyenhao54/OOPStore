@@ -127,7 +127,7 @@ public class PasswordField extends JPasswordField {
             g2.setColor(new Color(150, 150, 150));
         }
         g2.fillRect(2, height - spaceHelperText - 1, width - 4, 1);
-//        createHintText(g2);
+        createHintText(g2);
         createLineStyle(g2);
         createHelperText(g2);
         g2.dispose();
