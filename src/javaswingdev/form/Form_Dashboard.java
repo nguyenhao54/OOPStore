@@ -1,8 +1,6 @@
 package javaswingdev.form;
 
-import model.ModelStaff;
 import javaswingdev.card.ModelCard;
-import javaswingdev.swing.table.EventAction;
 
 public class Form_Dashboard extends javax.swing.JPanel {
 
@@ -12,8 +10,9 @@ public class Form_Dashboard extends javax.swing.JPanel {
     }
 
     private void init() {
-     
         table.fixTable(jScrollPane1);
+        table.addRow(new Object[]{"1", "Mike Bhand", "mikebhand@gmail.com", "Admin", "25 Apr,2018"});
+        table.addRow(new Object[]{"2", "Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
         table.addRow(new Object[]{"3", "Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
         table.addRow(new Object[]{"4", "Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
         table.addRow(new Object[]{"5", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});

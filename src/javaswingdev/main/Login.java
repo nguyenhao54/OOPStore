@@ -148,7 +148,6 @@ public class Login extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(99, 99, 159));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_add_user_male_20px_3.png"))); // NOI18N
         jLabel4.setText("GROUP OOP");
         bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 260, 140));
 
