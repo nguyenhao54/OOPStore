@@ -3,9 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package javaswingdev.form;
-
+import javaswingdev.main.Main;
 import javaswingdev.swing.table.EventAction;
 import javaswingdev.main.Add;
+import swing.MessageDialog;
 import model.ModelStaff;
 public class Form_Staff extends javax.swing.JPanel {
 
@@ -17,36 +18,39 @@ public class Form_Staff extends javax.swing.JPanel {
         initTable();
         
     }
-  private void initTable() {
+    
+        private boolean showMessage(String message) {
+        MessageDialog obj = new MessageDialog(Main.getFrames()[0], true);
+        obj.showMessage(message);
+        return obj.isOk();
+    }
+        public boolean showUpdateStaff(ModelStaff staff){
+            
+        Add obj = new Add(Main.getFrames()[0], true);
+        obj.showInfo(staff);
+        return obj.isOk();
+        }
+       private void initTable() {
           EventAction eventAction = new EventAction() {
             @Override
             public void delete(ModelStaff staff) {
-              System.out.println("delete");
+              if (showMessage("Delete Staff : " + staff.getName())) {
+                    System.out.println("User click OK");
+                } else {
+                    System.out.println("User click Cancel");
+                }
             }
 
             @Override
             public void update(ModelStaff staff) {
-                  System.out.println("update");
+                  showUpdateStaff(staff);
             }
         };
         table.fixTable(jScrollPane1);
-        table.addRow(new ModelStaff(1, "Bora", "Male", "334344", 300).toRowTable(eventAction));
-        table.addRow(new ModelStaff(2, "Bora", "Male", "334344", 300).toRowTable(eventAction));
-        table.addRow(new ModelStaff(3, "Bora", "Male", "334344", 300).toRowTable(eventAction));
-        table.addRow(new Object[]{"1", "Mike Bhand", "mikebhand@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"2", "Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        table.addRow(new Object[]{"3", "Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        table.addRow(new Object[]{"4", "Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"5", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"6", "Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        table.addRow(new Object[]{"7", "Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        table.addRow(new Object[]{"8", "Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"9", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"10", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"11", "Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        table.addRow(new Object[]{"12", "Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        table.addRow(new Object[]{"13", "Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"14", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
+        table.addRow(new ModelStaff(1, "Bora", "Male", "33431232244", 300).toRowTable(eventAction));
+        table.addRow(new ModelStaff(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
+        table.addRow(new ModelStaff(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
+        table.addRow(new ModelStaff(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
   }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,7 +78,7 @@ public class Form_Staff extends javax.swing.JPanel {
 
             },
             new String [] {
-                "#", "Name", "Email", "Position", "Date Join", " Action"
+                "#", "Name", "Gender", "Phone number", "Date Join", " Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -149,7 +153,7 @@ public class Form_Staff extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        new Add().setVisible(true);
+        showUpdateStaff(new ModelStaff());
     }//GEN-LAST:event_button1ActionPerformed
 
     private void textFieldAnimation1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldAnimation1FocusGained

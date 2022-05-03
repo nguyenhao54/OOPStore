@@ -41,7 +41,7 @@ public class Button extends JButton {
         setContentAreaFilled(false);
         setBorder(new EmptyBorder(5, 5, 5, 5));
         setBackground(Color.WHITE);
-           setFont(new java.awt.Font("Segoe UI", 0, 12));
+           setFont(new java.awt.Font("sansserif", 0, 12));
         setCursor(new Cursor(Cursor.HAND_CURSOR));
         addMouseListener(new MouseAdapter() {
             @Override
