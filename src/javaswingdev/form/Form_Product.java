@@ -3,12 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package javaswingdev.form;
-
-/**
- *
- * @author T460S
- */
+import javaswingdev.main.Main;
+import javaswingdev.swing.table.EventAction;
 import javaswingdev.main.AddProd;
+import swing.MessageDialog;
+import model.ModelStaff;
 public class Form_Product extends javax.swing.JPanel {
 
     /**
@@ -17,23 +16,41 @@ public class Form_Product extends javax.swing.JPanel {
     public Form_Product() {
         initComponents();
         initTable();
+        
     }
-  private void initTable() {
+    
+        private boolean showMessage(String message) {
+        MessageDialog obj = new MessageDialog(Main.getFrames()[0], true);
+        obj.showMessage(message);
+        return obj.isOk();
+    }
+        public boolean showUpdateStaff(ModelStaff staff){
+            
+        AddProd obj = new AddProd(Main.getFrames()[0], true);
+        obj.showInfo(staff);
+        return obj.isOk();
+        }
+       private void initTable() {
+          EventAction eventAction = new EventAction() {
+            @Override
+            public void delete(ModelStaff staff) {
+              if (showMessage("Delete Staff : " + staff.getName())) {
+                    System.out.println("User click OK");
+                } else {
+                    System.out.println("User click Cancel");
+                }
+            }
+
+            @Override
+            public void update(ModelStaff staff) {
+                  showUpdateStaff(staff);
+            }
+        };
         table.fixTable(jScrollPane1);
-        table.addRow(new Object[]{"1", "Mike Bhand", "mikebhand@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"2", "Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        table.addRow(new Object[]{"3", "Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        table.addRow(new Object[]{"4", "Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"5", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"6", "Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        table.addRow(new Object[]{"7", "Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        table.addRow(new Object[]{"8", "Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"9", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"10", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"11", "Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        table.addRow(new Object[]{"12", "Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        table.addRow(new Object[]{"13", "Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"14", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
+        table.addRow(new ModelStaff(1, "Bora", "Male", "33431232244", 300).toRowTable(eventAction));
+        table.addRow(new ModelStaff(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
+        table.addRow(new ModelStaff(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
+        table.addRow(new ModelStaff(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
   }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,11 +78,11 @@ public class Form_Product extends javax.swing.JPanel {
 
             },
             new String [] {
-                "#", "Name", "Email", "Position", "Date Join"
+                "#", "Name", "Gender", "Phone number", "Date Join", " Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -91,14 +108,14 @@ public class Form_Product extends javax.swing.JPanel {
         );
 
         textFieldAnimation1.setForeground(new java.awt.Color(153, 153, 153));
-        textFieldAnimation1.setAnimationColor(new java.awt.Color(98, 98, 157));
+        textFieldAnimation1.setAnimationColor(new java.awt.Color(87, 97, 174));
         textFieldAnimation1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldAnimation1FocusGained(evt);
             }
         });
 
-        button1.setBackground(new java.awt.Color(98, 98, 157));
+        button1.setBackground(new java.awt.Color(87, 97, 174));
         button1.setForeground(new java.awt.Color(255, 255, 255));
         button1.setText("ADD ");
         button1.addActionListener(new java.awt.event.ActionListener() {
@@ -118,8 +135,8 @@ public class Form_Product extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
-                        .addComponent(textFieldAnimation1, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)))
+                        .addComponent(textFieldAnimation1, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -136,7 +153,11 @@ public class Form_Product extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-       new AddProd().setVisible(true);
+   
+//        ModelStaff newStaff= new ModelStaff();
+//        
+//        showUpdateStaff(newStaff);
+          new AddProd(Main.getFrames()[0], true).setVisible(true);
     }//GEN-LAST:event_button1ActionPerformed
 
     private void textFieldAnimation1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldAnimation1FocusGained

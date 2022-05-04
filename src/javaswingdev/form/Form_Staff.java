@@ -153,7 +153,11 @@ public class Form_Staff extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        showUpdateStaff(new ModelStaff());
+   
+//        ModelStaff newStaff= new ModelStaff();
+//        
+//        showUpdateStaff(newStaff);
+          new Add(Main.getFrames()[0], true).setVisible(true);
     }//GEN-LAST:event_button1ActionPerformed
 
     private void textFieldAnimation1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldAnimation1FocusGained

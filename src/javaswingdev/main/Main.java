@@ -5,6 +5,7 @@ import javaswingdev.form.Form_Dashboard;
 import javaswingdev.form.Form_Empty;
 import javaswingdev.form.Form_Shift;
 import javaswingdev.form.Form_Staff;
+import javaswingdev.form.Form_Product;
 import javaswingdev.menu.EventMenuSelected;
 
 public class Main extends javax.swing.JFrame {
@@ -34,6 +35,10 @@ public class Main extends javax.swing.JFrame {
                 else if(index==1 &&indexSubMenu==1) 
                 {
                     showForm(new Form_Staff());
+                }
+                 else if(index==3 &&indexSubMenu==0) 
+                {
+                    showForm(new Form_Product());
                 }
                 else{
                     showForm(new Form_Empty(index + " " + indexSubMenu));
