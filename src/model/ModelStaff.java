@@ -15,7 +15,7 @@ public class ModelStaff {
         return id;
     }
 
-    public void setIcon(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -39,7 +39,7 @@ public class ModelStaff {
         return phone;
     }
 
-    public void setCourse(String phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -47,7 +47,7 @@ public class ModelStaff {
         return rate;
     }
 
-    public void setFees(double rate) {
+    public void setRate(double rate) {
         this.rate = rate;
     }
 

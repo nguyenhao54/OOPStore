@@ -43,11 +43,11 @@ public class Action extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cmdEdit.setBackground(new java.awt.Color(98, 98, 168));
+        cmdEdit.setBackground(new java.awt.Color(100, 112, 194));
         cmdEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_edit_20px.png"))); // NOI18N
         add(cmdEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
-        cmdDelete.setBackground(new java.awt.Color(174, 55, 55));
+        cmdDelete.setBackground(new java.awt.Color(196, 72, 72));
         cmdDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_trash_can_20px.png"))); // NOI18N
         add(cmdDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 6, 30, -1));
     }// </editor-fold>//GEN-END:initComponents
