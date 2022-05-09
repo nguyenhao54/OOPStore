@@ -49,6 +49,7 @@ public class Main extends javax.swing.JFrame {
         setLocation(new java.awt.Point(440, 205));
         setMinimumSize(new java.awt.Dimension(950, 616));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(987, 621));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bg.setBackground(new java.awt.Color(245, 245, 245));
@@ -77,6 +78,23 @@ public class Main extends javax.swing.JFrame {
 
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("Forgot password?");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jLabel2FocusGained(evt);
+            }
+        });
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel2MouseReleased(evt);
+            }
+        });
 
         txtPass.setLabelText("Password");
         txtPass.setLineColor(new java.awt.Color(102, 102, 102));
@@ -198,6 +216,24 @@ public class Main extends javax.swing.JFrame {
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserActionPerformed
+
+    private void jLabel2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabel2FocusGained
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_jLabel2FocusGained
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        // TODO add your handling code here:
+           jLabel2.setForeground(Color.red);
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+           
+    }//GEN-LAST:event_jLabel2MouseReleased
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+      jLabel2.setForeground(Color.GRAY);
+    }//GEN-LAST:event_jLabel2MouseExited
 
     /**
      * @param args the command line arguments
