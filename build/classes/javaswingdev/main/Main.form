@@ -37,8 +37,6 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="f5" green="f5" red="f5" type="rgb"/>
         </Property>
-        <Property name="alignmentX" type="float" value="0.5"/>
-        <Property name="alignmentY" type="float" value="0.5"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -93,10 +91,8 @@
                                   <Component id="txtPass" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtUser" alignment="0" pref="343" max="32767" attributes="0"/>
                                   <Component id="jSeparator1" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel1" alignment="0" min="-2" pref="177" max="-2" attributes="0"/>
-                                      <Component id="alertLabel" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel1" alignment="0" min="-2" pref="177" max="-2" attributes="0"/>
+                                  <Component id="alertLabel" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>

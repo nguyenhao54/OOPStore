@@ -7,7 +7,7 @@ import javaswingdev.main.Dashboard;
 import javaswingdev.swing.table.EventAction;
 import javaswingdev.main.Add;
 import swing.MessageDialog;
-import model.ModelStaff;
+import model.Staff;
 public class Form_Staff extends javax.swing.JPanel {
 
     /**
@@ -24,7 +24,7 @@ public class Form_Staff extends javax.swing.JPanel {
         obj.showMessage(message);
         return obj.isOk();
     }
-        public boolean showUpdateStaff(ModelStaff staff){
+        public boolean showUpdateStaff(Staff staff){
             
         Add obj = new Add(Dashboard.getFrames()[0], true);
         obj.showInfo(staff);
@@ -33,7 +33,7 @@ public class Form_Staff extends javax.swing.JPanel {
        private void initTable() {
           EventAction eventAction = new EventAction() {
             @Override
-            public void delete(ModelStaff staff) {
+            public void delete(Staff staff) {
               if (showMessage("Delete Staff : " + staff.getName())) {
                     System.out.println("User click OK");
                 } else {
@@ -42,15 +42,15 @@ public class Form_Staff extends javax.swing.JPanel {
             }
 
             @Override
-            public void update(ModelStaff staff) {
+            public void update(Staff staff) {
                   showUpdateStaff(staff);
             }
         };
         table.fixTable(jScrollPane1);
-        table.addRow(new ModelStaff(1, "Bora", "Male", "33431232244", 300).toRowTable(eventAction));
-        table.addRow(new ModelStaff(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
-        table.addRow(new ModelStaff(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
-        table.addRow(new ModelStaff(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
+        table.addRow(new Staff(1, "Bora", "Male", "33431232244", 300).toRowTable(eventAction));
+        table.addRow(new Staff(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
+        table.addRow(new Staff(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
+        table.addRow(new Staff(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
   }
     /**
      * This method is called from within the constructor to initialize the form.
