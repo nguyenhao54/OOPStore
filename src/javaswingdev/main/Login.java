@@ -68,7 +68,6 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("Forgot password?");
 
-        txtPass.setForeground(new java.awt.Color(0, 0, 0));
         txtPass.setLabelText("Password");
         txtPass.setLineColor(new java.awt.Color(102, 102, 102));
         txtPass.setSelectionColor(new java.awt.Color(55, 99, 168));
@@ -81,7 +80,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        txtUser.setForeground(new java.awt.Color(0, 0, 0));
         txtUser.setLabelText("Username");
         txtUser.setLineColor(new java.awt.Color(102, 102, 102));
         txtUser.addFocusListener(new java.awt.event.FocusAdapter() {
