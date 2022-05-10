@@ -3,11 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package javaswingdev.form;
-import javaswingdev.main.Main;
+import javaswingdev.main.Dashboard;
 import javaswingdev.swing.table.EventAction;
 import javaswingdev.main.Add;
 import swing.MessageDialog;
-import model.ModelStaff;
+import model.Staff;
 public class Form_Staff extends javax.swing.JPanel {
 
     /**
@@ -20,20 +20,20 @@ public class Form_Staff extends javax.swing.JPanel {
     }
     
         private boolean showMessage(String message) {
-        MessageDialog obj = new MessageDialog(Main.getFrames()[0], true);
+        MessageDialog obj = new MessageDialog(Dashboard.getFrames()[0], true);
         obj.showMessage(message);
         return obj.isOk();
     }
-        public boolean showUpdateStaff(ModelStaff staff){
+        public boolean showUpdateStaff(Staff staff){
             
-        Add obj = new Add(Main.getFrames()[0], true);
+        Add obj = new Add(Dashboard.getFrames()[0], true);
         obj.showInfo(staff);
         return obj.isOk();
         }
        private void initTable() {
           EventAction eventAction = new EventAction() {
             @Override
-            public void delete(ModelStaff staff) {
+            public void delete(Staff staff) {
               if (showMessage("Delete Staff : " + staff.getName())) {
                     System.out.println("User click OK");
                 } else {
@@ -42,15 +42,15 @@ public class Form_Staff extends javax.swing.JPanel {
             }
 
             @Override
-            public void update(ModelStaff staff) {
+            public void update(Staff staff) {
                   showUpdateStaff(staff);
             }
         };
         table.fixTable(jScrollPane1);
-        table.addRow(new ModelStaff(1, "Bora", "Male", "33431232244", 300).toRowTable(eventAction));
-        table.addRow(new ModelStaff(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
-        table.addRow(new ModelStaff(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
-        table.addRow(new ModelStaff(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
+        table.addRow(new Staff(1, "Bora", "Male", "33431232244", 300).toRowTable(eventAction));
+        table.addRow(new Staff(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
+        table.addRow(new Staff(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
+        table.addRow(new Staff(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
   }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -157,7 +157,7 @@ public class Form_Staff extends javax.swing.JPanel {
 //        ModelStaff newStaff= new ModelStaff();
 //        
 //        showUpdateStaff(newStaff);
-          new Add(Main.getFrames()[0], true).setVisible(true);
+          new Add(Dashboard.getFrames()[0], true).setVisible(true);
     }//GEN-LAST:event_button1ActionPerformed
 
     private void textFieldAnimation1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldAnimation1FocusGained

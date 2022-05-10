@@ -10,7 +10,7 @@ package model;
  */
 import javaswingdev.swing.table.EventAction;
 import javaswingdev.swing.table.ModelAction;
-public class ModelStaff {
+public class Staff {
     public int getId() {
         return id;
     }
@@ -51,7 +51,7 @@ public class ModelStaff {
         this.rate = rate;
     }
 
-    public ModelStaff( int id,String name, String gender, String phone, double rate) {
+    public Staff( int id,String name, String gender, String phone, double rate) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -59,7 +59,7 @@ public class ModelStaff {
         this.rate = rate;
     }
 
-    public ModelStaff() {
+    public Staff() {
     }
 
     private int id;

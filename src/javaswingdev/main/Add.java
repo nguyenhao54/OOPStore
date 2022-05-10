@@ -2,7 +2,7 @@
 package javaswingdev.main;
 
 import java.awt.Color;
-import model.ModelStaff;
+import model.Staff;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
@@ -161,7 +161,7 @@ public class Add extends javax.swing.JDialog {
         closeMenu();
     }//GEN-LAST:event_button2ActionPerformed
 
-          public void showInfo(ModelStaff staff) {
+          public void showInfo(Staff staff) {
         textField1.setText(staff.getName());
         textField2.setText(staff.getPhone());
         animator.start();

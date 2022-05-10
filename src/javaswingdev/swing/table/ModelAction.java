@@ -4,17 +4,17 @@
  */
 package javaswingdev.swing.table;
 
-import model.ModelStaff;
+import model.Staff;
 
 public class ModelAction {
-    private ModelStaff staff;
+    private Staff staff;
     private EventAction event;
 
-    public ModelStaff getStaff() {
+    public Staff getStaff() {
         return staff;
     }
 
-    public void setStaff(ModelStaff st) {
+    public void setStaff(Staff st) {
         this.staff = st;
     }
 
@@ -26,7 +26,7 @@ public class ModelAction {
         this.event = event;
     }
 
-    public ModelAction(ModelStaff staff, EventAction event) {
+    public ModelAction(Staff staff, EventAction event) {
         this.staff=staff;
         this.event = event;
     }
