@@ -170,7 +170,7 @@ public class Main extends javax.swing.JFrame {
         }else if(txtUser.getText().equals("") || txtPass.getText().equals("")){
            
          alertLabel.setVisible(true);
-               alertLabel.setText("Incorrect username or password!");
+               alertLabel.setText("Please fill in blank fields");
           
         }  
         else
