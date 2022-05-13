@@ -10,6 +10,7 @@ package model;
  */
 import javaswingdev.swing.table.EventAction;
 import javaswingdev.swing.table.ModelAction;
+import java.util.ArrayList;
 public class Staff {
     public int getId() {
         return id;
@@ -50,7 +51,26 @@ public class Staff {
     public void setRate(double rate) {
         this.rate = rate;
     }
-
+    
+    public ArrayList<Shift> getWorkedShifts()
+            {
+                return this.workedShifts;
+            }
+    public void setWorkedShifts(ArrayList<Shift> workedShifts)
+            {
+                this.workedShifts = workedShifts;
+            }
+    double workedHour;
+    void getWorkedHour()
+    {
+        for(Shift i : workedShifts)
+        {
+            workedHour += i.hour;
+        }
+    }
+    public double getSalary() {
+	return workedHour*rate;
+}
     public Staff( int id,String name, String gender, String phone, double rate) {
         this.id = id;
         this.name = name;
@@ -66,7 +86,9 @@ public class Staff {
     private String name;
     private String gender;
     private String phone;
-    private double rate;
+    double rate;
+    private ArrayList<Shift> workedShifts;
+    
 
     public Object[] toRowTable(EventAction event) {
       

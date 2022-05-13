@@ -3,11 +3,38 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-
+import java.time.LocalDateTime;
 /**
  *
  * @author Duc Anh.Nguyen
  */
 public class Shift {
-    
+    int shiftId;
+    LocalDateTime startTime;
+    LocalDateTime endTime;
+    double hour;
+    public LocalDateTime getStartTime()
+        {
+               return startTime;
+        }
+    public LocalDateTime getEndTime()
+        {
+               return endTime;
+        }
+    public int getShhiftId()
+        {
+            return shiftId;    
+        }
+    public double getHour()
+        {
+            return hour;    
+        }
+    public void setStartTime(LocalDateTime startTime)
+        {
+            this.startTime = startTime;
+        }
+    public void setEndTime(LocalDateTime endTime)
+        {
+            this.endTime = endTime;
+        }
 }
