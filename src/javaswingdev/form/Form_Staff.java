@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package javaswingdev.form;
 import javaswingdev.main.Dashboard;
 import javaswingdev.swing.table.EventAction;
 import javaswingdev.main.Add;
 import swing.MessageDialog;
 import model.Staff;
+import com.fasterxml.jackson.core.type.TypeReference;
+//import com.fasterxml.jackson.databind.ObjectMapper;
+
+        
 public class Form_Staff extends javax.swing.JPanel {
 
     /**
@@ -51,6 +51,13 @@ public class Form_Staff extends javax.swing.JPanel {
         table.addRow(new Staff(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
         table.addRow(new Staff(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
         table.addRow(new Staff(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
+        try{
+           // ObjectMapper mapper = new ObjectMapper();
+            
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
   }
     /**
      * This method is called from within the constructor to initialize the form.

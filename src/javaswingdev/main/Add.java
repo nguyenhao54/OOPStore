@@ -50,7 +50,6 @@ public class Add extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         roundPanel1 = new javaswingdev.swing.RoundPanel();
         textField1 = new javaswingdev.raven.swing.TextField();
         textField2 = new javaswingdev.raven.swing.TextField();
@@ -64,9 +63,6 @@ public class Add extends javax.swing.JDialog {
         setLocation(new java.awt.Point(800, 250));
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBackground(new java.awt.Color(245, 245, 245));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
         roundPanel1.setRound(15);
@@ -144,22 +140,20 @@ public class Add extends javax.swing.JDialog {
                     .addGap(23, 23, 23)))
         );
 
-        jPanel1.add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 490));
+        getContentPane().add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-          
-        closeMenu();
-    }//GEN-LAST:event_button1ActionPerformed
-
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
-              ok = true;
+        ok = true;
         closeMenu();
     }//GEN-LAST:event_button2ActionPerformed
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+
+        closeMenu();
+    }//GEN-LAST:event_button1ActionPerformed
 
           public void showInfo(Staff staff) {
         textField1.setText(staff.getName());
@@ -179,7 +173,6 @@ public class Add extends javax.swing.JDialog {
     private javaswingdev.swing.Button button1;
     private javaswingdev.swing.Button button2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javaswingdev.swing.RoundPanel roundPanel1;
     private javaswingdev.raven.swing.TextField textField1;
     private javaswingdev.raven.swing.TextField textField2;
