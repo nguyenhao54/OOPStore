@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author Duc Anh.Nguyen
  */
 public class Bill {
-    final int billId;
+    final private int billId;
     private Staff staff;
     private ArrayList<Order> orderList;
     private LocalDate date;

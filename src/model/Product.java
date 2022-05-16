@@ -12,7 +12,7 @@ import javaswingdev.swing.table.EventAction;
 import javaswingdev.swing.table.ModelAction;
 
 public class Product {
-    final int productId;
+    final private int productId;
     private String productName;
     private double productPrice;
     private String brand;

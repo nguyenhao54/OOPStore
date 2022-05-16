@@ -12,12 +12,13 @@ import javaswingdev.swing.table.EventAction;
 import javaswingdev.swing.table.ModelAction;
 import java.util.ArrayList;
 public class Staff {
-    public int getId() {
-        return id;
+    private int staffId;
+    public int getStaffId() {
+        return staffId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setStaffId(int id) {
+        this.staffId = id;
     }
 
     public String getName() {

@@ -21,7 +21,7 @@ public class Shift {
         {
                return endTime;
         }
-    public int getShhiftId()
+    public int getShiftId()
         {
             return shiftId;    
         }
