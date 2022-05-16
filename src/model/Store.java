@@ -55,11 +55,43 @@ public class Store {
         shiftList.add(newShift);
     }
     
-//    public void deleteProduct(int id){
-//        for (int i = 0; i < productList.size(); i++){
-//            if(productList.get(i).productId == id){
-//                productList.remove(i);
-//            }
-//        }
-//    }
+    public void deleteProduct(int id){
+        for (int i = 0; i < productList.size(); i++){
+            if(productList.get(i).getProductId() == id){
+                productList.remove(i);
+            }
+        }
+    }
+    
+    public void deleteBill(int id){
+        for (int i = 0; i < billList.size(); i++){
+            if(billList.get(i).getBillId() == id){
+                billList.remove(i);
+            }
+        }
+    }
+    
+    public void deleteStaff(int id){
+        for (int i = 0; i < staffList.size(); i++){
+            if(staffList.get(i).getStaffId() == id){
+                billList.remove(i);
+            }
+        }
+    }
+    
+    public void deleteManager(int id){
+        for (int i = 0; i < managerList.size(); i++){
+            if(managerList.get(i).getStaffId() == id){
+                managerList.remove(i);
+            }
+        }
+    }
+    
+    public void deleteShift(int id){
+        for (int i = 0; i < shiftList.size(); i++){
+            if(shiftList.get(i).getShiftId() == id){
+                shiftList.remove(i);
+            }
+        }
+    }
 }
