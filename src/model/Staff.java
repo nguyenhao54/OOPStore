@@ -13,6 +13,23 @@ import javaswingdev.swing.table.ModelAction;
 import java.util.ArrayList;
 public class Staff {
     private int staffId;
+    private String name;
+    private String gender;
+    private String phone;
+    double rate;
+    private ArrayList<Shift> workedShifts;
+    
+    public Staff( int id,String name, String gender, String phone, double rate) {
+        this.staffId = id;
+        this.name = name;
+        this.gender = gender;
+        this.phone = phone;
+        this.rate = rate;
+    }
+
+    public Staff() {
+    }
+    
     public int getStaffId() {
         return staffId;
     }
@@ -72,27 +89,9 @@ public class Staff {
     public double getSalary() {
 	return workedHour*rate;
 }
-    public Staff( int id,String name, String gender, String phone, double rate) {
-        this.id = id;
-        this.name = name;
-        this.gender = gender;
-        this.phone = phone;
-        this.rate = rate;
-    }
-
-    public Staff() {
-    }
-
-    private int id;
-    private String name;
-    private String gender;
-    private String phone;
-    double rate;
-    private ArrayList<Shift> workedShifts;
-    
 
     public Object[] toRowTable(EventAction event) {
       
-        return new Object[]{id, name, gender, phone, rate, new ModelAction(this, event)};
+        return new Object[]{staffId, name, gender, phone, rate, new ModelAction(this, event)};
     }
 }
