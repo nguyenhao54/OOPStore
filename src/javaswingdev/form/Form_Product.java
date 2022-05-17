@@ -4,10 +4,9 @@
  */
 package javaswingdev.form;
 import javaswingdev.main.Dashboard;
-import javaswingdev.swing.table.EventAction;
 import javaswingdev.main.AddProd;
-import swing.MessageDialog;
-import model.Staff;
+import model.*;
+
 public class Form_Product extends javax.swing.JPanel {
 
     /**
@@ -18,39 +17,15 @@ public class Form_Product extends javax.swing.JPanel {
         initTable();
         
     }
-    
-        private boolean showMessage(String message) {
-        MessageDialog obj = new MessageDialog(Dashboard.getFrames()[0], true);
-        obj.showMessage(message);
-        return obj.isOk();
-    }
-        public boolean showUpdateStaff(Staff staff){
-            
-        AddProd obj = new AddProd(Dashboard.getFrames()[0], true);
-        obj.showInfo(staff);
-        return obj.isOk();
-        }
        private void initTable() {
-          EventAction eventAction = new EventAction() {
-            @Override
-            public void delete(Staff staff) {
-              if (showMessage("Delete Staff : " + staff.getName())) {
-                    System.out.println("User click OK");
-                } else {
-                    System.out.println("User click Cancel");
-                }
-            }
-
-            @Override
-            public void update(Staff staff) {
-                  showUpdateStaff(staff);
-            }
-        };
+        
         table.fixTable(jScrollPane1);
-        table.addRow(new Staff(1, "Bora", "Male", "33431232244", 300).toRowTable(eventAction));
-        table.addRow(new Staff(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
-        table.addRow(new Staff(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
-        table.addRow(new Staff(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
+        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable());
+        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable());
+        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable());
+        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable());
+        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable());
+        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable());
   }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,11 +53,11 @@ public class Form_Product extends javax.swing.JPanel {
 
             },
             new String [] {
-                "#", "Name", "Gender", "Phone number", "Date Join", " Action"
+                "#", "Name", "Price", "Brand", "Category", "Description"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
