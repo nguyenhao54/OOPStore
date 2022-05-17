@@ -41,6 +41,11 @@ public class Bill {
     }
     
     public double getTotalCost() {
+        double sum = 0;
+        for (Order order : orderList) {
+            sum += order.getCost();
+        }
+        this.totalCost = sum;
         return this.totalCost;
     }
     
