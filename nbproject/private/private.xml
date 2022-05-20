@@ -3,7 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/menu/ModelMenuItem.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/form/Form_Product.java</file>
+            <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/staffs.json</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/form/Form_Dashboard.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/model/Shift.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/model/Product.java</file>
@@ -13,8 +15,8 @@
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/model/Bill.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/form/Form_Staff.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/form/Form_Shift.java</file>
+            <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/database/StaffList.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/main/Add.java</file>
-            <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/database/staff.json</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/build.xml</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/model/Manager.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/swing/table/TableCellAction.java</file>
@@ -36,6 +38,7 @@
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/swing/table/EventAction.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/model/Store.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/manifest.mf</file>
+            <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/pom.xml</file>
         </group>
     </open-files>
 </project-private>
