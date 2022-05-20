@@ -28,18 +28,18 @@ public class Dashboard extends javax.swing.JFrame {
                 if (index == 0 && indexSubMenu == 0) {
                     showForm(new Form_Dashboard());
                 } 
-                else if(index==2 &&indexSubMenu==1) 
-                {
-                    showForm(new Form_Shift());
-                }
-                else if(index==1 &&indexSubMenu==1) 
+                else if(index==1 &&indexSubMenu==1 ) 
                 {
                     showForm(new Form_Staff());
                 }
-                 else if(index==3 &&indexSubMenu==0) 
+                else if(index==2 &&indexSubMenu==1) 
                 {
-                    showForm(new Form_Product());
+                    
+                    showForm(new Form_Shift());
                 }
+                 else if(index == 4 && indexSubMenu ==1){
+                     showForm(new Form_Product());
+                 }
                 else{
                     showForm(new Form_Empty(index + " " + indexSubMenu));
                 }

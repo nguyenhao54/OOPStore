@@ -8,11 +8,11 @@ package model;
  *
  * @author Duc Anh.Nguyen
  */
-import javaswingdev.swing.table.EventAction;
-import javaswingdev.swing.table.ModelAction;
+//import javaswingdev.swing.table.EventAction;
+//import javaswingdev.swing.table.ModelAction;
 
 public class Product {
-    final int productId;
+    final private int productId;
     private String productName;
     private double productPrice;
     private String brand;
@@ -89,7 +89,7 @@ public class Product {
         this.quantity = quantity;
     }
     
-//    public Object[] toRowTable(EventAction event) {
-//        return new Object[]{productId, productName, productPrice, brand, category, description, quantity, new ModelAction(this, event)};
-//    }
+    public Object[] toRowTable() {
+        return new Object[]{productId, productName, productPrice, brand, category, description, quantity};
+    }
 }

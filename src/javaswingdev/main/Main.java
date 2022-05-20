@@ -146,7 +146,7 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        if(txtUser.getText().equals("bms") && txtPass.getText().equals("123456")){
+        if(txtUser.getText().equals("bms") && txtPass.getText().equals("1")){
             this.setVisible(false);
             new Dashboard().setVisible(true);
         }else if(txtUser.getText().equals("") || txtPass.getText().equals("")){

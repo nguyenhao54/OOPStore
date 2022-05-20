@@ -14,4 +14,4 @@ To login, use:
 
 username: bms
 
-password: 123456
+password: 1

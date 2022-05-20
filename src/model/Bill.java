@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author Duc Anh.Nguyen
  */
 public class Bill {
-    final int billId;
+    final private int billId;
     private Staff staff;
     private ArrayList<Order> orderList;
     private LocalDate date;
@@ -41,6 +41,11 @@ public class Bill {
     }
     
     public double getTotalCost() {
+        double sum = 0;
+        for (Order order : orderList) {
+            sum += order.getCost();
+        }
+        this.totalCost = sum;
         return this.totalCost;
     }
     
