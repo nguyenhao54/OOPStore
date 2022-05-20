@@ -9,13 +9,16 @@
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/model/Product.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/swing/table/ModelAction.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/form/Form_Empty.java</file>
+            <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/menu/MenuItem.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/model/Bill.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/form/Form_Staff.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/form/Form_Shift.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/main/Add.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/database/staff.json</file>
+            <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/build.xml</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/model/Manager.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/swing/table/TableCellAction.java</file>
+            <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/menu/Menu.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/swing/table/Action.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/main/Main.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/swing/titlebar/ComponentResizer.java</file>
@@ -24,11 +27,15 @@
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/swing/table/Table.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/swing/scroll/ModernScrollBarUI.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/system/SystemColor.java</file>
+            <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/swing/MessageDialog.java</file>
+            <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/swing/EventTextField.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/main/AddProd.java</file>
+            <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/aa</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/swing/table/TableHeader.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/main/Dashboard.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/javaswingdev/swing/table/EventAction.java</file>
             <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/src/model/Store.java</file>
+            <file>file:/C:/Users/T460S/Documents/NetBeansProjects/OOPStore/manifest.mf</file>
         </group>
     </open-files>
 </project-private>

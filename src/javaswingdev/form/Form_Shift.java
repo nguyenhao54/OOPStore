@@ -3,7 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package javaswingdev.form;
-
+import javaswingdev.main.Add;
+import javaswingdev.main.Dashboard;
+import javaswingdev.swing.table.EventAction;
+import model.Staff;
+import swing.MessageDialog;
 /**
  *
  * @author T460S
@@ -17,22 +21,39 @@ public class Form_Shift extends javax.swing.JPanel {
         initComponents();
         initTable();
     }
-  private void initTable() {
+       private boolean showMessage(String message) {
+        MessageDialog obj = new MessageDialog(Dashboard.getFrames()[0], true);
+        obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
+        obj.showMessage(message);
+        return obj.isOk();
+    }
+        public boolean showUpdateStaff(Staff staff){
+        Add obj = new Add(Dashboard.getFrames()[0], true);
+        obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
+        obj.showInfo(staff);
+        return obj.isOk();
+        }
+       private void initTable() {
+       EventAction eventAction = new EventAction() {
+            @Override
+            public void delete(Staff staff) {
+              if (showMessage("Delete Shift: " + staff.getName())) {
+                    System.out.println("User click OK");
+                } else {
+                    System.out.println("User click Cancel");
+                }
+            }
+
+            @Override
+            public void update(Staff staff) {
+                  showUpdateStaff(staff);
+            }
+                };
         table.fixTable(jScrollPane1);
-        table.addRow(new Object[]{"1", "Mike Bhand", "mikebhand@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"2", "Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        table.addRow(new Object[]{"3", "Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        table.addRow(new Object[]{"4", "Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"5", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"6", "Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        table.addRow(new Object[]{"7", "Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        table.addRow(new Object[]{"8", "Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"9", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"10", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"11", "Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        table.addRow(new Object[]{"12", "Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        table.addRow(new Object[]{"13", "Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"14", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
+     table.addRow(new Staff(1, "Bora", "Male", "33431232244", 300).toRowTable(eventAction));
+        table.addRow(new Staff(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
+        table.addRow(new Staff(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
+        table.addRow(new Staff(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
   }
     /**
      * This method is called from within the constructor to initialize the form.

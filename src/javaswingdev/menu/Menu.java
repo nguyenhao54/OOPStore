@@ -35,21 +35,21 @@ public class Menu extends JPanel {
         addTitle("MAIN");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.DASHBOARD, "Dashboard"));
         addTitle("STAFF");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PEOPLE, "Staffs","View","New Staff"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PAYMENT, "Manager","View"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PERM_CONTACT_CALENDAR, "Salary"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PEOPLE, "Staffs","All","Male","Female"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PAYMENT, "Manager"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.RECEIPT, "Salary","Weekly","Monthly","Yearly"));
         addTitle("PRODUCTS");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.INBOX, "Shirt", "Blank page", "Faq", "Invoice", "Profile", "Pricing", "Timeline"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.LOCK_OUTLINE, "Coat", "Login", "Register"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ERROR_OUTLINE, "Error", "404", "500"));
-             addTitle("BILLINGS");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PAYMENT, "View", "Blank page", "Faq", "Invoice", "Profile", "Pricing", "Timeline"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.LOCK_OUTLINE, "Authentication", "Login", "Register"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ERROR_OUTLINE, "Error", "404", "500"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.STORE, "All", "Tops", "Bottoms"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PEOPLE, "Male", "Tops", "Bottoms","Shoes", "Accessory"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PEOPLE, "Female", "Tops", "Bottoms","Shoes", "Bags","Accessory"));
+        addTitle("SHIFTS");
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PERM_CONTACT_CALENDAR, "Callendar", "Monthly", "Weekly"));
+        addTitle("BILLINGS");
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.RECEIPT, "Bills", "Daily","Weekly", "Monthly"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.RECEIPT, "TurnOver", "Weekly", "Monthly","Yearly"));
         addTitle("STATISTIC");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.WHATSHOT, "UI Kit", "Accordion", "Alerts", "Badges", "Breadcrumbs", "Buttons", "Button group"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ERROR, "View", "Monthly", "Yearly"));
        
-   
         
         
     }

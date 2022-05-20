@@ -72,6 +72,11 @@
       <artifactId>jackson-core</artifactId>
       <version>${jackson.version.core}</version>
     </dependency>
+    <dependency>
+    <groupId>com.googlecode.json-simple</groupId>
+    <artifactId>json-simple</artifactId>
+    <version>1.1.1</version>
+</dependency>
 
     <!-- and for testing we need a few libraries
          libs for which we use reflection for code, but direct dep for testing
