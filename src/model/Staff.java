@@ -11,20 +11,37 @@ package model;
 import javaswingdev.swing.table.EventAction;
 import javaswingdev.swing.table.ModelAction;
 import java.util.ArrayList;
+import java.util.Date;
 public class Staff {
+
+    /**
+     * @return the birthDate
+     */
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    /**
+     * @param birthDate the birthDate to set
+     */
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
     private int staffId;
     private String name;
     private String gender;
     private String phone;
     double rate;
+    private Date birthDate;
     private ArrayList<Shift> workedShifts;
     
-    public Staff( int id,String name, String gender, String phone, double rate) {
+    public Staff( int id,String name, String gender, String phone, double rate, Date birthDate) {
         this.staffId = id;
         this.name = name;
         this.gender = gender;
         this.phone = phone;
         this.rate = rate;
+        this.birthDate=birthDate;
     }
 
     public Staff() {

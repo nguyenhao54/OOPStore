@@ -112,8 +112,14 @@
           </Properties>
         </Component>
         <Component class="javaswingdev.raven.swing.TextField" name="textField3">
+          <Properties>
+            <Property name="labelText" type="java.lang.String" value="BirthDay"/>
+          </Properties>
         </Component>
         <Component class="javaswingdev.raven.swing.TextField" name="textField4">
+          <Properties>
+            <Property name="labelText" type="java.lang.String" value="Salary Rate"/>
+          </Properties>
         </Component>
         <Component class="javaswingdev.swing.Button" name="button1">
           <Properties>

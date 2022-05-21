@@ -50,10 +50,10 @@ public class Form_Shift extends javax.swing.JPanel {
             }
                 };
         table.fixTable(jScrollPane1);
-     table.addRow(new Staff(1, "Bora", "Male", "33431232244", 300).toRowTable(eventAction));
-        table.addRow(new Staff(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
-        table.addRow(new Staff(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
-        table.addRow(new Staff(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
+//     table.addRow(new Staff(1, "Bora", "Male", "33431232244", 300).toRowTable(eventAction));
+//        table.addRow(new Staff(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
+//        table.addRow(new Staff(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
+//        table.addRow(new Staff(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
   }
     /**
      * This method is called from within the constructor to initialize the form.

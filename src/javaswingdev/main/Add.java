@@ -6,6 +6,9 @@ import model.Staff;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
+import java.util.Date;
+import java.text.DateFormat;  
+import java.text.SimpleDateFormat; 
 
 public class Add extends javax.swing.JDialog {
     public boolean isOk() {
@@ -70,6 +73,10 @@ public class Add extends javax.swing.JDialog {
         textField1.setLabelText("Name");
 
         textField2.setLabelText("Phone Number");
+
+        textField3.setLabelText("BirthDay");
+
+        textField4.setLabelText("Salary Rate");
 
         button1.setBackground(new java.awt.Color(98, 98, 157));
         button1.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,6 +165,10 @@ public class Add extends javax.swing.JDialog {
           public void showInfo(Staff staff) {
         textField1.setText(staff.getName());
         textField2.setText(staff.getPhone());
+        DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");  
+        String strDate = dateFormat.format(staff.getBirthDate());  
+        textField3.setText(strDate);
+        textField4.setText(Double.toString(staff.getRate()));
         animator.start();
         setVisible(true);
     }

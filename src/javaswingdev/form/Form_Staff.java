@@ -48,9 +48,9 @@ public class Form_Staff extends javax.swing.JPanel {
       
         StaffList sP=new StaffList();
        sP.read();
-        sP.write("An","171673782","Male","1.8");
-//        sP.write("3","Ha","171673782","Male","1.8",StaffList);
-//        sP.write("4","Bon","171673782","Male","1.8",StaffList);
+//        sP.write("An","171673782","Male","1.8");
+//     sP.write("Ha","171673782","Male","1.8");
+//    sP.write("Bon","171673782","Male","1.8");
         table.fixTable(jScrollPane1);
         for(int i=0; i<sP.StaffList.size();i++){
               table.addRow(sP.StaffList.get(i).toRowTable(eventAction));
