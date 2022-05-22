@@ -13,6 +13,12 @@ public class Shift {
     LocalDateTime startTime;
     LocalDateTime endTime;
     double hour;
+    public Shift(int shiftId, LocalDateTime startTime, LocalDateTime endTime)
+            {
+                this.shiftId = shiftId;
+                this.startTime = startTime;
+                this.endTime = endTime;
+            }
     public LocalDateTime getStartTime()
         {
                return startTime;
