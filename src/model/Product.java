@@ -4,6 +4,9 @@
  */
 package model;
 
+import javaswingdev.swing.table.ProductEventAction;
+import javaswingdev.swing.table.ModelAction;
+
 /**
  *
  * @author Duc Anh.Nguyen
@@ -89,7 +92,7 @@ public class Product {
         this.quantity = quantity;
     }
     
-    public Object[] toRowTable() {
-        return new Object[]{productId, productName, productPrice, brand, category, description, quantity};
+    public Object[] toRowTable(ProductEventAction event) {
+        return new Object[]{productId, productName, productPrice, brand, category, description, quantity, new ModelAction(this, event)};
     }
 }

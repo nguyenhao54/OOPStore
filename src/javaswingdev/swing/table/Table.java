@@ -30,33 +30,37 @@ public class Table extends JTable {
             public Component getTableCellRendererComponent(JTable jtable, Object o, boolean selected, boolean bln1, int i, int i1) {
                 if(o instanceof ModelAction){
                     ModelAction data=(ModelAction) o;
-                     Action cell= new Action(data);
-                        if (selected) {
+                    Action cell= null;
+                    if(data.getStaff() != null){
+                        cell = new Action(data, "staff");
+                    }else if(data.getProduct() != null){
+                        cell = new Action(data, "product");
+                    }
+                    if (selected) {
                         cell.setForeground(SystemColor.MAIN_COLOR_1);
-                        } else {
-                   
+                    } else {
                         cell.setForeground(new Color(102, 102, 102));
-                         }
-                        return cell;
+                     }
+                    return cell;
                 }
              
                 else{
-                Component com = super.getTableCellRendererComponent(jtable, o, selected, bln1, i, i1);
-                com.setBackground(Color.WHITE);
-                setBorder(noFocusBorder);
-                if (selected) {
-                    com.setForeground(SystemColor.MAIN_COLOR_1);    
-                } else {
-                    com.setForeground(new Color(102, 102, 102));
-                }
-                return com;
+                    Component com = super.getTableCellRendererComponent(jtable, o, selected, bln1, i, i1);
+                    com.setBackground(Color.WHITE);
+                    setBorder(noFocusBorder);
+                    if (selected) {
+                        com.setForeground(SystemColor.MAIN_COLOR_1);    
+                    } else {
+                        com.setForeground(new Color(102, 102, 102));
+                    }
+                    return com;
                }
             }
         });
     }
     @Override
     public TableCellEditor getCellEditor(int row,int col){
-        if(col==5){
+        if(col==5 || col==7){
             return new TableCellAction();
         }
         else return super.getCellEditor(row,col);

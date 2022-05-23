@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package javaswingdev.swing.table;
 
 import java.awt.Color;
@@ -10,19 +6,29 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class Action extends javax.swing.JPanel {
+    private String dataModel;
 
-    public Action(ModelAction data) {
+    public Action(ModelAction data, String dataModel) {
         initComponents();
         cmdEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                data.getEvent().update(data.getStaff());
+                if(dataModel.equals("staff")){
+                    data.getEvent().update(data.getStaff());
+                }else if(dataModel.equals("product")){
+                    data.getProductEvent().update(data.getProduct());
+                }
+                
             }
         });
         cmdDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                data.getEvent().delete(data.getStaff());
+                if(dataModel.equals("staff")){
+                    data.getEvent().delete(data.getStaff());
+                }else if(dataModel.equals("product")){
+                    data.getProductEvent().delete(data.getProduct());
+                }
             }
         });
     }
