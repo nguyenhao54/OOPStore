@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package javaswingdev.form;
 import javaswingdev.main.Add;
 import javaswingdev.main.Dashboard;
@@ -14,9 +11,6 @@ import swing.MessageDialog;
  */
 public class Form_Shift extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Form_Shift
-     */
     public Form_Shift() {
         initComponents();
         initTable();

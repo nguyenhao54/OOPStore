@@ -1,14 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package javaswingdev.swing.table;
 
-import model.Staff;
+import model.*;
 
 public class ModelAction {
     private Staff staff;
     private EventAction event;
+    
+    private Product product;
+    private ProductEventAction productEvent;
 
     public Staff getStaff() {
         return staff;
@@ -25,6 +24,41 @@ public class ModelAction {
     public void setEvent(EventAction event) {
         this.event = event;
     }
+    
+    /**
+     * @return the product
+     */
+    public Product getProduct() {
+        return product;
+    }
+
+    /**
+     * @param product the product to set
+     */
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    /**
+     * @return the productEvent
+     */
+    public ProductEventAction getProductEvent() {
+        return productEvent;
+    }
+
+    /**
+     * @param productEvent the productEvent to set
+     */
+    public void setProductEvent(ProductEventAction productEvent) {
+        this.productEvent = productEvent;
+    }
+
+    public ModelAction(Product product, ProductEventAction productEvent) {
+        this.product = product;
+        this.productEvent = productEvent;
+    }
+    
+    
 
     public ModelAction(Staff staff, EventAction event) {
         this.staff=staff;
