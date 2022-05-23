@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package javaswingdev.form;
-import javaswingdev.main.Add;
+import javaswingdev.main.StaffInfo;
 import javaswingdev.main.Dashboard;
 import javaswingdev.swing.table.EventAction;
 import model.Staff;
@@ -28,7 +28,7 @@ public class Form_Shift extends javax.swing.JPanel {
         return obj.isOk();
     }
         public boolean showUpdateStaff(Staff staff){
-        Add obj = new Add(Dashboard.getFrames()[0], true);
+        StaffInfo obj = new StaffInfo(Dashboard.getFrames()[0], true);
         obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
         obj.showInfo(staff);
         return obj.isOk();

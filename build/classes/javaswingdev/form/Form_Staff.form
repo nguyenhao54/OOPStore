@@ -96,7 +96,7 @@
                     <Column editable="false" title="Name" type="java.lang.Object"/>
                     <Column editable="false" title="Gender" type="java.lang.Object"/>
                     <Column editable="false" title="Phone number" type="java.lang.Object"/>
-                    <Column editable="false" title="Date Join" type="java.lang.Object"/>
+                    <Column editable="false" title="Rate" type="java.lang.Object"/>
                     <Column editable="true" title=" Action" type="java.lang.Object"/>
                   </Table>
                 </Property>
@@ -138,6 +138,14 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="default"/>
+                </Property>
+              </AccessibilityProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

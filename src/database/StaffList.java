@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileReader;
-import java.text.DateFormat;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -19,9 +18,10 @@ import java.text.SimpleDateFormat;
  
 public class StaffList  {
     public ArrayList<Staff> StaffList= new ArrayList<>();
-    static int maxid=0;
+    public static int maxid=0;
     static JSONArray jStaffList;
- public void  write(String name, String phone , String gender, String rate, String date){
+ public boolean write(String name, String phone , String gender, String rate, String date){
+     if(findStaff(phone)==null){
         JSONObject staffDetails = new JSONObject();
         maxid++;
         staffDetails.put("id", Integer.toString(maxid));
@@ -47,11 +47,20 @@ public class StaffList  {
         } catch (IOException e) {
             e.printStackTrace();
         }  catch (Exception e){
-     e.printStackTrace();
- } 
+            e.printStackTrace();
+        } 
+        return true;
     }
- 
- public void read ( )
+     return false;
+}
+ public Staff findStaff(String phone){
+    for(int i=0;i<StaffList.size();i++){
+        if(StaffList.get(i).getPhone().equals(phone))
+            return StaffList.get(i);
+    }
+    return null;
+ }
+ public void read ( String gender )
     {
 //     StaffParser sP=new StaffParser();
 //     sP.write("Ann","171673782","Male","1.7");
@@ -64,7 +73,7 @@ public class StaffList  {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
             jStaffList = (JSONArray) obj;
-            jStaffList.forEach( emp -> parseStaffObject( (JSONObject) emp ,StaffList) );
+            jStaffList.forEach( st -> parseStaffObject( (JSONObject) st ,StaffList,gender ));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
@@ -72,7 +81,7 @@ public class StaffList  {
         }
     }
  
-    private static void parseStaffObject(JSONObject staff , ArrayList<Staff> StaffList) 
+    private static void parseStaffObject(JSONObject staff , ArrayList<Staff> StaffList, String mgender) 
     { 
         JSONObject staffObj= (JSONObject) staff.get("staff");    
         String name = (String) staffObj.get("name");  
@@ -81,6 +90,7 @@ public class StaffList  {
         String phone = (String) staffObj.get("phone");    
         String rate = (String) staffObj.get("rate"); 
         String strDate = (String) staffObj.get("birth date"); 
+        if(gender.equals(mgender)||mgender.equals("all")){
         try{
         Date date=new SimpleDateFormat("dd-mm-yyyy").parse(strDate);
           if(maxid<Integer.parseInt(staffid)) maxid=Integer.parseInt(staffid);
@@ -90,7 +100,7 @@ public class StaffList  {
         catch(Exception e){
             e.printStackTrace();
         }
-      
+        }
                
 
     }

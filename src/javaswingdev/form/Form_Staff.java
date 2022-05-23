@@ -1,7 +1,7 @@
 package javaswingdev.form;
 import javaswingdev.main.Dashboard;
 import javaswingdev.swing.table.EventAction;
-import javaswingdev.main.Add;
+import javaswingdev.main.StaffInfo;
 import swing.MessageDialog;
 import model.Staff;
 import database.StaffList;
@@ -11,26 +11,32 @@ public class Form_Staff extends javax.swing.JPanel {
     /**
      * Creates new form Form_Shift
      */
-    public Form_Staff() {
+    public Form_Staff(String gender) {
         initComponents();
-        initTable();
+        initTable(gender);
         
     }
     
-        private boolean showMessage(String message) {
+        public boolean showMessage(String message) {
         MessageDialog obj = new MessageDialog(Dashboard.getFrames()[0], true);
         obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
         obj.showMessage(message);
         return obj.isOk();
     }
         public boolean showUpdateStaff(Staff staff){
-        Add obj = new Add(Dashboard.getFrames()[0], true);
+        StaffInfo obj = new StaffInfo(Dashboard.getFrames()[0], true);
         obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
         obj.showInfo(staff);
         return obj.isOk();
         }
-       private void initTable() {
-          EventAction eventAction = new EventAction() {
+//        private StaffInfo showNewStaffFrame(){
+//        StaffInfo obj = new StaffInfo(Dashboard.getFrames()[0], true);
+//        obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
+//        obj.setVisible(true);
+//        return obj;         
+//       }
+       private void initTable( String gender) {
+      eventAction = new EventAction() {
             @Override
             public void delete(Staff staff) {
               if (showMessage("Delete Staff : " + staff.getName())) {
@@ -47,21 +53,14 @@ public class Form_Staff extends javax.swing.JPanel {
         };
       
         StaffList sP=new StaffList();
-       sP.read();
-//        sP.write("An","171673782","Male","1.8");
-//     sP.write("Ha","171673782","Male","1.8");
-//    sP.write("Bon","171673782","Male","1.8");
+        sP.read(gender);
         table.fixTable(jScrollPane1);
         for(int i=0; i<sP.StaffList.size();i++){
               table.addRow(sP.StaffList.get(i).toRowTable(eventAction));
-            
+              
         }
-            
-      
-//        table.addRow(new Staff(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
-//        table.addRow(new Staff(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
-//        table.addRow(new Staff(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
   }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -83,7 +82,7 @@ public class Form_Staff extends javax.swing.JPanel {
 
             },
             new String [] {
-                "#", "Name", "Gender", "Phone number", "Date Join", " Action"
+                "#", "Name", "Gender", "Phone number", "Rate", " Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -158,11 +157,15 @@ public class Form_Staff extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-   
-//        ModelStaff newStaff= new ModelStaff();
-//        
-//        showUpdateStaff(newStaff);
-          new Add(Dashboard.getFrames()[0], true).setVisible(true);
+        StaffInfo obj= new StaffInfo(Dashboard.getFrames()[0], true);
+        System.out.print(obj);
+        obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
+        obj.setVisible(true);
+        if (obj.isOk()) {
+              System.out.print(obj.isSuccess());
+              table.addRow(obj.getStaff().toRowTable(eventAction)); 
+        }
+        
     }//GEN-LAST:event_button1ActionPerformed
 
     private void textFieldAnimation1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldAnimation1FocusGained
@@ -174,7 +177,9 @@ public class Form_Staff extends javax.swing.JPanel {
     private javaswingdev.swing.Button button1;
     private javax.swing.JScrollPane jScrollPane1;
     private javaswingdev.swing.RoundPanel roundPanel1;
-    private javaswingdev.swing.table.Table table;
+    private static javaswingdev.swing.table.Table table;
     private swing.TextFieldAnimation textFieldAnimation1;
     // End of variables declaration//GEN-END:variables
+
+    static EventAction eventAction;
 }

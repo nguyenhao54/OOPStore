@@ -4,7 +4,7 @@
  */
 package javaswingdev.form;
 import javaswingdev.main.Dashboard;
-import javaswingdev.main.AddProd;
+import javaswingdev.main.ProductInfo;
 import model.*;
 
 public class Form_Product extends javax.swing.JPanel {
@@ -132,7 +132,7 @@ public class Form_Product extends javax.swing.JPanel {
 //        ModelStaff newStaff= new ModelStaff();
 //        
 //        showUpdateStaff(newStaff);
-          new AddProd(Dashboard.getFrames()[0], true).setVisible(true);
+          new ProductInfo(Dashboard.getFrames()[0], true).setVisible(true);
     }//GEN-LAST:event_button1ActionPerformed
 
     private void textFieldAnimation1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldAnimation1FocusGained

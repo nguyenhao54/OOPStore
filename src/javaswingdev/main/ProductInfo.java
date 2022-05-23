@@ -7,7 +7,7 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
-public class AddProd extends javax.swing.JDialog {
+public class ProductInfo extends javax.swing.JDialog {
     public boolean isOk() {
         return ok;
     }
@@ -19,7 +19,7 @@ public class AddProd extends javax.swing.JDialog {
     private final Animator animator;
     private boolean show = true;
    
-    public AddProd(java.awt.Frame parent, boolean modal) {
+    public ProductInfo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         centerComponent();
