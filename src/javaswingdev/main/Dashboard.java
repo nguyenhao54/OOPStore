@@ -40,9 +40,12 @@ public class Dashboard extends javax.swing.JFrame {
                 {
                     showForm(new Form_Staff("Female"));
                 }
-                else if(index==2 &&indexSubMenu==1) 
+                else if(index==7 &&indexSubMenu==1) 
                 {
-                    
+                    showForm(new Form_Shift());
+                }
+                else if(index==7 &&indexSubMenu==2) 
+                {
                     showForm(new Form_Shift());
                 }
                  else if(index == 4 && indexSubMenu ==1){
