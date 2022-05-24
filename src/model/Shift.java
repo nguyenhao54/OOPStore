@@ -13,11 +13,11 @@ public class Shift {
     LocalDateTime startTime;
     LocalDateTime endTime;
     double hour;
-    public Shift(int shiftId, LocalDateTime startTime, LocalDateTime endTime, double hour)
+    public Shift(int shiftId, String startTime, String endTime, double hour)
             {
                 this.shiftId = shiftId;
-                this.startTime = startTime;
-                this.endTime = endTime;
+                this.startTime = LocalDateTime.parse(startTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+                this.endTime = LocalDateTime.parse(endTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
                 this.hour = hour;
             }
     public LocalDateTime getStartTime()
