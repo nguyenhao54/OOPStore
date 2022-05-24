@@ -5,6 +5,7 @@ import javaswingdev.main.StaffInfo;
 import swing.MessageDialog;
 import model.Staff;
 import database.StaffList;
+import javaswingdev.form.Message;
      
 public class Form_Staff extends javax.swing.JPanel {
 
@@ -17,12 +18,7 @@ public class Form_Staff extends javax.swing.JPanel {
         
     }
     
-        public boolean showMessage(String message) {
-        MessageDialog obj = new MessageDialog(Dashboard.getFrames()[0], true);
-        obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
-        obj.showMessage(message);
-        return obj.isOk();
-    }
+        
         public boolean showUpdateStaff(Staff staff){
         StaffInfo obj = new StaffInfo(Dashboard.getFrames()[0], true);
         obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
@@ -39,7 +35,8 @@ public class Form_Staff extends javax.swing.JPanel {
       eventAction = new EventAction() {
             @Override
             public void delete(Staff staff) {
-              if (showMessage("Delete Staff : " + staff.getName())) {
+              Message msg=new Message();
+              if (msg.showMessage("Delete Staff : " + staff.getName())) {
                     System.out.println("User click OK");
                 } else {
                     System.out.println("User click Cancel");
@@ -158,12 +155,20 @@ public class Form_Staff extends javax.swing.JPanel {
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         StaffInfo obj= new StaffInfo(Dashboard.getFrames()[0], true);
-        System.out.print(obj);
+        //System.out.println(obj);
         obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
         obj.setVisible(true);
         if (obj.isOk()) {
-              System.out.print(obj.isSuccess());
+//              System.out.println(obj.isSuccess());
+//              System.out.println(obj.getStaff());
+        Message msg=new Message();
+        if(obj.isSuccess()){
               table.addRow(obj.getStaff().toRowTable(eventAction)); 
+            
+           msg.showDialog("Add new staff successfully!","blue");
+      }
+      else 
+           msg.showDialog("Add new staff failed! Please try again","red");
         }
         
     }//GEN-LAST:event_button1ActionPerformed

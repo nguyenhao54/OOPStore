@@ -4,7 +4,7 @@ import java.awt.Color;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
-public class MessageDialog extends javax.swing.JDialog {
+public class Alarm extends javax.swing.JDialog {
 
     public boolean isOk() {
         return ok;
@@ -16,7 +16,7 @@ public class MessageDialog extends javax.swing.JDialog {
     private boolean ok;
     private final Animator animator;
     private boolean show = true;
-    public MessageDialog(java.awt.Frame parent, boolean modal) {
+    public Alarm(java.awt.Frame parent, boolean modal, String color) {
          super(parent, modal);
         initComponents();
         getContentPane().setBackground(Color.WHITE);
@@ -54,7 +54,6 @@ public class MessageDialog extends javax.swing.JDialog {
 
         roundPanel1 = new javaswingdev.swing.RoundPanel();
         jLabel1 = new javax.swing.JLabel();
-        button1 = new javaswingdev.swing.Button();
         button2 = new javaswingdev.swing.Button();
         lblText = new javax.swing.JLabel();
 
@@ -64,22 +63,12 @@ public class MessageDialog extends javax.swing.JDialog {
         setForeground(new java.awt.Color(242, 242, 242));
         setLocation(new java.awt.Point(855, 355));
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
         roundPanel1.setRound(15);
         roundPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_help_80px.png"))); // NOI18N
         roundPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 27, 93, -1));
-
-        button1.setBackground(new java.awt.Color(196, 84, 84));
-        button1.setText("CANCEL");
-        button1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
-            }
-        });
-        roundPanel1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 74, -1));
 
         button2.setBackground(new java.awt.Color(89, 93, 184));
         button2.setText("OK");
@@ -88,43 +77,30 @@ public class MessageDialog extends javax.swing.JDialog {
                 button2ActionPerformed(evt);
             }
         });
-        roundPanel1.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 73, -1));
+        roundPanel1.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 73, -1));
 
         lblText.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
         lblText.setText("jLabel2");
         roundPanel1.add(lblText, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
+        getContentPane().add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 359, 170));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-         closeMenu();
-    }//GEN-LAST:event_button1ActionPerformed
 
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         ok = true;
         closeMenu();
     }//GEN-LAST:event_button2ActionPerformed
 
-       public void showMessage(String message) {
+       public void showMessage(String message,String Color) {
         lblText.setText(message);
+        if(Color.equals("blue")){
+            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_info_80px.png"))); // NOI18N
+        }
+        else if(Color.equals("red")){
+            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_help_80px.png"))); // NOI18N
+        }
         animator.start();
         setVisible(true);
     }
@@ -136,7 +112,6 @@ public class MessageDialog extends javax.swing.JDialog {
         animator.start();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javaswingdev.swing.Button button1;
     private javaswingdev.swing.Button button2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblText;

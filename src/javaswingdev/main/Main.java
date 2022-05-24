@@ -1,6 +1,7 @@
 
 package javaswingdev.main;
-
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.Color;
 
 public class Main extends javax.swing.JFrame {
@@ -102,6 +103,16 @@ public class Main extends javax.swing.JFrame {
                 txtPassFocusLost(evt);
             }
         });
+        txtPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPassActionPerformed(evt);
+            }
+        });
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPassKeyPressed(evt);
+            }
+        });
         roundPanel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 302, 78));
 
         txtUser.setLabelText("Username");
@@ -146,6 +157,9 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        login();
+    }//GEN-LAST:event_button1ActionPerformed
+    private void login(){
         if(txtUser.getText().equals("bms") && txtPass.getText().equals("1")){
             this.setVisible(false);
             new Dashboard().setVisible(true);
@@ -160,8 +174,8 @@ public class Main extends javax.swing.JFrame {
                alertLabel.setText("Incorrect username or password!");
             
         }
-    }//GEN-LAST:event_button1ActionPerformed
-
+        
+    }
     private void txtUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserFocusGained
         
     }//GEN-LAST:event_txtUserFocusGained
@@ -199,6 +213,18 @@ public class Main extends javax.swing.JFrame {
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
       jLabel2.setForeground(Color.GRAY);
     }//GEN-LAST:event_jLabel2MouseExited
+
+    private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassActionPerformed
+
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+    if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+         login();
+    }
+
+
+    }//GEN-LAST:event_txtPassKeyPressed
 
     /**
      * @param args the command line arguments

@@ -76,6 +76,7 @@ public class StaffInfo extends javax.swing.JDialog {
         button2 = new javaswingdev.swing.Button();
         jLabel1 = new javax.swing.JLabel();
         combobox1 = new javaswingdev.swing.Combobox();
+        alertLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(800, 250));
@@ -87,10 +88,10 @@ public class StaffInfo extends javax.swing.JDialog {
         roundPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textField1.setLabelText("Name");
-        roundPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 81, 332, -1));
+        roundPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 332, -1));
 
         textField2.setLabelText("Phone Number");
-        roundPanel1.add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 152, 332, -1));
+        roundPanel1.add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 332, -1));
 
         textField3.setLabelText("BirthDay");
         textField3.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +99,7 @@ public class StaffInfo extends javax.swing.JDialog {
                 textField3ActionPerformed(evt);
             }
         });
-        roundPanel1.add(textField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 332, -1));
+        roundPanel1.add(textField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 332, -1));
 
         textField4.setLabelText("Salary Rate");
         roundPanel1.add(textField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 332, -1));
@@ -130,8 +131,14 @@ public class StaffInfo extends javax.swing.JDialog {
 
         combobox1.setMaximumRowCount(3);
         combobox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female", "Other" }));
+        combobox1.setSelectedIndex(-1);
         combobox1.setLabeText("Gender");
-        roundPanel1.add(combobox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 330, 45));
+        roundPanel1.add(combobox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 330, 45));
+
+        alertLabel.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
+        alertLabel.setForeground(new java.awt.Color(255, 0, 0));
+        alertLabel.setPreferredSize(new java.awt.Dimension(208, 13));
+        roundPanel1.add(alertLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 220, -1));
 
         getContentPane().add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 390, 470));
 
@@ -139,34 +146,42 @@ public class StaffInfo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
-        ok = true;
+      
         closeMenu();
     }//GEN-LAST:event_button2ActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+ 
        String name= textField1.getText();
        String phone= textField2.getText();
        String date= textField3.getText();
        String rate= textField4.getText();
        String gender= (String)combobox1.getSelectedItem();
-       StaffList newSL=new StaffList();
-       newSL.read("all");
-     if (newSL.write(name, phone, gender, rate, date)){
-         setSuccess(true);
-//        int id= newSL.maxid;
-//        try{
-//         Date realDate=new SimpleDateFormat("dd-mm-yyyy").parse(date);
-//         this.setStaff(new Staff(id,name,gender,phone,Double.parseDouble(rate),realDate)) ; 
-//         }
-//        catch(Exception e){
-//            e.printStackTrace();
-//        }
-     }
+       if(name.equals("")||phone.equals("")||date.equals("")||rate.equals("")||gender.equals("")){
+           alertLabel.setVisible(true);
+           alertLabel.setText("Please fill in blank fields!");
+          }
        else{
-         setSuccess(false);
-//           setStaff(null);
-     }
-        closeMenu();
+           ok = true;
+           StaffList newSL=new StaffList();
+           newSL.read("all");
+           if (newSL.write(name, phone, gender, rate, date)){
+              setSuccess(true);
+              int id= newSL.maxid;
+              try{
+              Date realDate=new SimpleDateFormat("dd-mm-yyyy").parse(date);
+              this.setStaff(new Staff(id,name,gender,phone,Double.parseDouble(rate),realDate)) ; 
+              }
+              catch(Exception e){
+              e.printStackTrace();
+              }
+            }
+            else{
+               setSuccess(false);
+               setStaff(null);
+            }
+           closeMenu();
+        }
     }//GEN-LAST:event_button1ActionPerformed
 
     private void textField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField3ActionPerformed
@@ -193,6 +208,7 @@ public class StaffInfo extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel alertLabel;
     private javaswingdev.swing.Button button1;
     private javaswingdev.swing.Button button2;
     private javaswingdev.swing.Combobox combobox1;
