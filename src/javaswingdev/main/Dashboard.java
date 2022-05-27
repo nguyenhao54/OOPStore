@@ -1,5 +1,6 @@
 package javaswingdev.main;
 
+import database.Store;
 import java.awt.Component;
 import javaswingdev.form.Form_Dashboard;
 import javaswingdev.form.Form_Empty;
@@ -11,7 +12,7 @@ import javaswingdev.menu.EventMenuSelected;
 public class Dashboard extends javax.swing.JFrame {
     
     private static Dashboard main;
-    
+    public static Store sP=new Store();
     public Dashboard() {
         initComponents();
         init();

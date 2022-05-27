@@ -4,7 +4,7 @@ import javaswingdev.swing.table.EventAction;
 import javaswingdev.main.StaffInfo;
 import swing.MessageDialog;
 import model.Staff;
-import database.StaffList;
+import database.Store;
 import javaswingdev.form.Message;
      
 public class Form_Staff extends javax.swing.JPanel {
@@ -49,8 +49,8 @@ public class Form_Staff extends javax.swing.JPanel {
             }
         };
       
-        StaffList sP=new StaffList();
-        sP.read(gender);
+        Store sP=new Store();
+        sP.readStaff(gender);
         table.fixTable(jScrollPane1);
         for(int i=0; i<sP.StaffList.size();i++){
               table.addRow(sP.StaffList.get(i).toRowTable(eventAction));

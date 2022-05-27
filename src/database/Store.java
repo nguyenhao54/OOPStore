@@ -16,23 +16,23 @@ import java.util.Date;
 import java.text.SimpleDateFormat;  
 
  
-public class StaffList  {
+public class Store  {
     public ArrayList<Staff> StaffList= new ArrayList<>();
-    public static int maxid=0;
+    public static int maxstaffid=0;
     static JSONArray jStaffList;
- public boolean write(String name, String phone , String gender, String rate, String date){
-     if(findStaff(phone)==null){
+   // add new staff
+  public boolean addStaff(String name, String phone , String gender, String rate, String date){
+        if(findStaff(phone)==null){
         JSONObject staffDetails = new JSONObject();
-        maxid++;
-        staffDetails.put("id", Integer.toString(maxid));
+        maxstaffid++;
+        staffDetails.put("id", Integer.toString(maxstaffid));
         staffDetails.put("name", name);
         staffDetails.put("phone", phone);
         staffDetails.put("gender", gender);
         staffDetails.put("rate", rate);
         staffDetails.put("birth date", date);
         JSONObject staffObject = new JSONObject(); 
-       staffObject.put("staff",staffDetails);
-       
+        staffObject.put("staff",staffDetails);
         jStaffList.add(staffObject);
          //Write JSON file
         try (FileWriter file = new FileWriter("./staffs.json")) {
@@ -41,7 +41,7 @@ public class StaffList  {
         
             Date strDate=new SimpleDateFormat("dd-mm-yyyy").parse(date); 
          
-            Staff newStaff= new Staff(maxid,name,gender,phone,Double.parseDouble(rate),strDate);
+            Staff newStaff= new Staff(maxstaffid,name,gender,phone,Double.parseDouble(rate),strDate);
             StaffList.add(newStaff);
  
         } catch (IOException e) {
@@ -60,14 +60,16 @@ public class StaffList  {
     }
     return null;
  }
- public void read ( String gender )
+  public Staff findStaff(int id){
+    for(int i=0;i<StaffList.size();i++){
+        if(StaffList.get(i).getStaffId()==id)
+            return StaffList.get(i);
+    }
+    return null;
+ }
+ public void readStaff ( String gender )
     {
-//     StaffParser sP=new StaffParser();
-//     sP.write("Ann","171673782","Male","1.7");
-//       sP.write("Ann","171673782","Male","1.8");
-
-     JSONParser jsonParser = new JSONParser();
-         
+     JSONParser jsonParser = new JSONParser();    
         try (FileReader reader = new FileReader("./staffs.json"))
         {
             //Read JSON file
@@ -80,8 +82,32 @@ public class StaffList  {
             e.printStackTrace();
         }
     }
- 
-    private static void parseStaffObject(JSONObject staff , ArrayList<Staff> StaffList, String mgender) 
+ // deleteStaff
+  public boolean deleteStaff (int id ){
+    if (findStaff(id)!=null){
+    jStaffList.remove(id);
+     try (FileWriter file = new FileWriter("./staffs.json")) {
+            file.write(jStaffList.toJSONString()); 
+            file.flush();
+            StaffList.remove(id);
+       
+        } catch (IOException e) {
+            e.printStackTrace();
+        }  catch (Exception e){
+            e.printStackTrace();
+        } 
+        return true;
+    }
+    return false;
+  }
+    
+  
+   public void deleteStaff (String phone ){
+    jStaffList.remove(findStaff(phone));
+  }
+   
+   
+private static void parseStaffObject(JSONObject staff , ArrayList<Staff> StaffList, String mgender) 
     { 
         JSONObject staffObj= (JSONObject) staff.get("staff");    
         String name = (String) staffObj.get("name");  
@@ -93,7 +119,7 @@ public class StaffList  {
         if(gender.equals(mgender)||mgender.equals("all")){
         try{
         Date date=new SimpleDateFormat("dd-mm-yyyy").parse(strDate);
-          if(maxid<Integer.parseInt(staffid)) maxid=Integer.parseInt(staffid);
+          if(maxstaffid<Integer.parseInt(staffid)) maxstaffid=Integer.parseInt(staffid);
         Staff newStaff= new Staff(Integer.parseInt(staffid),name,gender,phone,Double.parseDouble(rate),date );
          StaffList.add(newStaff); 
       }
