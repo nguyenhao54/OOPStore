@@ -37,7 +37,8 @@ public class Form_Staff extends javax.swing.JPanel {
             public void delete(Staff staff) {
               Message msg=new Message();
               if (msg.showMessage("Delete Staff : " + staff.getName())) {
-                    System.out.println("User click OK");
+                    
+                  
                 } else {
                     System.out.println("User click Cancel");
                 }

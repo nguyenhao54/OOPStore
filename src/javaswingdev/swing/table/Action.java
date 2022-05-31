@@ -55,8 +55,17 @@ public class Action extends javax.swing.JPanel {
 
         cmdDelete.setBackground(new java.awt.Color(196, 72, 72));
         cmdDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_trash_can_20px.png"))); // NOI18N
+        cmdDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdDeleteActionPerformed(evt);
+            }
+        });
         add(cmdDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 6, 30, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmdDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
