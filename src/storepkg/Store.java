@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package database;
+package storepkg;
 import java.util.ArrayList;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,9 +17,9 @@ import java.text.SimpleDateFormat;
 
  
 public class Store  {
-    public ArrayList<Staff> StaffList= new ArrayList<>();
+    public ArrayList<Staff> StaffList;
     public static int maxstaffid=0;
-    static JSONArray jStaffList;
+    public JSONArray jStaffList;
    // add new staff
   public boolean addStaff(String name, String phone , String gender, String rate, String date){
         if(findStaff(phone)==null){
@@ -67,15 +67,17 @@ public class Store  {
     }
     return null;
  }
- public void readStaff ( String gender )
-    {
+ public void readStaff ()
+    {    
+        StaffList= new ArrayList<>();
+        jStaffList =new JSONArray();
      JSONParser jsonParser = new JSONParser();    
         try (FileReader reader = new FileReader("./staffs.json"))
         {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
             jStaffList = (JSONArray) obj;
-            jStaffList.forEach( st -> parseStaffObject( (JSONObject) st ,StaffList,gender ));
+            jStaffList.forEach( st -> parseStaffObject( (JSONObject) st ,StaffList ));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
@@ -107,7 +109,7 @@ public class Store  {
   }
    
    
-private static void parseStaffObject(JSONObject staff , ArrayList<Staff> StaffList, String mgender) 
+private static void parseStaffObject(JSONObject staff , ArrayList<Staff> StaffList) 
     { 
         JSONObject staffObj= (JSONObject) staff.get("staff");    
         String name = (String) staffObj.get("name");  
@@ -116,7 +118,7 @@ private static void parseStaffObject(JSONObject staff , ArrayList<Staff> StaffLi
         String phone = (String) staffObj.get("phone");    
         String rate = (String) staffObj.get("rate"); 
         String strDate = (String) staffObj.get("birth date"); 
-        if(gender.equals(mgender)||mgender.equals("all")){
+ 
         try{
         Date date=new SimpleDateFormat("dd-mm-yyyy").parse(strDate);
           if(maxstaffid<Integer.parseInt(staffid)) maxstaffid=Integer.parseInt(staffid);
@@ -129,6 +131,6 @@ private static void parseStaffObject(JSONObject staff , ArrayList<Staff> StaffLi
         }
                
 
-    }
+    
 }
     

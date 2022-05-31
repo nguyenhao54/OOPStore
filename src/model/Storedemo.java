@@ -11,14 +11,14 @@ import java.util.ArrayList;
  *
  * @author Duc Anh.Nguyen
  */
-public class Store {
+public class Storedemo {
     ArrayList<Product> productList;
     ArrayList<Bill> billList;
     ArrayList<Staff> staffList;
     ArrayList<Manager> managerList;
     ArrayList<Shift> shiftList;
     
-    public Store(ArrayList<Product> productList,ArrayList<Bill> billList, ArrayList<Staff> staffList, 
+    public Storedemo(ArrayList<Product> productList,ArrayList<Bill> billList, ArrayList<Staff> staffList, 
             ArrayList<Manager> managerList, ArrayList<Shift> shiftList){
         this.productList = productList;
         this.billList = billList;
@@ -27,7 +27,7 @@ public class Store {
         this.shiftList = shiftList;
     }
     
-    public Store(){
+    public Storedemo(){
 //      init empty arrays of objects
         productList = new ArrayList<>();
         billList = new ArrayList<>();

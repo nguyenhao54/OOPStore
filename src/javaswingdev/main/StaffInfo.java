@@ -9,7 +9,7 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 import java.util.Date;
 import java.text.DateFormat;  
 import java.text.SimpleDateFormat; 
-import database.Store;
+import storepkg.Store;
 import javaswingdev.swing.table.EventAction;
 import swing.MessageDialog;
 
@@ -164,7 +164,7 @@ public class StaffInfo extends javax.swing.JDialog {
        else{
            ok = true;
            Store newSL=new Store();
-           newSL.readStaff("all");
+           newSL.readStaff();
            if (newSL.addStaff(name, phone, gender, rate, date)){
               setSuccess(true);
               int id= newSL.maxstaffid;
