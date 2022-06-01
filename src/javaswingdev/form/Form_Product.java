@@ -19,16 +19,22 @@ public class Form_Product extends javax.swing.JPanel {
         initTable();
         
     }
+    
+    private void showUpdateForm(Product product){
+        ProductInfo form = new ProductInfo(Dashboard.getFrames()[0], true);
+        form.setOk(true);
+        form.showInfo(product);
+    }
        private void initTable() {
         ProductEventAction productEventAction = new ProductEventAction() {
             @Override
             public void delete(Product product) {
-                System.out.println(".delete()");
+                System.out.println(product);
             }
 
             @Override
             public void update(Product product) {
-                System.out.println(".update()");
+                showUpdateForm(product);
             }
         };
         
