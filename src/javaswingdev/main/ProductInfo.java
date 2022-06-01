@@ -2,6 +2,7 @@
 package javaswingdev.main;
 
 import java.awt.Color;
+import model.Product;
 import model.Staff;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
@@ -18,6 +19,16 @@ public class ProductInfo extends javax.swing.JDialog {
     private boolean ok;
     private final Animator animator;
     private boolean show = true;
+    
+    public void showInfo(Product product){
+        productName.setText(product.getProductName());
+        price.setText(Double.toString(product.getProductPrice()));
+        brand.setText(product.getBrand());
+        quantity.setText(Integer.toString(product.getQuantity()));
+        category.setText(product.getCategory());
+        description.setText(product.getDescription());
+        setVisible(ok);
+    }
    
     public ProductInfo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
