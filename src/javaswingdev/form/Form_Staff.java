@@ -118,7 +118,7 @@ public class Form_Staff extends javax.swing.JPanel {
             }
         });
 
-        button1.setBackground(new java.awt.Color(87, 97, 174));
+        button1.setBackground(new java.awt.Color(111, 120, 190));
         button1.setForeground(new java.awt.Color(255, 255, 255));
         button1.setText("ADD ");
         button1.addActionListener(new java.awt.event.ActionListener() {
