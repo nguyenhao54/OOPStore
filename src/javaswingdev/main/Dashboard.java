@@ -1,6 +1,6 @@
 package javaswingdev.main;
 
-import database.Store;
+import storepkg.Store;
 import java.awt.Component;
 import javaswingdev.form.Form_Dashboard;
 import javaswingdev.form.Form_Empty;
@@ -12,7 +12,7 @@ import javaswingdev.menu.EventMenuSelected;
 public class Dashboard extends javax.swing.JFrame {
     
     private static Dashboard main;
-    public static Store sP=new Store();
+    public Store store=new Store();
     public Dashboard() {
         initComponents();
         init();
@@ -31,15 +31,15 @@ public class Dashboard extends javax.swing.JFrame {
                 } 
                 else if(index==1 &&indexSubMenu==1 ) 
                 {
-                    showForm(new Form_Staff("all"));
+                    showForm(new Form_Staff("all",store));
                 }
                    else if(index==1 &&indexSubMenu==2 ) 
                 {
-                    showForm(new Form_Staff("Male"));
+                    showForm(new Form_Staff("Male",store));
                 }
                        else if(index==1 &&indexSubMenu==3 ) 
                 {
-                    showForm(new Form_Staff("Female"));
+                    showForm(new Form_Staff("Female",store));
                 }
                 else if(index==7 &&indexSubMenu==1) 
                 {

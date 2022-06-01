@@ -4,7 +4,7 @@ import javaswingdev.swing.table.EventAction;
 import javaswingdev.main.StaffInfo;
 import swing.MessageDialog;
 import model.Staff;
-import database.Store;
+import storepkg.Store;
 import javaswingdev.form.Message;
      
 public class Form_Staff extends javax.swing.JPanel {
@@ -12,12 +12,13 @@ public class Form_Staff extends javax.swing.JPanel {
     /**
      * Creates new form Form_Shift
      */
-    public Form_Staff(String gender) {
+    //public Store store=new Store();
+    public Form_Staff(String gender, Store store) {
         initComponents();
-        initTable(gender);
+        initTable(gender,store);  
         
     }
-    
+  
         
         public boolean showUpdateStaff(Staff staff){
         StaffInfo obj = new StaffInfo(Dashboard.getFrames()[0], true);
@@ -31,14 +32,15 @@ public class Form_Staff extends javax.swing.JPanel {
 //        obj.setVisible(true);
 //        return obj;         
 //       }
-       private void initTable( String gender) {
-      eventAction = new EventAction() {
+       private void initTable(String gender, Store store) {
+         store.readStaff();
+         eventAction = new EventAction() {
             @Override
             public void delete(Staff staff) {
               Message msg=new Message();
-              if (msg.showMessage("Delete Staff : " + staff.getName())) {
-                    
-                  
+              if (msg.showMessage("Delete Staff : " + staff.getName())) {  
+                  store.deleteStaff(staff.getStaffId()); 
+                   msg.showDialog("Delete Staff Successfully!","red");
                 } else {
                     System.out.println("User click Cancel");
                 }
@@ -49,12 +51,11 @@ public class Form_Staff extends javax.swing.JPanel {
                   showUpdateStaff(staff);
             }
         };
-      
-        Store sP=new Store();
-        sP.readStaff(gender);
+     
         table.fixTable(jScrollPane1);
-        for(int i=0; i<sP.StaffList.size();i++){
-              table.addRow(sP.StaffList.get(i).toRowTable(eventAction));
+        for(int i=0; i<store.StaffList.size();i++){
+            if(store.StaffList.get(i).getGender().equals(gender)||gender.equals("all"))
+              table.addRow(store.StaffList.get(i).toRowTable(eventAction));
               
         }
   }
