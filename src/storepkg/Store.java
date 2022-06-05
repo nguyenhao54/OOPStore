@@ -38,9 +38,7 @@ public class Store  {
         try (FileWriter file = new FileWriter("./staffs.json")) {
             file.write(jStaffList.toJSONString()); 
             file.flush();
-        
             Date strDate=new SimpleDateFormat("dd-mm-yyyy").parse(date); 
-         
             Staff newStaff= new Staff(maxstaffid,name,gender,phone,Double.parseDouble(rate),strDate);
             StaffList.add(newStaff);
  
@@ -67,6 +65,15 @@ public class Store  {
     }
     return null;
  }
+   public JSONObject findJStaff(int id){
+    for(int i=0;i<jStaffList.size();i++){
+        JSONObject obj= (JSONObject)jStaffList.get(i);
+       JSONObject objStaff=(JSONObject) obj.get("staff");
+        if(Integer.parseInt(objStaff.get("id").toString())==id)
+            return obj;
+    }
+    return null;
+ }
  public void readStaff ()
     {    
         StaffList= new ArrayList<>();
@@ -84,15 +91,19 @@ public class Store  {
             e.printStackTrace();
         }
     }
+ 
+ 
  // deleteStaff
-  public boolean deleteStaff (int id ){
-    if (findStaff(id)!=null){
-    jStaffList.remove(id);
+  public boolean deleteStaff (int staffId ){
+      Staff a=findStaff(staffId);
+    if (a!=null){
+    jStaffList.remove(findJStaff(staffId));
+    System.out.println(jStaffList);
      try (FileWriter file = new FileWriter("./staffs.json")) {
             file.write(jStaffList.toJSONString()); 
             file.flush();
-            StaffList.remove(id);
-       
+            StaffList.remove(a);
+       StaffList.forEach(Staff->System.out.println(Staff.getStaffId()));
         } catch (IOException e) {
             e.printStackTrace();
         }  catch (Exception e){
@@ -101,14 +112,7 @@ public class Store  {
         return true;
     }
     return false;
-  }
-    
-  
-   public void deleteStaff (String phone ){
-    jStaffList.remove(findStaff(phone));
-  }
-   
-   
+  } 
 private static void parseStaffObject(JSONObject staff , ArrayList<Staff> StaffList) 
     { 
         JSONObject staffObj= (JSONObject) staff.get("staff");    
