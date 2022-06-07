@@ -18,14 +18,15 @@ import java.text.SimpleDateFormat;
  
 public class Store  {
     public ArrayList<Staff> StaffList;
-    public static int maxstaffid=0;
+    public static int maxStaffId=0;
     public JSONArray jStaffList;
    // ***********************************************************************add new staff
   public boolean addStaff(String name, String phone , String gender, String rate, String strDate){
+        readStaff();
         if(findStaff(phone)==null){
         JSONObject staffDetails = new JSONObject();
-        maxstaffid++;
-        staffDetails.put("id", Integer.toString(maxstaffid));
+         maxStaffId++;
+        staffDetails.put("id", Integer.toString(maxStaffId));
         staffDetails.put("name", name);
         staffDetails.put("phone", phone);
         staffDetails.put("gender", gender);
@@ -39,7 +40,7 @@ public class Store  {
             file.write(jStaffList.toJSONString()); 
             file.flush();
             Date date=new SimpleDateFormat("dd-mm-yyyy").parse(strDate); 
-            Staff newStaff= new Staff(maxstaffid,name,gender,phone,Double.parseDouble(rate),date);
+            Staff newStaff= new Staff(maxStaffId,name,gender,phone,Double.parseDouble(rate),date);
             StaffList.add(newStaff);
  
         } catch (IOException e) {
@@ -136,6 +137,29 @@ public class Store  {
     }
  
  
+ private void parseStaffObject(JSONObject staff , ArrayList<Staff> StaffList) { 
+        int tempId=0;
+        JSONObject staffObj= (JSONObject) staff.get("staff");    
+        String name = (String) staffObj.get("name");  
+        String staffid = (String) staffObj.get("id");  
+        String gender = (String) staffObj.get("gender");  
+        String phone = (String) staffObj.get("phone");    
+        String rate = (String) staffObj.get("rate"); 
+        String strDate = (String) staffObj.get("birth date"); 
+ 
+        try{
+        Date date=new SimpleDateFormat("dd-mm-yyyy").parse(strDate);
+          if(tempId<Integer.parseInt(staffid)) tempId=Integer.parseInt(staffid);
+        Staff newStaff= new Staff(Integer.parseInt(staffid),name,gender,phone,Double.parseDouble(rate),date );
+         StaffList.add(newStaff); 
+         maxStaffId=tempId;
+      }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+ }
+           
+ 
  // ****************************************************************************** deleteStaff
   public boolean deleteStaff (int staffId ){
       Staff a=findStaff(staffId);
@@ -156,27 +180,7 @@ public class Store  {
     }
     return false;
   } 
-private static void parseStaffObject(JSONObject staff , ArrayList<Staff> StaffList) 
-    { 
-        JSONObject staffObj= (JSONObject) staff.get("staff");    
-        String name = (String) staffObj.get("name");  
-        String staffid = (String) staffObj.get("id");  
-        String gender = (String) staffObj.get("gender");  
-        String phone = (String) staffObj.get("phone");    
-        String rate = (String) staffObj.get("rate"); 
-        String strDate = (String) staffObj.get("birth date"); 
- 
-        try{
-        Date date=new SimpleDateFormat("dd-mm-yyyy").parse(strDate);
-          if(maxstaffid<Integer.parseInt(staffid)) maxstaffid=Integer.parseInt(staffid);
-        Staff newStaff= new Staff(Integer.parseInt(staffid),name,gender,phone,Double.parseDouble(rate),date );
-         StaffList.add(newStaff); 
-      }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-        }
-               
+    
 
     
 }

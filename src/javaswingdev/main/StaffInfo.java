@@ -167,7 +167,7 @@ public class StaffInfo extends javax.swing.JDialog {
            Store newSL=new Store();
            newSL.readStaff();
             if (staff==null){
-              id= newSL.maxstaffid;
+              id= newSL.maxStaffId +1;
               if (newSL.addStaff(name, phone, gender, rate, date)){
                   try{
                   setSuccess(true);
