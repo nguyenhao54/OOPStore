@@ -163,22 +163,43 @@ public class StaffInfo extends javax.swing.JDialog {
           }
        else{
            ok = true;
+           int id;
            Store newSL=new Store();
            newSL.readStaff();
-           if (newSL.addStaff(name, phone, gender, rate, date)){
-              setSuccess(true);
-              int id= newSL.maxstaffid;
-              try{
-              Date realDate=new SimpleDateFormat("dd-mm-yyyy").parse(date);
-              this.setStaff(new Staff(id,name,gender,phone,Double.parseDouble(rate),realDate)) ; 
-              }
-              catch(Exception e){
-              e.printStackTrace();
-              }
-            }
-            else{
+            if (staff==null){
+              id= newSL.maxstaffid;
+              if (newSL.addStaff(name, phone, gender, rate, date)){
+                  try{
+                  setSuccess(true);
+                  Date realDate=new SimpleDateFormat("dd-mm-yyyy").parse(date);
+                  this.setStaff(new Staff(id,name,gender,phone,Double.parseDouble(rate),realDate)) ; 
+                  }
+                  catch(Exception e){
+                  e.printStackTrace();
+                  }
+                }
+           
+              else{
                setSuccess(false);
                setStaff(null);
+              }
+            }
+            //// this is for updating purpose 
+            else 
+              {id= staff.getStaffId();
+              if (newSL.updateStaff(id, name, phone, gender, rate, date)){
+                 try{
+                 setSuccess(true);
+                 Date realDate=new SimpleDateFormat("dd-mm-yyyy").parse(date);
+                 this.setStaff(new Staff(id,name,gender,phone,Double.parseDouble(rate),realDate)) ; 
+                 }
+                 catch(Exception e){
+                 e.printStackTrace();
+                 }
+             }
+             else{
+               setSuccess(false);
+              }
             }
            closeMenu();
         }
@@ -199,6 +220,28 @@ public class StaffInfo extends javax.swing.JDialog {
         animator.start();
         setVisible(true);
     }
+//        public Staff getUpdateInfo(Staff staff) {
+//        String name= textField1.getText();
+//        String phone =textField2.getText();
+//        String gender =  combobox1.getSelectedItem().toString();
+//        String strDate = textField3.getText();
+//        try{
+//        Date date=new SimpleDateFormat("dd-mm-yyyy").parse(strDate);
+//        String rate =  textField4.getText();
+//        Staff newStaff = new Staff(staff.getStaffId(),name, phone,gender, Double.parseDouble(rate), date);
+//        return newStaff;
+//        }
+//        catch(Exception e){
+//            e.printStackTrace();
+//        }
+// 
+//        return null;
+//          
+//    }
+      
+          
+          
+         
     private void closeMenu() {
         if (animator.isRunning()) {
             animator.stop();

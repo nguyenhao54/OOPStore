@@ -20,8 +20,8 @@ public class Store  {
     public ArrayList<Staff> StaffList;
     public static int maxstaffid=0;
     public JSONArray jStaffList;
-   // add new staff
-  public boolean addStaff(String name, String phone , String gender, String rate, String date){
+   // ***********************************************************************add new staff
+  public boolean addStaff(String name, String phone , String gender, String rate, String strDate){
         if(findStaff(phone)==null){
         JSONObject staffDetails = new JSONObject();
         maxstaffid++;
@@ -30,7 +30,7 @@ public class Store  {
         staffDetails.put("phone", phone);
         staffDetails.put("gender", gender);
         staffDetails.put("rate", rate);
-        staffDetails.put("birth date", date);
+        staffDetails.put("birth date", strDate);
         JSONObject staffObject = new JSONObject(); 
         staffObject.put("staff",staffDetails);
         jStaffList.add(staffObject);
@@ -38,8 +38,8 @@ public class Store  {
         try (FileWriter file = new FileWriter("./staffs.json")) {
             file.write(jStaffList.toJSONString()); 
             file.flush();
-            Date strDate=new SimpleDateFormat("dd-mm-yyyy").parse(date); 
-            Staff newStaff= new Staff(maxstaffid,name,gender,phone,Double.parseDouble(rate),strDate);
+            Date date=new SimpleDateFormat("dd-mm-yyyy").parse(strDate); 
+            Staff newStaff= new Staff(maxstaffid,name,gender,phone,Double.parseDouble(rate),date);
             StaffList.add(newStaff);
  
         } catch (IOException e) {
@@ -51,6 +51,8 @@ public class Store  {
     }
      return false;
 }
+  
+// *****************************************************************   find Staff 
  public Staff findStaff(String phone){
     for(int i=0;i<StaffList.size();i++){
         if(StaffList.get(i).getPhone().equals(phone))
@@ -74,6 +76,47 @@ public class Store  {
     }
     return null;
  }
+   
+   // **********************************************************************
+   private boolean writeJsonStaff(JSONArray arr){
+          try (FileWriter file = new FileWriter("./staffs.json")) {
+            file.write(arr.toJSONString()); 
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+          return true;
+       
+   }
+   
+   // ******************************************************************* update staff
+  public boolean updateStaff( int id, String name,String phone, String gender ,String rate ,String date){
+      
+      JSONObject obj= findJStaff(id);
+      if(obj!=null){
+      for(int i=0; i<jStaffList.size(); i++){
+        JSONObject st= (JSONObject)jStaffList.get(i);
+           if(obj.equals(jStaffList.get(i))){
+             jStaffList.remove(i);
+             JSONObject staffDetails=(JSONObject) st.get("staff");
+             staffDetails.put("id",Integer.toString(id) );
+             staffDetails.put("name", name);
+             staffDetails.put("phone", phone);
+             staffDetails.put("gender", gender);
+             staffDetails.put("rate", rate);
+             staffDetails.put("birth date", date);
+             st.put("staff", staffDetails);
+            }
+           jStaffList.add(i,st);
+           return writeJsonStaff(jStaffList);
+        }
+    }
+      return false;
+  }
+  
+  
+  // ************************************************************************** read Json file
  public void readStaff ()
     {    
         StaffList= new ArrayList<>();
@@ -93,12 +136,12 @@ public class Store  {
     }
  
  
- // deleteStaff
+ // ****************************************************************************** deleteStaff
   public boolean deleteStaff (int staffId ){
       Staff a=findStaff(staffId);
     if (a!=null){
     jStaffList.remove(findJStaff(staffId));
-    System.out.println(jStaffList);
+   // System.out.println(jStaffList);
      try (FileWriter file = new FileWriter("./staffs.json")) {
             file.write(jStaffList.toJSONString()); 
             file.flush();

@@ -24,32 +24,55 @@ public class Form_Staff extends javax.swing.JPanel {
         }
        private void initTable(String gender, Store store) {
          store.readStaff();
+        Message msg=new Message();
          eventAction = new EventAction() {
             @Override
             public void delete(Staff staff) {
-              Message msg=new Message();
+             
               if (msg.showMessage("Delete Staff : " + staff.getName())) {  
                   store.deleteStaff(staff.getStaffId()); 
                   model =(DefaultTableModel) table.getModel();
                   model.removeRow(table.getSelectedRow());
-                   msg.showDialog("Delete Staff Successfully!","red");
+                   msg.showDialog("Delete Staff" + staff.getName()+"Successfully!","red");
                 } else {
                     System.out.println("User click Cancel");
                 }
             }
             @Override
             public void update(Staff staff) {
-                  showUpdateStaff(staff);
+                 StaffInfo obj= new StaffInfo(Dashboard.getFrames()[0], true);
+                 obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
+                 obj.setStaff(staff);
+                 obj.showInfo(staff);
+                 if (obj.isOk()) {
+                   Message msg=new Message();
+                   if(obj.isSuccess()){
+                   model =(DefaultTableModel) table.getModel();
+                   model.setValueAt(obj.getStaff().getStaffId(),table.getSelectedRow() , 0);
+                   model.setValueAt(obj.getStaff().getName(),table.getSelectedRow() , 1);
+                   model.setValueAt(obj.getStaff().getGender(),table.getSelectedRow() , 2);
+                   model.setValueAt(obj.getStaff().getPhone(),table.getSelectedRow() , 3);
+                   model.setValueAt(obj.getStaff().getRate(),table.getSelectedRow() , 4);
+
+                   msg.showDialog("Update staff"+staff.getName()+" successfully!","blue");
+                   }
+                   else 
+                   msg.showDialog("Update staff"+staff.getName()+" failed! Please try again","red");
+                   }    
+                   
+                 else {
+                    System.out.println("User click Cancel");
+                }
+                  
             }
         };
-     
+        // append staffs info to the table
         table.fixTable(jScrollPane1);
         for(int i=0; i<store.StaffList.size();i++){
             if(store.StaffList.get(i).getGender().equals(gender)||gender.equals("all"))
               table.addRow(store.StaffList.get(i).toRowTable(eventAction));    
         }
-  }
-    
+  }  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -144,10 +167,11 @@ public class Form_Staff extends javax.swing.JPanel {
                 .addGap(52, 52, 52))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+/// ***************************************************************************************** btn add 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         StaffInfo obj= new StaffInfo(Dashboard.getFrames()[0], true);
         obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
+        obj.setStaff(null);
         obj.setVisible(true);
         if (obj.isOk()) {
         Message msg=new Message();
