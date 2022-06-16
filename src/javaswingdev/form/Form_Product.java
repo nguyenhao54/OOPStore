@@ -40,23 +40,23 @@ public class Form_Product extends javax.swing.JPanel {
         
         table.fixTable(jScrollPane1);
         table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(2, "Jacket", 350000, "H&M", "Clothes", "Áo khoác", 10).toRowTable(productEventAction));
+        table.addRow(new Product(3, "Vietnam Pride", 200000, "Bò sữa", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(4, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(5, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(6, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(7, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(8, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(9, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(10, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(11, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(12, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(13, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(14, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(15, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(16, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(17, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
+        table.addRow(new Product(18, "Polo Shirt", 299000, "Teelab", "Clothes", "Ao tra da via he", 10).toRowTable(productEventAction));
   }
     /**
      * This method is called from within the constructor to initialize the form.
