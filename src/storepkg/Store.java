@@ -20,7 +20,7 @@ public class Store  {
     public ArrayList<Staff> StaffList;
     public static int maxStaffId=0;
     public JSONArray jStaffList;
-   // ***********************************************************************add new staff
+   // ***********************************************************************add new object
   public boolean addStaff(String name, String phone , String gender, String rate, String strDate){
         readStaff();
         if(findStaff(phone)==null){
@@ -50,6 +50,38 @@ public class Store  {
         } 
         return true;
     }
+     return false;
+}
+  
+  public boolean addProduct(String productName, String price , String brand, String quantity, String category, String description){
+//        readStaff();
+//        if(findStaff(phone)==null){
+//        JSONObject staffDetails = new JSONObject();
+//         maxStaffId++;
+//        staffDetails.put("id", Integer.toString(maxStaffId));
+//        staffDetails.put("name", name);
+//        staffDetails.put("phone", phone);
+//        staffDetails.put("gender", gender);
+//        staffDetails.put("rate", rate);
+//        staffDetails.put("birth date", strDate);
+//        JSONObject staffObject = new JSONObject(); 
+//        staffObject.put("staff",staffDetails);
+//        jStaffList.add(staffObject);
+//         //Write JSON file
+//        try (FileWriter file = new FileWriter("./staffs.json")) {
+//            file.write(jStaffList.toJSONString()); 
+//            file.flush();
+//            Date date=new SimpleDateFormat("dd-mm-yyyy").parse(strDate); 
+//            Staff newStaff= new Staff(maxStaffId,name,gender,phone,Double.parseDouble(rate),date);
+//            StaffList.add(newStaff);
+// 
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }  catch (Exception e){
+//            e.printStackTrace();
+//        } 
+//        return true;
+//    }
      return false;
 }
   
