@@ -4,7 +4,7 @@
  */
 package javaswingdev.form;
 import javaswingdev.main.Dashboard;
-import javaswingdev.main.ProductInfo;
+import javaswingdev.main.*;
 import javaswingdev.swing.table.ProductEventAction;
 import model.*;
 
@@ -21,9 +21,22 @@ public class Form_Product extends javax.swing.JPanel {
     }
     
     private void showUpdateForm(Product product){
-        ProductInfo form = new ProductInfo(Dashboard.getFrames()[0], true);
-        form.setOk(true);
-        form.showInfo(product);
+        if(product.getClass().toString().contains("Shirt")){
+            ShirtInfo form = new ShirtInfo(Dashboard.getFrames()[0], true);
+            form.setOk(true);
+            Shirt shirt = (Shirt)product;
+            form.showInfo(shirt);
+        }else if(product.getClass().toString().contains("Pant")){
+            PantInfo form = new PantInfo(Dashboard.getFrames()[0], true);
+            form.setOk(true);
+            Pant pant = (Pant)product;
+            form.showInfo(pant);
+        }else if(product.getClass().toString().contains("Shoes")){
+            ShoesInfo form = new ShoesInfo(Dashboard.getFrames()[0], true);
+            form.setOk(true);
+            Shoes shoes = (Shoes)product;
+            form.showInfo(shoes);
+        }
     }
     
     private void initTable() {
@@ -36,6 +49,7 @@ public class Form_Product extends javax.swing.JPanel {
          @Override
          public void update(Product product) {
              showUpdateForm(product);
+             
          }
      };
 

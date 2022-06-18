@@ -19,12 +19,13 @@ import model.*;
 public class Store  {
     public ArrayList<Staff> StaffList;
     public static int maxStaffId=0;
+    public static int maxProductId=0;
     public JSONArray jStaffList;
-    private ArrayList<Product> productList;
+    private final ArrayList<Product> productList;
     
 //  Default initiate
     public Store(){
-        productList = new ArrayList<Product>();
+        productList = new ArrayList<>();
         productList.add(new Shirt(1, "Polo Shirt", 299000, "Teelab", "Áo polo", "Trà đá vỉa hè", 10, 69, 52, 21, 44.5));
         productList.add(new Shirt(2, "Jacket", 350000, "H&M", "Clothes", "Áo khoác", 12, 71, 54, 42, 46));
         productList.add(new Shirt(3, "Vietnam Pride", 200000, "Bò sữa", "Áo phông", "Du lịch thì vô địch", 17, 69, 52, 21, 44.5));
@@ -34,15 +35,17 @@ public class Store  {
         productList.add(new Shirt(7, "Sơ mi caro", 299000, "Routine", "Áo sơ mi", "Lịch thiệp", 3, 76, 55, 61, 47));
         productList.add(new Pant(8, "Quần Jean trơn", 480000, "Routine", "Quần Jean", "Slimfit", 11, 101, 42, 51));
         productList.add(new Pant(9, "Quần khaki V", 299000, "Routine", "Quần khaki", "Slimcrop", 10, 98, 39, 48));
-        productList.add(new Shirt(10, "Áo phông Marvel Comics", 599000, "Boo", "Áo phông", "Boo x Marvel", 10, 69, 52, 21, 44.5));
-        productList.add(new Shirt(11, "Áo phông Hulk", 490000, "Boo", "Áo phông", "Boo x Marvel: Hulk", 10, 67, 50, 20, 43));
-        productList.add(new Shoes(12, "Giày Night's Watch", 4999000, "Adidas", "Giày", "Adidas x GoT", 10, 26.5));
-        productList.add(new Shoes(13, "Bitis Hunter X 2022", 1199000, "Bitis Hunter", "Giày", "Bitis Hunter Collection", 10, 25.5));
-        productList.add(new Shoes(14, "Bitis Hunter X 2021", 999000, "Bitis Hunter", "Giày", "Bitis Hunter Collection", 10, 25.9));
-        productList.add(new Shirt(15, "Hà Nội Trà Đá", 189000, "Teelab", "Áo phông", "Trà đá vỉa hè", 10, 69, 52, 21, 44.5));
+        productList.add(new Shirt(10, "Áo phông Marvel Comics", 599000, "Boo", "Áo phông", "Boo x Marvel", 2, 69, 52, 21, 44.5));
+        productList.add(new Shirt(11, "Áo phông Hulk", 490000, "Boo", "Áo phông", "Boo x Marvel: Hulk", 19, 67, 50, 20, 43));
+        productList.add(new Shoes(12, "Giày Night's Watch", 4999000, "Adidas", "Giày", "Adidas x GoT", 3, 26.5));
+        productList.add(new Shoes(13, "Bitis Hunter X 2022", 1199000, "Bitis Hunter", "Giày", "Bitis Hunter Collection", 3, 25.5));
+        productList.add(new Shoes(14, "Bitis Hunter X 2021", 999000, "Bitis Hunter", "Giày", "Bitis Hunter Collection", 7, 25.9));
+        productList.add(new Shirt(15, "Hà Nội Trà Đá", 189000, "Teelab", "Áo phông", "Trà đá vỉa hè", 24, 69, 52, 21, 44.5));
         productList.add(new Shoes(16, "Ultraboost 22", 3900000, "Adidas", "Giày", "Giày chạy thể thao", 10, 28));
-        productList.add(new Shoes(17, "Ultraboost 5.0 DNA", 2990000, "Adidas", "Giày", "Giày chạy thể thao", 10, 26.7));
-        productList.add(new Pant(18, "Jeans Bermuda", 434000, "Boo", "Quần Jeans", "Quần regular form", 10, 101, 42, 51));
+        productList.add(new Shoes(17, "Ultraboost 5.0 DNA", 2990000, "Adidas", "Giày", "Giày chạy thể thao", 1, 26.7));
+        productList.add(new Pant(18, "Jeans Bermuda", 434000, "Boo", "Quần Jeans", "Quần regular form", 18, 101, 42, 51));
+        maxProductId = productList.size() + 1;
+        System.out.println(maxProductId);
     }
    // ***********************************************************************add new object
   public boolean addStaff(String name, String phone , String gender, String rate, String strDate){
@@ -74,38 +77,6 @@ public class Store  {
         } 
         return true;
     }
-     return false;
-}
-  
-  public boolean addProduct(String productName, String price , String brand, String quantity, String category, String description){
-//        readStaff();
-//        if(findStaff(phone)==null){
-//        JSONObject staffDetails = new JSONObject();
-//         maxStaffId++;
-//        staffDetails.put("id", Integer.toString(maxStaffId));
-//        staffDetails.put("name", name);
-//        staffDetails.put("phone", phone);
-//        staffDetails.put("gender", gender);
-//        staffDetails.put("rate", rate);
-//        staffDetails.put("birth date", strDate);
-//        JSONObject staffObject = new JSONObject(); 
-//        staffObject.put("staff",staffDetails);
-//        jStaffList.add(staffObject);
-//         //Write JSON file
-//        try (FileWriter file = new FileWriter("./staffs.json")) {
-//            file.write(jStaffList.toJSONString()); 
-//            file.flush();
-//            Date date=new SimpleDateFormat("dd-mm-yyyy").parse(strDate); 
-//            Staff newStaff= new Staff(maxStaffId,name,gender,phone,Double.parseDouble(rate),date);
-//            StaffList.add(newStaff);
-// 
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }  catch (Exception e){
-//            e.printStackTrace();
-//        } 
-//        return true;
-//    }
      return false;
 }
   
@@ -238,9 +209,21 @@ public class Store  {
   } 
     
 
-  // Product part
+  // ****************************************************************************** Product part
   public ArrayList<Product> getProductList(){
       return productList;
   }
-}
-    
+  
+  public void addProduct(Product newProduct){
+        productList.add(newProduct);
+    }
+  
+  public Product getProduct(int id){
+        for(Product p: productList){
+            if(p.getProductId() == id){
+                return p;
+            }
+        }
+        return null;
+    }
+}   

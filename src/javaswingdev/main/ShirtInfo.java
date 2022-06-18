@@ -2,13 +2,13 @@
 package javaswingdev.main;
 
 import java.awt.Color;
-import model.Product;
+import model.Shirt;
 import model.Staff;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
-public class ProductInfo extends javax.swing.JDialog {
+public class ShirtInfo extends javax.swing.JDialog {
     public boolean isOk() {
         return ok;
     }
@@ -20,17 +20,21 @@ public class ProductInfo extends javax.swing.JDialog {
     private final Animator animator;
     private boolean show = true;
     
-    public void showInfo(Product product){
-        productName.setText(product.getProductName());
-        price.setText(Double.toString(product.getProductPrice()));
-        brand.setText(product.getBrand());
-        quantity.setText(Integer.toString(product.getQuantity()));
-        category.setText(product.getCategory());
-        description.setText(product.getDescription());
+    public void showInfo(Shirt shirt){
+        productName.setText(shirt.getProductName());
+        price.setText(Double.toString(shirt.getProductPrice()));
+        brand.setText(shirt.getBrand());
+        quantity.setText(Integer.toString(shirt.getQuantity()));
+        category.setText(shirt.getCategory());
+        description.setText(shirt.getDescription());
+        shirtLength.setText(Double.toString(shirt.getShirtLength()));
+        chestWidth.setText(Double.toString(shirt.getChestWidth()));
+        sleeveLength.setText(Double.toString(shirt.getShirtLength()));
+        shoulderWidth.setText(Double.toString(shirt.getShoulderWidth()));
         setVisible(ok);
     }
    
-    public ProductInfo(java.awt.Frame parent, boolean modal) {
+    public ShirtInfo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         centerComponent();
@@ -73,6 +77,10 @@ public class ProductInfo extends javax.swing.JDialog {
         description = new javaswingdev.raven.swing.TextField();
         category = new javaswingdev.raven.swing.TextField();
         alertLabel = new javax.swing.JLabel();
+        chestWidth = new javaswingdev.raven.swing.TextField();
+        sleeveLength = new javaswingdev.raven.swing.TextField();
+        shirtLength = new javaswingdev.raven.swing.TextField();
+        shoulderWidth = new javaswingdev.raven.swing.TextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(800, 250));
@@ -120,27 +128,45 @@ public class ProductInfo extends javax.swing.JDialog {
         alertLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         alertLabel.setForeground(new java.awt.Color(255, 0, 51));
 
+        chestWidth.setLabelText("Chest width");
+
+        sleeveLength.setLabelText("Sleeve length");
+
+        shirtLength.setLabelText("Shirt Length");
+
+        shoulderWidth.setLabelText("Shoulder width");
+
         javax.swing.GroupLayout addProductFormLayout = new javax.swing.GroupLayout(addProductForm);
         addProductForm.setLayout(addProductFormLayout);
         addProductFormLayout.setHorizontalGroup(
             addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addProductFormLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
                 .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(addProductFormLayout.createSequentialGroup()
-                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(okBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addProductFormLayout.createSequentialGroup()
-                        .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(brand, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(productName, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addProductFormLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(brand, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(productName, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(addProductFormLayout.createSequentialGroup()
+                                .addComponent(shirtLength, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(chestWidth, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(addProductFormLayout.createSequentialGroup()
+                                .addComponent(sleeveLength, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(shoulderWidth, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(addProductFormLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(okBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 35, Short.MAX_VALUE))
             .addGroup(addProductFormLayout.createSequentialGroup()
                 .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +174,7 @@ public class ProductInfo extends javax.swing.JDialog {
                         .addGap(263, 263, 263)
                         .addComponent(jLabel1))
                     .addGroup(addProductFormLayout.createSequentialGroup()
-                        .addGap(242, 242, 242)
+                        .addGap(231, 231, 231)
                         .addComponent(alertLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -170,16 +196,24 @@ public class ProductInfo extends javax.swing.JDialog {
                         .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(brand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(2, 2, 2)
+                .addGap(23, 23, 23)
+                .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(chestWidth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(shirtLength, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(sleeveLength, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(shoulderWidth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(alertLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(okBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        getContentPane().add(addProductForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 750, -1));
+        getContentPane().add(addProductForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 750, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,9 +228,14 @@ public class ProductInfo extends javax.swing.JDialog {
         String pQuantity = quantity.getText();
         String pCategory = category.getText();
         String pDescription = description.getText();
+        String pShirtLength = shirtLength.getText();
+        String pChestWidth = chestWidth.getText();
+        String pSleeveLength = sleeveLength.getText();
+        String pShoulderWidth = shoulderWidth.getText();
 
         if(pName.equals("") || pPrice.equals("") || pBrand.equals("") || pQuantity.equals("") || pCategory.equals("")
-                || pDescription.equals("")){
+                || pDescription.equals("") || pShirtLength.equals("") || pChestWidth.equals("") || pSleeveLength.equals("")
+                || pShoulderWidth.equals("")){
             alertLabel.setText("Please fill in blank fields!");
             alertLabel.setVisible(true);
             
@@ -212,6 +251,12 @@ public class ProductInfo extends javax.swing.JDialog {
         closeMenu();
     }//GEN-LAST:event_cancelBtnActionPerformed
 
+          public void showInfo(Staff staff) {
+        productName.setText(staff.getName());
+        price.setText(staff.getPhone());
+        animator.start();
+        setVisible(true);
+    }
     private void closeMenu() {
         if (animator.isRunning()) {
             animator.stop();
@@ -226,11 +271,15 @@ public class ProductInfo extends javax.swing.JDialog {
     private javaswingdev.raven.swing.TextField brand;
     private javaswingdev.swing.Button cancelBtn;
     private javaswingdev.raven.swing.TextField category;
+    private javaswingdev.raven.swing.TextField chestWidth;
     private javaswingdev.raven.swing.TextField description;
     private javax.swing.JLabel jLabel1;
     private javaswingdev.swing.Button okBtn;
     private javaswingdev.raven.swing.TextField price;
     private javaswingdev.raven.swing.TextField productName;
     private javaswingdev.raven.swing.TextField quantity;
+    private javaswingdev.raven.swing.TextField shirtLength;
+    private javaswingdev.raven.swing.TextField shoulderWidth;
+    private javaswingdev.raven.swing.TextField sleeveLength;
     // End of variables declaration//GEN-END:variables
 }
