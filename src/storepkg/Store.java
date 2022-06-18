@@ -225,6 +225,8 @@ public class Store  {
         }
         return null;
     }
+  
+//  Update shirt
   public void updateProduct(int id,
             String name,
             double price,
@@ -252,4 +254,29 @@ public class Store  {
         p.setShoulderWidth(shoulderWidth);
     }
     
+//  Update pant
+  public void updateProduct(int id,
+            String name,
+            double price,
+            String brand,
+            String category,
+            String description,
+            int quantity,
+            double pantLength,
+            double pantWidth,
+            double buttWidth){
+        Pant p = (Pant)getProduct(id);
+        if(p == null){
+            return;
+        }
+        p.setProductName(name);
+        p.setProductPrice(price);
+        p.setBrand(brand);
+        p.setCategory(category);
+        p.setDescription(description);
+        p.setQuantity(quantity);
+        p.setPantLength(pantLength);
+        p.setPantWidth(pantWidth);
+        p.setButtWidth(buttWidth);
+    }
 }   
