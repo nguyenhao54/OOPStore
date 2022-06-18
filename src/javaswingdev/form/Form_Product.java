@@ -6,10 +6,15 @@ package javaswingdev.form;
 import javaswingdev.main.Dashboard;
 import javaswingdev.main.*;
 import javaswingdev.swing.table.ProductEventAction;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import model.*;
 
 public class Form_Product extends javax.swing.JPanel {
 
+    private DefaultTableModel model;
+    private TableRowSorter<TableModel> rowSorter;
     /**
      * Creates new form Form_Shift
      */
@@ -20,23 +25,28 @@ public class Form_Product extends javax.swing.JPanel {
         
     }
     
-    private void showUpdateForm(Product product){
+    private Product showUpdateForm(Product product){
         if(product.getClass().toString().contains("Shirt")){
             ShirtInfo form = new ShirtInfo(Dashboard.getFrames()[0], true);
             form.setOk(true);
             Shirt shirt = (Shirt)product;
+            form.setShirt(shirt);
             form.showInfo(shirt);
+            return form.getShirt();
         }else if(product.getClass().toString().contains("Pant")){
             PantInfo form = new PantInfo(Dashboard.getFrames()[0], true);
             form.setOk(true);
             Pant pant = (Pant)product;
             form.showInfo(pant);
+//            return form.getShirt();
         }else if(product.getClass().toString().contains("Shoes")){
             ShoesInfo form = new ShoesInfo(Dashboard.getFrames()[0], true);
             form.setOk(true);
             Shoes shoes = (Shoes)product;
             form.showInfo(shoes);
+//            return form.getShirt();
         }
+        return null;
     }
     
     private void initTable() {
@@ -48,8 +58,20 @@ public class Form_Product extends javax.swing.JPanel {
 
          @Override
          public void update(Product product) {
-             showUpdateForm(product);
-             
+             Shirt shirt = (Shirt)showUpdateForm(product);
+             if(shirt != null){
+                 
+                 
+                 model =(DefaultTableModel) table.getModel();
+                model.setValueAt(shirt.getProductId(),table.getSelectedRow() , 0);
+                model.setValueAt(shirt.getProductName(),table.getSelectedRow() , 1);
+                model.setValueAt(shirt.getProductPrice(),table.getSelectedRow() , 2);
+                model.setValueAt(shirt.getBrand(),table.getSelectedRow() , 3);
+                model.setValueAt(shirt.getCategory(),table.getSelectedRow() , 4);
+                model.setValueAt(shirt.getDescription(),table.getSelectedRow() , 5);
+                model.setValueAt(shirt.getQuantity(),table.getSelectedRow() , 6);
+                
+             }
          }
      };
 

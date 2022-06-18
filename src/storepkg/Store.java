@@ -225,4 +225,31 @@ public class Store  {
         }
         return null;
     }
+  public void updateProduct(int id,
+            String name,
+            double price,
+            String brand,
+            String category,
+            String description,
+            int quantity,
+            double shirtLength,
+            double chestWidth,
+            double sleeveLength,
+            double shoulderWidth){
+        Shirt p = (Shirt)getProduct(id);
+        if(p == null){
+            return;
+        }
+        p.setProductName(name);
+        p.setProductPrice(price);
+        p.setBrand(brand);
+        p.setCategory(category);
+        p.setDescription(description);
+        p.setQuantity(quantity);
+        p.setShirtLength(shirtLength);
+        p.setChestWidth(chestWidth);
+        p.setSleeveLength(sleeveLength);
+        p.setShoulderWidth(shoulderWidth);
+    }
+    
 }   

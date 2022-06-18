@@ -171,11 +171,7 @@ public class Form_SingleProduct extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addProdBtnActionPerformed(java.awt.event.ActionEvent evt) {                                           
-   
-//        ModelStaff newStaff= new ModelStaff();
-//        
-//        showUpdateStaff(newStaff);
-new ProductInfo(Dashboard.getFrames()[0], true).setVisible(true);
+        new ProductInfo(Dashboard.getFrames()[0], true).setVisible(true);
     }
     private void textFieldAnimation1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldAnimation1FocusGained
         // TODO add your handling code here:

@@ -2,6 +2,7 @@
 package javaswingdev.main;
 
 import java.awt.Color;
+import javaswingdev.form.Message;
 import model.Shirt;
 import model.Staff;
 import org.jdesktop.animation.timing.Animator;
@@ -9,6 +10,20 @@ import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 public class ShirtInfo extends javax.swing.JDialog {
+
+    /**
+     * @return the shirt
+     */
+    public Shirt getShirt() {
+        return shirt;
+    }
+
+    /**
+     * @param shirt the shirt to set
+     */
+    public void setShirt(Shirt shirt) {
+        this.shirt = shirt;
+    }
     public boolean isOk() {
         return ok;
     }
@@ -19,6 +34,7 @@ public class ShirtInfo extends javax.swing.JDialog {
     private boolean ok;
     private final Animator animator;
     private boolean show = true;
+    private Shirt shirt;
     
     public void showInfo(Shirt shirt){
         productName.setText(shirt.getProductName());
@@ -241,6 +257,19 @@ public class ShirtInfo extends javax.swing.JDialog {
             
         }else{
             ok = true;
+//          If no shirt -> create new one
+            if(shirt == null){
+                
+//          If a shirt is set -> update
+            }else{
+                int id = shirt.getProductId();
+                Message msg=new Message();
+                Dashboard.store.updateProduct(id, pName, Double.parseDouble(pPrice), pBrand, pCategory, pDescription, 
+                        Integer.parseInt(pQuantity), Double.parseDouble(pShirtLength), Double.parseDouble(pChestWidth), 
+                        Double.parseDouble(pSleeveLength), Double.parseDouble(pShoulderWidth));
+                setShirt((Shirt)Dashboard.store.getProduct(id));
+                msg.showDialog("Update shirt id " + shirt.getProductId()+ " successfully!","blue");
+            }
             closeMenu();
         }
         
@@ -251,12 +280,6 @@ public class ShirtInfo extends javax.swing.JDialog {
         closeMenu();
     }//GEN-LAST:event_cancelBtnActionPerformed
 
-          public void showInfo(Staff staff) {
-        productName.setText(staff.getName());
-        price.setText(staff.getPhone());
-        animator.start();
-        setVisible(true);
-    }
     private void closeMenu() {
         if (animator.isRunning()) {
             animator.stop();
