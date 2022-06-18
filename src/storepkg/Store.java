@@ -11,15 +11,39 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import model.Staff;
 import java.util.Date;
 import java.text.SimpleDateFormat;  
+import model.*;
 
  
 public class Store  {
     public ArrayList<Staff> StaffList;
     public static int maxStaffId=0;
     public JSONArray jStaffList;
+    private ArrayList<Product> productList;
+    
+//  Default initiate
+    public Store(){
+        productList = new ArrayList<Product>();
+        productList.add(new Shirt(1, "Polo Shirt", 299000, "Teelab", "Áo polo", "Trà đá vỉa hè", 10, 69, 52, 21, 44.5));
+        productList.add(new Shirt(2, "Jacket", 350000, "H&M", "Clothes", "Áo khoác", 12, 71, 54, 42, 46));
+        productList.add(new Shirt(3, "Vietnam Pride", 200000, "Bò sữa", "Áo phông", "Du lịch thì vô địch", 17, 69, 52, 21, 44.5));
+        productList.add(new Shirt(4, "Somi Oxford", 413000, "Routine", "Áo sơ mi", "Lịch lãm", 21, 73, 56, 23, 47.5));
+        productList.add(new Shirt(5, "Sơmi dài tay Dobby", 413000, "Routine", "Áo sơ mi", "Lịch lãm, năng động", 5, 75, 53, 61, 46));
+        productList.add(new Shirt(6, "Sơ mi Seersucker", 472000, "Routine", "Áo sơ mi", "Trẻ trung", 12, 76, 55, 61, 47));
+        productList.add(new Shirt(7, "Sơ mi caro", 299000, "Routine", "Áo sơ mi", "Lịch thiệp", 3, 76, 55, 61, 47));
+        productList.add(new Pant(8, "Quần Jean trơn", 480000, "Routine", "Quần Jean", "Slimfit", 11, 101, 42, 51));
+        productList.add(new Pant(9, "Quần khaki V", 299000, "Routine", "Quần khaki", "Slimcrop", 10, 98, 39, 48));
+        productList.add(new Shirt(10, "Áo phông Marvel Comics", 599000, "Boo", "Áo phông", "Boo x Marvel", 10, 69, 52, 21, 44.5));
+        productList.add(new Shirt(11, "Áo phông Hulk", 490000, "Boo", "Áo phông", "Boo x Marvel: Hulk", 10, 67, 50, 20, 43));
+        productList.add(new Shoes(12, "Giày Night's Watch", 4999000, "Adidas", "Giày", "Adidas x GoT", 10, 26.5));
+        productList.add(new Shoes(13, "Bitis Hunter X 2022", 1199000, "Bitis Hunter", "Giày", "Bitis Hunter Collection", 10, 25.5));
+        productList.add(new Shoes(14, "Bitis Hunter X 2021", 999000, "Bitis Hunter", "Giày", "Bitis Hunter Collection", 10, 25.9));
+        productList.add(new Shirt(15, "Hà Nội Trà Đá", 189000, "Teelab", "Áo phông", "Trà đá vỉa hè", 10, 69, 52, 21, 44.5));
+        productList.add(new Shoes(16, "Ultraboost 22", 3900000, "Adidas", "Giày", "Giày chạy thể thao", 10, 28));
+        productList.add(new Shoes(17, "Ultraboost 5.0 DNA", 2990000, "Adidas", "Giày", "Giày chạy thể thao", 10, 26.7));
+        productList.add(new Pant(18, "Jeans Bermuda", 434000, "Boo", "Quần Jeans", "Quần regular form", 10, 101, 42, 51));
+    }
    // ***********************************************************************add new object
   public boolean addStaff(String name, String phone , String gender, String rate, String strDate){
         readStaff();
@@ -214,6 +238,9 @@ public class Store  {
   } 
     
 
-    
+  // Product part
+  public ArrayList<Product> getProductList(){
+      return productList;
+  }
 }
     

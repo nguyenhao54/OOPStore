@@ -25,38 +25,24 @@ public class Form_Product extends javax.swing.JPanel {
         form.setOk(true);
         form.showInfo(product);
     }
-       private void initTable() {
-        ProductEventAction productEventAction = new ProductEventAction() {
-            @Override
-            public void delete(Product product) {
-                System.out.println(product);
-            }
+    
+    private void initTable() {
+     ProductEventAction productEventAction = new ProductEventAction() {
+         @Override
+         public void delete(Product product) {
+             System.out.println(product);
+         }
 
-            @Override
-            public void update(Product product) {
-                showUpdateForm(product);
-            }
-        };
-        
-        table.fixTable(jScrollPane1);
-        table.addRow(new Product(1, "Polo Shirt", 299000, "Teelab", "Áo phông", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(2, "Jacket", 350000, "H&M", "Clothes", "Áo khoác", 12).toRowTable(productEventAction));
-        table.addRow(new Product(3, "Vietnam Pride", 200000, "Bò sữa", "Clothes", "Du lịch thì vô địch", 17).toRowTable(productEventAction));
-        table.addRow(new Product(4, "Somi Oxford", 413000, "Routine", "Áo sơ mi", "Lịch lãm", 21).toRowTable(productEventAction));
-        table.addRow(new Product(5, "Sơmi dài tay Dobby", 413000, "Routine", "Áo sơ mi", "Lịch lãm, năng động", 5).toRowTable(productEventAction));
-        table.addRow(new Product(6, "Sơ mi Seersucker", 472000, "Routine", "Áo sơ mi", "Trẻ trung", 12).toRowTable(productEventAction));
-        table.addRow(new Product(7, "Sơ mi caro", 299000, "Routine", "Clothes", "Ao tra da via he", 3).toRowTable(productEventAction));
-        table.addRow(new Product(8, "Quần Jean trơn", 480000, "Routine", "Quần Jean", "Slimfit", 11).toRowTable(productEventAction));
-        table.addRow(new Product(9, "Quần khaki V", 299000, "Routine", "Quần khaki", "Slimcrop", 10).toRowTable(productEventAction));
-        table.addRow(new Product(10, "Áo phông Marvel Comics", 599000, "Boo", "Áo phông", "Boo x Marvel", 10).toRowTable(productEventAction));
-        table.addRow(new Product(11, "Áo phông Hulk", 490000, "Boo", "Áo phông", "Boo x Marvel: Hulk", 10).toRowTable(productEventAction));
-        table.addRow(new Product(12, "Giày Nightwatch", 4999000, "Adidas", "Giày", "Adidas x GoT", 10).toRowTable(productEventAction));
-        table.addRow(new Product(13, "Bitis Hunter X 2022", 1199000, "Bitis Hunter", "Giày", "Bitis Hunter Collection", 10).toRowTable(productEventAction));
-        table.addRow(new Product(14, "Bitis Hunter X 2021", 999000, "Bitis Hunter", "Giày", "Bitis Hunter Collection", 10).toRowTable(productEventAction));
-        table.addRow(new Product(15, "Hà Nội Trà Đá", 189000, "Teelab", "Áo phông", "Ao tra da via he", 10).toRowTable(productEventAction));
-        table.addRow(new Product(16, "Ultraboost 22", 3900000, "Adidas", "Giày", "Giày chạy thể thao", 10).toRowTable(productEventAction));
-        table.addRow(new Product(17, "Ultraboost 5.0 DNA", 2990000, "Adidas", "Giày", "Giày chạy thể thao", 10).toRowTable(productEventAction));
-        table.addRow(new Product(18, "Jeans Bermuda", 434000, "Boo", "Quần Jeans", "Quần regular form", 10).toRowTable(productEventAction));
+         @Override
+         public void update(Product product) {
+             showUpdateForm(product);
+         }
+     };
+
+     table.fixTable(jScrollPane1);
+     for(Product p: Dashboard.store.getProductList()){
+         table.addRow(p.toRowTable(productEventAction));
+     }
   }
     /**
      * This method is called from within the constructor to initialize the form.

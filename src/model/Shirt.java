@@ -14,9 +14,10 @@ public class Shirt extends Product{
             String description,
             int quantity,
             double shirtLength,
+            double chestWidth,
             double sleeveLength,
-            double shoulderWidth,
-            double chestWidth){
+            double shoulderWidth
+            ){
         super(id, name, price, brand, category, description, quantity);
         this.shirtLength = shirtLength;
         this.sleeveLength = sleeveLength;

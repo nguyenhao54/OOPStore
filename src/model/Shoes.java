@@ -10,7 +10,6 @@ package model;
  */
 public class Shoes extends Product{
     private double footLength;
-    private double footWidth;
     
     public Shoes(int id,
             String name,
@@ -19,11 +18,9 @@ public class Shoes extends Product{
             String category,
             String description,
             int quantity,
-            double footLength,
-            double footWidth){
+            double footLength){
         super(id, name, price, brand, category, description, quantity);
         this.footLength = footLength;
-        this.footWidth = footWidth;
     }
 
     /**
@@ -38,19 +35,5 @@ public class Shoes extends Product{
      */
     public void setFootLength(double footLength) {
         this.footLength = footLength;
-    }
-
-    /**
-     * @return the footWidth
-     */
-    public double getFootWidth() {
-        return footWidth;
-    }
-
-    /**
-     * @param footWidth the footWidth to set
-     */
-    public void setFootWidth(double footWidth) {
-        this.footWidth = footWidth;
     }
 }
