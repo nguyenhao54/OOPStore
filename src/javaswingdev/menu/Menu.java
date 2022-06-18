@@ -39,7 +39,7 @@ public class Menu extends JPanel {
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PAYMENT, "Manager"));
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.RECEIPT, "Salary","Weekly","Monthly","Yearly"));
         addTitle("PRODUCTS");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.STORE, "All Products", "All", "Tops", "Bottoms", "Shoes"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.STORE, "Products", "All", "Tops", "Bottoms", "Shoes"));
 //        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PEOPLE, "Male", "Tops", "Bottoms","Shoes", "Accessory"));
 //        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PEOPLE, "Female", "Tops", "Bottoms","Shoes", "Bags","Accessory"));
         addTitle("SHIFTS");

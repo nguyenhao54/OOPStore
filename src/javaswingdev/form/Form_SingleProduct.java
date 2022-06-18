@@ -1,23 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package javaswingdev.form;
 import javaswingdev.main.Dashboard;
 import javaswingdev.main.*;
 import javaswingdev.swing.table.ProductEventAction;
 import model.*;
 
-public class Form_Product extends javax.swing.JPanel {
+public class Form_SingleProduct extends javax.swing.JPanel {
 
     /**
      * Creates new form Form_Shift
      */
-    public Form_Product() {
+    private String category;
+    public Form_SingleProduct(String category) {
+        this.category = category;
         initComponents();
         table.fixTable(jScrollPane1);
         initTable();
-        
     }
     
     private void showUpdateForm(Product product){
@@ -55,7 +52,22 @@ public class Form_Product extends javax.swing.JPanel {
 
      table.fixTable(jScrollPane1);
      for(Product p: Dashboard.store.getProductList()){
-         table.addRow(p.toRowTable(productEventAction));
+         switch (category) {
+             case "tops":
+                 if(p.getClass().toString().contains("Shirt")){
+                     table.addRow(p.toRowTable(productEventAction));
+                 }   break;
+             case "bottoms":
+                 if(p.getClass().toString().contains("Pant")){
+                     table.addRow(p.toRowTable(productEventAction));
+                 }   break;
+             case "shoes":
+                 if(p.getClass().toString().contains("Shoes")){
+                     table.addRow(p.toRowTable(productEventAction));
+                 }   break;
+             default:
+                 break;
+         }
      }
   }
     /**
@@ -71,6 +83,7 @@ public class Form_Product extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javaswingdev.swing.table.Table();
         textFieldAnimation1 = new swing.TextFieldAnimation();
+        addProdBtn = new javaswingdev.swing.Button();
 
         setBackground(new java.awt.Color(243, 243, 243));
 
@@ -120,26 +133,38 @@ public class Form_Product extends javax.swing.JPanel {
             }
         });
 
+        addProdBtn.setBackground(new java.awt.Color(87, 97, 174));
+        addProdBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addProdBtn.setText("ADD ");
+        addProdBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addProdBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(textFieldAnimation1, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(addProdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(textFieldAnimation1, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
-                .addComponent(textFieldAnimation1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textFieldAnimation1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addProdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
         );
@@ -158,6 +183,7 @@ new ProductInfo(Dashboard.getFrames()[0], true).setVisible(true);
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javaswingdev.swing.Button addProdBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javaswingdev.swing.RoundPanel roundPanel1;
     private javaswingdev.swing.table.Table table;

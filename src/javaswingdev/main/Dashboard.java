@@ -2,11 +2,7 @@ package javaswingdev.main;
 
 import storepkg.Store;
 import java.awt.Component;
-import javaswingdev.form.Form_Dashboard;
-import javaswingdev.form.Form_Empty;
-import javaswingdev.form.Form_Shift;
-import javaswingdev.form.Form_Staff;
-import javaswingdev.form.Form_Product;
+import javaswingdev.form.*;
 import javaswingdev.menu.EventMenuSelected;
 
 public class Dashboard extends javax.swing.JFrame {
@@ -49,8 +45,14 @@ public class Dashboard extends javax.swing.JFrame {
                 {
                     showForm(new Form_Shift());
                 }
-                 else if(index == 4 && indexSubMenu ==1){
+                 else if(index == 4 && indexSubMenu == 1){
                      showForm(new Form_Product());
+                 }else if(index == 4 && indexSubMenu == 2){
+                     showForm(new Form_SingleProduct("tops"));
+                 }else if(index == 4 && indexSubMenu == 3){
+                     showForm(new Form_SingleProduct("bottoms"));
+                 }else if(index == 4 && indexSubMenu == 4){
+                     showForm(new Form_SingleProduct("shoes"));
                  }
                 else{
                     showForm(new Form_Empty(index + " " + indexSubMenu));

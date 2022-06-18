@@ -45,7 +45,6 @@ public class Store  {
         productList.add(new Shoes(17, "Ultraboost 5.0 DNA", 2990000, "Adidas", "Giày", "Giày chạy thể thao", 1, 26.7));
         productList.add(new Pant(18, "Jeans Bermuda", 434000, "Boo", "Quần Jeans", "Quần regular form", 18, 101, 42, 51));
         maxProductId = productList.size() + 1;
-        System.out.println(maxProductId);
     }
    // ***********************************************************************add new object
   public boolean addStaff(String name, String phone , String gender, String rate, String strDate){
