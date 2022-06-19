@@ -267,7 +267,7 @@ public class ShirtInfo extends javax.swing.JDialog {
                 Double.parseDouble(pSleeveLength), Double.parseDouble(pShoulderWidth));
                 Dashboard.store.addProduct(newShirt);
                 this.setShirt(newShirt);
-                msg.showDialog("Add new staff successfully!","blue");
+                msg.showDialog("Add new shirt successfully!","blue");
 //          If a shirt is set -> update
             }else{
                 int id = shirt.getProductId();

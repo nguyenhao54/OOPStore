@@ -7,6 +7,7 @@ import model.*;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
+import storepkg.Store;
 
 public class PantInfo extends javax.swing.JDialog {
 
@@ -247,7 +248,14 @@ public class PantInfo extends javax.swing.JDialog {
                 ok = true;
     //          If no item -> create new one
                 if(getPant() == null){
-
+                    Message msg=new Message();
+                int id = Store.maxProductId++;
+                Pant newPant = new Pant(id, pName, Integer.parseInt(pPrice), pBrand, pCategory, 
+                        pDescription, Integer.parseInt(pQuantity), Double.parseDouble(pPantLength), Double.parseDouble(pPantWidth),
+                Double.parseDouble(pButtWidth));
+                Dashboard.store.addProduct(newPant);
+                this.setPant(newPant);
+                msg.showDialog("Add new pant successfully!","blue");
     //          If a item is set -> update
                 }else{
                     int id = getPant().getProductId();

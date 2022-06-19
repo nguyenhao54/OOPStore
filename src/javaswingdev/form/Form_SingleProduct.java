@@ -204,7 +204,11 @@ public class Form_SingleProduct extends javax.swing.JPanel {
                  }
                  break;
              case "bottoms":
-                 new PantInfo(Dashboard.getFrames()[0], true).setVisible(true);
+                 PantInfo pantForm = new PantInfo(Dashboard.getFrames()[0], true);
+                 pantForm.setVisible(true);
+                 if(pantForm.isOk()){
+                     table.addRow(pantForm.getPant().toRowTable(productEventAction)); 
+                 }
                  break;
              case "shoes":
                  new ShoesInfo(Dashboard.getFrames()[0], true).setVisible(true);
