@@ -245,17 +245,17 @@ public class PantInfo extends javax.swing.JDialog {
             alertLabel.setVisible(true);
             
             }else{
-                ok = true;
     //          If no item -> create new one
                 if(getPant() == null){
                     Message msg=new Message();
-                int id = Store.maxProductId++;
-                Pant newPant = new Pant(id, pName, Integer.parseInt(pPrice), pBrand, pCategory, 
-                        pDescription, Integer.parseInt(pQuantity), Double.parseDouble(pPantLength), Double.parseDouble(pPantWidth),
-                Double.parseDouble(pButtWidth));
-                Dashboard.store.addProduct(newPant);
-                this.setPant(newPant);
-                msg.showDialog("Add new pant successfully!","blue");
+                    int id = Store.maxProductId++;
+                    Pant newPant = new Pant(id, pName, Integer.parseInt(pPrice), pBrand, pCategory, 
+                            pDescription, Integer.parseInt(pQuantity), Double.parseDouble(pPantLength), Double.parseDouble(pPantWidth),
+                    Double.parseDouble(pButtWidth));
+                    Dashboard.store.addProduct(newPant);
+                    this.setPant(newPant);
+                    msg.showDialog("Add new pant successfully!","blue");
+                    ok = true;
     //          If a item is set -> update
                 }else{
                     int id = getPant().getProductId();
@@ -265,6 +265,7 @@ public class PantInfo extends javax.swing.JDialog {
                             Double.parseDouble(pButtWidth));
                     setPant((Pant)Dashboard.store.getProduct(id));
                     msg.showDialog("Update shirt id " + pant.getProductId()+ " successfully!","blue");
+                    ok = true;
                 }
                 closeMenu();
         }

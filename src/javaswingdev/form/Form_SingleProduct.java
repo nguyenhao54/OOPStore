@@ -211,7 +211,11 @@ public class Form_SingleProduct extends javax.swing.JPanel {
                  }
                  break;
              case "shoes":
-                 new ShoesInfo(Dashboard.getFrames()[0], true).setVisible(true);
+                 ShoesInfo shoesForm = new ShoesInfo(Dashboard.getFrames()[0], true);
+                 shoesForm.setVisible(true);
+                 if(shoesForm.isOk()){
+                     table.addRow(shoesForm.getShoes().toRowTable(productEventAction)); 
+                 }
                  break;
              default:
                  break;

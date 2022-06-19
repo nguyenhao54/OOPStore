@@ -257,7 +257,6 @@ public class ShirtInfo extends javax.swing.JDialog {
             alertLabel.setVisible(true);
             
         }else{
-            ok = true;
 //          If no shirt -> create new one
             if(shirt == null){
                 Message msg=new Message();
@@ -268,6 +267,7 @@ public class ShirtInfo extends javax.swing.JDialog {
                 Dashboard.store.addProduct(newShirt);
                 this.setShirt(newShirt);
                 msg.showDialog("Add new shirt successfully!","blue");
+                ok = true;
 //          If a shirt is set -> update
             }else{
                 int id = shirt.getProductId();
@@ -277,6 +277,7 @@ public class ShirtInfo extends javax.swing.JDialog {
                         Double.parseDouble(pSleeveLength), Double.parseDouble(pShoulderWidth));
                 setShirt((Shirt)Dashboard.store.getProduct(id));
                 msg.showDialog("Update shirt id " + shirt.getProductId()+ " successfully!","blue");
+                ok = true;
             }
             closeMenu();
         }
