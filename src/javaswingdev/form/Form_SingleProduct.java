@@ -50,7 +50,7 @@ public class Form_SingleProduct extends javax.swing.JPanel {
     }
     
     private void initTable() {
-     ProductEventAction productEventAction = new ProductEventAction() {
+     productEventAction = new ProductEventAction() {
          @Override
          public void delete(Product product) {
              System.out.println(product);
@@ -194,8 +194,24 @@ public class Form_SingleProduct extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addProdBtnActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        new ProductInfo(Dashboard.getFrames()[0], true).setVisible(true);
+    private void addProdBtnActionPerformed(java.awt.event.ActionEvent evt) {        
+        switch (category) {
+             case "tops":
+                 ShirtInfo form = new ShirtInfo(Dashboard.getFrames()[0], true);
+                 form.setVisible(true);
+                 if(form.isOk()){
+                     table.addRow(form.getShirt().toRowTable(productEventAction)); 
+                 }
+                 break;
+             case "bottoms":
+                 new PantInfo(Dashboard.getFrames()[0], true).setVisible(true);
+                 break;
+             case "shoes":
+                 new ShoesInfo(Dashboard.getFrames()[0], true).setVisible(true);
+                 break;
+             default:
+                 break;
+         }
     }
     private void textFieldAnimation1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldAnimation1FocusGained
         // TODO add your handling code here:
@@ -209,4 +225,6 @@ public class Form_SingleProduct extends javax.swing.JPanel {
     private javaswingdev.swing.table.Table table;
     private swing.TextFieldAnimation textFieldAnimation1;
     // End of variables declaration//GEN-END:variables
+
+    private ProductEventAction productEventAction;
 }

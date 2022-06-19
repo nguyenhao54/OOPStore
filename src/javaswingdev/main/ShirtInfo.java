@@ -8,6 +8,7 @@ import model.Staff;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
+import storepkg.Store;
 
 public class ShirtInfo extends javax.swing.JDialog {
 
@@ -259,7 +260,14 @@ public class ShirtInfo extends javax.swing.JDialog {
             ok = true;
 //          If no shirt -> create new one
             if(shirt == null){
-                
+                Message msg=new Message();
+                int id = Store.maxProductId++;
+                Shirt newShirt = new Shirt(id, pName, Integer.parseInt(pPrice), pBrand, pCategory, 
+                        pDescription, Integer.parseInt(pQuantity), Double.parseDouble(pShirtLength), Double.parseDouble(pChestWidth),
+                Double.parseDouble(pSleeveLength), Double.parseDouble(pShoulderWidth));
+                Dashboard.store.addProduct(newShirt);
+                this.setShirt(newShirt);
+                msg.showDialog("Add new staff successfully!","blue");
 //          If a shirt is set -> update
             }else{
                 int id = shirt.getProductId();
