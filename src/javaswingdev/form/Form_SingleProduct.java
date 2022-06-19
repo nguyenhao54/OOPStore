@@ -2,6 +2,9 @@ package javaswingdev.form;
 import javaswingdev.main.Dashboard;
 import javaswingdev.main.*;
 import javaswingdev.swing.table.ProductEventAction;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import model.*;
 
 public class Form_SingleProduct extends javax.swing.JPanel {
@@ -10,6 +13,9 @@ public class Form_SingleProduct extends javax.swing.JPanel {
      * Creates new form Form_Shift
      */
     private String category;
+    private DefaultTableModel model;
+    private TableRowSorter<TableModel> rowSorter;
+    
     public Form_SingleProduct(String category) {
         this.category = category;
         initComponents();
@@ -17,23 +23,30 @@ public class Form_SingleProduct extends javax.swing.JPanel {
         initTable();
     }
     
-    private void showUpdateForm(Product product){
+    private Product showUpdateForm(Product product){
         if(product.getClass().toString().contains("Shirt")){
             ShirtInfo form = new ShirtInfo(Dashboard.getFrames()[0], true);
             form.setOk(true);
             Shirt shirt = (Shirt)product;
+            form.setShirt(shirt);
             form.showInfo(shirt);
+            return form.getShirt();
         }else if(product.getClass().toString().contains("Pant")){
             PantInfo form = new PantInfo(Dashboard.getFrames()[0], true);
             form.setOk(true);
             Pant pant = (Pant)product;
+            form.setPant(pant);
             form.showInfo(pant);
+            return form.getPant();
         }else if(product.getClass().toString().contains("Shoes")){
             ShoesInfo form = new ShoesInfo(Dashboard.getFrames()[0], true);
             form.setOk(true);
             Shoes shoes = (Shoes)product;
+            form.setShoes(shoes);
             form.showInfo(shoes);
+            return form.getShoes();
         }
+        return null;
     }
     
     private void initTable() {
@@ -45,7 +58,18 @@ public class Form_SingleProduct extends javax.swing.JPanel {
 
          @Override
          public void update(Product product) {
-             showUpdateForm(product);
+             Product p = showUpdateForm(product);
+             if(p != null){
+//               update table row
+                 model =(DefaultTableModel) table.getModel();
+                model.setValueAt(p.getProductId(),table.getSelectedRow() , 0);
+                model.setValueAt(p.getProductName(),table.getSelectedRow() , 1);
+                model.setValueAt(p.getProductPrice(),table.getSelectedRow() , 2);
+                model.setValueAt(p.getBrand(),table.getSelectedRow() , 3);
+                model.setValueAt(p.getCategory(),table.getSelectedRow() , 4);
+                model.setValueAt(p.getDescription(),table.getSelectedRow() , 5);
+                model.setValueAt(p.getQuantity(),table.getSelectedRow() , 6);
+             }
              
          }
      };
