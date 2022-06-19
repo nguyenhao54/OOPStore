@@ -2,12 +2,27 @@
 package javaswingdev.main;
 
 import java.awt.Color;
+import javaswingdev.form.Message;
 import model.Shoes;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 public class ShoesInfo extends javax.swing.JDialog {
+    /**
+     * @return the shoes
+     */
+    public Shoes getShoes() {
+        return shoes;
+    }
+
+    /**
+     * @param shoes the shoes to set
+     */
+    public void setShoes(Shoes shoes) {
+        this.shoes = shoes;
+    }
+    
     public boolean isOk() {
         return ok;
     }
@@ -15,9 +30,11 @@ public class ShoesInfo extends javax.swing.JDialog {
     public void setOk(boolean ok) {
         this.ok = ok;
     }
+    
     private boolean ok;
     private final Animator animator;
     private boolean show = true;
+    private Shoes shoes;
     
     public void showInfo(Shoes shoes){
         productName.setText(shoes.getProductName());
@@ -204,16 +221,27 @@ public class ShoesInfo extends javax.swing.JDialog {
         String pQuantity = quantity.getText();
         String pCategory = category.getText();
         String pDescription = description.getText();
-        String pShirtLength = footLength.getText();
         String pFootLength = footLength.getText();
 
         if(pName.equals("") || pPrice.equals("") || pBrand.equals("") || pQuantity.equals("") || pCategory.equals("")
-                || pDescription.equals("") || pShirtLength.equals("") || pFootLength.equals("")){
+                || pDescription.equals("") || pFootLength.equals("")){
             alertLabel.setText("Please fill in blank fields!");
             alertLabel.setVisible(true);
             
         }else{
             ok = true;
+    //          If no item -> create new one
+                if(getShoes()== null){
+
+    //          If a item is set -> update
+                }else{
+                    int id = getShoes().getProductId();
+                    Message msg=new Message();
+                    Dashboard.store.updateProduct(id, pName, Double.parseDouble(pPrice), pBrand, pCategory, pDescription, 
+                            Integer.parseInt(pQuantity), Double.parseDouble(pFootLength));
+                    setShoes((Shoes)Dashboard.store.getProduct(id));
+                    msg.showDialog("Update shirt id " + shoes.getProductId()+ " successfully!","blue");
+                }
             closeMenu();
         }
         

@@ -44,8 +44,9 @@ public class Form_Product extends javax.swing.JPanel {
             ShoesInfo form = new ShoesInfo(Dashboard.getFrames()[0], true);
             form.setOk(true);
             Shoes shoes = (Shoes)product;
+            form.setShoes(shoes);
             form.showInfo(shoes);
-//            return form.getShirt();
+            return form.getShoes();
         }
         return null;
     }
@@ -59,32 +60,18 @@ public class Form_Product extends javax.swing.JPanel {
 
          @Override
          public void update(Product product) {
-             if(product.getClass().toString().contains("Shirt")){
-                Shirt shirt = (Shirt)showUpdateForm(product);
-                if(shirt != null){
-                    model =(DefaultTableModel) table.getModel();
-                   model.setValueAt(shirt.getProductId(),table.getSelectedRow() , 0);
-                   model.setValueAt(shirt.getProductName(),table.getSelectedRow() , 1);
-                   model.setValueAt(shirt.getProductPrice(),table.getSelectedRow() , 2);
-                   model.setValueAt(shirt.getBrand(),table.getSelectedRow() , 3);
-                   model.setValueAt(shirt.getCategory(),table.getSelectedRow() , 4);
-                   model.setValueAt(shirt.getDescription(),table.getSelectedRow() , 5);
-                   model.setValueAt(shirt.getQuantity(),table.getSelectedRow() , 6);
-                }
-             }else if(product.getClass().toString().contains("Pant")){
-                 Pant pant = (Pant)showUpdateForm(product);
-                if(pant != null){
-                    model =(DefaultTableModel) table.getModel();
-                   model.setValueAt(pant.getProductId(),table.getSelectedRow() , 0);
-                   model.setValueAt(pant.getProductName(),table.getSelectedRow() , 1);
-                   model.setValueAt(pant.getProductPrice(),table.getSelectedRow() , 2);
-                   model.setValueAt(pant.getBrand(),table.getSelectedRow() , 3);
-                   model.setValueAt(pant.getCategory(),table.getSelectedRow() , 4);
-                   model.setValueAt(pant.getDescription(),table.getSelectedRow() , 5);
-                   model.setValueAt(pant.getQuantity(),table.getSelectedRow() , 6);
-                }
+             Product p = showUpdateForm(product);
+             if(p != null){
+//               update table row
+                 model =(DefaultTableModel) table.getModel();
+                model.setValueAt(p.getProductId(),table.getSelectedRow() , 0);
+                model.setValueAt(p.getProductName(),table.getSelectedRow() , 1);
+                model.setValueAt(p.getProductPrice(),table.getSelectedRow() , 2);
+                model.setValueAt(p.getBrand(),table.getSelectedRow() , 3);
+                model.setValueAt(p.getCategory(),table.getSelectedRow() , 4);
+                model.setValueAt(p.getDescription(),table.getSelectedRow() , 5);
+                model.setValueAt(p.getQuantity(),table.getSelectedRow() , 6);
              }
-             
          }
      };
 

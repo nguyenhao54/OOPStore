@@ -245,20 +245,19 @@ public class PantInfo extends javax.swing.JDialog {
             
             }else{
                 ok = true;
-//          If no shirt -> create new one
-            if(getPant() == null){
-                
-//          If a shirt is set -> update
-            }else{
-                int id = getPant().getProductId();
-                Message msg=new Message();
-                Dashboard.store.updateProduct(id, pName, Double.parseDouble(pPrice), pBrand, pCategory, pDescription, 
-                        Integer.parseInt(pQuantity), Double.parseDouble(pPantLength), Double.parseDouble(pPantWidth), 
-                        Double.parseDouble(pButtWidth));
-                setPant((Pant)Dashboard.store.getProduct(id));
-                msg.showDialog("Update shirt id " + pant.getProductId()+ " successfully!","blue");
-            }
-            closeMenu();
+    //          If no item -> create new one
+                if(getPant() == null){
+
+    //          If a item is set -> update
+                }else{
+                    int id = getPant().getProductId();
+                    Message msg=new Message();
+                    Dashboard.store.updateProduct(id, pName, Double.parseDouble(pPrice), pBrand, pCategory, pDescription, 
+                            Integer.parseInt(pQuantity), Double.parseDouble(pPantLength), Double.parseDouble(pPantWidth), 
+                            Double.parseDouble(pButtWidth));
+                    setPant((Pant)Dashboard.store.getProduct(id));
+                    msg.showDialog("Update shirt id " + pant.getProductId()+ " successfully!","blue");
+                }
                 closeMenu();
         }
         

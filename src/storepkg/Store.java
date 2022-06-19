@@ -279,4 +279,24 @@ public class Store  {
         p.setPantWidth(pantWidth);
         p.setButtWidth(buttWidth);
     }
+  
+  //  Update shoes
+  public void updateProduct(int id,
+            String name,
+            double price,
+            String brand,
+            String category,
+            String description,
+            int quantity,
+            double footLength){
+      
+      Shoes p = (Shoes)getProduct(id);
+      p.setProductName(name);
+      p.setProductPrice(price);
+      p.setBrand(brand);
+      p.setCategory(category);
+      p.setDescription(description);
+      p.setQuantity(quantity);
+      p.setFootLength(footLength);
+  }
 }   
