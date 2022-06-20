@@ -235,7 +235,7 @@ public class ShoesInfo extends javax.swing.JDialog {
                             pDescription, Integer.parseInt(pQuantity), Double.parseDouble(pFootLength));
                     Dashboard.store.addProduct(newShoes);
                     this.setShoes(newShoes);
-                    msg.showDialog("Add new pant successfully!","blue");
+                    msg.showDialog("Add new shoes successfully!","blue");
                     ok = true;
     //          If a item is set -> update
                 }else{
@@ -244,7 +244,7 @@ public class ShoesInfo extends javax.swing.JDialog {
                     Dashboard.store.updateProduct(id, pName, Double.parseDouble(pPrice), pBrand, pCategory, pDescription, 
                             Integer.parseInt(pQuantity), Double.parseDouble(pFootLength));
                     setShoes((Shoes)Dashboard.store.getProduct(id));
-                    msg.showDialog("Update shirt id " + shoes.getProductId()+ " successfully!","blue");
+                    msg.showDialog("Update shoes id " + shoes.getProductId()+ " successfully!","blue");
                     ok = true;
                 }
             closeMenu();

@@ -285,7 +285,7 @@ public class PantInfo extends javax.swing.JDialog {
                             Integer.parseInt(pQuantity), Double.parseDouble(pPantLength), Double.parseDouble(pPantWidth), 
                             Double.parseDouble(pButtWidth));
                     setPant((Pant)Dashboard.store.getProduct(id));
-                    msg.showDialog("Update shirt id " + pant.getProductId()+ " successfully!","blue");
+                    msg.showDialog("Update pant id " + pant.getProductId()+ " successfully!","blue");
                     ok = true;
                 }
                 closeMenu();
