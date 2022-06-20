@@ -162,7 +162,6 @@ public class ShirtInfo extends javax.swing.JDialog {
 
         alertLabel.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
         alertLabel.setForeground(new java.awt.Color(255, 0, 0));
-        alertLabel.setText("Please fill in blank fields");
         alertLabel.setPreferredSize(new java.awt.Dimension(208, 13));
 
         javax.swing.GroupLayout addProductFormLayout = new javax.swing.GroupLayout(addProductForm);

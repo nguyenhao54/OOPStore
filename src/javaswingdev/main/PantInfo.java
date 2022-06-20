@@ -47,7 +47,7 @@ public class PantInfo extends javax.swing.JDialog {
         pantLength.setText(Double.toString(pant.getPantLength()));
         pantWidth.setText(Double.toString(pant.getPantWidth()));
         buttWidth.setText(Double.toString(pant.getButtWidth()));
-        setVisible(ok);
+        setVisible(true);
     }
    
     public PantInfo(java.awt.Frame parent, boolean modal) {
@@ -163,7 +163,6 @@ public class PantInfo extends javax.swing.JDialog {
 
         alertLabel.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
         alertLabel.setForeground(new java.awt.Color(255, 0, 0));
-        alertLabel.setText("Please fill in blank fields");
         alertLabel.setPreferredSize(new java.awt.Dimension(208, 13));
 
         javax.swing.GroupLayout addProductFormLayout = new javax.swing.GroupLayout(addProductForm);
@@ -249,6 +248,7 @@ public class PantInfo extends javax.swing.JDialog {
         this.setLocationRelativeTo(Dashboard.getFrames()[0]);
     }
     private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
+        this.setOk(false);
         String pName = productName.getText();
         String pPrice = price.getText();
         String pBrand = brand.getText();
@@ -310,13 +310,6 @@ public class PantInfo extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_priceActionPerformed
 
-    public void showInfo(Staff staff) {
-       productName.setText(staff.getName());
-       price.setText(staff.getPhone());
-       animator.start();
-       setVisible(true);
-   }
-    
     private void closeMenu() {
         if (animator.isRunning()) {
             animator.stop();
