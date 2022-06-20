@@ -304,6 +304,7 @@ public class Store  {
         for (int i = 0; i < productList.size(); i++){
               if(productList.get(i).getProductId() == id){
                   productList.remove(i);
+                  System.out.println("remove done");
               }
           }
     }

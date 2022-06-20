@@ -54,6 +54,13 @@ public class Form_SingleProduct extends javax.swing.JPanel {
          @Override
          public void delete(Product product) {
              System.out.println(product);
+//             Message msg=new Message();
+//             if(msg.showMessage("Delete Product : " + product.getProductName())){
+//                 Dashboard.store.deleteProduct(product.getProductId());
+//                 model =(DefaultTableModel) table.getModel();
+//                 model.removeRow(table.getSelectedRow());
+//                 msg.showDialog("Delete Product Id " + product.getProductId()+" Successfully!","red");
+//             }
          }
 
          @Override
