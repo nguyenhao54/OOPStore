@@ -299,4 +299,12 @@ public class Store  {
       p.setQuantity(quantity);
       p.setFootLength(footLength);
   }
+  
+  public void deleteProduct(int id){
+        for (int i = 0; i < productList.size(); i++){
+              if(productList.get(i).getProductId() == id){
+                  productList.remove(i);
+              }
+          }
+    }
 }   
