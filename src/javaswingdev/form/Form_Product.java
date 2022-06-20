@@ -58,14 +58,16 @@ public class Form_Product extends javax.swing.JPanel {
      ProductEventAction productEventAction = new ProductEventAction() {
          @Override
          public void delete(Product product) {
-             System.out.println(product);
-//             Message msg=new Message();
-//             if(msg.showMessage("Delete Product : " + product.getProductName())){
-//                 Dashboard.store.deleteProduct(product.getProductId());
-//                 model =(DefaultTableModel) table.getModel();
-//                 model.removeRow(table.getSelectedRow());
-//                 msg.showDialog("Delete Product Id " + product.getProductId()+" Successfully!","red");
-//             }
+//             System.out.println(product);
+             Message msg=new Message();
+             if(msg.showMessage("Delete Product : " + product.getProductName())){
+                 Dashboard.store.deleteProduct(product.getProductId());
+                 model =(DefaultTableModel) table.getModel();
+                 model.removeRow(table.getSelectedRow());
+                 msg.showDialog("Delete Product Id " + product.getProductId()+" Successfully!","red");
+             }else {
+                    System.out.println("User click Cancel");
+                }
          }
 
          @Override
