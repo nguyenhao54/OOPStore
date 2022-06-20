@@ -2,6 +2,9 @@ package javaswingdev.form;
 import javaswingdev.main.Dashboard;
 import javaswingdev.main.*;
 import javaswingdev.swing.table.ProductEventAction;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -21,6 +24,7 @@ public class Form_SingleProduct extends javax.swing.JPanel {
         initComponents();
         table.fixTable(jScrollPane1);
         initTable();
+        SortFilter();
     }
     
     private Product showUpdateForm(Product product){
@@ -113,7 +117,7 @@ public class Form_SingleProduct extends javax.swing.JPanel {
         roundPanel1 = new javaswingdev.swing.RoundPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javaswingdev.swing.table.Table();
-        textFieldAnimation1 = new swing.TextFieldAnimation();
+        searchField = new swing.TextFieldAnimation();
         addProdBtn = new javaswingdev.swing.Button();
 
         setBackground(new java.awt.Color(243, 243, 243));
@@ -156,11 +160,11 @@ public class Form_SingleProduct extends javax.swing.JPanel {
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
-        textFieldAnimation1.setForeground(new java.awt.Color(153, 153, 153));
-        textFieldAnimation1.setAnimationColor(new java.awt.Color(87, 97, 174));
-        textFieldAnimation1.addFocusListener(new java.awt.event.FocusAdapter() {
+        searchField.setForeground(new java.awt.Color(153, 153, 153));
+        searchField.setAnimationColor(new java.awt.Color(87, 97, 174));
+        searchField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                textFieldAnimation1FocusGained(evt);
+                searchFieldFocusGained(evt);
             }
         });
 
@@ -184,7 +188,7 @@ public class Form_SingleProduct extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(addProdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
-                        .addComponent(textFieldAnimation1, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
@@ -193,7 +197,7 @@ public class Form_SingleProduct extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldAnimation1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addProdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -228,17 +232,57 @@ public class Form_SingleProduct extends javax.swing.JPanel {
                  break;
          }
     }
-    private void textFieldAnimation1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldAnimation1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldAnimation1FocusGained
+    
+    private void SortFilter(){
+      rowSorter = new TableRowSorter<>(table.getModel());
+      table.setRowSorter(rowSorter);
+      searchField.getDocument().addDocumentListener(new DocumentListener(){
+      @Override 
+      public void insertUpdate(DocumentEvent e){
+           String text = searchField.getText();
+           if(text.trim().length()==0){
+               rowSorter.setRowFilter(null);
+           }
+           else{
+               rowSorter.setRowFilter(RowFilter.regexFilter("(?i)"+text));
+               
+           }
+       }
+      @Override
+      public void removeUpdate(DocumentEvent e){
+          String text= searchField.getText();
+          if(text.trim().length()==0){
+              rowSorter.setRowFilter(null);
+              
+          }else
+          {
+              rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" +text));
+          }
+      }
+         @Override
+            public void changedUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); 
+            }
+            
+    });
+}
+    
+    private void searchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusGained
+        String text = searchField.getText();
+       if (text.trim().length() == 0) {
+            rowSorter.setRowFilter(null);
+       } else {
+             rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+       }  
+    }//GEN-LAST:event_searchFieldFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javaswingdev.swing.Button addProdBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javaswingdev.swing.RoundPanel roundPanel1;
+    private swing.TextFieldAnimation searchField;
     private javaswingdev.swing.table.Table table;
-    private swing.TextFieldAnimation textFieldAnimation1;
     // End of variables declaration//GEN-END:variables
 
     private ProductEventAction productEventAction;
