@@ -66,12 +66,13 @@ public class ProductInfo extends javax.swing.JDialog {
         productName = new javaswingdev.raven.swing.TextField();
         price = new javaswingdev.raven.swing.TextField();
         brand = new javaswingdev.raven.swing.TextField();
-        button1 = new javaswingdev.swing.Button();
-        button2 = new javaswingdev.swing.Button();
+        okBtn = new javaswingdev.swing.Button();
+        cancelBtn = new javaswingdev.swing.Button();
         jLabel1 = new javax.swing.JLabel();
         quantity = new javaswingdev.raven.swing.TextField();
         description = new javaswingdev.raven.swing.TextField();
         category = new javaswingdev.raven.swing.TextField();
+        alertLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(800, 250));
@@ -88,21 +89,21 @@ public class ProductInfo extends javax.swing.JDialog {
 
         brand.setLabelText("Brand");
 
-        button1.setBackground(new java.awt.Color(98, 98, 157));
-        button1.setForeground(new java.awt.Color(255, 255, 255));
-        button1.setText("OK");
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        okBtn.setBackground(new java.awt.Color(98, 98, 157));
+        okBtn.setForeground(new java.awt.Color(255, 255, 255));
+        okBtn.setText("OK");
+        okBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                okBtnActionPerformed(evt);
             }
         });
 
-        button2.setBackground(new java.awt.Color(204, 75, 75));
-        button2.setForeground(new java.awt.Color(255, 255, 255));
-        button2.setText("CANCEL");
-        button2.addActionListener(new java.awt.event.ActionListener() {
+        cancelBtn.setBackground(new java.awt.Color(204, 75, 75));
+        cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
+        cancelBtn.setText("CANCEL");
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button2ActionPerformed(evt);
+                cancelBtnActionPerformed(evt);
             }
         });
 
@@ -116,21 +117,20 @@ public class ProductInfo extends javax.swing.JDialog {
 
         category.setLabelText("Category");
 
+        alertLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        alertLabel.setForeground(new java.awt.Color(255, 0, 51));
+
         javax.swing.GroupLayout addProductFormLayout = new javax.swing.GroupLayout(addProductForm);
         addProductForm.setLayout(addProductFormLayout);
         addProductFormLayout.setHorizontalGroup(
             addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addProductFormLayout.createSequentialGroup()
-                .addGap(263, 263, 263)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(addProductFormLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(addProductFormLayout.createSequentialGroup()
-                        .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
-                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(okBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(addProductFormLayout.createSequentialGroup()
                         .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(brand, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,6 +142,15 @@ public class ProductInfo extends javax.swing.JDialog {
                             .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 35, Short.MAX_VALUE))
+            .addGroup(addProductFormLayout.createSequentialGroup()
+                .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addProductFormLayout.createSequentialGroup()
+                        .addGap(263, 263, 263)
+                        .addComponent(jLabel1))
+                    .addGroup(addProductFormLayout.createSequentialGroup()
+                        .addGap(242, 242, 242)
+                        .addComponent(alertLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         addProductFormLayout.setVerticalGroup(
             addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,11 +170,13 @@ public class ProductInfo extends javax.swing.JDialog {
                         .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(brand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(40, 40, 40)
+                .addGap(2, 2, 2)
+                .addComponent(alertLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(okBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         getContentPane().add(addProductForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 750, -1));
@@ -176,22 +187,31 @@ public class ProductInfo extends javax.swing.JDialog {
     private void centerComponent(){
         this.setLocationRelativeTo(Dashboard.getFrames()[0]);
     }
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-          
-        closeMenu();
-    }//GEN-LAST:event_button1ActionPerformed
+    private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
+        String pName = productName.getText();
+        String pPrice = price.getText();
+        String pBrand = brand.getText();
+        String pQuantity = quantity.getText();
+        String pCategory = category.getText();
+        String pDescription = description.getText();
 
-    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
+        if(pName.equals("") || pPrice.equals("") || pBrand.equals("") || pQuantity.equals("") || pCategory.equals("")
+                || pDescription.equals("")){
+            alertLabel.setText("Please fill in blank fields!");
+            alertLabel.setVisible(true);
+            
+        }else{
+            ok = true;
+            closeMenu();
+        }
+        
+    }//GEN-LAST:event_okBtnActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
               ok = true;
         closeMenu();
-    }//GEN-LAST:event_button2ActionPerformed
+    }//GEN-LAST:event_cancelBtnActionPerformed
 
-          public void showInfo(Staff staff) {
-        productName.setText(staff.getName());
-        price.setText(staff.getPhone());
-        animator.start();
-        setVisible(true);
-    }
     private void closeMenu() {
         if (animator.isRunning()) {
             animator.stop();
@@ -202,12 +222,13 @@ public class ProductInfo extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javaswingdev.swing.RoundPanel addProductForm;
+    private javax.swing.JLabel alertLabel;
     private javaswingdev.raven.swing.TextField brand;
-    private javaswingdev.swing.Button button1;
-    private javaswingdev.swing.Button button2;
+    private javaswingdev.swing.Button cancelBtn;
     private javaswingdev.raven.swing.TextField category;
     private javaswingdev.raven.swing.TextField description;
     private javax.swing.JLabel jLabel1;
+    private javaswingdev.swing.Button okBtn;
     private javaswingdev.raven.swing.TextField price;
     private javaswingdev.raven.swing.TextField productName;
     private javaswingdev.raven.swing.TextField quantity;

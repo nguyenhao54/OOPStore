@@ -72,7 +72,7 @@ public class StaffInfo extends javax.swing.JDialog {
         textField2 = new javaswingdev.raven.swing.TextField();
         textField3 = new javaswingdev.raven.swing.TextField();
         textField4 = new javaswingdev.raven.swing.TextField();
-        button1 = new javaswingdev.swing.Button();
+        okBtn = new javaswingdev.swing.Button();
         button2 = new javaswingdev.swing.Button();
         jLabel1 = new javax.swing.JLabel();
         combobox1 = new javaswingdev.swing.Combobox();
@@ -88,10 +88,10 @@ public class StaffInfo extends javax.swing.JDialog {
         roundPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textField1.setLabelText("Name");
-        roundPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 332, -1));
+        roundPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 332, -1));
 
         textField2.setLabelText("Phone Number");
-        roundPanel1.add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 332, -1));
+        roundPanel1.add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 332, -1));
 
         textField3.setLabelText("BirthDay");
         textField3.addActionListener(new java.awt.event.ActionListener() {
@@ -99,20 +99,20 @@ public class StaffInfo extends javax.swing.JDialog {
                 textField3ActionPerformed(evt);
             }
         });
-        roundPanel1.add(textField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 332, -1));
+        roundPanel1.add(textField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 332, -1));
 
         textField4.setLabelText("Salary Rate");
-        roundPanel1.add(textField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 332, -1));
+        roundPanel1.add(textField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 332, -1));
 
-        button1.setBackground(new java.awt.Color(98, 98, 157));
-        button1.setForeground(new java.awt.Color(255, 255, 255));
-        button1.setText("OK");
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        okBtn.setBackground(new java.awt.Color(98, 98, 157));
+        okBtn.setForeground(new java.awt.Color(255, 255, 255));
+        okBtn.setText("OK");
+        okBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                okBtnActionPerformed(evt);
             }
         });
-        roundPanel1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 410, 116, 35));
+        roundPanel1.add(okBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 116, 35));
 
         button2.setBackground(new java.awt.Color(204, 75, 75));
         button2.setForeground(new java.awt.Color(255, 255, 255));
@@ -122,25 +122,26 @@ public class StaffInfo extends javax.swing.JDialog {
                 button2ActionPerformed(evt);
             }
         });
-        roundPanel1.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 410, 116, 34));
+        roundPanel1.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 116, 34));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(106, 106, 164));
         jLabel1.setText("Staff Info");
-        roundPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 31, -1, -1));
+        roundPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
 
         combobox1.setMaximumRowCount(3);
         combobox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female", "Other" }));
         combobox1.setSelectedIndex(-1);
         combobox1.setLabeText("Gender");
-        roundPanel1.add(combobox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 330, 45));
+        roundPanel1.add(combobox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 330, 45));
 
         alertLabel.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
         alertLabel.setForeground(new java.awt.Color(255, 0, 0));
+        alertLabel.setText("Please fill in blank fields");
         alertLabel.setPreferredSize(new java.awt.Dimension(208, 13));
-        roundPanel1.add(alertLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 220, -1));
+        roundPanel1.add(alertLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 220, 30));
 
-        getContentPane().add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 390, 470));
+        getContentPane().add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 390, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -150,7 +151,7 @@ public class StaffInfo extends javax.swing.JDialog {
         closeMenu();
     }//GEN-LAST:event_button2ActionPerformed
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+    private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
  
        String name= textField1.getText();
        String phone= textField2.getText();
@@ -203,7 +204,7 @@ public class StaffInfo extends javax.swing.JDialog {
             }
            closeMenu();
         }
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_okBtnActionPerformed
 
     private void textField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField3ActionPerformed
         // TODO add your handling code here:
@@ -252,10 +253,10 @@ public class StaffInfo extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alertLabel;
-    private javaswingdev.swing.Button button1;
     private javaswingdev.swing.Button button2;
     private javaswingdev.swing.Combobox combobox1;
     private javax.swing.JLabel jLabel1;
+    private javaswingdev.swing.Button okBtn;
     private javaswingdev.swing.RoundPanel roundPanel1;
     private javaswingdev.raven.swing.TextField textField1;
     private javaswingdev.raven.swing.TextField textField2;

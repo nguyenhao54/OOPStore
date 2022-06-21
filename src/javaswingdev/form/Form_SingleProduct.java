@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package javaswingdev.form;
 import javaswingdev.main.Dashboard;
 import javaswingdev.main.*;
@@ -14,14 +10,17 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import model.*;
 
-public class Form_Product extends javax.swing.JPanel {
+public class Form_SingleProduct extends javax.swing.JPanel {
 
-    private DefaultTableModel model;
-    private TableRowSorter<TableModel> rowSorter;
     /**
      * Creates new form Form_Shift
      */
-    public Form_Product() {
+    private String category;
+    private DefaultTableModel model;
+    private TableRowSorter<TableModel> rowSorter;
+    
+    public Form_SingleProduct(String category) {
+        this.category = category;
         initComponents();
         table.fixTable(jScrollPane1);
         initTable();
@@ -55,7 +54,7 @@ public class Form_Product extends javax.swing.JPanel {
     }
     
     private void initTable() {
-     ProductEventAction productEventAction = new ProductEventAction() {
+     productEventAction = new ProductEventAction() {
          @Override
          public void delete(Product product) {
 //             System.out.println(product);
@@ -84,12 +83,28 @@ public class Form_Product extends javax.swing.JPanel {
                 model.setValueAt(p.getDescription(),table.getSelectedRow() , 5);
                 model.setValueAt(p.getQuantity(),table.getSelectedRow() , 6);
              }
+             
          }
      };
 
      table.fixTable(jScrollPane1);
      for(Product p: Dashboard.store.getProductList()){
-         table.addRow(p.toRowTable(productEventAction));
+         switch (category) {
+             case "tops":
+                 if(p.getClass().toString().contains("Shirt")){
+                     table.addRow(p.toRowTable(productEventAction));
+                 }   break;
+             case "bottoms":
+                 if(p.getClass().toString().contains("Pant")){
+                     table.addRow(p.toRowTable(productEventAction));
+                 }   break;
+             case "shoes":
+                 if(p.getClass().toString().contains("Shoes")){
+                     table.addRow(p.toRowTable(productEventAction));
+                 }   break;
+             default:
+                 break;
+         }
      }
   }
     /**
@@ -105,6 +120,7 @@ public class Form_Product extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javaswingdev.swing.table.Table();
         searchField = new swing.TextFieldAnimation();
+        addProdBtn = new javaswingdev.swing.Button();
 
         setBackground(new java.awt.Color(243, 243, 243));
 
@@ -148,9 +164,18 @@ public class Form_Product extends javax.swing.JPanel {
 
         searchField.setForeground(new java.awt.Color(153, 153, 153));
         searchField.setAnimationColor(new java.awt.Color(87, 97, 174));
-        searchField.addActionListener(new java.awt.event.ActionListener() {
+        searchField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                searchFieldFocusGained(evt);
+            }
+        });
+
+        addProdBtn.setBackground(new java.awt.Color(87, 97, 174));
+        addProdBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addProdBtn.setText("ADD ");
+        addProdBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchFieldActionPerformed(evt);
+                addProdBtnActionPerformed(evt);
             }
         });
 
@@ -159,26 +184,56 @@ public class Form_Product extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(addProdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
-                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addProdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addProdBtnActionPerformed(java.awt.event.ActionEvent evt) {        
+        switch (category) {
+             case "tops":
+                 ShirtInfo form = new ShirtInfo(Dashboard.getFrames()[0], true);
+                 form.setVisible(true);
+                 if(form.isOk()){
+                     table.addRow(form.getShirt().toRowTable(productEventAction)); 
+                 }
+                 break;
+             case "bottoms":
+                 PantInfo pantForm = new PantInfo(Dashboard.getFrames()[0], true);
+                 pantForm.setVisible(true);
+                 if(pantForm.isOk()){
+                     table.addRow(pantForm.getPant().toRowTable(productEventAction)); 
+                 }
+                 break;
+             case "shoes":
+                 ShoesInfo shoesForm = new ShoesInfo(Dashboard.getFrames()[0], true);
+                 shoesForm.setVisible(true);
+                 if(shoesForm.isOk()){
+                     table.addRow(shoesForm.getShoes().toRowTable(productEventAction)); 
+                 }
+                 break;
+             default:
+                 break;
+         }
+    }
     
     private void SortFilter(){
       rowSorter = new TableRowSorter<>(table.getModel());
@@ -213,21 +268,24 @@ public class Form_Product extends javax.swing.JPanel {
             
     });
 }
-      
-    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+    
+    private void searchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusGained
         String text = searchField.getText();
        if (text.trim().length() == 0) {
             rowSorter.setRowFilter(null);
        } else {
              rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-       }    
-    }//GEN-LAST:event_searchFieldActionPerformed
+       }  
+    }//GEN-LAST:event_searchFieldFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javaswingdev.swing.Button addProdBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javaswingdev.swing.RoundPanel roundPanel1;
     private swing.TextFieldAnimation searchField;
     private javaswingdev.swing.table.Table table;
     // End of variables declaration//GEN-END:variables
+
+    private ProductEventAction productEventAction;
 }
