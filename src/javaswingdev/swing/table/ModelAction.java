@@ -9,6 +9,10 @@ public class ModelAction {
     private Product product;
     private ProductEventAction productEvent;
 
+    private Shift shift;
+    private ShiftEventAction shiftEvent;
+    
+
     public Staff getStaff() {
         return staff;
     }
@@ -65,6 +69,26 @@ public class ModelAction {
         this.event = event;
     }
 
+    public Shift getShift() {
+        return shift;
+    }
+
+    public void setShift(Shift st) {
+        this.shift = st;
+    }
+
+    public ShiftEventAction getShiftEvent() {
+        return shiftEvent;
+    }
+
+    public void setShiftEvent(ShiftEventAction shiftevent) {
+        this.shiftEvent = shiftevent;
+    }
+    public ModelAction(Shift shift, ShiftEventAction shiftEvent) {
+        this.shift = shift;
+        this.shiftEvent = shiftEvent;
+    }
+    
     public ModelAction() {
     }
 
