@@ -22,7 +22,8 @@ public class Store  {
     public static int maxProductId=0;
     public JSONArray jStaffList;
     private final ArrayList<Product> productList;
-    
+    public ArrayList<Shift> shiftList;
+    public static int maxShiftId=0;
 //  Default initiate
     public Store(){
         productList = new ArrayList<>();
@@ -45,6 +46,14 @@ public class Store  {
         productList.add(new Shoes(17, "Ultraboost 5.0 DNA", 2990000, "Adidas", "Giày", "Giày chạy thể thao", 1, 26.7));
         productList.add(new Pant(18, "Jeans Bermuda", 434000, "Boo", "Quần Jeans", "Quần regular form", 18, 101, 42, 51));
         maxProductId = productList.size() + 1;
+        
+        shiftList = new ArrayList<>();
+        shiftList.add(new Shift(1, "06:00:00", "09:00:00", 3));
+        shiftList.add(new Shift(2, "09:00:00", "12:00:00", 3));
+        shiftList.add(new Shift(3, "12:00:00", "15:00:00", 3));
+        shiftList.add(new Shift(4, "15:00:00", "18:00:00", 3));
+        
+        
     }
    // ***********************************************************************add new object
   public boolean addStaff(String name, String phone , String gender, String rate, String strDate){
@@ -308,4 +317,39 @@ public class Store  {
               }
           }
     }
+
+   public ArrayList<Shift> getShiftList(){
+      return shiftList;
+  }
+  
+  public void addShift(Shift newShift){
+        shiftList.add(newShift);
+    }
+  
+  public Shift getShift(int id){
+        for(Shift p: shiftList){
+            if(p.getShiftId() == id){
+                return p;
+            }
+        }
+        return null;
+    } 
+  public void deleteShift(int id){
+        for (int i = 0; i < shiftList.size(); i++){
+              if(shiftList.get(i).getShiftId() == id){
+                  shiftList.remove(i);
+                  System.out.println("remove done");
+              }
+          }
+    }
+  public void updateShift(Shift s, int id,
+            String startTime,
+            String endTime
+            ){
+      
+      s.setShiftId(id);
+      s.setStartTime(startTime);
+      s.setEndTime(endTime);
+  }
+  
 }   
