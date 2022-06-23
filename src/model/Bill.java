@@ -6,6 +6,8 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javaswingdev.swing.table.ModelAction;
+import javaswingdev.swing.table.BillEventAction;
 
 /**
  *
@@ -76,5 +78,9 @@ public class Bill {
     public void addOrder(Product product, int id, int quantity) {
         Order order = new Order(id, product, quantity, quantity * product.getProductPrice());
         this.orderList.add(order);
+    }
+    
+    public Object[] toRowTable(BillEventAction event) {
+        return new Object[]{billId, date, staff.getName(), totalCost, new ModelAction(this, event)};
     }
 }

@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package javaswingdev.main;
+import java.awt.Color;
 import model.Bill;
-import model.Product;
+import model.Order;
 import java.util.Date;
 import java.text.DateFormat;  
 import java.text.SimpleDateFormat; 
@@ -21,8 +22,34 @@ public class Billing extends javax.swing.JFrame {
     /**
      * Creates new form Billing
      */
+    public Bill getBill() {
+        return bill;
+    }
     
-    public Billing() {
+    public Order getOrder() {
+        return order;
+    }
+    
+    public void setBill(Bill bill) {
+        this.bill = bill;
+    }
+    
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+    
+    public boolean isOk() {
+        return ok;
+    }
+
+    public void setOk(boolean ok) {
+        this.ok = ok;
+    }
+    private boolean ok;
+    private Bill bill;
+    private Order order;
+    
+    public Billing(java.awt.Frame parent, boolean modal) {
         initComponents();
     }
     
@@ -40,24 +67,22 @@ public class Billing extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        Time = new javax.swing.JLabel();
+        Date = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        productId = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        productName = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        productPrice = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        quantity = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        description = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -69,7 +94,12 @@ public class Billing extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jLabel22 = new javax.swing.JLabel();
+        Staff = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table1 = new javaswingdev.swing.table.Table();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -88,15 +118,15 @@ public class Billing extends javax.swing.JFrame {
         jLabel3.setText("Date:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(571, 15, 100, -1));
 
-        jLabel4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Time:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(571, 61, 100, -1));
+        Time.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        Time.setForeground(new java.awt.Color(0, 0, 0));
+        Time.setText("Time:");
+        getContentPane().add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(571, 61, 100, -1));
 
-        jLabel5.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("jLabel5");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(646, 15, 100, -1));
+        Date.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        Date.setForeground(new java.awt.Color(0, 0, 0));
+        Date.setText("jLabel5");
+        getContentPane().add(Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(646, 15, 100, -1));
 
         jLabel6.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -105,7 +135,8 @@ public class Billing extends javax.swing.JFrame {
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 124, 956, 10));
 
         jLabel7.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        jLabel7.setText("Buyer detail: ");
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Bill detail: ");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 140, -1, 24));
 
         jLabel12.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
@@ -113,60 +144,49 @@ public class Billing extends javax.swing.JFrame {
         jLabel12.setText("ProductID");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 60, 30));
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        productId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                productIdActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 54, -1));
+        getContentPane().add(productId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 54, -1));
 
         jLabel13.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Product");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 48, 30));
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 200, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 48, 30));
+
+        productName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productNameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(productName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 200, -1));
 
         jLabel14.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("Rate");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 48, 30));
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 80, -1));
+        jLabel14.setText("Price");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 48, 30));
+        getContentPane().add(productPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 80, -1));
 
         jLabel15.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Quantity");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 48, 30));
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 72, -1));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 48, 30));
+
+        quantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quantityActionPerformed(evt);
+            }
+        });
+        getContentPane().add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 72, -1));
 
         jLabel16.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("Desc");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 48, 30));
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 200, -1));
+        jLabel16.setText("Brand");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 48, 30));
+        getContentPane().add(description, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 200, -1));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 307, 962, -1));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Product", "Description", "Rate", "Quantity", "Total"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Double.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, 207));
 
         jLabel17.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
@@ -203,56 +223,77 @@ public class Billing extends javax.swing.JFrame {
         jButton4.setText("ADD");
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 73, -1));
 
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/billing background.png"))); // NOI18N
-        jLabel22.setText("jLabel22");
-        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, -110, 1630, 770));
+        Staff.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        Staff.setForeground(new java.awt.Color(0, 0, 0));
+        Staff.setText("Staff:");
+        Staff.setDoubleBuffered(true);
+        Staff.setFocusTraversalPolicyProvider(true);
+        getContentPane().add(Staff, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, -1, -1));
+
+        jLabel8.setText("jLabel8");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, -1, -1));
+
+        table1.setBackground(new java.awt.Color(255, 0, 102));
+        table1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Id", "Product", "Cost", "Quantity", "Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Float.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        table1.setRowHeight(25);
+        jScrollPane2.setViewportView(table1);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, 150));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/billing background.png"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -200, 2020, 940));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        int product_id = Integer.valueOf(jTextField5.getText());
+    private void productIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productIdActionPerformed
+        int product_id = Integer.valueOf(productId.getText());
         
         
         
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_productIdActionPerformed
+
+    private void productNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_productNameActionPerformed
+
+    private void quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_quantityActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Billing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Billing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Billing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Billing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Billing().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Date;
+    private javax.swing.JLabel Staff;
+    private javax.swing.JLabel Time;
+    private javax.swing.JTextField description;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -268,23 +309,22 @@ public class Billing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField productId;
+    private javax.swing.JTextField productName;
+    private javax.swing.JTextField productPrice;
+    private javax.swing.JTextField quantity;
+    private javaswingdev.swing.table.Table table1;
     // End of variables declaration//GEN-END:variables
 }

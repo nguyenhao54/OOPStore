@@ -12,6 +12,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import java.util.Date;
+import java.time.LocalDate;
+import java.time.Month;
 import java.text.SimpleDateFormat;  
 import model.*;
 
@@ -22,6 +24,8 @@ public class Store  {
     public static int maxProductId=0;
     public JSONArray jStaffList;
     private final ArrayList<Product> productList;
+    private final ArrayList<Order> orderList;
+    private final ArrayList<Bill> billList;
     
 //  Default initiate
     public Store(){
@@ -45,6 +49,44 @@ public class Store  {
         productList.add(new Shoes(17, "Ultraboost 5.0 DNA", 2990000, "Adidas", "Giày", "Giày chạy thể thao", 1, 26.7));
         productList.add(new Pant(18, "Jeans Bermuda", 434000, "Boo", "Quần Jeans", "Quần regular form", 18, 101, 42, 51));
         maxProductId = productList.size() + 1;
+        
+        orderList = new ArrayList<>();
+        Product tempProduct = this.getProductById(productList, 1);
+        orderList.add(new Order(1, tempProduct, 2, tempProduct.getProductPrice() * 2));
+        tempProduct = this.getProductById(productList, 2);
+        orderList.add(new Order(2, tempProduct, 2, tempProduct.getProductPrice() * 1));
+        tempProduct = this.getProductById(productList, 4);
+        orderList.add(new Order(3, tempProduct, 2, tempProduct.getProductPrice() * 4));
+        tempProduct = this.getProductById(productList, 10);
+        orderList.add(new Order(4, tempProduct, 2, tempProduct.getProductPrice() * 2));
+        tempProduct = this.getProductById(productList, 5);
+        orderList.add(new Order(5, tempProduct, 2, tempProduct.getProductPrice() * 1));
+        
+        readStaff();
+        billList = new ArrayList<>();
+        ArrayList orders = new ArrayList<>();
+        orders.add(orderList.get(0));
+        orders.add(orderList.get(1));
+        billList.add(new Bill(1, this.findStaff(1), orders, LocalDate.of(2014, Month.FEBRUARY, 27)));
+        orders.removeAll(orders);
+        orders.add(orderList.get(2));
+        billList.add(new Bill(2, this.findStaff(1), orders, LocalDate.of(2014, Month.FEBRUARY, 23)));
+        orders.removeAll(orders);
+        orders.add(orderList.get(3));
+        billList.add(new Bill(3, this.findStaff(1), orders, LocalDate.of(2014, Month.FEBRUARY, 28)));
+        orders.removeAll(orders);
+        orders.add(orderList.get(3));
+        orders.add(orderList.get(4));
+        billList.add(new Bill(4, this.findStaff(1), orders, LocalDate.of(2014, Month.FEBRUARY, 28)));
+        orders.removeAll(orders);
+    }
+    public Product getProductById(ArrayList<Product> productList, int id) {
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getProductId() == id) {
+                return productList.get(i);
+            }
+        }
+        return null;
     }
    // ***********************************************************************add new object
   public boolean addStaff(String name, String phone , String gender, String rate, String strDate){
@@ -206,7 +248,20 @@ public class Store  {
     }
     return false;
   } 
-    
+  
+  // ****************************************************************************** Bill part
+  public ArrayList<Bill> getBillList() {
+      return billList;
+  }
+  
+  public void deleteBill(int id){
+        for (int i = 0; i < billList.size(); i++){
+              if(billList.get(i).getBillId() == id){
+                  billList.remove(i);
+                  System.out.println("remove done");
+              }
+          }
+    }
 
   // ****************************************************************************** Product part
   public ArrayList<Product> getProductList(){

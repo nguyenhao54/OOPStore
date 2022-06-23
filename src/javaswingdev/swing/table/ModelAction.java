@@ -8,6 +8,9 @@ public class ModelAction {
     
     private Product product;
     private ProductEventAction productEvent;
+    
+    private Bill bill;
+    private BillEventAction billEvent;
 
     public Staff getStaff() {
         return staff;
@@ -63,6 +66,23 @@ public class ModelAction {
     public ModelAction(Staff staff, EventAction event) {
         this.staff=staff;
         this.event = event;
+    }
+    
+    public void setBill(Bill bill) {
+        this.bill = bill;
+    }
+    
+    public Bill getBill() {
+        return bill;
+    }
+    
+    public BillEventAction getBillEvent() {
+        return billEvent;
+    }
+    
+    public ModelAction(Bill bill, BillEventAction event) {
+        this.bill=bill;
+        this.billEvent = event;
     }
 
     public ModelAction() {
