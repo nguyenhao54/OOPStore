@@ -3,29 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalTime;
+import javaswingdev.swing.table.ProductEventAction;
+
 /**
  *
  * @author Duc Anh.Nguyen
  */
 public class Shift {
     int shiftId;
-    LocalDateTime startTime;
-    LocalDateTime endTime;
+    LocalTime startTime;
+    LocalTime endTime;
     double hour;
     public Shift(int shiftId, String startTime, String endTime, double hour)
             {
-                this.shiftId = shiftId;
-                this.startTime = LocalDateTime.parse(startTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-                this.endTime = LocalDateTime.parse(endTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+                this.shiftId = shiftId; 
+                this.startTime = LocalTime.parse(startTime);
+                this.endTime = LocalTime.parse(endTime);
                 this.hour = hour;
             }
-    public LocalDateTime getStartTime()
+    public LocalTime getStartTime()
         {
                return startTime;
         }
-    public LocalDateTime getEndTime()
+    public LocalTime getEndTime()
         {
                return endTime;
         }
@@ -37,12 +38,23 @@ public class Shift {
         {
             return hour;    
         }
-    public void setStartTime(LocalDateTime startTime)
+    public void setStartTime(String startTime)
         {
-            this.startTime = startTime;
+            this.startTime = LocalTime.parse(startTime);
         }
-    public void setEndTime(LocalDateTime endTime)
+    public void setEndTime(String endTime)
         {
-            this.endTime = endTime;
+            this.endTime = LocalTime.parse(endTime);
         }
+    public void setShiftId(int shiftId)
+        {
+            this.shiftId = shiftId;    
+        }
+    public void getHour(double hour)
+        {
+            this.hour = hour;    
+        }
+    public Object[] toRowTable(ProductEventAction shiftEventAction) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
