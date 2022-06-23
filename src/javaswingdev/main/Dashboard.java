@@ -4,11 +4,13 @@ import storepkg.Store;
 import java.awt.Component;
 import javaswingdev.form.*;
 import javaswingdev.menu.EventMenuSelected;
+import model.Staff;
 
 public class Dashboard extends javax.swing.JFrame {
     
     private static Dashboard main;
     public static Store store=new Store();
+ 
     public Dashboard() {
         initComponents();
         init();
@@ -53,6 +55,9 @@ public class Dashboard extends javax.swing.JFrame {
                      showForm(new Form_SingleProduct("bottoms"));
                  }else if(index == 4 && indexSubMenu == 4){
                      showForm(new Form_SingleProduct("shoes"));
+                 }
+                 else if(index == 3 && indexSubMenu == 1){
+                     showForm(new Form_Salary());
                  }
                 else{
                     showForm(new Form_Empty(index + " " + indexSubMenu));

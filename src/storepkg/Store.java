@@ -22,7 +22,8 @@ public class Store  {
     public static int maxProductId=0;
     public JSONArray jStaffList;
     private final ArrayList<Product> productList;
-    
+    public ArrayList<Staff> staffList;
+ 
 //  Default initiate
     public Store(){
         productList = new ArrayList<>();
@@ -45,9 +46,24 @@ public class Store  {
         productList.add(new Shoes(17, "Ultraboost 5.0 DNA", 2990000, "Adidas", "Giày", "Giày chạy thể thao", 1, 26.7));
         productList.add(new Pant(18, "Jeans Bermuda", 434000, "Boo", "Quần Jeans", "Quần regular form", 18, 101, 42, 51));
         maxProductId = productList.size() + 1;
+
+        staffList = new ArrayList<>();
+        staffList.add(new Staff(1, "Hoang", "male", "134892", 1.2, new Date()));
+        staffList.add(new Staff(1, "Hoang Duc Thien", "male", "134892", 1.2,new Date()));
+        staffList.add(new Staff(1, "Hoang", "female", "134892", 1.2,new Date()));
+        staffList.add(new Staff(1, "Hoang uc", "male", "134892", 1.9,new Date()));
+        staffList.add(new Staff(1, "Hoang Thien", "male", "134892", 1.2,new Date()));
+        staffList.add(new Staff(1, "Hoang Quat", "male", "134892", 1.8,new Date()));
+        staffList.add(new Staff(1, "Hoang Thien", "male", "134892", 1.2,new Date()));
+        staffList.add(new Staff(1, "Hoang", "male", "134892", 1.6,new Date()));
+        
     }
    // ***********************************************************************add new object
-  public boolean addStaff(String name, String phone , String gender, String rate, String strDate){
+    public ArrayList<Staff> getSalaryList(){
+      return staffList;
+  }
+  
+    public boolean addStaff(String name, String phone , String gender, String rate, String strDate){
         readStaff();
         if(findStaff(phone)==null){
         JSONObject staffDetails = new JSONObject();

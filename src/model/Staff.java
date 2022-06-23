@@ -13,7 +13,6 @@ import javaswingdev.swing.table.ModelAction;
 import java.util.ArrayList;
 import java.util.Date;
 public class Staff {
-
     /**
      * @return the birthDate
      */
@@ -41,12 +40,8 @@ public class Staff {
         this.gender = gender;
         this.phone = phone;
         this.rate = rate;
-        this.birthDate=birthDate;
+        //this.birthDate=birthDate;
     }
-
-    public Staff() {
-    }
-    
     public int getStaffId() {
         return staffId;
     }
@@ -95,20 +90,25 @@ public class Staff {
             {
                 this.workedShifts = workedShifts;
             }
-    double workedHour;
-    void getWorkedHour()
-    {
+    public double getWorkedHour(){
+    double workedHour = 0;
+    
         for(Shift i : workedShifts)
         {
             workedHour += i.hour;
         }
+        return workedHour;
     }
+    
     public double getSalary() {
-	return workedHour*rate;
+	return getWorkedHour()*rate+1000000;
 }
 
     public Object[] toRowTable(EventAction event) {
       
         return new Object[]{staffId, name, gender, phone, rate, new ModelAction(this, event)};
+    }
+    public Object[] toRowSalaryTable() {
+        return new Object[]{staffId, name, "role", rate, 1000000, 0, 0};
     }
 }

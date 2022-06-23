@@ -13,7 +13,7 @@ public class Manager extends Staff{
     double bonus;
     public Manager()
             {
-                super();
+                super(1, "Hoang", "male", "134892", 1.2, new Date());
             }
     public Manager( int id,String name, String gender, String phone, double rate, Date date )
             {
@@ -21,7 +21,7 @@ public class Manager extends Staff{
             }
     @Override
     public double getSalary() {
-	return workedHour*rate + bonus;
+	return getWorkedHour()*rate + bonus;
 }
 
 }
