@@ -75,11 +75,11 @@ public class Form_Shift extends javax.swing.JPanel {
 
             },
             new String [] {
-                "#", "Name", "Email", "Position", "Date Join"
+                "shifftId", "startTime", "endTime", "hour"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                true, true, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
