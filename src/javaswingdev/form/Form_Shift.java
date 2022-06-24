@@ -22,8 +22,10 @@ import model.*;
         table.fixTable(jScrollPane1);
     }
          private Shift showUpdateForm(Shift shift){
-        
-        return null;
+        ShiftInfo form = new ShiftInfo(Dashboard.getFrames()[0], true);
+            form.setOk(true);
+            form.showInfo(shift);
+            return form.getShift();
     }
          private void initTable() {
      ShiftEventAction shiftEventAction = new ShiftEventAction() {
