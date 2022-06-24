@@ -43,18 +43,32 @@ import model.*;
          }
          @Override
          public void update(Shift shift) {
-             Shift p = showUpdateForm(shift);
-             if(p != null){
-//               update table row
-                 model =(DefaultTableModel) table.getModel();
-                model.setValueAt(p.getShiftId(),table.getSelectedRow() , 0);
-                model.setValueAt(p.getStartTime(),table.getSelectedRow() , 1);
-                model.setValueAt(p.getEndTime(),table.getSelectedRow() , 2);
-                model.setValueAt(p.getHour(),table.getSelectedRow() , 3);
-            
-             }
-         }
-    };
+                 ShiftInfo obj= new ShiftInfo(Dashboard.getFrames()[0], true);
+                 obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
+                 obj.setShift(shift);
+                 obj.showInfo(shift);
+                 if (obj.isOk()) {
+                   Message msg=new Message();
+                   if(obj.isOk()){
+                   model =(DefaultTableModel) table.getModel();
+                   model.setValueAt(obj.getShift().getShiftId(),table.getSelectedRow() , 0);
+                   model.setValueAt(obj.getShift().getEndTime(),table.getSelectedRow() , 1);
+                   model.setValueAt(obj.getShift().getStartTime(),table.getSelectedRow() , 2);
+                   model.setValueAt(obj.getShift().getHour(),table.getSelectedRow() , 3);
+              
+
+                   msg.showDialog("Update shift"+shift.getShiftId()+" successfully!","blue");
+                   }
+                   else 
+                   msg.showDialog("Update shift"+shift.getShiftId()+" failed! Please try again","red");
+                   }    
+                   
+                 else {
+                    System.out.println("User click Cancel");
+                }
+                  
+            }
+        };
      table.fixTable(jScrollPane1);
      for(Shift p: Dashboard.store.getShiftList()){
          table.addRow(p.toRowTable(shiftEventAction));
@@ -67,10 +81,10 @@ import model.*;
 
 
  
-//     table.addRow(new Staff(1, "Bora", "Male", "33431232244", 300).toRowTable(eventAction));
-//        table.addRow(new Staff(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
-//        table.addRow(new Staff(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
-//        table.addRow(new Staff(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
+//     table.addRow(new Shift(1, "Bora", "Male", "33431232244", 300).toRowTable(eventAction));
+//        table.addRow(new Shift(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
+//        table.addRow(new Shift(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
+//        table.addRow(new Shift(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
   
     /**
      * This method is called from within the constructor to initialize the form.
