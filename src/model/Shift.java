@@ -51,10 +51,7 @@ public class Shift {
         {
             this.shiftId = shiftId;    
         }
-    public void getHour(double hour)
-        {
-            this.hour = hour;    
-        }
+   
     public Object[] toRowTable(ShiftEventAction shiftEvent) {
         return new Object[]{shiftId, startTime, endTime, hour, new ModelAction(this, shiftEvent)};
     }
