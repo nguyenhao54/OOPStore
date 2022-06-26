@@ -1,54 +1,91 @@
 
 package javaswingdev.form;
-import javaswingdev.main.StaffInfo;
 import javaswingdev.main.Dashboard;
 import javaswingdev.swing.table.EventAction;
-import model.Staff;
-import swing.MessageDialog;
+import javaswingdev.main.*;
+import javaswingdev.swing.table.ShiftEventAction;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import model.*;
+
+        public class Form_Shift extends javax.swing.JPanel {
+            private DefaultTableModel model;
+            public Form_Shift() {
+        initComponents();
+        
+        initTable();
+        
+        table.fixTable(jScrollPane1);
+    }
+         private Shift showUpdateForm(Shift shift){
+        ShiftInfo form = new ShiftInfo(Dashboard.getFrames()[0], true);
+            form.setOk(true);
+            form.showInfo(shift);
+            return form.getShift();
+    }
+         private void initTable() {
+     ShiftEventAction shiftEventAction = new ShiftEventAction() {
+         @Override
+         public void delete(Shift shift) {
+             Message msg=new Message();
+             if(msg.showMessage("Delete Shift : " + shift.getShiftId())){
+                 Dashboard.store.deleteShift(shift.getShiftId());
+                 model =(DefaultTableModel) table.getModel();
+                 model.removeRow(table.getSelectedRow());
+                 msg.showDialog("Delete Shift Id " + shift.getShiftId()+" Successfully!","red");
+             }else {
+                    System.out.println("User click Cancel");
+                }
+         }
+         @Override
+         public void update(Shift shift) {
+                 ShiftInfo obj= new ShiftInfo(Dashboard.getFrames()[0], true);
+                 obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
+                 obj.setShift(shift);
+                 obj.showInfo(shift);
+                 if (obj.isOk()) {
+                   Message msg=new Message();
+                   if(obj.isOk()){
+                   model =(DefaultTableModel) table.getModel();
+                   model.setValueAt(obj.getShift().getShiftId(),table.getSelectedRow() , 0);
+                   model.setValueAt(obj.getShift().getEndTime(),table.getSelectedRow() , 1);
+                   model.setValueAt(obj.getShift().getStartTime(),table.getSelectedRow() , 2);
+                   model.setValueAt(obj.getShift().getHour(),table.getSelectedRow() , 3);
+              
+
+                   msg.showDialog("Update shift"+shift.getShiftId()+" successfully!","blue");
+                   }
+                   else 
+                   msg.showDialog("Update shift"+shift.getShiftId()+" failed! Please try again","red");
+                   }    
+                   
+                 else {
+                    System.out.println("User click Cancel");
+                }
+                  
+            }
+        };
+     table.fixTable(jScrollPane1);
+     for(Shift p: Dashboard.store.getShiftList()){
+         table.addRow(p.toRowTable(shiftEventAction));
+     }
+  }
 /**
  *
  * @author T460S
  */
-public class Form_Shift extends javax.swing.JPanel {
 
-    public Form_Shift() {
-        initComponents();
-        initTable();
-    }
-       private boolean showMessage(String message) {
-        MessageDialog obj = new MessageDialog(Dashboard.getFrames()[0], true);
-        obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
-        obj.showMessage(message);
-        return obj.isOk();
-    }
-        public boolean showUpdateStaff(Staff staff){
-        StaffInfo obj = new StaffInfo(Dashboard.getFrames()[0], true);
-        obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
-        obj.showInfo(staff);
-        return obj.isOk();
-        }
-       private void initTable() {
-       EventAction eventAction = new EventAction() {
-            @Override
-            public void delete(Staff staff) {
-              if (showMessage("Delete Shift: " + staff.getName())) {
-                    System.out.println("User click OK");
-                } else {
-                    System.out.println("User click Cancel");
-                }
-            }
 
-            @Override
-            public void update(Staff staff) {
-                  showUpdateStaff(staff);
-            }
-                };
-        table.fixTable(jScrollPane1);
-//     table.addRow(new Staff(1, "Bora", "Male", "33431232244", 300).toRowTable(eventAction));
-//        table.addRow(new Staff(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
-//        table.addRow(new Staff(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
-//        table.addRow(new Staff(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
-  }
+ 
+//     table.addRow(new Shift(1, "Bora", "Male", "33431232244", 300).toRowTable(eventAction));
+//        table.addRow(new Shift(2, "Bora", "Male", "33436543244", 300).toRowTable(eventAction));
+//        table.addRow(new Shift(3, "Bora", "Male", "33423232344", 300).toRowTable(eventAction));
+//        table.addRow(new Shift(4, "Bora", "Male", "33333334344", 300).toRowTable(eventAction));
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,11 +112,11 @@ public class Form_Shift extends javax.swing.JPanel {
 
             },
             new String [] {
-                "#", "Name", "Email", "Position", "Date Join"
+                "shifftId", "startTime", "endTime", "hour"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                true, true, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
