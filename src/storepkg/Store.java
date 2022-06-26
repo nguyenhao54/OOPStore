@@ -76,17 +76,17 @@ public class Store  {
         ArrayList orders = new ArrayList<>();
         orders.add(orderList.get(0));
         orders.add(orderList.get(1));
-        billList.add(new Bill(1, this.findStaff(1), orders, LocalDate.of(2014, Month.FEBRUARY, 27), 1000000));
+        billList.add(new Bill(1, this.findStaff(6), orders, LocalDate.of(2014, Month.FEBRUARY, 27), 1000000));
         orders.removeAll(orders);
         orders.add(orderList.get(2));
-        billList.add(new Bill(2, this.findStaff(1), orders, LocalDate.of(2014, Month.FEBRUARY, 23), 1700000));
+        billList.add(new Bill(2, this.findStaff(6), orders, LocalDate.of(2014, Month.FEBRUARY, 23), 1700000));
         orders.removeAll(orders);
         orders.add(orderList.get(3));
-        billList.add(new Bill(3, this.findStaff(1), orders, LocalDate.of(2014, Month.FEBRUARY, 28), 1200000));
+        billList.add(new Bill(3, this.findStaff(6), orders, LocalDate.of(2014, Month.FEBRUARY, 28), 1200000));
         orders.removeAll(orders);
         orders.add(orderList.get(3));
         orders.add(orderList.get(4));
-        billList.add(new Bill(4, this.findStaff(1), orders, LocalDate.of(2014, Month.FEBRUARY, 28), 1700000));
+        billList.add(new Bill(4, this.findStaff(6), orders, LocalDate.of(2014, Month.FEBRUARY, 28), 1700000));
         orders.removeAll(orders);
     }
     public Product getProductById(ArrayList<Product> productList, int id) {
