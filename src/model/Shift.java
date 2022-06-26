@@ -4,7 +4,8 @@
  */
 package model;
 import java.time.LocalTime;
-import javaswingdev.swing.table.ProductEventAction;
+import javaswingdev.swing.table.ModelAction;
+import javaswingdev.swing.table.ShiftEventAction;
 
 /**
  *
@@ -50,11 +51,8 @@ public class Shift {
         {
             this.shiftId = shiftId;    
         }
-    public void getHour(double hour)
-        {
-            this.hour = hour;    
-        }
-    public Object[] toRowTable(ProductEventAction shiftEventAction) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+   
+    public Object[] toRowTable(ShiftEventAction shiftEvent) {
+        return new Object[]{shiftId, startTime, endTime, hour, new ModelAction(this, shiftEvent)};
     }
 }
