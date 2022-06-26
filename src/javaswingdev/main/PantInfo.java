@@ -294,7 +294,7 @@ public class PantInfo extends javax.swing.JDialog {
     }//GEN-LAST:event_okBtnActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-              ok = true;
+              ok = false;
         closeMenu();
     }//GEN-LAST:event_cancelBtnActionPerformed
 

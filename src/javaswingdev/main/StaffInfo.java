@@ -147,7 +147,7 @@ public class StaffInfo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
-      
+      ok=false;      
         closeMenu();
     }//GEN-LAST:event_button2ActionPerformed
 
