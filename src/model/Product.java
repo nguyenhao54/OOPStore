@@ -13,6 +13,7 @@ import javaswingdev.swing.table.ModelAction;
  */
 //import javaswingdev.swing.table.EventAction;
 //import javaswingdev.swing.table.ModelAction;
+import java.util.ArrayList;
 
 public class Product {
     final private int productId;
