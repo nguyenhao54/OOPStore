@@ -7,8 +7,8 @@ import java.awt.Color;
 import model.Bill;
 import model.Order;
 import java.util.Date;
-import java.text.DateFormat;  
-import java.text.SimpleDateFormat; 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import storepkg.Store;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
@@ -48,6 +48,14 @@ public class Billing extends javax.swing.JFrame {
     private boolean ok;
     private Bill bill;
     private Order order;
+//    private final Animator animator;
+//    private boolean show = true;
+    
+    public void showBillInfo() {
+        billDate.setText(bill.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        Staff.setText(bill.getStaff().getName());
+        
+    }
     
     public Billing(java.awt.Frame parent, boolean modal) {
         initComponents();
@@ -67,9 +75,7 @@ public class Billing extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        Time = new javax.swing.JLabel();
-        Date = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        billDate = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -99,10 +105,11 @@ public class Billing extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table1 = new javaswingdev.swing.table.Table();
+        jButton5 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(204, 204, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/billing.png"))); // NOI18N
@@ -118,20 +125,10 @@ public class Billing extends javax.swing.JFrame {
         jLabel3.setText("Date:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(571, 15, 100, -1));
 
-        Time.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        Time.setForeground(new java.awt.Color(0, 0, 0));
-        Time.setText("Time:");
-        getContentPane().add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(571, 61, 100, -1));
-
-        Date.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        Date.setForeground(new java.awt.Color(0, 0, 0));
-        Date.setText("jLabel5");
-        getContentPane().add(Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(646, 15, 100, -1));
-
-        jLabel6.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("jLabel6");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(646, 61, 100, -1));
+        billDate.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        billDate.setForeground(new java.awt.Color(0, 0, 0));
+        billDate.setText("jLabel5");
+        getContentPane().add(billDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(646, 15, 100, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 124, 956, 10));
 
         jLabel7.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
@@ -142,50 +139,50 @@ public class Billing extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("ProductID");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 60, 30));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 60, 30));
 
         productId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 productIdActionPerformed(evt);
             }
         });
-        getContentPane().add(productId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 54, -1));
+        getContentPane().add(productId, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 54, -1));
 
         jLabel13.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Product");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 48, 30));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 48, 30));
 
         productName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 productNameActionPerformed(evt);
             }
         });
-        getContentPane().add(productName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 200, -1));
+        getContentPane().add(productName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 200, -1));
 
         jLabel14.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Price");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 48, 30));
-        getContentPane().add(productPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 80, -1));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 48, 30));
+        getContentPane().add(productPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 200, -1));
 
         jLabel15.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Quantity");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 48, 30));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, 48, 30));
 
         quantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quantityActionPerformed(evt);
             }
         });
-        getContentPane().add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 72, -1));
+        getContentPane().add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 72, -1));
 
         jLabel16.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Brand");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 48, 30));
-        getContentPane().add(description, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 200, -1));
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 48, 30));
+        getContentPane().add(description, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 200, -1));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 307, 962, -1));
 
         jLabel17.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
@@ -228,7 +225,7 @@ public class Billing extends javax.swing.JFrame {
         Staff.setText("Staff:");
         Staff.setDoubleBuffered(true);
         Staff.setFocusTraversalPolicyProvider(true);
-        getContentPane().add(Staff, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, -1, -1));
+        getContentPane().add(Staff, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
 
         jLabel8.setText("jLabel8");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, -1, -1));
@@ -236,22 +233,22 @@ public class Billing extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("jLabel4");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, -1, -1));
 
         table1.setBackground(new java.awt.Color(255, 0, 102));
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Product", "Cost", "Quantity", "Total"
+                "Id", "Product", "Cost", "Quantity", "Total", "Action"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -263,9 +260,12 @@ public class Billing extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, 150));
 
+        jButton5.setText("Find product");
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
+
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/billing background.png"))); // NOI18N
         jLabel5.setText("jLabel5");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -200, 2020, 940));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -290,14 +290,14 @@ public class Billing extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Date;
     private javax.swing.JLabel Staff;
-    private javax.swing.JLabel Time;
+    private javax.swing.JLabel billDate;
     private javax.swing.JTextField description;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -312,7 +312,6 @@ public class Billing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;

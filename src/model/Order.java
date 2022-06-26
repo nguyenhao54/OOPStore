@@ -4,6 +4,9 @@
  */
 package model;
 
+import javaswingdev.swing.table.OrderEventAction;
+import javaswingdev.swing.table.ModelAction;
+
 /**
  *
  * @author Duc Anh.Nguyen
@@ -55,5 +58,9 @@ public class Order {
     
     public void setProduct(Product product) {
         this.orderProduct = product;
+    }
+    
+    public Object[] toRowTable(OrderEventAction event) {
+        return new Object[]{orderId, orderProduct, orderCost, orderQuantity, new ModelAction(this, event)};
     }
 }

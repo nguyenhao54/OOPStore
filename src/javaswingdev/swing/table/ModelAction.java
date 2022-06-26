@@ -11,6 +11,9 @@ public class ModelAction {
     
     private Bill bill;
     private BillEventAction billEvent;
+    
+    private Order order;
+    private OrderEventAction orderEvent;
 
     public Staff getStaff() {
         return staff;
@@ -83,6 +86,23 @@ public class ModelAction {
     public ModelAction(Bill bill, BillEventAction event) {
         this.bill=bill;
         this.billEvent = event;
+    }
+    
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+    
+    public Order getOrder() {
+        return order;
+    }
+    
+    public OrderEventAction getOrderEvent() {
+        return orderEvent;
+    }
+    
+    public ModelAction(Order order, OrderEventAction event) {
+        this.order=order;
+        this.orderEvent = event;
     }
 
     public ModelAction() {

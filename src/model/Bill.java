@@ -19,8 +19,9 @@ public class Bill {
     private ArrayList<Order> orderList;
     private LocalDate date;
     private double totalCost;
+    private double paid;
     
-    public Bill(int id, Staff staff, ArrayList<Order> orderList, LocalDate date) {
+    public Bill(int id, Staff staff, ArrayList<Order> orderList, LocalDate date, double paid) {
         this.billId = id;
         this.staff = staff;
         this.orderList = orderList;
@@ -28,6 +29,7 @@ public class Bill {
         for (Order order : orderList) {
             this.totalCost += order.getCost();
         }
+        this.paid = paid;
     }
     
     public int getBillId() {
@@ -49,6 +51,10 @@ public class Bill {
         }
         this.totalCost = sum;
         return this.totalCost;
+    }
+    
+    public double getPaid() {
+        return this.paid;
     }
     
     public ArrayList<Order> orderList() {
