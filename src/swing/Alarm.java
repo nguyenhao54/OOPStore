@@ -52,11 +52,6 @@ public class Alarm extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        roundPanel1 = new javaswingdev.swing.RoundPanel();
-        jLabel1 = new javax.swing.JLabel();
-        button2 = new javaswingdev.swing.Button();
-        lblText = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(243, 243, 243));
         setFocusableWindowState(false);
@@ -64,26 +59,6 @@ public class Alarm extends javax.swing.JDialog {
         setLocation(new java.awt.Point(855, 355));
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        roundPanel1.setRound(15);
-        roundPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        roundPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 27, 93, -1));
-
-        button2.setBackground(new java.awt.Color(89, 93, 184));
-        button2.setText("OK");
-        button2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button2ActionPerformed(evt);
-            }
-        });
-        roundPanel1.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 73, -1));
-
-        lblText.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
-        lblText.setText("jLabel2");
-        roundPanel1.add(lblText, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
-
-        getContentPane().add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 359, 170));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -112,9 +87,5 @@ public class Alarm extends javax.swing.JDialog {
         animator.start();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javaswingdev.swing.Button button2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblText;
-    private javaswingdev.swing.RoundPanel roundPanel1;
     // End of variables declaration//GEN-END:variables
 }
