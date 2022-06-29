@@ -28,6 +28,7 @@ public class Store  {
     public static int maxShiftId=0;
     private final ArrayList<Order> orderList;
     private final ArrayList<Bill> billList;
+    public ArrayList<Staff> staffList;
     
 //  Default initiate
     public Store(){
@@ -88,6 +89,16 @@ public class Store  {
         orders.add(orderList.get(4));
         billList.add(new Bill(4, this.findStaff(6), orders, LocalDate.of(2014, Month.FEBRUARY, 28), 1700000));
         orders.removeAll(orders);
+        
+        staffList = new ArrayList<>();
+        staffList.add(new Staff(1, "Hoang", "male", "134892", 1.2, new Date()));
+        staffList.add(new Staff(1, "Hoang Duc Thien", "male", "134892", 1.2,new Date()));
+        staffList.add(new Staff(1, "Hoang", "female", "134892", 1.2,new Date()));
+        staffList.add(new Staff(1, "Hoang uc", "male", "134892", 1.9,new Date()));
+        staffList.add(new Staff(1, "Hoang Thien", "male", "134892", 1.2,new Date()));
+        staffList.add(new Staff(1, "Hoang Quat", "male", "134892", 1.8,new Date()));
+        staffList.add(new Staff(1, "Hoang Thien", "male", "134892", 1.2,new Date()));
+        staffList.add(new Staff(1, "Hoang", "male", "134892", 1.6,new Date()));
     }
     public Product getProductById(ArrayList<Product> productList, int id) {
         for (int i = 0; i < productList.size(); i++) {
@@ -98,6 +109,9 @@ public class Store  {
         return null;
     }
    // ***********************************************************************add new object
+     public ArrayList<Staff> getSalaryList(){
+      return staffList;
+  }
   public boolean addStaff(String name, String phone , String gender, String rate, String strDate){
         readStaff();
         if(findStaff(phone)==null){
