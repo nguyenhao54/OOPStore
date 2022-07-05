@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package storepkg;
 import java.util.ArrayList;
 import java.io.FileWriter;
@@ -24,8 +20,11 @@ public class Store  {
     public static int maxProductId=0;
     public JSONArray jStaffList;
     private final ArrayList<Product> productList;
+    public ArrayList<Shift> shiftList;
+    public static int maxShiftId=0;
     private final ArrayList<Order> orderList;
     private final ArrayList<Bill> billList;
+    public ArrayList<Staff> staffList;
     
 //  Default initiate
     public Store(){
@@ -50,6 +49,13 @@ public class Store  {
         productList.add(new Pant(18, "Jeans Bermuda", 434000, "Boo", "Quần Jeans", "Quần regular form", 18, 101, 42, 51));
         maxProductId = productList.size() + 1;
         
+        shiftList = new ArrayList<>();
+        shiftList.add(new Shift(1, "06:00:00", "09:00:00", 3));
+        shiftList.add(new Shift(2, "09:00:00", "12:00:00", 3));
+        shiftList.add(new Shift(3, "12:00:00", "15:00:00", 3));
+        shiftList.add(new Shift(4, "15:00:00", "18:00:00", 3));
+        
+        
         orderList = new ArrayList<>();
         Product tempProduct = this.getProductById(productList, 1);
         orderList.add(new Order(1, tempProduct, 2, tempProduct.getProductPrice() * 2));
@@ -67,18 +73,28 @@ public class Store  {
         ArrayList orders = new ArrayList<>();
         orders.add(orderList.get(0));
         orders.add(orderList.get(1));
-        billList.add(new Bill(1, this.findStaff(1), orders, LocalDate.of(2014, Month.FEBRUARY, 27), 1000000));
+        billList.add(new Bill(1, this.findStaff(6), orders, LocalDate.of(2014, Month.FEBRUARY, 27), 1000000));
         orders.removeAll(orders);
         orders.add(orderList.get(2));
-        billList.add(new Bill(2, this.findStaff(1), orders, LocalDate.of(2014, Month.FEBRUARY, 23), 1700000));
+        billList.add(new Bill(2, this.findStaff(6), orders, LocalDate.of(2014, Month.FEBRUARY, 23), 1700000));
         orders.removeAll(orders);
         orders.add(orderList.get(3));
-        billList.add(new Bill(3, this.findStaff(1), orders, LocalDate.of(2014, Month.FEBRUARY, 28), 1200000));
+        billList.add(new Bill(3, this.findStaff(6), orders, LocalDate.of(2014, Month.FEBRUARY, 28), 1200000));
         orders.removeAll(orders);
         orders.add(orderList.get(3));
         orders.add(orderList.get(4));
-        billList.add(new Bill(4, this.findStaff(1), orders, LocalDate.of(2014, Month.FEBRUARY, 28), 1700000));
+        billList.add(new Bill(4, this.findStaff(6), orders, LocalDate.of(2014, Month.FEBRUARY, 28), 1700000));
         orders.removeAll(orders);
+        
+        staffList = new ArrayList<>();
+        staffList.add(new Staff(1, "Hoang", "male", "134892", 1.2, new Date()));
+        staffList.add(new Staff(1, "Hoang Duc Thien", "male", "134892", 1.2,new Date()));
+        staffList.add(new Staff(1, "Hoang", "female", "134892", 1.2,new Date()));
+        staffList.add(new Staff(1, "Hoang uc", "male", "134892", 1.9,new Date()));
+        staffList.add(new Staff(1, "Hoang Thien", "male", "134892", 1.2,new Date()));
+        staffList.add(new Staff(1, "Hoang Quat", "male", "134892", 1.8,new Date()));
+        staffList.add(new Staff(1, "Hoang Thien", "male", "134892", 1.2,new Date()));
+        staffList.add(new Staff(1, "Hoang", "male", "134892", 1.6,new Date()));
     }
     public Product getProductById(ArrayList<Product> productList, int id) {
         for (int i = 0; i < productList.size(); i++) {
@@ -89,6 +105,9 @@ public class Store  {
         return null;
     }
    // ***********************************************************************add new object
+     public ArrayList<Staff> getSalaryList(){
+      return staffList;
+  }
   public boolean addStaff(String name, String phone , String gender, String rate, String strDate){
         readStaff();
         if(findStaff(phone)==null){
@@ -248,6 +267,7 @@ public class Store  {
     }
     return false;
   } 
+    
   
   // ****************************************************************************** Bill part
   public ArrayList<Bill> getBillList() {
@@ -363,4 +383,39 @@ public class Store  {
               }
           }
     }
-}   
+
+   public ArrayList<Shift> getShiftList(){
+      return shiftList;
+  }
+  
+  public void addShift(Shift newShift){
+        shiftList.add(newShift);
+    }
+  
+  public Shift getShift(int id){
+        for(Shift p: shiftList){
+            if(p.getShiftId() == id){
+                return p;
+            }
+        }
+        return null;
+    } 
+  public void deleteShift(int id){
+        for (int i = 0; i < shiftList.size(); i++){
+              if(shiftList.get(i).getShiftId() == id){
+                  shiftList.remove(i);
+                  System.out.println("remove done");
+              }
+          }
+    }
+  public void updateShift(Shift s, int id,
+            String startTime,
+            String endTime
+            ){
+      
+      s.setShiftId(id);
+      s.setStartTime(startTime);
+      s.setEndTime(endTime);
+  }
+  
+}

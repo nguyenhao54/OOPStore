@@ -9,15 +9,28 @@ import model.Order;
 import java.util.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import javaswingdev.swing.table.OrderEventAction;
 import storepkg.Store;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
+import javax.swing.JDialog;
 /**
  *
  * @author Welcome
  */
 public class Billing extends javax.swing.JFrame {
+    
+    private DefaultTableModel model;
+    private TableRowSorter<TableModel> rowSorter;
+    private final Animator animator;
+    private OrderEventAction orderEventAction;
+    private boolean ok;
+    private boolean show = true;
+    private Bill bill;
 
     /**
      * Creates new form Billing
@@ -26,16 +39,8 @@ public class Billing extends javax.swing.JFrame {
         return bill;
     }
     
-    public Order getOrder() {
-        return order;
-    }
-    
     public void setBill(Bill bill) {
         this.bill = bill;
-    }
-    
-    public void setOrder(Order order) {
-        this.order = order;
     }
     
     public boolean isOk() {
@@ -45,23 +50,79 @@ public class Billing extends javax.swing.JFrame {
     public void setOk(boolean ok) {
         this.ok = ok;
     }
-    private boolean ok;
-    private Bill bill;
-    private Order order;
+
 //    private final Animator animator;
 //    private boolean show = true;
     
-    public void showBillInfo() {
-        billDate.setText(bill.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        Staff.setText(bill.getStaff().getName());
-        
+    public void showBillInfo(Bill bill) {
+        StaffName.setText(bill.getStaff().getName());
+        billDate.setText(bill.getDate().toString());
+        setVisible(ok);
     }
     
     public Billing(java.awt.Frame parent, boolean modal) {
         initComponents();
+        table1.fixTable(jScrollPane2);
+        initTable();
+        centerComponent();
+         getContentPane().setBackground(Color.WHITE);
+        TimingTarget target = new TimingTargetAdapter() {
+            @Override
+            public void timingEvent(float fraction) {
+                if (show) {
+                    setOpacity(fraction);
+                } else {
+                    setOpacity(1f - fraction);
+                }
+            }
+
+            @Override
+            public void end() {
+                if (show == false) {
+                    setVisible(false);
+                }
+            }
+
+        };
+        animator = new Animator(200, target);
+        animator.setResolution(0);
+        animator.setAcceleration(0.5f);
     }
     
+    private void initTable() {
+        orderEventAction = new OrderEventAction() {
+            @Override
+            public void delete(Order order) {
+                getBill().deleteOrder(order.getOrderId());
+                model =(DefaultTableModel) table1.getModel();
+                model.removeRow(table1.getSelectedRow());
+            }
+            
+            @Override
+            public void update(Order order) {
+                //update order
+            }
+        };
+        
+        table1.fixTable(jScrollPane2);
+        if (bill != null) {
+            for (Order o: getBill().orderList()) {
+                table1.addRow(o.toRowTable(orderEventAction));
+            }
+        }
+    }
     
+    private void centerComponent(){
+        this.setLocationRelativeTo(Dashboard.getFrames()[0]);
+    }
+    
+    private void closeMenu() {
+        if (animator.isRunning()) {
+            animator.stop();
+        }
+        show = false;
+        animator.start();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -100,7 +161,7 @@ public class Billing extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        Staff = new javax.swing.JLabel();
+        StaffName = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -220,12 +281,12 @@ public class Billing extends javax.swing.JFrame {
         jButton4.setText("ADD");
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 73, -1));
 
-        Staff.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        Staff.setForeground(new java.awt.Color(0, 0, 0));
-        Staff.setText("Staff:");
-        Staff.setDoubleBuffered(true);
-        Staff.setFocusTraversalPolicyProvider(true);
-        getContentPane().add(Staff, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
+        StaffName.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        StaffName.setForeground(new java.awt.Color(0, 0, 0));
+        StaffName.setText("Staff:");
+        StaffName.setDoubleBuffered(true);
+        StaffName.setFocusTraversalPolicyProvider(true);
+        getContentPane().add(StaffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
 
         jLabel8.setText("jLabel8");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, -1, -1));
@@ -290,7 +351,7 @@ public class Billing extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Staff;
+    private javax.swing.JLabel StaffName;
     private javax.swing.JLabel billDate;
     private javax.swing.JTextField description;
     private javax.swing.JButton jButton1;

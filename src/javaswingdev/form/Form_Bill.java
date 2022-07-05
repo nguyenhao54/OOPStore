@@ -26,33 +26,15 @@ public class Form_Bill extends javax.swing.JPanel {
     }
     
     private Bill showUpdateForm(Bill bill){
-//        if(product.getClass().toString().contains("Shirt")){
-//            ShirtInfo form = new ShirtInfo(Dashboard.getFrames()[0], true);
-//            form.setOk(true);
-//            Shirt shirt = (Shirt)product;
-//            form.setShirt(shirt);
-//            form.showInfo(shirt);
-//            return form.getShirt();
-//        }else if(product.getClass().toString().contains("Pant")){
-//            PantInfo form = new PantInfo(Dashboard.getFrames()[0], true);
-//            form.setOk(true);
-//            Pant pant = (Pant)product;
-//            form.setPant(pant);
-//            form.showInfo(pant);
-//            return form.getPant();
-//        }else if(product.getClass().toString().contains("Shoes")){
-//            ShoesInfo form = new ShoesInfo(Dashboard.getFrames()[0], true);
-//            form.setOk(true);
-//            Shoes shoes = (Shoes)product;
-//            form.setShoes(shoes);
-//            form.showInfo(shoes);
-//            return form.getShoes();
-//        }
-        return null;
+        Billing billForm = new Billing(Dashboard.getFrames()[0], true);
+        billForm.setOk(true);
+        billForm.setBill(bill);
+        billForm.showBillInfo(bill);
+        return billForm.getBill();
     }
     
     private void initTable() {
-     BillEventAction = new BillEventAction() {
+     billEventAction = new BillEventAction() {
          @Override
          public void delete(Bill bill) {
 //             System.out.println(product);
@@ -69,6 +51,7 @@ public class Form_Bill extends javax.swing.JPanel {
 
          @Override
          public void update(Bill bill) {
+             System.out.println("update");
              Bill b = showUpdateForm(bill);
              if(b != null){
 //               update table row
@@ -84,7 +67,7 @@ public class Form_Bill extends javax.swing.JPanel {
 
      table.fixTable(jScrollPane1);
      for(Bill b: Dashboard.store.getBillList()){
-         table.addRow(b.toRowTable(BillEventAction));
+         table.addRow(b.toRowTable(billEventAction));
      }
   }
     /**
@@ -113,11 +96,11 @@ public class Form_Bill extends javax.swing.JPanel {
 
             },
             new String [] {
-                "#I", "Date", "Staff", "Total"
+                "#I", "Date", "Staff", "Total", "Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -127,6 +110,7 @@ public class Form_Bill extends javax.swing.JPanel {
         jScrollPane1.setViewportView(table);
         if (table.getColumnModel().getColumnCount() > 0) {
             table.getColumnModel().getColumn(0).setPreferredWidth(25);
+            table.getColumnModel().getColumn(3).setResizable(false);
         }
 
         javax.swing.GroupLayout roundPanel1Layout = new javax.swing.GroupLayout(roundPanel1);
@@ -188,31 +172,8 @@ public class Form_Bill extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBillBtnActionPerformed(java.awt.event.ActionEvent evt) {        
-//        switch (category) {
-//             case "tops":
-//                 ShirtInfo form = new ShirtInfo(Dashboard.getFrames()[0], true);
-//                 form.setVisible(true);
-//                 if(form.isOk()){
-//                     table.addRow(form.getShirt().toRowTable(productEventAction)); 
-//                 }
-//                 break;
-//             case "bottoms":
-//                 PantInfo pantForm = new PantInfo(Dashboard.getFrames()[0], true);
-//                 pantForm.setVisible(true);
-//                 if(pantForm.isOk()){
-//                     table.addRow(pantForm.getPant().toRowTable(productEventAction)); 
-//                 }
-//                 break;
-//             case "shoes":
-//                 ShoesInfo shoesForm = new ShoesInfo(Dashboard.getFrames()[0], true);
-//                 shoesForm.setVisible(true);
-//                 if(shoesForm.isOk()){
-//                     table.addRow(shoesForm.getShoes().toRowTable(productEventAction)); 
-//                 }
-//                 break;
-//             default:
-//                 break;
-//         }
+        Billing billForm = new Billing(Dashboard.getFrames()[0], true);
+        billForm.setVisible(true);
     }
     
     private void SortFilter(){
@@ -267,5 +228,5 @@ public class Form_Bill extends javax.swing.JPanel {
     private javaswingdev.swing.table.Table table;
     // End of variables declaration//GEN-END:variables
 
-    private BillEventAction BillEventAction;
+    private BillEventAction billEventAction;
 }

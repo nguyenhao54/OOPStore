@@ -17,6 +17,8 @@ public class Action extends javax.swing.JPanel {
                     data.getEvent().update(data.getStaff());
                 }else if(dataModel.equals("product")){
                     data.getProductEvent().update(data.getProduct());
+                }else if(dataModel.equals("bill")) {
+                    data.getBillEvent().update(data.getBill());
                 }
                 
             }
@@ -28,6 +30,8 @@ public class Action extends javax.swing.JPanel {
                     data.getEvent().delete(data.getStaff());
                 }else if(dataModel.equals("product")){
                     data.getProductEvent().delete(data.getProduct());
+                }else if(dataModel.equals("bill")) {
+                    data.getBillEvent().delete(data.getBill());
                 }
             }
         });
@@ -51,6 +55,11 @@ public class Action extends javax.swing.JPanel {
 
         cmdEdit.setBackground(new java.awt.Color(100, 112, 194));
         cmdEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_edit_20px.png"))); // NOI18N
+        cmdEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdEditActionPerformed(evt);
+            }
+        });
         add(cmdEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         cmdDelete.setBackground(new java.awt.Color(196, 72, 72));
@@ -66,6 +75,10 @@ public class Action extends javax.swing.JPanel {
     private void cmdDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdDeleteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmdDeleteActionPerformed
+
+    private void cmdEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmdEditActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
