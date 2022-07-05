@@ -86,6 +86,14 @@ public class Bill {
         this.orderList.add(order);
     }
     
+    public void deleteOrder(int id) {
+        for (int i = 0; i < this.orderList.size(); ++i) {
+            if (this.orderList.get(i).getOrderId() == id) {
+                this.orderList.remove(i);
+            }
+        }
+    }
+    
     public Object[] toRowTable(BillEventAction event) {
         return new Object[]{billId, date, staff.getName(), totalCost, new ModelAction(this, event)};
     }
