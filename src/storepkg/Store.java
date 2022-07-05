@@ -50,10 +50,13 @@ public class Store  {
         maxProductId = productList.size() + 1;
         
         shiftList = new ArrayList<>();
-        shiftList.add(new Shift(1, "06:00:00", "09:00:00", 3));
-        shiftList.add(new Shift(2, "09:00:00", "12:00:00", 3));
-        shiftList.add(new Shift(3, "12:00:00", "15:00:00", 3));
-        shiftList.add(new Shift(4, "15:00:00", "18:00:00", 3));
+        shiftList.add(new Shift(1, "08:00:00", "16:00:00", 8));
+        shiftList.add(new Shift(2, "09:00:00", "17:00:00", 8));
+        shiftList.add(new Shift(3, "17:00:00", "23:00:00", 6));
+        shiftList.add(new Shift(4, "06:00:00", "09:00:00", 3));
+        shiftList.add(new Shift(5, "09:00:00", "12:00:00", 3));
+        shiftList.add(new Shift(6, "15:00:00", "18:00:00", 3));
+        maxShiftId = shiftList.size() + 1;
         
         
         orderList = new ArrayList<>();
