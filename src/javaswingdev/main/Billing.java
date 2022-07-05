@@ -55,7 +55,7 @@ public class Billing extends javax.swing.JFrame {
 //    private boolean show = true;
     
     public void showBillInfo(Bill bill) {
-        StaffName.setText(bill.getStaff().getName());
+        staffName.setText(bill.getStaff().getName());
         billDate.setText(bill.getDate().toString());
         setVisible(ok);
     }
@@ -161,9 +161,9 @@ public class Billing extends javax.swing.JFrame {
         resetBtn = new javax.swing.JButton();
         closeBtn = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        StaffName = new javax.swing.JLabel();
+        staffNameLabel = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        staffName = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table1 = new javaswingdev.swing.table.Table();
         jButton5 = new javax.swing.JButton();
@@ -285,20 +285,20 @@ public class Billing extends javax.swing.JFrame {
         jButton4.setText("ADD");
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 73, -1));
 
-        StaffName.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        StaffName.setForeground(new java.awt.Color(0, 0, 0));
-        StaffName.setText("Staff:");
-        StaffName.setDoubleBuffered(true);
-        StaffName.setFocusTraversalPolicyProvider(true);
-        getContentPane().add(StaffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
+        staffNameLabel.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        staffNameLabel.setForeground(new java.awt.Color(0, 0, 0));
+        staffNameLabel.setText("Staff:");
+        staffNameLabel.setDoubleBuffered(true);
+        staffNameLabel.setFocusTraversalPolicyProvider(true);
+        getContentPane().add(staffNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
 
         jLabel8.setText("jLabel8");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("jLabel4");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, -1, -1));
+        staffName.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        staffName.setForeground(new java.awt.Color(0, 0, 0));
+        staffName.setText("jLabel4");
+        getContentPane().add(staffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, -1, -1));
 
         table1.setBackground(new java.awt.Color(255, 0, 102));
         table1.setModel(new javax.swing.table.DefaultTableModel(
@@ -360,7 +360,6 @@ public class Billing extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel StaffName;
     private javax.swing.JLabel billDate;
     private javax.swing.JButton closeBtn;
     private javax.swing.JTextField description;
@@ -378,7 +377,6 @@ public class Billing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -394,6 +392,8 @@ public class Billing extends javax.swing.JFrame {
     private javax.swing.JTextField quantity;
     private javax.swing.JButton resetBtn;
     private javax.swing.JButton saveBtn;
+    private javax.swing.JLabel staffName;
+    private javax.swing.JLabel staffNameLabel;
     private javaswingdev.swing.table.Table table1;
     // End of variables declaration//GEN-END:variables
 }

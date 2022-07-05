@@ -58,7 +58,7 @@ public class Form_Bill extends javax.swing.JPanel {
                  model =(DefaultTableModel) table.getModel();
                 model.setValueAt(b.getBillId(),table.getSelectedRow() , 0);
                 model.setValueAt(b.getDate(),table.getSelectedRow() , 1);
-                model.setValueAt(b.getStaff(),table.getSelectedRow() , 2);
+                model.setValueAt(b.getStaff().getName(),table.getSelectedRow() , 2);
                 model.setValueAt(b.getTotalCost(),table.getSelectedRow() , 3);
              }
              
