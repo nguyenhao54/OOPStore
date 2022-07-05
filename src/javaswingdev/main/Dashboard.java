@@ -54,7 +54,9 @@ public class Dashboard extends javax.swing.JFrame {
                  }else if(index == 4 && indexSubMenu == 4){
                      showForm(new Form_SingleProduct("shoes"));
                  }
-                 
+                 else if(index == 3 && indexSubMenu == 1){
+                     showForm(new Form_Salary());
+                 }
                  else if(index == 6) {
                      showForm(new Form_Bill());
                  }

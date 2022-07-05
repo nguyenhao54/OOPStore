@@ -96,19 +96,26 @@ public class Staff {
                 this.workedShifts = workedShifts;
             }
     double workedHour;
-    void getWorkedHour()
+    public double getWorkedHour()
     {
+        workedHour = 0;
         for(Shift i : workedShifts)
         {
             workedHour += i.hour;
         }
+        return workedHour;
     }
+    
     public double getSalary() {
-	return workedHour*rate;
+	return getWorkedHour()*rate;
 }
 
     public Object[] toRowTable(EventAction event) {
       
         return new Object[]{staffId, name, gender, phone, rate, new ModelAction(this, event)};
+    }
+    
+    public Object[] toRowSalaryTable() {
+        return new Object[]{staffId, name, "role", rate, 1000000, 0, 0};
     }
 }
