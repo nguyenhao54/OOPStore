@@ -157,9 +157,9 @@ public class Billing extends javax.swing.JFrame {
         jTextField10 = new javax.swing.JTextField();
         jTextField11 = new javax.swing.JTextField();
         jTextField12 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        saveBtn = new javax.swing.JButton();
+        resetBtn = new javax.swing.JButton();
+        closeBtn = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         StaffName = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -169,7 +169,6 @@ public class Billing extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -269,14 +268,19 @@ public class Billing extends javax.swing.JFrame {
         getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 431, 165, -1));
         getContentPane().add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 480, 165, -1));
 
-        jButton1.setText("SAVE");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(756, 380, 73, -1));
+        saveBtn.setText("SAVE");
+        getContentPane().add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(756, 380, 73, -1));
 
-        jButton2.setText("RESET");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(756, 431, 73, -1));
+        resetBtn.setText("RESET");
+        getContentPane().add(resetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(756, 431, 73, -1));
 
-        jButton3.setText("CLOSE");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(756, 480, 73, -1));
+        closeBtn.setText("CLOSE");
+        closeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(closeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(756, 480, 73, -1));
 
         jButton4.setText("ADD");
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 73, -1));
@@ -319,14 +323,14 @@ public class Billing extends javax.swing.JFrame {
         table1.setRowHeight(25);
         jScrollPane2.setViewportView(table1);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, 150));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, 210));
 
         jButton5.setText("Find product");
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/billing background.png"))); // NOI18N
         jLabel5.setText("jLabel5");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 550));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 970, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -346,6 +350,11 @@ public class Billing extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_quantityActionPerformed
 
+    private void closeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtnActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_closeBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -353,10 +362,8 @@ public class Billing extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel StaffName;
     private javax.swing.JLabel billDate;
+    private javax.swing.JButton closeBtn;
     private javax.swing.JTextField description;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
@@ -385,6 +392,8 @@ public class Billing extends javax.swing.JFrame {
     private javax.swing.JTextField productName;
     private javax.swing.JTextField productPrice;
     private javax.swing.JTextField quantity;
+    private javax.swing.JButton resetBtn;
+    private javax.swing.JButton saveBtn;
     private javaswingdev.swing.table.Table table1;
     // End of variables declaration//GEN-END:variables
 }
