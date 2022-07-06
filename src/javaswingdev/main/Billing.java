@@ -133,172 +133,51 @@ public class Billing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         billDate = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        productId = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        productName = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        productPrice = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        quantity = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        description = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        saveBtn = new javax.swing.JButton();
-        resetBtn = new javax.swing.JButton();
-        closeBtn = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         staffNameLabel = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         staffName = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table1 = new javaswingdev.swing.table.Table();
-        jButton5 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        textField2 = new javaswingdev.raven.swing.TextField();
+        jLabel4 = new javax.swing.JLabel();
+        okBtn1 = new javaswingdev.swing.Button();
+        textField3 = new javaswingdev.raven.swing.TextField();
+        okBtn = new javaswingdev.swing.Button();
+        textField7 = new javaswingdev.raven.swing.TextField();
+        textField6 = new javaswingdev.raven.swing.TextField();
+        textField1 = new javaswingdev.raven.swing.TextField();
+        textField8 = new javaswingdev.raven.swing.TextField();
+        okBtn2 = new javaswingdev.swing.Button();
+        textField4 = new javaswingdev.raven.swing.TextField();
+        okBtn3 = new javaswingdev.swing.Button();
+        roundPanel1 = new javaswingdev.swing.RoundPanel();
 
         setBackground(new java.awt.Color(204, 204, 0));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/billing.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 27, 64, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Billing ani.gif"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 15, 299, -1));
-
-        jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(74, 74, 74));
         jLabel3.setText("Date:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(571, 15, 100, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 100, -1));
 
-        billDate.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        billDate.setForeground(new java.awt.Color(0, 0, 0));
+        billDate.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        billDate.setForeground(new java.awt.Color(74, 74, 74));
         billDate.setText("jLabel5");
-        getContentPane().add(billDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(646, 15, 100, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 124, 956, 10));
+        getContentPane().add(billDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 100, -1));
 
-        jLabel7.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Bill detail: ");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 140, -1, 24));
-
-        jLabel12.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("ProductID");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 60, 30));
-
-        productId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                productIdActionPerformed(evt);
-            }
-        });
-        getContentPane().add(productId, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 54, -1));
-
-        jLabel13.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("Product");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 48, 30));
-
-        productName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                productNameActionPerformed(evt);
-            }
-        });
-        getContentPane().add(productName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 200, -1));
-
-        jLabel14.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("Price");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 48, 30));
-        getContentPane().add(productPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 200, -1));
-
-        jLabel15.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setText("Quantity");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, 48, 30));
-
-        quantity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quantityActionPerformed(evt);
-            }
-        });
-        getContentPane().add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 72, -1));
-
-        jLabel16.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("Brand");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 48, 30));
-        getContentPane().add(description, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 200, -1));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 307, 962, -1));
-
-        jLabel17.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel17.setText("Caculation detail");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 327, 231, 33));
-
-        jLabel18.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel18.setText("Total");
-        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 386, 48, -1));
-
-        jLabel19.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel19.setText("Paid");
-        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 437, 48, -1));
-
-        jLabel20.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel20.setText("Return");
-        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 486, 48, -1));
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 380, 165, -1));
-        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 431, 165, -1));
-        getContentPane().add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 480, 165, -1));
-
-        saveBtn.setText("SAVE");
-        getContentPane().add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(756, 380, 73, -1));
-
-        resetBtn.setText("RESET");
-        getContentPane().add(resetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(756, 431, 73, -1));
-
-        closeBtn.setText("CLOSE");
-        closeBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                closeBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(closeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(756, 480, 73, -1));
-
-        jButton4.setText("ADD");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 73, -1));
-
-        staffNameLabel.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        staffNameLabel.setForeground(new java.awt.Color(0, 0, 0));
+        staffNameLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        staffNameLabel.setForeground(new java.awt.Color(74, 74, 74));
         staffNameLabel.setText("Staff:");
         staffNameLabel.setDoubleBuffered(true);
         staffNameLabel.setFocusTraversalPolicyProvider(true);
-        getContentPane().add(staffNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
+        getContentPane().add(staffNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, -1, -1));
 
-        jLabel8.setText("jLabel8");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, -1, -1));
-
-        staffName.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        staffName.setForeground(new java.awt.Color(0, 0, 0));
+        staffName.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        staffName.setForeground(new java.awt.Color(74, 74, 74));
         staffName.setText("jLabel4");
-        getContentPane().add(staffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, -1, -1));
+        getContentPane().add(staffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, -1, -1));
 
         table1.setBackground(new java.awt.Color(255, 0, 102));
         table1.setModel(new javax.swing.table.DefaultTableModel(
@@ -320,40 +199,115 @@ public class Billing extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        table1.setRowHeight(25);
+        table1.setRowHeight(41);
         jScrollPane2.setViewportView(table1);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, 210));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 520, 250));
 
-        jButton5.setText("Find product");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
+        textField2.setLabelText("Quantity");
+        getContentPane().add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 280, 60));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/billing background.png"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 970, 550));
+        jLabel4.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(106, 106, 164));
+        jLabel4.setText("Bill Info");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 100, 30));
+
+        okBtn1.setForeground(new java.awt.Color(255, 255, 255));
+        okBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_search_20px.png"))); // NOI18N
+        okBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okBtn1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(okBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 30, 30));
+
+        textField3.setLabelText("Product Id");
+        textField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(textField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 280, -1));
+
+        okBtn.setBackground(new java.awt.Color(178, 55, 55));
+        okBtn.setForeground(new java.awt.Color(255, 255, 255));
+        okBtn.setText("CANCEL");
+        okBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(okBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, 110, 40));
+
+        textField7.setLabelText("Return");
+        getContentPane().add(textField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 270, -1));
+
+        textField6.setLabelText("Price");
+        getContentPane().add(textField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 280, 60));
+
+        textField1.setLabelText("Total");
+        getContentPane().add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 280, -1));
+
+        textField8.setLabelText("Paid");
+        getContentPane().add(textField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 260, -1));
+
+        okBtn2.setBackground(new java.awt.Color(204, 204, 204));
+        okBtn2.setForeground(new java.awt.Color(255, 255, 255));
+        okBtn2.setText("ADD");
+        okBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okBtn2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(okBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 50, 30));
+
+        textField4.setLabelText("Product name");
+        textField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(textField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 280, 60));
+
+        okBtn3.setBackground(new java.awt.Color(98, 98, 157));
+        okBtn3.setForeground(new java.awt.Color(255, 255, 255));
+        okBtn3.setText("SAVE");
+        okBtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okBtn3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(okBtn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 110, 40));
+
+        roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void productIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productIdActionPerformed
-        int product_id = Integer.valueOf(productId.getText());
-        
-        
-        
-    }//GEN-LAST:event_productIdActionPerformed
+    private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
+     setVisible(false);
+    }//GEN-LAST:event_okBtnActionPerformed
 
-    private void productNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productNameActionPerformed
+    private void okBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtn2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_productNameActionPerformed
+    }//GEN-LAST:event_okBtn2ActionPerformed
 
-    private void quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityActionPerformed
+    private void textField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_quantityActionPerformed
+    }//GEN-LAST:event_textField3ActionPerformed
 
-    private void closeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtnActionPerformed
+    private void okBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtn1ActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-    }//GEN-LAST:event_closeBtnActionPerformed
+    }//GEN-LAST:event_okBtn1ActionPerformed
+
+    private void okBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtn3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_okBtn3ActionPerformed
+
+    private void textField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,39 +315,23 @@ public class Billing extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel billDate;
-    private javax.swing.JButton closeBtn;
-    private javax.swing.JTextField description;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField productId;
-    private javax.swing.JTextField productName;
-    private javax.swing.JTextField productPrice;
-    private javax.swing.JTextField quantity;
-    private javax.swing.JButton resetBtn;
-    private javax.swing.JButton saveBtn;
+    private javaswingdev.swing.Button okBtn;
+    private javaswingdev.swing.Button okBtn1;
+    private javaswingdev.swing.Button okBtn2;
+    private javaswingdev.swing.Button okBtn3;
+    private javaswingdev.swing.RoundPanel roundPanel1;
     private javax.swing.JLabel staffName;
     private javax.swing.JLabel staffNameLabel;
     private javaswingdev.swing.table.Table table1;
+    private javaswingdev.raven.swing.TextField textField1;
+    private javaswingdev.raven.swing.TextField textField2;
+    private javaswingdev.raven.swing.TextField textField3;
+    private javaswingdev.raven.swing.TextField textField4;
+    private javaswingdev.raven.swing.TextField textField6;
+    private javaswingdev.raven.swing.TextField textField7;
+    private javaswingdev.raven.swing.TextField textField8;
     // End of variables declaration//GEN-END:variables
 }
