@@ -14,6 +14,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javaswingdev.swing.table.OrderEventAction;
 import storepkg.Store;
+import model.Product;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
@@ -139,17 +140,17 @@ public class Billing extends javax.swing.JFrame {
         staffName = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table1 = new javaswingdev.swing.table.Table();
-        textField2 = new javaswingdev.raven.swing.TextField();
+        quantity = new javaswingdev.raven.swing.TextField();
         jLabel4 = new javax.swing.JLabel();
-        okBtn1 = new javaswingdev.swing.Button();
-        textField3 = new javaswingdev.raven.swing.TextField();
+        findProduct = new javaswingdev.swing.Button();
+        productId = new javaswingdev.raven.swing.TextField();
         okBtn = new javaswingdev.swing.Button();
         textField7 = new javaswingdev.raven.swing.TextField();
-        textField6 = new javaswingdev.raven.swing.TextField();
+        price = new javaswingdev.raven.swing.TextField();
         textField1 = new javaswingdev.raven.swing.TextField();
         textField8 = new javaswingdev.raven.swing.TextField();
         okBtn2 = new javaswingdev.swing.Button();
-        textField4 = new javaswingdev.raven.swing.TextField();
+        name = new javaswingdev.raven.swing.TextField();
         okBtn3 = new javaswingdev.swing.Button();
         roundPanel1 = new javaswingdev.swing.RoundPanel();
 
@@ -157,24 +158,24 @@ public class Billing extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(74, 74, 74));
         jLabel3.setText("Date:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 100, -1));
 
-        billDate.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        billDate.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         billDate.setForeground(new java.awt.Color(74, 74, 74));
         billDate.setText("jLabel5");
         getContentPane().add(billDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 100, -1));
 
-        staffNameLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        staffNameLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         staffNameLabel.setForeground(new java.awt.Color(74, 74, 74));
         staffNameLabel.setText("Staff:");
         staffNameLabel.setDoubleBuffered(true);
         staffNameLabel.setFocusTraversalPolicyProvider(true);
         getContentPane().add(staffNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, -1, -1));
 
-        staffName.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        staffName.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         staffName.setForeground(new java.awt.Color(74, 74, 74));
         staffName.setText("jLabel4");
         getContentPane().add(staffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, -1, -1));
@@ -204,30 +205,30 @@ public class Billing extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 520, 250));
 
-        textField2.setLabelText("Quantity");
-        getContentPane().add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 280, 60));
+        quantity.setLabelText("Quantity");
+        getContentPane().add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 280, 60));
 
         jLabel4.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(106, 106, 164));
         jLabel4.setText("Bill Info");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 100, 30));
 
-        okBtn1.setForeground(new java.awt.Color(255, 255, 255));
-        okBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_search_20px.png"))); // NOI18N
-        okBtn1.addActionListener(new java.awt.event.ActionListener() {
+        findProduct.setForeground(new java.awt.Color(255, 255, 255));
+        findProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_search_20px.png"))); // NOI18N
+        findProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okBtn1ActionPerformed(evt);
+                findProductActionPerformed(evt);
             }
         });
-        getContentPane().add(okBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 30, 30));
+        getContentPane().add(findProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 30, 30));
 
-        textField3.setLabelText("Product Id");
-        textField3.addActionListener(new java.awt.event.ActionListener() {
+        productId.setLabelText("Product Id");
+        productId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField3ActionPerformed(evt);
+                productIdActionPerformed(evt);
             }
         });
-        getContentPane().add(textField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 280, -1));
+        getContentPane().add(productId, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 280, -1));
 
         okBtn.setBackground(new java.awt.Color(178, 55, 55));
         okBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -239,15 +240,19 @@ public class Billing extends javax.swing.JFrame {
         });
         getContentPane().add(okBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, 110, 40));
 
+        textField7.setEditable(false);
         textField7.setLabelText("Return");
         getContentPane().add(textField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 270, -1));
 
-        textField6.setLabelText("Price");
-        getContentPane().add(textField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 280, 60));
+        price.setEditable(false);
+        price.setLabelText("Price");
+        getContentPane().add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 280, 60));
 
+        textField1.setEditable(false);
         textField1.setLabelText("Total");
         getContentPane().add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 280, -1));
 
+        textField8.setEditable(false);
         textField8.setLabelText("Paid");
         getContentPane().add(textField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 260, -1));
 
@@ -261,13 +266,14 @@ public class Billing extends javax.swing.JFrame {
         });
         getContentPane().add(okBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 50, 30));
 
-        textField4.setLabelText("Product name");
-        textField4.addActionListener(new java.awt.event.ActionListener() {
+        name.setEditable(false);
+        name.setLabelText("Product name");
+        name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField4ActionPerformed(evt);
+                nameActionPerformed(evt);
             }
         });
-        getContentPane().add(textField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 280, 60));
+        getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 280, 60));
 
         okBtn3.setBackground(new java.awt.Color(98, 98, 157));
         okBtn3.setForeground(new java.awt.Color(255, 255, 255));
@@ -280,7 +286,8 @@ public class Billing extends javax.swing.JFrame {
         getContentPane().add(okBtn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 110, 40));
 
         roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 540));
+        roundPanel1.setRound(10);
+        getContentPane().add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -293,21 +300,30 @@ public class Billing extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_okBtn2ActionPerformed
 
-    private void textField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField3ActionPerformed
+    private void productIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField3ActionPerformed
+    }//GEN-LAST:event_productIdActionPerformed
 
-    private void okBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtn1ActionPerformed
+    private void findProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findProductActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_okBtn1ActionPerformed
+        
+        int pid= Integer.parseInt(productId.getText());
+        Product pd= Dashboard.store.getProductById(Dashboard.store.getProductList(),pid);
+        if(pd!=null){
+            name.setText(pd.getProductName());
+            price.setText(Double.toString(pd.getProductPrice()));
+            
+
+        }
+    }//GEN-LAST:event_findProductActionPerformed
 
     private void okBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtn3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_okBtn3ActionPerformed
 
-    private void textField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField4ActionPerformed
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField4ActionPerformed
+    }//GEN-LAST:event_nameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,22 +331,22 @@ public class Billing extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel billDate;
+    private javaswingdev.swing.Button findProduct;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
+    private javaswingdev.raven.swing.TextField name;
     private javaswingdev.swing.Button okBtn;
-    private javaswingdev.swing.Button okBtn1;
     private javaswingdev.swing.Button okBtn2;
     private javaswingdev.swing.Button okBtn3;
+    private javaswingdev.raven.swing.TextField price;
+    private javaswingdev.raven.swing.TextField productId;
+    private javaswingdev.raven.swing.TextField quantity;
     private javaswingdev.swing.RoundPanel roundPanel1;
     private javax.swing.JLabel staffName;
     private javax.swing.JLabel staffNameLabel;
     private javaswingdev.swing.table.Table table1;
     private javaswingdev.raven.swing.TextField textField1;
-    private javaswingdev.raven.swing.TextField textField2;
-    private javaswingdev.raven.swing.TextField textField3;
-    private javaswingdev.raven.swing.TextField textField4;
-    private javaswingdev.raven.swing.TextField textField6;
     private javaswingdev.raven.swing.TextField textField7;
     private javaswingdev.raven.swing.TextField textField8;
     // End of variables declaration//GEN-END:variables
