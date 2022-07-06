@@ -19,6 +19,8 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 import javax.swing.JDialog;
+import javaswingdev.swing.table.OrderEventAction;
+import model.Order;
 /**
  *
  * @author Welcome
@@ -202,6 +204,14 @@ public class Billing extends javax.swing.JFrame {
         });
         table1.setRowHeight(41);
         jScrollPane2.setViewportView(table1);
+        if (table1.getColumnModel().getColumnCount() > 0) {
+            table1.getColumnModel().getColumn(0).setMinWidth(28);
+            table1.getColumnModel().getColumn(0).setPreferredWidth(28);
+            table1.getColumnModel().getColumn(0).setMaxWidth(28);
+            table1.getColumnModel().getColumn(5).setMinWidth(55);
+            table1.getColumnModel().getColumn(5).setPreferredWidth(55);
+            table1.getColumnModel().getColumn(5).setMaxWidth(55);
+        }
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 520, 250));
 
@@ -298,6 +308,23 @@ public class Billing extends javax.swing.JFrame {
 
     private void okBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtn2ActionPerformed
         // TODO add your handling code here:
+            OrderEventAction eventAction = new OrderEventAction() {
+            @Override
+            public void delete(Order ord) {
+             
+            }
+            @Override
+            public void update(Order ord) {
+            }
+        };
+           int pid= Integer.parseInt(productId.getText());
+             Product pd= Dashboard.store.getProductById(Dashboard.store.getProductList(),pid);
+             Double pr=Double.parseDouble(price.getText());
+             int quan=Integer.parseInt(quantity.getText());
+             Order order= new Order(pid,pd,quan,quan*pr);
+           table1.addRow(order.toRowTable(eventAction));
+        
+        
     }//GEN-LAST:event_okBtn2ActionPerformed
 
     private void productIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productIdActionPerformed
