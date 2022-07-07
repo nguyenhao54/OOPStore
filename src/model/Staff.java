@@ -33,7 +33,7 @@ public class Staff {
     private String phone;
     double rate;
     private Date birthDate;
-    private ArrayList<Shift> workedShifts;
+    private ArrayList<RegisteredShift> workedShifts;
     
     public Staff( int id,String name, String gender, String phone, double rate, Date birthDate) {
         this.staffId = id;
@@ -87,11 +87,11 @@ public class Staff {
         this.rate = rate;
     }
     
-    public ArrayList<Shift> getWorkedShifts()
+    public ArrayList<RegisteredShift> getWorkedShifts()
             {
                 return this.workedShifts;
             }
-    public void setWorkedShifts(ArrayList<Shift> workedShifts)
+    public void setWorkedShifts(ArrayList<RegisteredShift> workedShifts)
             {
                 this.workedShifts = workedShifts;
             }
@@ -99,9 +99,9 @@ public class Staff {
     public double getWorkedHour()
     {
         workedHour = 0;
-        for(Shift i : workedShifts)
+        for(RegisteredShift i : workedShifts)
         {
-            workedHour += i.hour;
+            workedHour += i.getRegisteredShift().getHour();
         }
         return workedHour;
     }
