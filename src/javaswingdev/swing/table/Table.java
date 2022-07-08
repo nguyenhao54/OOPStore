@@ -37,6 +37,8 @@ public class Table extends JTable {
                         cell = new Action(data, "product");
                     }else if(data.getBill() != null){
                         cell = new Action(data, "bill");
+                    }else if(data.getOrder() != null){
+                        cell = new Action(data, "order");
                     }
                     if (selected) {
                         cell.setForeground(SystemColor.MAIN_COLOR_1);
