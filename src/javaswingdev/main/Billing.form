@@ -52,7 +52,6 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="4a" green="4a" red="4a" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="jLabel5"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -86,7 +85,6 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="4a" green="4a" red="4a" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="jLabel4"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -112,12 +110,12 @@
               <Color blue="66" green="0" red="ff" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="6" rowCount="4">
-                <Column editable="true" title="Id" type="java.lang.Integer"/>
-                <Column editable="true" title="Product" type="java.lang.String"/>
-                <Column editable="true" title="Cost" type="java.lang.Float"/>
-                <Column editable="true" title="Quantity" type="java.lang.Integer"/>
-                <Column editable="true" title="Total" type="java.lang.Float"/>
+              <Table columnCount="6" rowCount="0">
+                <Column editable="false" title="Id" type="java.lang.Integer"/>
+                <Column editable="false" title="Product" type="java.lang.String"/>
+                <Column editable="false" title="Price" type="java.lang.Float"/>
+                <Column editable="false" title="Quantity" type="java.lang.Integer"/>
+                <Column editable="false" title="Total" type="java.lang.Float"/>
                 <Column editable="true" title="Action" type="java.lang.Object"/>
               </Table>
             </Property>
@@ -138,7 +136,7 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="35" minWidth="35" prefWidth="35" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -148,7 +146,7 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="55" minWidth="55" prefWidth="55" resizable="true">
+                <Column maxWidth="85" minWidth="85" prefWidth="85" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -283,7 +281,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javaswingdev.swing.Button" name="okBtn2">
+    <Component class="javaswingdev.swing.Button" name="addToBillBtn">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -294,7 +292,7 @@
         <Property name="text" type="java.lang.String" value="ADD"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="okBtn2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addToBillBtnActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
