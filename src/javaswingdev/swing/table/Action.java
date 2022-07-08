@@ -19,6 +19,8 @@ public class Action extends javax.swing.JPanel {
                     data.getProductEvent().update(data.getProduct());
                 }else if(dataModel.equals("bill")) {
                     data.getBillEvent().update(data.getBill());
+                }else if(dataModel.equals("order")){
+                    data.getOrderEvent().update(data.getOrder());
                 }
                 
             }
