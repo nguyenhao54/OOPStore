@@ -17,11 +17,11 @@ public class Order {
     private int orderQuantity;
     private double orderCost;
     
-    public Order(int id, Product product, int quantity, double cost) {
+    public Order(int id, Product product, int quantity) {
         this.orderId = id;
         this.orderProduct = product;
         this.orderQuantity = quantity;
-        this.orderCost = cost;
+        this.orderCost = product.getProductPrice()*quantity;
     }
     
     public Product getProduct() {
@@ -61,6 +61,6 @@ public class Order {
     }
     
     public Object[] toRowTable(OrderEventAction event) {
-        return new Object[]{orderId, orderProduct, orderCost, orderQuantity, new ModelAction(this, event)};
+        return new Object[]{orderId, orderProduct.getProductName(), orderProduct.getProductPrice(), orderQuantity, orderCost, new ModelAction(this, event)};
     }
 }
