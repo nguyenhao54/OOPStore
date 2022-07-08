@@ -9,6 +9,7 @@ import model.Order;
 import java.util.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -34,6 +35,7 @@ public class Billing extends javax.swing.JFrame {
     private boolean ok;
     private boolean show = true;
     private Bill bill;
+    private ArrayList<Order> orderList;
 
     /**
      * Creates new form Billing
@@ -103,13 +105,13 @@ public class Billing extends javax.swing.JFrame {
             
             @Override
             public void update(Order order) {
-                //update order
+                System.out.println("update order");
             }
         };
         
         table1.fixTable(jScrollPane2);
         if (bill != null) {
-            for (Order o: getBill().orderList()) {
+            for (Order o: getBill().getOrderList()) {
                 table1.addRow(o.toRowTable(orderEventAction));
             }
         }
@@ -151,7 +153,7 @@ public class Billing extends javax.swing.JFrame {
         price = new javaswingdev.raven.swing.TextField();
         textField1 = new javaswingdev.raven.swing.TextField();
         textField8 = new javaswingdev.raven.swing.TextField();
-        okBtn2 = new javaswingdev.swing.Button();
+        addToBillBtn = new javaswingdev.swing.Button();
         name = new javaswingdev.raven.swing.TextField();
         okBtn3 = new javaswingdev.swing.Button();
         roundPanel1 = new javaswingdev.swing.RoundPanel();
@@ -167,7 +169,6 @@ public class Billing extends javax.swing.JFrame {
 
         billDate.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         billDate.setForeground(new java.awt.Color(74, 74, 74));
-        billDate.setText("jLabel5");
         getContentPane().add(billDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 100, -1));
 
         staffNameLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -179,27 +180,30 @@ public class Billing extends javax.swing.JFrame {
 
         staffName.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         staffName.setForeground(new java.awt.Color(74, 74, 74));
-        staffName.setText("jLabel4");
         getContentPane().add(staffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, -1, -1));
 
         table1.setBackground(new java.awt.Color(255, 0, 102));
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Id", "Product", "Cost", "Quantity", "Total", "Action"
+                "Id", "Product", "Price", "Quantity", "Total", "Action"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         table1.setRowHeight(41);
@@ -208,9 +212,12 @@ public class Billing extends javax.swing.JFrame {
             table1.getColumnModel().getColumn(0).setMinWidth(28);
             table1.getColumnModel().getColumn(0).setPreferredWidth(28);
             table1.getColumnModel().getColumn(0).setMaxWidth(28);
-            table1.getColumnModel().getColumn(5).setMinWidth(55);
-            table1.getColumnModel().getColumn(5).setPreferredWidth(55);
-            table1.getColumnModel().getColumn(5).setMaxWidth(55);
+            table1.getColumnModel().getColumn(3).setMinWidth(35);
+            table1.getColumnModel().getColumn(3).setPreferredWidth(35);
+            table1.getColumnModel().getColumn(3).setMaxWidth(35);
+            table1.getColumnModel().getColumn(5).setMinWidth(85);
+            table1.getColumnModel().getColumn(5).setPreferredWidth(85);
+            table1.getColumnModel().getColumn(5).setMaxWidth(85);
         }
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 520, 250));
@@ -266,15 +273,15 @@ public class Billing extends javax.swing.JFrame {
         textField8.setLabelText("Paid");
         getContentPane().add(textField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 260, -1));
 
-        okBtn2.setBackground(new java.awt.Color(204, 204, 204));
-        okBtn2.setForeground(new java.awt.Color(255, 255, 255));
-        okBtn2.setText("ADD");
-        okBtn2.addActionListener(new java.awt.event.ActionListener() {
+        addToBillBtn.setBackground(new java.awt.Color(204, 204, 204));
+        addToBillBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addToBillBtn.setText("ADD");
+        addToBillBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okBtn2ActionPerformed(evt);
+                addToBillBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(okBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 50, 30));
+        getContentPane().add(addToBillBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 50, 30));
 
         name.setEditable(false);
         name.setLabelText("Product name");
@@ -306,7 +313,7 @@ public class Billing extends javax.swing.JFrame {
      setVisible(false);
     }//GEN-LAST:event_okBtnActionPerformed
 
-    private void okBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtn2ActionPerformed
+    private void addToBillBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToBillBtnActionPerformed
         // TODO add your handling code here:
             OrderEventAction eventAction = new OrderEventAction() {
             @Override
@@ -317,15 +324,28 @@ public class Billing extends javax.swing.JFrame {
             public void update(Order ord) {
             }
         };
-           int pid= Integer.parseInt(productId.getText());
-             Product pd= Dashboard.store.getProductById(Dashboard.store.getProductList(),pid);
-             Double pr=Double.parseDouble(price.getText());
-             int quan=Integer.parseInt(quantity.getText());
-             Order order= new Order(pid,pd,quan,quan*pr);
-           table1.addRow(order.toRowTable(eventAction));
-        
-        
-    }//GEN-LAST:event_okBtn2ActionPerformed
+           if(productId.getText().equals("") || quantity.getText().equals("")){
+               System.out.println("Please fill in product id and quantity");
+           }else{
+             int pid= Integer.parseInt(productId.getText());
+             Product pd= Dashboard.store.getProduct(pid);
+             Order order;
+             if(pd != null){
+                 Double pr=pd.getProductPrice();
+                    int quan=Integer.parseInt(quantity.getText());
+                     
+                    if(quan > pd.getQuantity()){
+                        System.out.println("Over stock!");
+                    }else{
+                        order= new Order(pid,pd,quan);
+                        table1.addRow(order.toRowTable(eventAction));
+                    }
+             }else{
+                 System.out.println("Product not found");
+             }
+             
+           }
+    }//GEN-LAST:event_addToBillBtnActionPerformed
 
     private void productIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productIdActionPerformed
         // TODO add your handling code here:
@@ -357,6 +377,7 @@ public class Billing extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javaswingdev.swing.Button addToBillBtn;
     private javax.swing.JLabel billDate;
     private javaswingdev.swing.Button findProduct;
     private javax.swing.JLabel jLabel3;
@@ -364,7 +385,6 @@ public class Billing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javaswingdev.raven.swing.TextField name;
     private javaswingdev.swing.Button okBtn;
-    private javaswingdev.swing.Button okBtn2;
     private javaswingdev.swing.Button okBtn3;
     private javaswingdev.raven.swing.TextField price;
     private javaswingdev.raven.swing.TextField productId;

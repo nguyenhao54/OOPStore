@@ -28,6 +28,7 @@ public class Form_Bill extends javax.swing.JPanel {
     private Bill showUpdateForm(Bill bill){
         Billing billForm = new Billing(Dashboard.getFrames()[0], true);
         billForm.setOk(true);
+        System.out.println(bill.getTotalCost());
         billForm.setBill(bill);
         billForm.showBillInfo(bill);
         return billForm.getBill();
@@ -51,8 +52,8 @@ public class Form_Bill extends javax.swing.JPanel {
 
          @Override
          public void update(Bill bill) {
-             System.out.println("update");
              Bill b = showUpdateForm(bill);
+             System.out.println(bill.getOrderList().get(0).getProduct().getProductName());
              if(b != null){
 //               update table row
                  model =(DefaultTableModel) table.getModel();
