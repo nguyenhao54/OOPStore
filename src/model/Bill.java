@@ -32,6 +32,17 @@ public class Bill {
         this.paid = paid;
     }
     
+    public Bill(int id, Staff staff, double paid) {
+        this.billId = id;
+        this.staff = staff;
+        this.orderList = new ArrayList<>();
+        this.date = LocalDate.now();
+        for (Order order : orderList) {
+            this.totalCost += order.getCost();
+        }
+        this.paid = paid;
+    }
+    
     public int getBillId() {
         return this.billId;
     }
@@ -57,7 +68,7 @@ public class Bill {
         return this.paid;
     }
     
-    public ArrayList<Order> orderList() {
+    public ArrayList<Order> getOrderList() {
         return this.orderList;
     }
     
@@ -82,7 +93,7 @@ public class Bill {
     }
     
     public void addOrder(Product product, int id, int quantity) {
-        Order order = new Order(id, product, quantity, quantity * product.getProductPrice());
+        Order order = new Order(id, product, quantity);
         this.orderList.add(order);
     }
     
