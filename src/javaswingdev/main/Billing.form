@@ -237,7 +237,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javaswingdev.raven.swing.TextField" name="textField7">
+    <Component class="javaswingdev.raven.swing.TextField" name="billReturn">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="labelText" type="java.lang.String" value="Return"/>
@@ -259,7 +259,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javaswingdev.raven.swing.TextField" name="textField1">
+    <Component class="javaswingdev.raven.swing.TextField" name="billTotal">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="labelText" type="java.lang.String" value="Total"/>
@@ -270,7 +270,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javaswingdev.raven.swing.TextField" name="textField8">
+    <Component class="javaswingdev.raven.swing.TextField" name="billPaid">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="labelText" type="java.lang.String" value="Paid"/>

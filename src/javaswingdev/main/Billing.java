@@ -62,6 +62,12 @@ public class Billing extends javax.swing.JFrame {
     public void showBillInfo(Bill bill) {
         staffName.setText(bill.getStaff().getName());
         billDate.setText(bill.getDate().toString());
+        for (Order o: getBill().getOrderList()) {
+                table1.addRow(o.toRowTable(orderEventAction));
+            }
+        billTotal.setText(Double.toString(bill.getTotalCost()));
+        billPaid.setText(Double.toString(bill.getPaid()));
+        billReturn.setText(Double.toString(bill.getPaid() - bill.getTotalCost()));
         setVisible(ok);
     }
     
@@ -110,11 +116,6 @@ public class Billing extends javax.swing.JFrame {
         };
         
         table1.fixTable(jScrollPane2);
-        if (bill != null) {
-            for (Order o: getBill().getOrderList()) {
-                table1.addRow(o.toRowTable(orderEventAction));
-            }
-        }
     }
     
     private void centerComponent(){
@@ -149,10 +150,10 @@ public class Billing extends javax.swing.JFrame {
         findProduct = new javaswingdev.swing.Button();
         productId = new javaswingdev.raven.swing.TextField();
         okBtn = new javaswingdev.swing.Button();
-        textField7 = new javaswingdev.raven.swing.TextField();
+        billReturn = new javaswingdev.raven.swing.TextField();
         price = new javaswingdev.raven.swing.TextField();
-        textField1 = new javaswingdev.raven.swing.TextField();
-        textField8 = new javaswingdev.raven.swing.TextField();
+        billTotal = new javaswingdev.raven.swing.TextField();
+        billPaid = new javaswingdev.raven.swing.TextField();
         addToBillBtn = new javaswingdev.swing.Button();
         name = new javaswingdev.raven.swing.TextField();
         okBtn3 = new javaswingdev.swing.Button();
@@ -257,21 +258,21 @@ public class Billing extends javax.swing.JFrame {
         });
         getContentPane().add(okBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, 110, 40));
 
-        textField7.setEditable(false);
-        textField7.setLabelText("Return");
-        getContentPane().add(textField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 270, -1));
+        billReturn.setEditable(false);
+        billReturn.setLabelText("Return");
+        getContentPane().add(billReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 270, -1));
 
         price.setEditable(false);
         price.setLabelText("Price");
         getContentPane().add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 280, 60));
 
-        textField1.setEditable(false);
-        textField1.setLabelText("Total");
-        getContentPane().add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 280, -1));
+        billTotal.setEditable(false);
+        billTotal.setLabelText("Total");
+        getContentPane().add(billTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 280, -1));
 
-        textField8.setEditable(false);
-        textField8.setLabelText("Paid");
-        getContentPane().add(textField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 260, -1));
+        billPaid.setEditable(false);
+        billPaid.setLabelText("Paid");
+        getContentPane().add(billPaid, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 260, -1));
 
         addToBillBtn.setBackground(new java.awt.Color(204, 204, 204));
         addToBillBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -379,6 +380,9 @@ public class Billing extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javaswingdev.swing.Button addToBillBtn;
     private javax.swing.JLabel billDate;
+    private javaswingdev.raven.swing.TextField billPaid;
+    private javaswingdev.raven.swing.TextField billReturn;
+    private javaswingdev.raven.swing.TextField billTotal;
     private javaswingdev.swing.Button findProduct;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -393,8 +397,5 @@ public class Billing extends javax.swing.JFrame {
     private javax.swing.JLabel staffName;
     private javax.swing.JLabel staffNameLabel;
     private javaswingdev.swing.table.Table table1;
-    private javaswingdev.raven.swing.TextField textField1;
-    private javaswingdev.raven.swing.TextField textField7;
-    private javaswingdev.raven.swing.TextField textField8;
     // End of variables declaration//GEN-END:variables
 }
