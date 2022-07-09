@@ -34,6 +34,8 @@ public class Action extends javax.swing.JPanel {
                     data.getProductEvent().delete(data.getProduct());
                 }else if(dataModel.equals("bill")) {
                     data.getBillEvent().delete(data.getBill());
+                }else if(dataModel.equals("order")){
+                    data.getOrderEvent().delete(data.getOrder());
                 }
             }
         });

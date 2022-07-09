@@ -25,6 +25,8 @@ public class TableCellAction extends DefaultCellEditor {
             cell = new Action(data, "product");
         }else if(data.getBill() != null){
             cell = new Action(data, "bill");
+        }else if(data.getOrder() != null){
+            cell = new Action(data, "order");
         }
 //        cell.setBackground(new Color(239, 244, 255));
         return cell;
