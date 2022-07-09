@@ -77,13 +77,13 @@ public class Store  {
         ArrayList orders0 = new ArrayList<>();
         orders0.add(orderList.get(0));
         orders0.add(orderList.get(1));
-        billList.add(new Bill(1, this.findStaff(6), orders0, LocalDate.of(2014, Month.FEBRUARY, 27), 1000000));
+        billList.add(new Bill(1, this.findStaff(6), orders0, LocalDate.of(2014, Month.FEBRUARY, 27), 2000000));
         ArrayList orders1 = new ArrayList<>();
         orders1.add(orderList.get(2));
         billList.add(new Bill(2, this.findStaff(6), orders1, LocalDate.of(2014, Month.FEBRUARY, 23), 1700000));
         ArrayList orders2 = new ArrayList<>();
         orders2.add(orderList.get(3));
-        billList.add(new Bill(3, this.findStaff(6), orders2, LocalDate.of(2014, Month.FEBRUARY, 28), 1200000));
+        billList.add(new Bill(3, this.findStaff(6), orders2, LocalDate.of(2014, Month.FEBRUARY, 28), 1800000));
         ArrayList orders3 = new ArrayList<>();
         orders3.add(orderList.get(3));
         orders3.add(orderList.get(4));
