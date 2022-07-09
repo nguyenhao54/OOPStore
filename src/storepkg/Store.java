@@ -50,6 +50,19 @@ public class Store  {
         productList.add(new Pant(18, "Jeans Bermuda", 434000, "Boo", "Quần Jeans", "Quần regular form", 18, 101, 42, 51));
         maxProductId = productList.size() + 1;
         
+                staffList = new ArrayList<>();
+                  
+        staffList.add(new Staff(1, "Nguyễn Đồng Đức Anh", "Male", "134892", 1.2, new Date()));
+        staffList.add(new Staff(2, "Nguyễn Thị Hà Giang", "Female", "134892", 1.2,new Date()));
+        staffList.add(new Staff(3, "Hoàng Trung Kiên", "Male", "134892", 1.2,new Date()));
+        staffList.add(new Staff(4, "Hoàng Đức Thiện", "Male", "134892", 1.9,new Date()));
+        staffList.add(new Staff(5, "Nguyễn Đức Tùng", "Male", "134892", 1.2,new Date()));
+        staffList.add(new Staff(6, "Trần Văn Quân", "Male", "134892", 1.8,new Date()));
+        staffList.add(new Staff(7, "Nguyễn Phương Anh", "Female", "134892", 1.2,new Date()));
+        staffList.add(new Staff(8, "Nguyễn Thị Phương Nga", "Female", "134892", 1.6,new Date()));
+
+
+        
         shiftList = new ArrayList<>();
         shiftList.add(new Shift(1, "08:00:00", "16:00:00", 8));
         shiftList.add(new Shift(2, "09:00:00", "17:00:00", 8));
@@ -75,34 +88,24 @@ public class Store  {
 //        readStaff();
 //
 //       StaffList= new ArrayList<>();
-        staffList = new ArrayList<>();
         billList = new ArrayList<>();
         ArrayList orders0 = new ArrayList<>();
         orders0.add(orderList.get(0));
         orders0.add(orderList.get(1));
-        billList.add(new Bill(1, this.findStaff(6), orders0, LocalDate.of(2014, Month.FEBRUARY, 27), 2000000));
+        billList.add(new Bill(1, this.findStaff(3), orders0, LocalDate.of(2014, Month.FEBRUARY, 27), 2000000));
         ArrayList orders1 = new ArrayList<>();
         orders1.add(orderList.get(2));
-        billList.add(new Bill(2, this.findStaff(6), orders1, LocalDate.of(2014, Month.FEBRUARY, 23), 1700000));
+        billList.add(new Bill(2, this.findStaff(1), orders1, LocalDate.of(2014, Month.FEBRUARY, 23), 1700000));
         ArrayList orders2 = new ArrayList<>();
         orders2.add(orderList.get(3));
-        billList.add(new Bill(3, this.findStaff(6), orders2, LocalDate.of(2014, Month.FEBRUARY, 28), 1800000));
+        billList.add(new Bill(3, this.findStaff(2), orders2, LocalDate.of(2014, Month.FEBRUARY, 28), 1800000));
         ArrayList orders3 = new ArrayList<>();
         orders3.add(orderList.get(3));
         orders3.add(orderList.get(4));
         billList.add(new Bill(4, this.findStaff(6), orders3, LocalDate.of(2014, Month.FEBRUARY, 28), 1700000));
         maxBillId = billList.size() + 1;
         
-   
-        staffList.add(new Staff(1, "Nguyễn Đồng Đức Anh", "Male", "134892", 1.2, new Date()));
-        staffList.add(new Staff(2, "Nguyễn Thị Hà Giang", "Female", "134892", 1.2,new Date()));
-        staffList.add(new Staff(3, "Hoàng Trung Kiên", "Male", "134892", 1.2,new Date()));
-        staffList.add(new Staff(4, "Hoàng Đức Thiện", "Male", "134892", 1.9,new Date()));
-        staffList.add(new Staff(5, "Nguyễn Đức Tùng", "Male", "134892", 1.2,new Date()));
-        staffList.add(new Staff(6, "Trần Văn Quân", "Male", "134892", 1.8,new Date()));
-        staffList.add(new Staff(7, "Nguyễn Phương Anh", "Female", "134892", 1.2,new Date()));
-        staffList.add(new Staff(8, "Nguyễn Thị Phương Nga", "Female", "134892", 1.6,new Date()));
-    }
+     }
     public Product getProductById(ArrayList<Product> productList, int id) {
         for (int i = 0; i < productList.size(); i++) {
             if (productList.get(i).getProductId() == id) {
