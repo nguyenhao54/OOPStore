@@ -15,9 +15,9 @@ import javax.swing.table.*;
 public class Form_Staff extends javax.swing.JPanel {
     private DefaultTableModel model;
     private TableRowSorter<TableModel> rowSorter;
-    public Form_Staff(String gender, Store store) {
+    public Form_Staff(String gender) {
         initComponents();
-        initTable(gender,store);   
+        initTable(gender);   
         SortFilter();
     }
         public boolean showUpdateStaff(Staff staff){
@@ -26,15 +26,15 @@ public class Form_Staff extends javax.swing.JPanel {
         obj.showInfo(staff);
         return obj.isOk();
         }
-       private void initTable(String gender, Store store) {
-         store.readStaff();
+       private void initTable(String gender) {
+//         store.readStaff();
         Message msg=new Message();
          eventAction = new EventAction() {
             @Override
             public void delete(Staff staff) {
              
               if (msg.showMessage("Delete Staff : " + staff.getName())) {  
-                  store.deleteStaff(staff.getStaffId());
+                  Dashboard.store.deleteStaff(staff.getStaffId());
                   model =(DefaultTableModel) table.getModel();
                   model.removeRow(table.getSelectedRow());
                    msg.showDialog("Delete Staff" + staff.getName()+" Successfully!","red");
@@ -73,9 +73,9 @@ public class Form_Staff extends javax.swing.JPanel {
          
         // append staffs info to the table
         table.fixTable(jScrollPane1);
-        for(int i=0; i<store.StaffList.size();i++){
-            if(store.StaffList.get(i).getGender().equals(gender)||gender.equals("all"))
-              table.addRow(store.StaffList.get(i).toRowTable(eventAction));    
+        for(Staff s:Dashboard.store.getStaffList()){
+            if(s.getGender().equals(gender)||gender.equals("all"))
+              table.addRow(s.toRowTable(eventAction));    
         }
   }  
     @SuppressWarnings("unchecked")

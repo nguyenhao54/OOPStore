@@ -27,15 +27,15 @@ public class Dashboard extends javax.swing.JFrame {
                 } 
                 else if(index==1 &&indexSubMenu==1 ) 
                 {
-                    showForm(new Form_Staff("all",store));
+                    showForm(new Form_Staff("all"));
                 }
                    else if(index==1 &&indexSubMenu==2 ) 
                 {
-                    showForm(new Form_Staff("Male",store));
+                    showForm(new Form_Staff("Male"));
                 }
                        else if(index==1 &&indexSubMenu==3 ) 
                 {
-                    showForm(new Form_Staff("Female",store));
+                    showForm(new Form_Staff("Female"));
                 }
                 else if(index==5 &&indexSubMenu==1) 
                 {

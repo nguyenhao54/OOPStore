@@ -9,9 +9,9 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 import java.util.Date;
 import java.text.DateFormat;  
 import java.text.SimpleDateFormat; 
-import storepkg.Store;
-import javaswingdev.swing.table.EventAction;
-import swing.MessageDialog;
+//import storepkg.Store;
+//import javaswingdev.swing.table.EventAction;
+//import swing.MessageDialog;
 
 public class StaffInfo extends javax.swing.JDialog {
 
@@ -165,11 +165,11 @@ public class StaffInfo extends javax.swing.JDialog {
        else{
            ok = true;
            int id;
-           Store newSL=new Store();
-           newSL.readStaff();
+//           Store newSL=new Store();
+//           newSL.readStaff();
             if (staff==null){
-              id= newSL.maxStaffId +1;
-              if (newSL.addStaff(name, phone, gender, rate, date)){
+              id= Dashboard.store.getMaxStaffId() +1;
+              if (Dashboard.store.addStaff(name, phone, gender, rate, date)){
                   try{
                   setSuccess(true);
                   Date realDate=new SimpleDateFormat("dd-mm-yyyy").parse(date);
@@ -188,7 +188,7 @@ public class StaffInfo extends javax.swing.JDialog {
             //// this is for updating purpose 
             else 
               {id= staff.getStaffId();
-              if (newSL.updateStaff(id, name, phone, gender, rate, date)){
+              if (Dashboard.store.updateStaff(id, name, phone, gender, rate, date)){
                  try{
                  setSuccess(true);
                  Date realDate=new SimpleDateFormat("dd-mm-yyyy").parse(date);
