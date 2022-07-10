@@ -104,9 +104,10 @@ public class Billing extends javax.swing.JFrame {
         orderEventAction = new OrderEventAction() {
             @Override
             public void delete(Order order) {
-                getBill().deleteOrder(order.getOrderId());
-                model =(DefaultTableModel) table1.getModel();
-                model.removeRow(table1.getSelectedRow());
+//                getBill().deleteOrder(order.getOrderId());
+//                model =(DefaultTableModel) table1.getModel();
+//                model.removeRow(table1.getSelectedRow());
+                  System.out.println("delete order");
             }
             
             @Override
@@ -316,15 +317,6 @@ public class Billing extends javax.swing.JFrame {
 
     private void addToBillBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToBillBtnActionPerformed
         // TODO add your handling code here:
-            OrderEventAction eventAction = new OrderEventAction() {
-            @Override
-            public void delete(Order ord) {
-             
-            }
-            @Override
-            public void update(Order ord) {
-            }
-        };
            if(productId.getText().equals("") || quantity.getText().equals("")){
                System.out.println("Please fill in product id and quantity");
            }else{
@@ -339,7 +331,9 @@ public class Billing extends javax.swing.JFrame {
                         System.out.println("Over stock!");
                     }else{
                         order= new Order(pid,pd,quan);
-                        table1.addRow(order.toRowTable(eventAction));
+                        bill.addOrder(order);
+                        billTotal.setText(Double.toString(bill.getTotalCost()));
+                        table1.addRow(order.toRowTable(orderEventAction));
                     }
              }else{
                  System.out.println("Product not found");
