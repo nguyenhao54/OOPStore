@@ -5,27 +5,21 @@
 package javaswingdev.main;
 import java.awt.Color;
 import model.Bill;
-import model.Order;
 import java.util.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javaswingdev.form.Message;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import javaswingdev.swing.table.OrderEventAction;
-import storepkg.Store;
 import model.Product;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
-import javax.swing.JDialog;
 import javaswingdev.swing.table.OrderEventAction;
 import model.Order;
-/**
- *
- * @author Welcome
- */
+
 public class Billing extends javax.swing.JFrame {
     
     private DefaultTableModel model;
@@ -37,9 +31,6 @@ public class Billing extends javax.swing.JFrame {
     private Bill bill;
     private ArrayList<Order> orderList;
 
-    /**
-     * Creates new form Billing
-     */
     public Bill getBill() {
         return bill;
     }
@@ -68,7 +59,7 @@ public class Billing extends javax.swing.JFrame {
         billTotal.setText(Double.toString(bill.getTotalCost()));
         billPaid.setText(Double.toString(bill.getPaid()));
         billReturn.setText(Double.toString(bill.getPaid() - bill.getTotalCost()));
-        setVisible(ok);
+        setVisible(true);
     }
     
     public Billing(java.awt.Frame parent, boolean modal) {
@@ -102,17 +93,25 @@ public class Billing extends javax.swing.JFrame {
     
     private void initTable() {
         orderEventAction = new OrderEventAction() {
+            Message msg=new Message();
             @Override
             public void delete(Order order) {
-//                getBill().deleteOrder(order.getOrderId());
-//                model =(DefaultTableModel) table1.getModel();
-//                model.removeRow(table1.getSelectedRow());
-                  System.out.println("delete order");
+             if(msg.showMessage("Delete this order?")){
+                 Product orderProduct = order.getProduct();
+                 orderProduct.setQuantity(orderProduct.getProductId() + 1);
+                bill.deleteOrder(order.getOrderId());
+                billTotal.setText(Double.toString(bill.getTotalCost()));
+                model =(DefaultTableModel) table1.getModel();
+                model.removeRow(table1.getSelectedRow());
+                msg.showDialog("Delete Order Id " + bill.getBillId()+" Successfully!","red");
+             }else {
+                    System.out.println("User click Cancel");
+                }
             }
             
             @Override
             public void update(Order order) {
-                System.out.println("update order");
+                msg.showDialog("Remove and add new to update", "red");
             }
         };
         
@@ -150,7 +149,6 @@ public class Billing extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         findProduct = new javaswingdev.swing.Button();
         productId = new javaswingdev.raven.swing.TextField();
-        okBtn = new javaswingdev.swing.Button();
         billReturn = new javaswingdev.raven.swing.TextField();
         price = new javaswingdev.raven.swing.TextField();
         billTotal = new javaswingdev.raven.swing.TextField();
@@ -171,7 +169,7 @@ public class Billing extends javax.swing.JFrame {
 
         billDate.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         billDate.setForeground(new java.awt.Color(74, 74, 74));
-        getContentPane().add(billDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 100, -1));
+        getContentPane().add(billDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 220, 30));
 
         staffNameLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         staffNameLabel.setForeground(new java.awt.Color(74, 74, 74));
@@ -182,7 +180,7 @@ public class Billing extends javax.swing.JFrame {
 
         staffName.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         staffName.setForeground(new java.awt.Color(74, 74, 74));
-        getContentPane().add(staffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, -1, -1));
+        getContentPane().add(staffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, 250, 30));
 
         table1.setBackground(new java.awt.Color(255, 0, 102));
         table1.setModel(new javax.swing.table.DefaultTableModel(
@@ -249,16 +247,6 @@ public class Billing extends javax.swing.JFrame {
         });
         getContentPane().add(productId, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 280, -1));
 
-        okBtn.setBackground(new java.awt.Color(178, 55, 55));
-        okBtn.setForeground(new java.awt.Color(255, 255, 255));
-        okBtn.setText("CANCEL");
-        okBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(okBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, 110, 40));
-
         billReturn.setEditable(false);
         billReturn.setLabelText("Return");
         getContentPane().add(billReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 270, -1));
@@ -271,7 +259,6 @@ public class Billing extends javax.swing.JFrame {
         billTotal.setLabelText("Total");
         getContentPane().add(billTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 280, -1));
 
-        billPaid.setEditable(false);
         billPaid.setLabelText("Paid");
         getContentPane().add(billPaid, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 260, -1));
 
@@ -296,29 +283,25 @@ public class Billing extends javax.swing.JFrame {
 
         okBtn3.setBackground(new java.awt.Color(98, 98, 157));
         okBtn3.setForeground(new java.awt.Color(255, 255, 255));
-        okBtn3.setText("SAVE");
+        okBtn3.setLabel("OK");
         okBtn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okBtn3ActionPerformed(evt);
             }
         });
-        getContentPane().add(okBtn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 110, 40));
+        getContentPane().add(okBtn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, 110, 40));
 
         roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        roundPanel1.setRound(10);
-        getContentPane().add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 530));
+        getContentPane().add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
-     setVisible(false);
-    }//GEN-LAST:event_okBtnActionPerformed
-
     private void addToBillBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToBillBtnActionPerformed
         // TODO add your handling code here:
+        Message msg = new Message();
            if(productId.getText().equals("") || quantity.getText().equals("")){
-               System.out.println("Please fill in product id and quantity");
+               msg.showDialog("Please fill in id and quantity", "red");
            }else{
              int pid= Integer.parseInt(productId.getText());
              Product pd= Dashboard.store.getProduct(pid);
@@ -328,15 +311,17 @@ public class Billing extends javax.swing.JFrame {
                     int quan=Integer.parseInt(quantity.getText());
                      
                     if(quan > pd.getQuantity()){
-                        System.out.println("Over stock!");
+                        msg.showDialog("Out of stock!", "red");
                     }else{
-                        order= new Order(pid,pd,quan);
+                        int orderId = bill.maxOrderId++;
+                        order= new Order(orderId,pd,quan);
                         bill.addOrder(order);
                         billTotal.setText(Double.toString(bill.getTotalCost()));
+                        pd.setQuantity(pd.getQuantity() - 1);
                         table1.addRow(order.toRowTable(orderEventAction));
                     }
              }else{
-                 System.out.println("Product not found");
+                 msg.showDialog("Product not found.", "red");
              }
              
            }
@@ -350,7 +335,7 @@ public class Billing extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         int pid= Integer.parseInt(productId.getText());
-        Product pd= Dashboard.store.getProductById(Dashboard.store.getProductList(),pid);
+        Product pd= Dashboard.store.getProduct(pid);
         if(pd!=null){
             name.setText(pd.getProductName());
             price.setText(Double.toString(pd.getProductPrice()));
@@ -361,6 +346,7 @@ public class Billing extends javax.swing.JFrame {
 
     private void okBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtn3ActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
     }//GEN-LAST:event_okBtn3ActionPerformed
 
     private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
@@ -382,7 +368,6 @@ public class Billing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javaswingdev.raven.swing.TextField name;
-    private javaswingdev.swing.Button okBtn;
     private javaswingdev.swing.Button okBtn3;
     private javaswingdev.raven.swing.TextField price;
     private javaswingdev.raven.swing.TextField productId;

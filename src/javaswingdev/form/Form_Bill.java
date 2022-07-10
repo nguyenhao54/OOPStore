@@ -54,7 +54,8 @@ public class Form_Bill extends javax.swing.JPanel {
              Bill b = showUpdateForm(bill);
              if(b != null){
 //               update table row
-                 model =(DefaultTableModel) table.getModel();
+                model =(DefaultTableModel) table.getModel();
+                 System.out.println(b.getTotalCost());
                 model.setValueAt(b.getBillId(),table.getSelectedRow() , 0);
                 model.setValueAt(b.getDate(),table.getSelectedRow() , 1);
                 model.setValueAt(b.getStaff().getName(),table.getSelectedRow() , 2);
