@@ -85,9 +85,6 @@ public class Store  {
         tempProduct = this.getProduct(5);
         orderList.add(new Order(5, tempProduct, 2));
         
-//        readStaff();
-//
-//       StaffList= new ArrayList<>();
         billList = new ArrayList<>();
         ArrayList orders0 = new ArrayList<>();
         orders0.add(orderList.get(0));
