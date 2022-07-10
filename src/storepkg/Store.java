@@ -8,7 +8,7 @@ import org.json.simple.JSONArray;
 //import org.json.simple.parser.JSONParser;
 //import org.json.simple.parser.ParseException;
 import java.util.Date;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
 import java.text.SimpleDateFormat;  
 import model.*;
@@ -89,28 +89,21 @@ public class Store  {
         ArrayList orders0 = new ArrayList<>();
         orders0.add(orderList.get(0));
         orders0.add(orderList.get(1));
-        billList.add(new Bill(1, this.findStaff(3), orders0, LocalDate.of(2014, Month.FEBRUARY, 27), 2000000));
+        billList.add(new Bill(1, this.findStaff(3), orders0, LocalDateTime.of(2022, Month.JUNE, 27, 14, 33, 23), 2000000));
         ArrayList orders1 = new ArrayList<>();
         orders1.add(orderList.get(2));
-        billList.add(new Bill(2, this.findStaff(1), orders1, LocalDate.of(2014, Month.FEBRUARY, 23), 1700000));
+        billList.add(new Bill(2, this.findStaff(1), orders1, LocalDateTime.of(2022, Month.FEBRUARY, 23, 18, 22, 38), 1700000));
         ArrayList orders2 = new ArrayList<>();
         orders2.add(orderList.get(3));
-        billList.add(new Bill(3, this.findStaff(2), orders2, LocalDate.of(2014, Month.FEBRUARY, 28), 1800000));
+        billList.add(new Bill(3, this.findStaff(2), orders2, LocalDateTime.of(2022, Month.JULY, 28, 6, 19, 20), 1800000));
         ArrayList orders3 = new ArrayList<>();
         orders3.add(orderList.get(3));
         orders3.add(orderList.get(4));
-        billList.add(new Bill(4, this.findStaff(6), orders3, LocalDate.of(2014, Month.FEBRUARY, 28), 1700000));
+        billList.add(new Bill(4, this.findStaff(6), orders3, LocalDateTime.of(2022, Month.APRIL, 28, 11, 22, 22), 1700000));
+        System.out.println(billList.get(2).getDate());
         maxBillId = billList.size() + 1;
         
      }
-    public Product getProductById(ArrayList<Product> productList, int id) {
-        for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getProductId() == id) {
-                return productList.get(i);
-            }
-        }
-        return null;
-    }
    // ***********************************************************************add new object
      public ArrayList<Staff> getSalaryList(){
       return staffList;
@@ -305,7 +298,6 @@ public class Store  {
         for (int i = 0; i < billList.size(); i++){
               if(billList.get(i).getBillId() == id){
                   billList.remove(i);
-                  System.out.println("remove done");
               }
           }
     }
@@ -406,7 +398,6 @@ public class Store  {
         for (int i = 0; i < productList.size(); i++){
               if(productList.get(i).getProductId() == id){
                   productList.remove(i);
-                  System.out.println("remove done");
               }
           }
     }
@@ -431,7 +422,6 @@ public class Store  {
         for (int i = 0; i < shiftList.size(); i++){
               if(shiftList.get(i).getShiftId() == id){
                   shiftList.remove(i);
-                  System.out.println("remove done");
               }
           }
     }

@@ -4,7 +4,7 @@
  */
 package model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javaswingdev.swing.table.ModelAction;
 import javaswingdev.swing.table.BillEventAction;
@@ -17,30 +17,33 @@ public class Bill {
     final private int billId;
     private Staff staff;
     private ArrayList<Order> orderList;
-    private LocalDate date;
+    private LocalDateTime date;
     private double totalCost;
     private double paid;
+    public int maxOrderId;
     
-    public Bill(int id, Staff staff, ArrayList<Order> orderList, LocalDate date, double paid) {
+    public Bill(int id, Staff staff, ArrayList<Order> orderList, LocalDateTime date, double paid) {
         this.billId = id;
         this.staff = staff;
         this.orderList = orderList;
-        this.date = LocalDate.now();
+        this.date = date;
         for (Order order : orderList) {
             this.totalCost += order.getCost();
         }
         this.paid = paid;
+        maxOrderId = orderList.size() + 1;
     }
     
     public Bill(int id, Staff staff, double paid) {
         this.billId = id;
         this.staff = staff;
         this.orderList = new ArrayList<>();
-        this.date = LocalDate.now();
+        this.date = LocalDateTime.now();
         for (Order order : orderList) {
             this.totalCost += order.getCost();
         }
         this.paid = paid;
+        maxOrderId = 0;
     }
     
     public int getBillId() {
@@ -51,7 +54,7 @@ public class Bill {
         return this.staff;
     }
     
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return this.date;
     }
     
@@ -73,10 +76,10 @@ public class Bill {
     }
     
     public void setDate() {
-        this.date = LocalDate.now();
+        this.date = LocalDateTime.now();
     }
     
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
     

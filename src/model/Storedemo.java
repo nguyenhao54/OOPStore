@@ -5,6 +5,7 @@
 
 package model;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -120,7 +121,7 @@ public class Storedemo {
         p.setQuantity(quantity);
     }
     
-    public void updateBill(int id, Staff staff, ArrayList<Order> orderList, LocalDate date){
+    public void updateBill(int id, Staff staff, ArrayList<Order> orderList, LocalDateTime date){
         Bill b = getBill(id);
         if(b == null){
             return;
