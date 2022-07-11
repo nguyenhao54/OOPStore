@@ -25,11 +25,11 @@ public class Form_Bill extends javax.swing.JPanel {
         SortFilter();
     }
     
-    private Bill showUpdateForm(Bill bill){
+    private Bill showUpdateForm(Bill bill, DefaultTableModel model){
         Billing billForm = new Billing(Dashboard.getFrames()[0], true);
         billForm.setOk(true);
         billForm.setBill(bill);
-        billForm.showBillInfo(bill);
+        billForm.showBillInfo(bill, model, table);
         return billForm.getBill();
     }
     
@@ -51,10 +51,11 @@ public class Form_Bill extends javax.swing.JPanel {
 
          @Override
          public void update(Bill bill) {
-             Bill b = showUpdateForm(bill);
+             model =(DefaultTableModel) table.getModel();
+             Bill b = showUpdateForm(bill, model);
              if(b != null){
 //               update table row
-                model =(DefaultTableModel) table.getModel();
+                
                  System.out.println(b.getTotalCost());
                 model.setValueAt(b.getBillId(),table.getSelectedRow() , 0);
                 model.setValueAt(b.getDate(),table.getSelectedRow() , 1);

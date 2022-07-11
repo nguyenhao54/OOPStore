@@ -29,7 +29,8 @@ public class Billing extends javax.swing.JFrame {
     private boolean ok;
     private boolean show = true;
     private Bill bill;
-    private ArrayList<Order> orderList;
+    private DefaultTableModel allBillModel;
+    private javaswingdev.swing.table.Table allBillTable;
 
     public Bill getBill() {
         return bill;
@@ -50,7 +51,7 @@ public class Billing extends javax.swing.JFrame {
 //    private final Animator animator;
 //    private boolean show = true;
     
-    public void showBillInfo(Bill bill) {
+    public void showBillInfo(Bill bill, DefaultTableModel model, javaswingdev.swing.table.Table allBillTable) {
         staffName.setText(bill.getStaff().getName());
         billDate.setText(bill.getDate().toString());
         for (Order o: getBill().getOrderList()) {
@@ -59,6 +60,8 @@ public class Billing extends javax.swing.JFrame {
         billTotal.setText(Double.toString(bill.getTotalCost()));
         billPaid.setText(Double.toString(bill.getPaid()));
         billReturn.setText(Double.toString(bill.getPaid() - bill.getTotalCost()));
+        allBillModel = model;
+        this.allBillTable = allBillTable;
         setVisible(true);
     }
     
@@ -346,6 +349,7 @@ public class Billing extends javax.swing.JFrame {
 
     private void okBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtn3ActionPerformed
         // TODO add your handling code here:
+        allBillModel.setValueAt(bill.getTotalCost(),allBillTable.getSelectedRow() , 3);
         setVisible(false);
     }//GEN-LAST:event_okBtn3ActionPerformed
 
