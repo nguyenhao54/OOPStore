@@ -467,4 +467,15 @@ public class Store  {
         }
         return sum;
     }
+     
+     public double getExpense(){
+         double importPriceSum = 0;
+         for(Bill b: billList){
+             for(Order o: b.getOrderList()){
+                 importPriceSum += o.getProduct().getImportPrice();
+             }
+         }
+//         double expense = importPriceSum + staffSalary;
+         return importPriceSum;
+     }
 }   

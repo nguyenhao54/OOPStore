@@ -32,9 +32,11 @@ public class Form_Dashboard extends javax.swing.JPanel {
        double income = Dashboard.store.getIncome();
        DecimalFormat df = new DecimalFormat("#");
        df.setMaximumFractionDigits(8);
-       String formattedIncome = Double.toString(income) + "VND";
+       String formattedIncome = df.format(income) + "VND";
+       double expense = Dashboard.store.getExpense();
+       String formattedExpense = df.format(expense) + "VND";
         card1.setData(new ModelCard(null, null, null, formattedIncome, "Report Gross Income"));
-        card2.setData(new ModelCard(null, null, null, "VND 600.000", "Report Gross Expense"));
+        card2.setData(new ModelCard(null, null, null, formattedExpense, "Report Gross Expense"));
         card3.setData(new ModelCard(null, null, null, "VND 200.000", "Report Gross Profit"));
     }
 
