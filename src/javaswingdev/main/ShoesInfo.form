@@ -60,12 +60,23 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="productName" min="-2" pref="265" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="quantity" min="-2" pref="264" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="description" min="-2" pref="264" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="footLength" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="productName" min="-2" pref="265" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="quantity" min="-2" pref="264" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -76,28 +87,22 @@
                                       <Component id="alertLabel" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="cancelBtn" min="-2" pref="116" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="okBtn" min="-2" pref="116" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="cancelBtn" min="-2" pref="116" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="okBtn" min="-2" pref="116" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="category" min="-2" pref="264" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="category" pref="264" max="32767" attributes="0"/>
-                                      <Component id="description" max="32767" attributes="0"/>
+                                      <Component id="importPrice" alignment="0" pref="265" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="247" max="-2" attributes="0"/>
-                          <Component id="footLength" min="-2" pref="113" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
-                  <EmptySpace pref="46" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -114,22 +119,25 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="price" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="category" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="importPrice" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="brand" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="description" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="category" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                  <Component id="footLength" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="footLength" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="description" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cancelBtn" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="okBtn" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="alertLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="37" max="32767" attributes="0"/>
+                  <EmptySpace pref="33" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -220,6 +228,11 @@
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[208, 13]"/>
             </Property>
+          </Properties>
+        </Component>
+        <Component class="javaswingdev.raven.swing.TextField" name="importPrice">
+          <Properties>
+            <Property name="labelText" type="java.lang.String" value="Import Price"/>
           </Properties>
         </Component>
       </SubComponents>
