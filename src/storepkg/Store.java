@@ -99,7 +99,7 @@ public class Store  {
         ArrayList orders3 = new ArrayList<>();
         orders3.add(orderList.get(3));
         orders3.add(orderList.get(4));
-        billList.add(new Bill(4, this.findStaff(6), orders3, LocalDateTime.of(2022, Month.APRIL, 28, 11, 22, 22), 1700000));
+        billList.add(new Bill(4, this.findStaff(6), orders3, LocalDateTime.of(2022, Month.APRIL, 28, 11, 22, 22), 2300000));
         System.out.println(billList.get(2).getDate());
         maxBillId = billList.size() + 1;
         
@@ -446,5 +446,10 @@ public class Store  {
            }
        }     
      return maxStaffId;
+    }
+    
+//    Bill part
+    public void addBill(Bill newBill){
+        billList.add(newBill);
     }
 }   
