@@ -1,6 +1,9 @@
 
 package javaswingdev.main;
 
+import com.raven.datechooser.EventDateChooser;
+import com.raven.datechooser.SelectedAction;
+import com.raven.datechooser.SelectedDate;
 import java.awt.Color;
 import model.*;
 import javaswingdev.swing.table.ShiftEventAction;
@@ -41,6 +44,15 @@ public class ShiftInfo extends javax.swing.JDialog {
         initComponents();
         centerComponent();
          getContentPane().setBackground(Color.WHITE);
+                 dateChooser.addEventDateChooser(new EventDateChooser() {
+            @Override
+            public void dateSelected(SelectedAction action, SelectedDate date) {
+                System.out.println(date.getDay() + "-" + date.getMonth() + "-" + date.getYear());
+                if (action.getAction() == SelectedAction.DAY_SELECTED) {
+                    dateChooser.hidePopup();
+                }
+            }
+        });
         TimingTarget target = new TimingTargetAdapter() {
             @Override
             public void timingEvent(float fraction) {
@@ -68,6 +80,7 @@ public class ShiftInfo extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dateChooser = new com.raven.datechooser.DateChooser();
         addProductForm = new javaswingdev.swing.RoundPanel();
         findShift = new javaswingdev.swing.Button();
         shiftId = new javaswingdev.raven.swing.TextField();
@@ -76,11 +89,14 @@ public class ShiftInfo extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         cancelBtn = new javaswingdev.swing.Button();
         startTime = new javaswingdev.raven.swing.TextField();
-        hour = new javaswingdev.raven.swing.TextField();
+        date = new javaswingdev.raven.swing.TextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         table1 = new javaswingdev.swing.table.Table();
         staffNameLabel = new javax.swing.JLabel();
         staffNameLabel1 = new javax.swing.JLabel();
+
+        dateChooser.setForeground(new java.awt.Color(82, 97, 198));
+        dateChooser.setTextRefernce(date);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(800, 250));
@@ -146,8 +162,8 @@ public class ShiftInfo extends javax.swing.JDialog {
         });
         addProductForm.add(startTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 332, -1));
 
-        hour.setLabelText("Date");
-        addProductForm.add(hour, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 332, -1));
+        date.setLabelText("Date");
+        addProductForm.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 332, -1));
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -200,7 +216,11 @@ public class ShiftInfo extends javax.swing.JDialog {
     }//GEN-LAST:event_shiftIdActionPerformed
 
     private void findShiftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findShiftActionPerformed
-
+        String id= shiftId.getText();
+        Shift s= Dashboard.store.getShift(Integer.parseInt(id));
+        startTime.setText(s.getStartTime().toString());
+        endTime.setText(s.getEndTime().toString());
+        
     }//GEN-LAST:event_findShiftActionPerformed
 
     private void centerComponent(){
@@ -217,9 +237,10 @@ public class ShiftInfo extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javaswingdev.swing.RoundPanel addProductForm;
     private javaswingdev.swing.Button cancelBtn;
+    private javaswingdev.raven.swing.TextField date;
+    private com.raven.datechooser.DateChooser dateChooser;
     private javaswingdev.raven.swing.TextField endTime;
     private javaswingdev.swing.Button findShift;
-    private javaswingdev.raven.swing.TextField hour;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javaswingdev.swing.Button okBtn;

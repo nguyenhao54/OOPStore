@@ -1,6 +1,9 @@
 
 package javaswingdev.main;
 
+import com.raven.datechooser.EventDateChooser;
+import com.raven.datechooser.SelectedAction;
+import com.raven.datechooser.SelectedDate;
 import java.awt.Color;
 import model.Staff;
 import org.jdesktop.animation.timing.Animator;
@@ -40,6 +43,15 @@ public class StaffInfo extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
          getContentPane().setBackground(Color.WHITE);
+            dateChooser.addEventDateChooser(new EventDateChooser() {
+            @Override
+            public void dateSelected(SelectedAction action, SelectedDate date) {
+                System.out.println(date.getDay() + "-" + date.getMonth() + "-" + date.getYear());
+                if (action.getAction() == SelectedAction.DAY_SELECTED) {
+                    dateChooser.hidePopup();
+                }
+            }
+        });
         TimingTarget target = new TimingTargetAdapter() {
             @Override
             public void timingEvent(float fraction) {
@@ -67,6 +79,7 @@ public class StaffInfo extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dateChooser = new com.raven.datechooser.DateChooser();
         roundPanel1 = new javaswingdev.swing.RoundPanel();
         textField1 = new javaswingdev.raven.swing.TextField();
         textField2 = new javaswingdev.raven.swing.TextField();
@@ -77,6 +90,9 @@ public class StaffInfo extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         combobox1 = new javaswingdev.swing.Combobox();
         alertLabel = new javax.swing.JLabel();
+
+        dateChooser.setForeground(new java.awt.Color(84, 88, 196));
+        dateChooser.setTextRefernce(textField3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(800, 250));
@@ -255,6 +271,7 @@ public class StaffInfo extends javax.swing.JDialog {
     private javax.swing.JLabel alertLabel;
     private javaswingdev.swing.Button button2;
     private javaswingdev.swing.Combobox combobox1;
+    private com.raven.datechooser.DateChooser dateChooser;
     private javax.swing.JLabel jLabel1;
     private javaswingdev.swing.Button okBtn;
     private javaswingdev.swing.RoundPanel roundPanel1;

@@ -52,14 +52,14 @@ public class Store  {
         
         staffList = new ArrayList<>();
                   
-        staffList.add(new Staff(1, "Nguyễn Đồng Đức Anh", "Male", "134892", 1.2, new Date()));
-        staffList.add(new Staff(2, "Nguyễn Thị Hà Giang", "Female", "134892", 1.2,new Date()));
-        staffList.add(new Staff(3, "Hoàng Trung Kiên", "Male", "134892", 1.2,new Date()));
-        staffList.add(new Staff(4, "Hoàng Đức Thiện", "Male", "134892", 1.9,new Date()));
-        staffList.add(new Staff(5, "Nguyễn Đức Tùng", "Male", "134892", 1.2,new Date()));
-        staffList.add(new Staff(6, "Trần Văn Quân", "Male", "134892", 1.8,new Date()));
-        staffList.add(new Staff(7, "Nguyễn Phương Anh", "Female", "134892", 1.2,new Date()));
-        staffList.add(new Staff(8, "Nguyễn Thị Phương Nga", "Female", "134892", 1.6,new Date()));
+        staffList.add(new Staff(1, "Nguyễn Đồng Đức Anh", "Male", "0858377316", 1.2, new Date()));
+        staffList.add(new Staff(2, "Nguyễn Thị Hà Giang", "Female", "0973567822", 1.2,new Date()));
+        staffList.add(new Staff(3, "Hoàng Trung Kiên", "Male", "0778237733", 1.2,new Date()));
+        staffList.add(new Staff(4, "Hoàng Đức Thiện", "Male", "0943453321", 1.9,new Date()));
+        staffList.add(new Staff(5, "Nguyễn Đức Tùng", "Male", "036663773", 1.2,new Date()));
+        staffList.add(new Staff(6, "Trần Văn Quân", "Male", "0927727253", 1.8,new Date(1999,04,19)));
+        staffList.add(new Staff(7, "Nguyễn Phương Anh", "Female", "0876635623", 1.2,new Date(2002,11,05)));
+        staffList.add(new Staff(8, "Nguyễn Thị Phương Nga", "Female", "078288232", 1.6,new Date(2001,11,12)));
 
 
         

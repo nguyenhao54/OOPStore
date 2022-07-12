@@ -29,11 +29,11 @@ public class Form_Dashboard extends javax.swing.JPanel {
         table.addRow(new Object[]{"14", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
 
         //  init card data
-        double income = Dashboard.store.getIncome();
-        DecimalFormat df = new DecimalFormat("#");
-        df.setMaximumFractionDigits(8);
-        String formattedIncome = Double.toString(income) + "VND";
-        card1.setData(new ModelCard(null, null, null, formattedIncome, "Report Gross Income"));
+//        double income = Dashboard.store.getIncome();
+//        DecimalFormat df = new DecimalFormat("#");
+//        df.setMaximumFractionDigits(8);
+//        String formattedIncome = Double.toString(income) + "VND";
+        card1.setData(new ModelCard(null, null, null, "VND 7324723", "Report Gross Income"));
         card2.setData(new ModelCard(null, null, null, "VND 600.000", "Report Gross Expense"));
         card3.setData(new ModelCard(null, null, null, "VND 200.000", "Report Gross Profit"));
     }

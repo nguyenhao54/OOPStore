@@ -39,7 +39,7 @@ public class Form_Staff extends javax.swing.JPanel {
                   Dashboard.store.deleteStaff(staff.getStaffId());
                   model =(DefaultTableModel) table.getModel();
                   model.removeRow(table.getSelectedRow());
-                   msg.showDialog("Delete Staff" + staff.getName()+" Successfully!","red");
+                   msg.showDialog("Delete Staff Successfully!","red");
                 } else {
                     System.out.println("User click Cancel");
                 }
@@ -60,10 +60,10 @@ public class Form_Staff extends javax.swing.JPanel {
                    model.setValueAt(obj.getStaff().getPhone(),table.getSelectedRow() , 3);
                    model.setValueAt(obj.getStaff().getRate(),table.getSelectedRow() , 4);
 
-                   msg.showDialog("Update staff"+staff.getName()+" successfully!","blue");
+                   msg.showDialog("Update staff successfully!","blue");
                    }
                    else 
-                   msg.showDialog("Update staff"+staff.getName()+" failed! Please try again","red");
+                   msg.showDialog("Update staff failed! Please try again","red");
                    }    
                    
                  else {
