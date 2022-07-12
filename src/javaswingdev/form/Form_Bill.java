@@ -55,8 +55,6 @@ public class Form_Bill extends javax.swing.JPanel {
              Bill b = showUpdateForm(bill, model);
              if(b != null){
 //               update table row
-                
-                 System.out.println(b.getTotalCost());
                 model.setValueAt(b.getBillId(),table.getSelectedRow() , 0);
                 model.setValueAt(b.getDate(),table.getSelectedRow() , 1);
                 model.setValueAt(b.getStaff().getName(),table.getSelectedRow() , 2);
@@ -97,7 +95,7 @@ public class Form_Bill extends javax.swing.JPanel {
 
             },
             new String [] {
-                "#I", "Date", "Staff", "Total", "Action"
+                "ID", "Date", "Staff", "Total", "Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -174,7 +172,10 @@ public class Form_Bill extends javax.swing.JPanel {
 
     private void addBillBtnActionPerformed(java.awt.event.ActionEvent evt) {        
         Billing billForm = new Billing(Dashboard.getFrames()[0], true);
+        billForm.setBill(null);
         billForm.setVisible(true);
+        billForm.setBillEventAction(billEventAction);
+        billForm.setAllBillTable(table);
     }
     
     private void SortFilter(){
