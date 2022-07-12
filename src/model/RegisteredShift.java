@@ -1,5 +1,7 @@
 package model;
 import java.time.LocalDate;
+import javaswingdev.swing.table.ShiftEventAction;
+import javaswingdev.swing.table.ModelAction;
 
 public class RegisteredShift{
     private LocalDate registeredDate;
@@ -35,5 +37,8 @@ public class RegisteredShift{
      */
     public void setRegisteredShift(Shift registeredShift) {
         this.registeredShift = registeredShift;
+    }
+    public Object[] toRowTable(ShiftEventAction event) {
+        return new Object[]{registeredShift.getShiftId(), registeredShift.getStartTime(), registeredShift.getEndTime(),registeredDate, new ModelAction(this, event)};
     }
 }

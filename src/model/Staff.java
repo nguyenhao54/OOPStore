@@ -116,6 +116,6 @@ public class Staff {
     }
     
     public Object[] toRowSalaryTable() {
-        return new Object[]{staffId, name, "role", rate, 1000000, 0, 0};
+        return new Object[]{staffId, name, rate ,"1111", workedHour };
     }
 }

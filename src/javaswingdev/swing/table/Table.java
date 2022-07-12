@@ -31,8 +31,10 @@ public class Table extends JTable {
                 if(o instanceof ModelAction){
                     ModelAction data=(ModelAction) o;
                     Action cell= null;
+                    Action2 cell2=null;
                     if(data.getStaff() != null){
-                        cell = new Action(data, "staff");
+                        cell2 = new Action2(data, "staff");
+                        return cell2;
                     }else if(data.getProduct() != null){
                         cell = new Action(data, "product");
                     }else if(data.getBill() != null){
@@ -40,11 +42,14 @@ public class Table extends JTable {
                     }else if(data.getOrder() != null){
                         cell = new Action(data, "order");
                     }
-                    if (selected) {
-                        cell.setForeground(SystemColor.MAIN_COLOR_1);
-                    } else {
-                        cell.setForeground(new Color(102, 102, 102));
-                     }
+                    else if(data.getOrder() != null){
+                        cell = new Action(data, "order");
+                    }
+//                    if (selected) {
+//                        cell.setForeground(SystemColor.MAIN_COLOR_1);
+//                    } else {
+//                        cell.setForeground(new Color(102, 102, 102));
+//                     }
                     return cell;
                 }
              

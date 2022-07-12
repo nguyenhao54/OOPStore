@@ -297,7 +297,7 @@ public class Billing extends javax.swing.JFrame {
         billPaid.setLabelText("Paid");
         getContentPane().add(billPaid, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 260, -1));
 
-        addToBillBtn.setBackground(new java.awt.Color(204, 204, 204));
+        addToBillBtn.setBackground(new java.awt.Color(122, 180, 113));
         addToBillBtn.setForeground(new java.awt.Color(255, 255, 255));
         addToBillBtn.setText("ADD");
         addToBillBtn.addActionListener(new java.awt.event.ActionListener() {

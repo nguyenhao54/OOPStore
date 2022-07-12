@@ -10,4 +10,5 @@ public interface EventAction {
     public void delete(Staff staff);
 
     public void update(Staff staff);
+    public void addShift(Staff staff);
 }
