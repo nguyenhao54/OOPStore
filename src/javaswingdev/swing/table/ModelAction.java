@@ -5,13 +5,11 @@ import model.*;
 public class ModelAction {
     private Staff staff;
     private EventAction event;
-    
     private Product product;
     private ProductEventAction productEvent;
 
-    private Shift shift;
     private ShiftEventAction shiftEvent;
-    
+    private RegisteredShift registeredShift;
     
     private Bill bill;
     private BillEventAction billEvent;
@@ -41,24 +39,12 @@ public class ModelAction {
     public Product getProduct() {
         return product;
     }
-
-    /**
-     * @param product the product to set
-     */
     public void setProduct(Product product) {
         this.product = product;
     }
-
-    /**
-     * @return the productEvent
-     */
     public ProductEventAction getProductEvent() {
         return productEvent;
     }
-
-    /**
-     * @param productEvent the productEvent to set
-     */
     public void setProductEvent(ProductEventAction productEvent) {
         this.productEvent = productEvent;
     }
@@ -67,34 +53,15 @@ public class ModelAction {
         this.product = product;
         this.productEvent = productEvent;
     }
-    
-    
-
     public ModelAction(Staff staff, EventAction event) {
         this.staff=staff;
         this.event = event;
     }
-
-    public Shift getShift() {
-        return shift;
+   
+    public ModelAction(RegisteredShift shift, ShiftEventAction event){
+        this.registeredShift=shift;
+        this.shiftEvent=event;
     }
-
-    public void setShift(Shift st) {
-        this.shift = st;
-    }
-
-    public ShiftEventAction getShiftEvent() {
-        return shiftEvent;
-    }
-
-    public void setShiftEvent(ShiftEventAction shiftevent) {
-        this.shiftEvent = shiftevent;
-    }
-    public ModelAction(Shift shift, ShiftEventAction shiftEvent) {
-        this.shift = shift;
-        this.shiftEvent = shiftEvent;
-    }
-    
     
     public void setBill(Bill bill) {
         this.bill = bill;
@@ -103,34 +70,38 @@ public class ModelAction {
     public Bill getBill() {
         return bill;
     }
-    
     public BillEventAction getBillEvent() {
         return billEvent;
     }
-    
     public ModelAction(Bill bill, BillEventAction event) {
         this.bill=bill;
         this.billEvent = event;
-    }
-    
+    } 
     public void setOrder(Order order) {
         this.order = order;
     }
-    
     public Order getOrder() {
         return order;
-    }
-    
+    } 
     public OrderEventAction getOrderEvent() {
         return orderEvent;
     }
-    
     public ModelAction(Order order, OrderEventAction event) {
         this.order=order;
         this.orderEvent = event;
     }
-
-    public ModelAction() {
+    public ShiftEventAction getShiftEvent() {
+        return shiftEvent;
     }
+    public void setShiftEvent(ShiftEventAction ShiftEvent) {
+        this.shiftEvent = ShiftEvent;
+    }
+    public RegisteredShift getRegisteredShift() {
+        return registeredShift;
+    }
+    public void setRegisteredShift(RegisteredShift registeredShift) {
+        this.registeredShift = registeredShift;
+    }
+
 
    }

@@ -20,7 +20,8 @@ public class TableCellAction extends DefaultCellEditor {
         data = (ModelAction) o;
         Action cell = null;
         if(data.getStaff() != null){
-            cell = new Action(data, "staff");
+            Action2 cell2= new Action2(data, "staff");
+            return cell2;
         }else if(data.getProduct() != null){
             cell = new Action(data, "product");
         }else if(data.getBill() != null){

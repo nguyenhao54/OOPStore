@@ -4,8 +4,6 @@
  */
 package model;
 import java.time.LocalTime;
-import javaswingdev.swing.table.ModelAction;
-import javaswingdev.swing.table.ShiftEventAction;
 
 /**
  *
@@ -52,7 +50,4 @@ public class Shift {
             this.shiftId = shiftId;    
         }
    
-    public Object[] toRowTable(ShiftEventAction shiftEvent) {
-        return new Object[]{shiftId, startTime, endTime, hour, new ModelAction(this, shiftEvent)};
-    }
 }

@@ -2,6 +2,8 @@ package javaswingdev.form;
 import javaswingdev.main.Dashboard;
 import javaswingdev.swing.table.EventAction;
 import javaswingdev.main.StaffInfo;
+import javaswingdev.main.ShiftInfo;
+
 import swing.MessageDialog;
 import model.Staff;
 import storepkg.Store;
@@ -69,6 +71,14 @@ public class Form_Staff extends javax.swing.JPanel {
                 }
                   
             }
+            @Override
+            public void addShift (Staff staff){
+                 ShiftInfo obj= new ShiftInfo(Dashboard.getFrames()[0], true);
+                 obj.setLocationRelativeTo(Dashboard.getFrames()[0]);
+                 obj.setShiftList(staff.getWorkedShifts());
+                 obj.showInfo(staff);
+                
+            }
         };
          
         // append staffs info to the table
@@ -102,9 +112,16 @@ public class Form_Staff extends javax.swing.JPanel {
                 "#", "Name", "Gender", "Phone number", "Rate", " Action"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Object.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, true
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -112,7 +129,12 @@ public class Form_Staff extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(table);
         if (table.getColumnModel().getColumnCount() > 0) {
-            table.getColumnModel().getColumn(0).setPreferredWidth(25);
+            table.getColumnModel().getColumn(0).setMinWidth(35);
+            table.getColumnModel().getColumn(0).setPreferredWidth(35);
+            table.getColumnModel().getColumn(0).setMaxWidth(35);
+            table.getColumnModel().getColumn(4).setMinWidth(55);
+            table.getColumnModel().getColumn(4).setPreferredWidth(55);
+            table.getColumnModel().getColumn(4).setMaxWidth(55);
         }
 
         javax.swing.GroupLayout roundPanel1Layout = new javax.swing.GroupLayout(roundPanel1);

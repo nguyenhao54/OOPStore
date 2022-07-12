@@ -50,7 +50,7 @@ public class Store  {
         productList.add(new Pant(18, "Jeans Bermuda", 434000, "Boo", "Quần Jeans", "Quần regular form", 18, 101, 42, 51));
         maxProductId = productList.size() + 1;
         
-                staffList = new ArrayList<>();
+        staffList = new ArrayList<>();
                   
         staffList.add(new Staff(1, "Nguyễn Đồng Đức Anh", "Male", "134892", 1.2, new Date()));
         staffList.add(new Staff(2, "Nguyễn Thị Hà Giang", "Female", "134892", 1.2,new Date()));
@@ -64,12 +64,12 @@ public class Store  {
 
         
         shiftList = new ArrayList<>();
-        shiftList.add(new Shift(1, "08:00:00", "16:00:00", 8));
-        shiftList.add(new Shift(2, "09:00:00", "17:00:00", 8));
-        shiftList.add(new Shift(3, "17:00:00", "23:00:00", 6));
-        shiftList.add(new Shift(4, "06:00:00", "09:00:00", 3));
-        shiftList.add(new Shift(5, "09:00:00", "12:00:00", 3));
-        shiftList.add(new Shift(6, "15:00:00", "18:00:00", 3));
+        shiftList.add(new Shift(1, "08:00:00", "12:00:00", 4));
+        shiftList.add(new Shift(2, "12:00:00", "17:00:00", 5));
+        shiftList.add(new Shift(3, "17:00:00", "22:00:00", 5));
+        shiftList.add(new Shift(4, "08:00:00", "17:00:00", 9));
+        
+
         maxShiftId = shiftList.size() + 1;
         
         
