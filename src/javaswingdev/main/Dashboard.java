@@ -8,8 +8,9 @@ import javaswingdev.menu.EventMenuSelected;
 public class Dashboard extends javax.swing.JFrame {
     
     private static Dashboard main;
-    public static Store store=new Store();
+    public static Store store;
     public Dashboard() {
+        store = new Store();
         initComponents();
         init();
         
