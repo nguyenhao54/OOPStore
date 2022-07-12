@@ -1,6 +1,8 @@
 package javaswingdev.form;
 
+import java.text.DecimalFormat;
 import javaswingdev.card.ModelCard;
+import javaswingdev.main.Dashboard;
 
 public class Form_Dashboard extends javax.swing.JPanel {
 
@@ -27,9 +29,13 @@ public class Form_Dashboard extends javax.swing.JPanel {
         table.addRow(new Object[]{"14", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
 
         //  init card data
-        card1.setData(new ModelCard(null, null, null, "$ 500.00", "Report Income Monthly"));
-        card2.setData(new ModelCard(null, null, null, "$ 800.00", "Report Expense Monthly"));
-        card3.setData(new ModelCard(null, null, null, "$ 300.00", "Report Profit Monthly"));
+        double income = Dashboard.store.getIncome();
+        DecimalFormat df = new DecimalFormat("#");
+        df.setMaximumFractionDigits(8);
+        String formattedIncome = Double.toString(income) + "VND";
+        card1.setData(new ModelCard(null, null, null, formattedIncome, "Report Gross Income"));
+        card2.setData(new ModelCard(null, null, null, "VND 600.000", "Report Gross Expense"));
+        card3.setData(new ModelCard(null, null, null, "VND 200.000", "Report Gross Profit"));
     }
 
     @SuppressWarnings("unchecked")
@@ -45,16 +51,23 @@ public class Form_Dashboard extends javax.swing.JPanel {
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        card1.setDescription("Gross Income");
+        card1.setValues("VND 0.00");
         add(card1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         card2.setColor1(new java.awt.Color(95, 211, 226));
         card2.setColor2(new java.awt.Color(26, 166, 170));
+        card2.setDescription("Gross Expense");
         card2.setIcon(javaswingdev.GoogleMaterialDesignIcon.PIE_CHART);
+        card2.setValues("VND 0.00");
         add(card2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
 
         card3.setColor1(new java.awt.Color(95, 243, 140));
         card3.setColor2(new java.awt.Color(3, 157, 27));
+        card3.setDescription("Gross Profit");
         card3.setIcon(javaswingdev.GoogleMaterialDesignIcon.RING_VOLUME);
+        card3.setValues("VND 0.00");
         add(card3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, -1, -1));
 
         roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
