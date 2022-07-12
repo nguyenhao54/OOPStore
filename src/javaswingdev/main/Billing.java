@@ -133,6 +133,7 @@ public class Billing extends javax.swing.JFrame {
                  orderProduct.setQuantity(orderProduct.getQuantity() + order.getQuantity());
                 bill.deleteOrder(order.getOrderId());
                 billTotal.setText(Double.toString(bill.getTotalCost()));
+                billReturn.setText(Double.toString(bill.getPaid() - bill.getTotalCost()));
                 model =(DefaultTableModel) table1.getModel();
                 model.removeRow(table1.getSelectedRow());
                 msg.showDialog("Delete Order Id " + bill.getBillId()+" Successfully!","red");
@@ -356,6 +357,7 @@ public class Billing extends javax.swing.JFrame {
                             bill.addOrder(order);
                             billTotal.setText(Double.toString(bill.getTotalCost()));
                             pd.setQuantity(pd.getQuantity() - quan);
+                            billReturn.setText(Double.toString(bill.getPaid() - bill.getTotalCost()));
                             table1.addRow(order.toRowTable(orderEventAction));
                         }else{
 //                          Bill is null -> new bill, add new order to temporary order list
