@@ -96,6 +96,7 @@ public class PantInfo extends javax.swing.JDialog {
         buttWidth = new javaswingdev.raven.swing.TextField();
         pantLength = new javaswingdev.raven.swing.TextField();
         alertLabel = new javax.swing.JLabel();
+        importPrice = new javaswingdev.raven.swing.TextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(800, 250));
@@ -105,6 +106,7 @@ public class PantInfo extends javax.swing.JDialog {
         addProductForm.setBackground(new java.awt.Color(255, 255, 255));
         addProductForm.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createCompoundBorder(), javax.swing.BorderFactory.createCompoundBorder()));
         addProductForm.setRound(15);
+        addProductForm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         productName.setLabelText("Product name");
         productName.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +114,7 @@ public class PantInfo extends javax.swing.JDialog {
                 productNameActionPerformed(evt);
             }
         });
+        addProductForm.add(productName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 82, 268, -1));
 
         price.setLabelText("Price");
         price.addActionListener(new java.awt.event.ActionListener() {
@@ -119,8 +122,10 @@ public class PantInfo extends javax.swing.JDialog {
                 priceActionPerformed(evt);
             }
         });
+        addProductForm.add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 268, -1));
 
         brand.setLabelText("Brand");
+        addProductForm.add(brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 268, -1));
 
         okBtn.setBackground(new java.awt.Color(98, 98, 157));
         okBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -130,6 +135,7 @@ public class PantInfo extends javax.swing.JDialog {
                 okBtnActionPerformed(evt);
             }
         });
+        addProductForm.add(okBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 116, 35));
 
         cancelBtn.setBackground(new java.awt.Color(204, 75, 75));
         cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,14 +145,18 @@ public class PantInfo extends javax.swing.JDialog {
                 cancelBtnActionPerformed(evt);
             }
         });
+        addProductForm.add(cancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 116, 34));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(106, 106, 164));
         jLabel1.setText("Pant Info");
+        addProductForm.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 38, -1, -1));
 
         quantity.setLabelText("Quantity");
+        addProductForm.add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 82, 262, -1));
 
         description.setLabelText("Description");
+        addProductForm.add(description, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 550, -1));
 
         category.setLabelText("Category");
         category.addActionListener(new java.awt.event.ActionListener() {
@@ -154,92 +164,26 @@ public class PantInfo extends javax.swing.JDialog {
                 categoryActionPerformed(evt);
             }
         });
+        addProductForm.add(category, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 262, -1));
 
         pantWidth.setLabelText("Pant width");
+        addProductForm.add(pantWidth, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 283, 174, -1));
 
         buttWidth.setLabelText("Butt width");
+        addProductForm.add(buttWidth, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 283, 179, -1));
 
         pantLength.setLabelText("Pant Length");
+        addProductForm.add(pantLength, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 283, 176, -1));
 
         alertLabel.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
         alertLabel.setForeground(new java.awt.Color(255, 0, 0));
         alertLabel.setPreferredSize(new java.awt.Dimension(208, 13));
+        addProductForm.add(alertLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 370, 220, 30));
 
-        javax.swing.GroupLayout addProductFormLayout = new javax.swing.GroupLayout(addProductForm);
-        addProductForm.setLayout(addProductFormLayout);
-        addProductFormLayout.setHorizontalGroup(
-            addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addProductFormLayout.createSequentialGroup()
-                .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addProductFormLayout.createSequentialGroup()
-                        .addGap(235, 235, 235)
-                        .addComponent(jLabel1))
-                    .addGroup(addProductFormLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(productName, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
-                            .addComponent(price, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(quantity, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
-                            .addComponent(category, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(addProductFormLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(brand, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addProductFormLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(addProductFormLayout.createSequentialGroup()
-                                .addComponent(alertLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(77, 77, 77)
-                                .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(okBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addProductFormLayout.createSequentialGroup()
-                                .addComponent(pantLength, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pantWidth, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttWidth, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-        addProductFormLayout.setVerticalGroup(
-            addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addProductFormLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel1)
-                .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addProductFormLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(productName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9)
-                        .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
-                        .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(brand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(addProductFormLayout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pantLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pantWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(28, 28, 28)
-                .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addProductFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(alertLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(okBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48))
-        );
+        importPrice.setLabelText("Import Price");
+        addProductForm.add(importPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 265, -1));
 
-        getContentPane().add(addProductForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 620, 440));
+        getContentPane().add(addProductForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 620, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -326,6 +270,7 @@ public class PantInfo extends javax.swing.JDialog {
     private javaswingdev.swing.Button cancelBtn;
     private javaswingdev.raven.swing.TextField category;
     private javaswingdev.raven.swing.TextField description;
+    private javaswingdev.raven.swing.TextField importPrice;
     private javax.swing.JLabel jLabel1;
     private javaswingdev.swing.Button okBtn;
     private javaswingdev.raven.swing.TextField pantLength;
