@@ -33,7 +33,7 @@ public class Order {
     }
     
     public double getCost() {
-        return this.orderCost;
+        return this.orderProduct.getProductPrice()*orderQuantity;
     }
     
     public int getOrderId() {
