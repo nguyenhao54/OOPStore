@@ -76,7 +76,7 @@
     <Component class="javaswingdev.swing.Button" name="addshiftbtn">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="5e" green="98" red="73" type="rgb"/>
+          <Color blue="61" green="a5" red="7a" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>

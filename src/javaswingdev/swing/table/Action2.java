@@ -81,7 +81,7 @@ public class Action2 extends javax.swing.JPanel {
             }
         });
 
-        addshiftbtn.setBackground(new java.awt.Color(115, 152, 94));
+        addshiftbtn.setBackground(new java.awt.Color(122, 165, 97));
         addshiftbtn.setForeground(new java.awt.Color(255, 255, 255));
         addshiftbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_plus_+_20px.png"))); // NOI18N
         addshiftbtn.addActionListener(new java.awt.event.ActionListener() {

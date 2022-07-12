@@ -10,6 +10,9 @@ import javaswingdev.swing.table.ShiftEventAction;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
+import javaswingdev.form.Message;
+import java.util.Date;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -87,6 +90,7 @@ public class ShiftInfo extends javax.swing.JDialog {
         endTime = new javaswingdev.raven.swing.TextField();
         okBtn = new javaswingdev.swing.Button();
         jLabel1 = new javax.swing.JLabel();
+        register = new javaswingdev.swing.Button();
         cancelBtn = new javaswingdev.swing.Button();
         startTime = new javaswingdev.raven.swing.TextField();
         date = new javaswingdev.raven.swing.TextField();
@@ -144,6 +148,16 @@ public class ShiftInfo extends javax.swing.JDialog {
         jLabel1.setText("Register Shift");
         addProductForm.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, -1, 83));
 
+        register.setBackground(new java.awt.Color(122, 180, 113));
+        register.setForeground(new java.awt.Color(255, 255, 255));
+        register.setText("REGISTER");
+        register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerActionPerformed(evt);
+            }
+        });
+        addProductForm.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 80, 30));
+
         cancelBtn.setBackground(new java.awt.Color(204, 75, 75));
         cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
         cancelBtn.setText("CANCEL");
@@ -163,7 +177,7 @@ public class ShiftInfo extends javax.swing.JDialog {
         addProductForm.add(startTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 332, -1));
 
         date.setLabelText("Date");
-        addProductForm.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 332, -1));
+        addProductForm.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 250, -1));
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -223,6 +237,27 @@ public class ShiftInfo extends javax.swing.JDialog {
         
     }//GEN-LAST:event_findShiftActionPerformed
 
+    private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
+        // TODO add your handling code here:
+        Message msg = new Message();
+        if(shiftId.getText().equals("") || date.getText().equals("")){
+            msg.showDialog("Please fill blank fields", "red");
+        }else{
+            int sid= Integer.parseInt(shiftId.getText());
+            Shift s= Dashboard.store.getShift(sid);
+
+            if(s != null){
+                LocalTime st=s.getStartTime();
+                LocalTime et=s.getEndTime();
+
+                
+                Date datestr=new Date(date.getText());
+
+            
+            }
+        }
+    }//GEN-LAST:event_registerActionPerformed
+
     private void centerComponent(){
         this.setLocationRelativeTo(Dashboard.getFrames()[0]);
     }
@@ -244,6 +279,7 @@ public class ShiftInfo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javaswingdev.swing.Button okBtn;
+    private javaswingdev.swing.Button register;
     private javaswingdev.raven.swing.TextField shiftId;
     private javax.swing.JLabel staffNameLabel;
     private javax.swing.JLabel staffNameLabel1;

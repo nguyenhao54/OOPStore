@@ -189,27 +189,23 @@ public class Billing extends javax.swing.JFrame {
         name = new javaswingdev.raven.swing.TextField();
         okBtn3 = new javaswingdev.swing.Button();
         quantity = new javaswingdev.raven.swing.TextField();
-        staffName = new javax.swing.JTextField();
+        staffName = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 0));
         setUndecorated(true);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(74, 74, 74));
         jLabel3.setText("Date:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 100, -1));
 
         billDate.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         billDate.setForeground(new java.awt.Color(74, 74, 74));
-        getContentPane().add(billDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 220, 30));
 
         staffNameLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         staffNameLabel.setForeground(new java.awt.Color(74, 74, 74));
         staffNameLabel.setText("Staff:");
         staffNameLabel.setDoubleBuffered(true);
         staffNameLabel.setFocusTraversalPolicyProvider(true);
-        getContentPane().add(staffNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, -1, -1));
 
         table1.setBackground(new java.awt.Color(255, 0, 102));
         table1.setModel(new javax.swing.table.DefaultTableModel(
@@ -249,12 +245,9 @@ public class Billing extends javax.swing.JFrame {
             table1.getColumnModel().getColumn(5).setMaxWidth(85);
         }
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 520, 250));
-
         jLabel4.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(106, 106, 164));
         jLabel4.setText("Bill Info");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 100, 30));
 
         findProduct.setForeground(new java.awt.Color(255, 255, 255));
         findProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_search_20px.png"))); // NOI18N
@@ -263,7 +256,6 @@ public class Billing extends javax.swing.JFrame {
                 findProductActionPerformed(evt);
             }
         });
-        getContentPane().add(findProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 30, 30));
 
         productId.setLabelText("Product Id");
         productId.addActionListener(new java.awt.event.ActionListener() {
@@ -271,7 +263,6 @@ public class Billing extends javax.swing.JFrame {
                 productIdActionPerformed(evt);
             }
         });
-        getContentPane().add(productId, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 280, -1));
 
         cancelBtn.setBackground(new java.awt.Color(204, 75, 75));
         cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -281,22 +272,17 @@ public class Billing extends javax.swing.JFrame {
                 cancelBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(cancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 116, 40));
 
         billReturn.setEditable(false);
         billReturn.setLabelText("Return");
-        getContentPane().add(billReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 270, -1));
 
         price.setEditable(false);
         price.setLabelText("Price");
-        getContentPane().add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 280, 60));
 
         billTotal.setEditable(false);
         billTotal.setLabelText("Total");
-        getContentPane().add(billTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 280, -1));
 
         billPaid.setLabelText("Paid");
-        getContentPane().add(billPaid, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 260, -1));
 
         addToBillBtn.setBackground(new java.awt.Color(122, 180, 113));
         addToBillBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -306,7 +292,6 @@ public class Billing extends javax.swing.JFrame {
                 addToBillBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(addToBillBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 50, 30));
 
         name.setEditable(false);
         name.setLabelText("Product name");
@@ -315,7 +300,6 @@ public class Billing extends javax.swing.JFrame {
                 nameActionPerformed(evt);
             }
         });
-        getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 280, 60));
 
         okBtn3.setBackground(new java.awt.Color(98, 98, 157));
         okBtn3.setForeground(new java.awt.Color(255, 255, 255));
@@ -325,11 +309,104 @@ public class Billing extends javax.swing.JFrame {
                 okBtn3ActionPerformed(evt);
             }
         });
-        getContentPane().add(okBtn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 110, 40));
 
         quantity.setLabelText("Quantity");
-        getContentPane().add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 280, 60));
-        getContentPane().add(staffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 210, 30));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(370, 370, 370)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(billDate, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(staffNameLabel)
+                                .addGap(33, 33, 33)
+                                .addComponent(staffName, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(productId, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(240, 240, 240)
+                                .addComponent(findProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(addToBillBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(billTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(billPaid, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(billReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(240, 240, 240)
+                        .addComponent(okBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(160, 160, 160)
+                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(billDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel3)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(staffNameLabel))
+                            .addComponent(staffName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(productId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(findProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(1, 1, 1)
+                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(addToBillBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(billTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(billPaid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(billReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(okBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -502,7 +579,7 @@ public class Billing extends javax.swing.JFrame {
     private javaswingdev.raven.swing.TextField price;
     private javaswingdev.raven.swing.TextField productId;
     private javaswingdev.raven.swing.TextField quantity;
-    private javax.swing.JTextField staffName;
+    private javax.swing.JLabel staffName;
     private javax.swing.JLabel staffNameLabel;
     private javaswingdev.swing.table.Table table1;
     // End of variables declaration//GEN-END:variables

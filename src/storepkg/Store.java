@@ -86,7 +86,7 @@ public class Store  {
         orderList.add(new Order(5, tempProduct, 2));
         
         billList = new ArrayList<>();
-        ArrayList orders0 = new ArrayList<>();
+        ArrayList orders0 = new ArrayList<>(); 
         orders0.add(orderList.get(0));
         orders0.add(orderList.get(1));
         billList.add(new Bill(1, this.findStaff(3), orders0, LocalDateTime.of(2022, Month.JUNE, 27, 14, 33, 23), 2000000));
