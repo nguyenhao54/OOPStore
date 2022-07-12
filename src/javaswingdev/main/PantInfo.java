@@ -47,6 +47,7 @@ public class PantInfo extends javax.swing.JDialog {
         pantLength.setText(Double.toString(pant.getPantLength()));
         pantWidth.setText(Double.toString(pant.getPantWidth()));
         buttWidth.setText(Double.toString(pant.getButtWidth()));
+        importPrice.setText(Double.toString(pant.getImportPrice()));
         setVisible(true);
     }
    
@@ -202,9 +203,11 @@ public class PantInfo extends javax.swing.JDialog {
         String pPantLength = pantLength.getText();
         String pPantWidth = pantWidth.getText();
         String pButtWidth = buttWidth.getText();
+        String pImportPrice = importPrice.getText();
 
         if(pName.equals("") || pPrice.equals("") || pBrand.equals("") || pQuantity.equals("") || pCategory.equals("")
-                || pDescription.equals("") || pPantLength.equals("") || pPantWidth.equals("") || pButtWidth.equals(""))
+                || pDescription.equals("") || pPantLength.equals("") || pPantWidth.equals("") || pButtWidth.equals("")
+                || pImportPrice.equals(""))
         {
             alertLabel.setText("Please fill in blank fields!");
             alertLabel.setVisible(true);
@@ -215,7 +218,7 @@ public class PantInfo extends javax.swing.JDialog {
                     Message msg=new Message();
                     int id = Store.maxProductId++;
                     Pant newPant = new Pant(id, pName, Integer.parseInt(pPrice), pBrand, pCategory, 
-                            pDescription, Integer.parseInt(pQuantity), Double.parseDouble(pPantLength), Double.parseDouble(pPantWidth),
+                            pDescription, Integer.parseInt(pQuantity), Double.parseDouble(pImportPrice), Double.parseDouble(pPantLength), Double.parseDouble(pPantWidth),
                     Double.parseDouble(pButtWidth));
                     Dashboard.store.addProduct(newPant);
                     this.setPant(newPant);
@@ -226,7 +229,7 @@ public class PantInfo extends javax.swing.JDialog {
                     int id = getPant().getProductId();
                     Message msg=new Message();
                     Dashboard.store.updateProduct(id, pName, Double.parseDouble(pPrice), pBrand, pCategory, pDescription, 
-                            Integer.parseInt(pQuantity), Double.parseDouble(pPantLength), Double.parseDouble(pPantWidth), 
+                            Integer.parseInt(pQuantity), Double.parseDouble(pImportPrice), Double.parseDouble(pPantLength), Double.parseDouble(pPantWidth), 
                             Double.parseDouble(pButtWidth));
                     setPant((Pant)Dashboard.store.getProduct(id));
                     msg.showDialog("Update pant id " + pant.getProductId()+ " successfully!","blue");

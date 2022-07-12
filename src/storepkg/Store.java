@@ -328,6 +328,7 @@ public class Store  {
             String category,
             String description,
             int quantity,
+            double importPrice,
             double shirtLength,
             double chestWidth,
             double sleeveLength,
@@ -346,6 +347,7 @@ public class Store  {
         p.setChestWidth(chestWidth);
         p.setSleeveLength(sleeveLength);
         p.setShoulderWidth(shoulderWidth);
+        p.setImportPrice(importPrice);
     }
     
 //  Update pant
@@ -356,6 +358,7 @@ public class Store  {
             String category,
             String description,
             int quantity,
+            double importPrice,
             double pantLength,
             double pantWidth,
             double buttWidth){
@@ -372,6 +375,7 @@ public class Store  {
         p.setPantLength(pantLength);
         p.setPantWidth(pantWidth);
         p.setButtWidth(buttWidth);
+        p.setImportPrice(importPrice);
     }
   
   //  Update shoes
@@ -382,6 +386,7 @@ public class Store  {
             String category,
             String description,
             int quantity,
+            double importPrice,
             double footLength){
       
       Shoes p = (Shoes)getProduct(id);
@@ -392,6 +397,7 @@ public class Store  {
       p.setDescription(description);
       p.setQuantity(quantity);
       p.setFootLength(footLength);
+      p.setImportPrice(importPrice);
   }
   
   public void deleteProduct(int id){

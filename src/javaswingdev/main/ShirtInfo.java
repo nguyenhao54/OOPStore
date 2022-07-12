@@ -48,6 +48,7 @@ public class ShirtInfo extends javax.swing.JDialog {
         chestWidth.setText(Double.toString(shirt.getChestWidth()));
         sleeveLength.setText(Double.toString(shirt.getShirtLength()));
         shoulderWidth.setText(Double.toString(shirt.getShoulderWidth()));
+        importPrice.setText(Double.toString(shirt.getImportPrice()));
         setVisible(ok);
     }
    
@@ -271,10 +272,11 @@ public class ShirtInfo extends javax.swing.JDialog {
         String pChestWidth = chestWidth.getText();
         String pSleeveLength = sleeveLength.getText();
         String pShoulderWidth = shoulderWidth.getText();
+        String pImportPrice = importPrice.getText();
 
         if(pName.equals("") || pPrice.equals("") || pBrand.equals("") || pQuantity.equals("") || pCategory.equals("")
                 || pDescription.equals("") || pShirtLength.equals("") || pChestWidth.equals("") || pSleeveLength.equals("")
-                || pShoulderWidth.equals("")){
+                || pShoulderWidth.equals("") || pImportPrice.equals("")){
             alertLabel.setText("Please fill in blank fields!");
             alertLabel.setVisible(true);
             
@@ -284,7 +286,7 @@ public class ShirtInfo extends javax.swing.JDialog {
                 Message msg=new Message();
                 int id = Store.maxProductId++;
                 Shirt newShirt = new Shirt(id, pName, Integer.parseInt(pPrice), pBrand, pCategory, 
-                        pDescription, Integer.parseInt(pQuantity), Double.parseDouble(pShirtLength), Double.parseDouble(pChestWidth),
+                        pDescription, Integer.parseInt(pQuantity), Double.parseDouble(pImportPrice), Double.parseDouble(pShirtLength), Double.parseDouble(pChestWidth),
                 Double.parseDouble(pSleeveLength), Double.parseDouble(pShoulderWidth));
                 Dashboard.store.addProduct(newShirt);
                 this.setShirt(newShirt);
@@ -295,7 +297,7 @@ public class ShirtInfo extends javax.swing.JDialog {
                 int id = shirt.getProductId();
                 Message msg=new Message();
                 Dashboard.store.updateProduct(id, pName, Double.parseDouble(pPrice), pBrand, pCategory, pDescription, 
-                        Integer.parseInt(pQuantity), Double.parseDouble(pShirtLength), Double.parseDouble(pChestWidth), 
+                        Integer.parseInt(pQuantity), Double.parseDouble(pImportPrice), Double.parseDouble(pShirtLength), Double.parseDouble(pChestWidth), 
                         Double.parseDouble(pSleeveLength), Double.parseDouble(pShoulderWidth));
                 setShirt((Shirt)Dashboard.store.getProduct(id));
                 msg.showDialog("Update shirt id " + shirt.getProductId()+ " successfully!","blue");
