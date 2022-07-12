@@ -67,6 +67,10 @@ public class Bill {
         return this.totalCost;
     }
     
+    public void setPaid(double paid){
+        this.paid = paid;
+    }
+    
     public double getPaid() {
         return this.paid;
     }
