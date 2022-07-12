@@ -108,6 +108,7 @@ public class Store  {
      public ArrayList<Staff> getSalaryList(){
       return staffList;
   }
+     
   public boolean addStaff(String name, String phone , String gender, String rate, String strDate){
 //        if(findStaff(phone)==null){
 //        JSONObject staffDetails = new JSONObject();
@@ -459,7 +460,7 @@ public class Store  {
         billList.add(newBill);
     }
     
-    public double getIncome(){
+     public double getIncome(){
         double sum = 0;
         for(Bill b: billList){
             sum += b.getTotalCost();
