@@ -24,6 +24,26 @@ public class Shirt extends Product{
         this.shoulderWidth = shoulderWidth;
         this.chestWidth = chestWidth;
     }
+    
+    public Shirt(int id,
+            String name,
+            double price,
+            String brand,
+            String category,
+            String description,
+            int quantity,
+            double importPrice,
+            double shirtLength,
+            double chestWidth,
+            double sleeveLength,
+            double shoulderWidth
+            ){
+        super(id, name, price, brand, category, description, quantity, importPrice);
+        this.shirtLength = shirtLength;
+        this.sleeveLength = sleeveLength;
+        this.shoulderWidth = shoulderWidth;
+        this.chestWidth = chestWidth;
+    }
 
     /**
      * @return the shirtLength

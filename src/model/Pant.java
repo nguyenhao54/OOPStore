@@ -22,6 +22,24 @@ public class Pant extends Product{
         this.pantWidth = pantWidth;
         this.buttWidth = buttWidth;
     }
+    
+    public Pant(int id,
+            String name,
+            double price,
+            String brand,
+            String category,
+            String description,
+            int quantity,
+            double importPrice,
+            double pantLength,
+            double pantWidth,
+            double buttWidth
+            ){
+        super(id, name, price, brand, category, description, quantity, importPrice);
+        this.pantLength = pantLength;
+        this.pantWidth = pantWidth;
+        this.buttWidth = buttWidth;
+    }
 
     /**
      * @return the pantLength

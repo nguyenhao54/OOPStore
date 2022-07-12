@@ -23,6 +23,7 @@ public class Product {
     private String category;
     private String description;
     private int quantity;
+    private double importPrice;
     
     public Product(
             int id,
@@ -39,6 +40,25 @@ public class Product {
         this.category = category;
         this.description = description;
         this.quantity = quantity;
+    }
+    
+    public Product(
+            int id,
+            String name,
+            double price,
+            String brand,
+            String category,
+            String description,
+            int quantity,
+            double importPrice) {
+        this.productId = id;
+        this.productName = name;
+        this.productPrice = price;
+        this.brand = brand;
+        this.category = category;
+        this.description = description;
+        this.quantity = quantity;
+        this.importPrice = importPrice;
     }
     
     public int getProductId() {
@@ -91,6 +111,14 @@ public class Product {
     
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+    
+    public void setImportPrice(double price){
+        this.importPrice = price;
+    }
+    
+    public double getImportPrice(){
+        return this.importPrice;
     }
     
     public void subQuantity(int quantity){

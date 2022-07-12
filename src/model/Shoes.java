@@ -22,6 +22,19 @@ public class Shoes extends Product{
         super(id, name, price, brand, category, description, quantity);
         this.footLength = footLength;
     }
+    
+    public Shoes(int id,
+            String name,
+            double price,
+            String brand,
+            String category,
+            String description,
+            int quantity,
+            double importPrice,
+            double footLength){
+        super(id, name, price, brand, category, description, quantity, importPrice);
+        this.footLength = footLength;
+    }
 
     /**
      * @return the footLength
