@@ -93,6 +93,15 @@ public class Product {
         this.quantity = quantity;
     }
     
+    public void subQuantity(int quantity){
+        if(quantity <= this.quantity)
+        this.quantity -= quantity;
+    }
+    
+    public void addQuantity(int quantity){
+        this.quantity += quantity;
+    }
+    
     public Object[] toRowTable(ProductEventAction event) {
         return new Object[]{productId, productName, productPrice, brand, category, description, quantity, new ModelAction(this, event)};
     }
