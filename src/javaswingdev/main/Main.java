@@ -12,6 +12,7 @@ public class Main extends javax.swing.JFrame {
     }
     private void init() {
         main = this;
+        txtUser.requestFocus();
         titleBar.initJFram(this);
              alertLabel.setVisible(false);
         setLocationRelativeTo(null);
