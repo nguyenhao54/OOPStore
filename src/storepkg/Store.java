@@ -11,6 +11,7 @@ import java.util.Date;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.text.SimpleDateFormat;  
+import java.time.LocalDate;
 import model.*;
 
  
@@ -51,6 +52,7 @@ public class Store  {
         maxProductId = productList.size() + 1;
         
         staffList = new ArrayList<>();
+        
                   
         staffList.add(new Staff(1, "Nguyễn Đồng Đức Anh", "Male", "0858377316", 1.2, new Date()));
         staffList.add(new Staff(2, "Nguyễn Thị Hà Giang", "Female", "0973567822", 1.2,new Date()));
@@ -59,7 +61,7 @@ public class Store  {
         staffList.add(new Staff(5, "Nguyễn Đức Tùng", "Male", "036663773", 1.2,new Date()));
         staffList.add(new Staff(6, "Trần Văn Quân", "Male", "0927727253", 1.8,new Date(1999,04,19)));
         staffList.add(new Staff(7, "Nguyễn Phương Anh", "Female", "0876635623", 1.2,new Date(2002,11,05)));
-        staffList.add(new Staff(8, "Nguyễn Thị Phương Nga", "Female", "078288232", 1.6,new Date(2001,11,12)));
+        staffList.add(new Staff(8, "Nguyễn Thị Phương Nga", "Female", "078288232", 1.6,new Date(2001-11-12)));
 
 
         
@@ -70,7 +72,37 @@ public class Store  {
         shiftList.add(new Shift(4, "08:00:00", "17:00:00", 9));
         
 
-        maxShiftId = shiftList.size() + 1;
+    
+        Shift temp= this.getShift(1);
+        Staff a= this.findStaff(1);
+        System.out.println(new RegisteredShift(LocalDate.of(2022, 7, 12),temp));
+        a.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 7, 12),temp));
+        a.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 7, 13),temp));
+        a.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 7, 14),temp));
+
+        temp= this.getShift(0);
+        Staff b= this.findStaff(4);
+        b.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 7, 11),temp));
+        b.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 7, 12),temp));
+        b.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 7, 13),temp));
+
+
+        temp= this.getShift(3);
+        Staff c= this.findStaff(3);
+        c.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 6, 11),temp));
+        c.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 6, 12),temp));
+        c.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 6, 11),temp));
+        c.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 6, 12),temp));
+
+        temp= this.getShift(1);
+        Staff d= this.findStaff(8);           
+        d.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 2, 11),temp));
+        temp= this.getShift(2);
+        d.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 1, 11),temp));
+
+        
+        
+        
         
         
         orderList = new ArrayList<>();
@@ -278,7 +310,7 @@ public class Store  {
 //            file.write(jStaffList.toJSONString()); 
 //            file.flush();
             getStaffList().remove(a);
-            getStaffList().forEach(Staff->System.out.println(Staff.getStaffId()));
+      //      getStaffList().forEach(Staff->System.out.println(Staff.getStaffId()));
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }  catch (Exception e){
@@ -466,8 +498,7 @@ public class Store  {
             sum += b.getTotalCost();
         }
         return sum;
-    }
-     
+    } 
      public double getExpense(){
          double importPriceSum = 0;
          for(Bill b: billList){
@@ -475,7 +506,6 @@ public class Store  {
                  importPriceSum += o.getProduct().getImportPrice();
              }
          }
-//         double expense = importPriceSum + staffSalary;
          return importPriceSum;
      }
 }   
