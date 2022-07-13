@@ -172,14 +172,14 @@ public class Billing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        findProduct = new javaswingdev.swing.Button();
+        productId = new javaswingdev.raven.swing.TextField();
         jLabel3 = new javax.swing.JLabel();
         billDate = new javax.swing.JLabel();
         staffNameLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table1 = new javaswingdev.swing.table.Table();
         jLabel4 = new javax.swing.JLabel();
-        findProduct = new javaswingdev.swing.Button();
-        productId = new javaswingdev.raven.swing.TextField();
         cancelBtn = new javaswingdev.swing.Button();
         billReturn = new javaswingdev.raven.swing.TextField();
         price = new javaswingdev.raven.swing.TextField();
@@ -193,19 +193,40 @@ public class Billing extends javax.swing.JFrame {
 
         setBackground(new java.awt.Color(204, 204, 0));
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        findProduct.setForeground(new java.awt.Color(255, 255, 255));
+        findProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_search_20px.png"))); // NOI18N
+        findProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findProductActionPerformed(evt);
+            }
+        });
+        getContentPane().add(findProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 138, -1, -1));
+
+        productId.setLabelText("Product Id");
+        productId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productIdActionPerformed(evt);
+            }
+        });
+        getContentPane().add(productId, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 128, 280, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(74, 74, 74));
         jLabel3.setText("Date:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 100, -1));
 
         billDate.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         billDate.setForeground(new java.awt.Color(74, 74, 74));
+        getContentPane().add(billDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 220, 30));
 
         staffNameLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         staffNameLabel.setForeground(new java.awt.Color(74, 74, 74));
         staffNameLabel.setText("Staff:");
         staffNameLabel.setDoubleBuffered(true);
         staffNameLabel.setFocusTraversalPolicyProvider(true);
+        getContentPane().add(staffNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 59, -1, -1));
 
         table1.setBackground(new java.awt.Color(255, 0, 102));
         table1.setModel(new javax.swing.table.DefaultTableModel(
@@ -245,24 +266,12 @@ public class Billing extends javax.swing.JFrame {
             table1.getColumnModel().getColumn(5).setMaxWidth(85);
         }
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(338, 128, 512, 240));
+
         jLabel4.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(106, 106, 164));
         jLabel4.setText("Bill Info");
-
-        findProduct.setForeground(new java.awt.Color(255, 255, 255));
-        findProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_search_20px.png"))); // NOI18N
-        findProduct.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                findProductActionPerformed(evt);
-            }
-        });
-
-        productId.setLabelText("Product Id");
-        productId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                productIdActionPerformed(evt);
-            }
-        });
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 100, 30));
 
         cancelBtn.setBackground(new java.awt.Color(204, 75, 75));
         cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -272,17 +281,22 @@ public class Billing extends javax.swing.JFrame {
                 cancelBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(cancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 468, 116, 40));
 
         billReturn.setEditable(false);
         billReturn.setLabelText("Return");
+        getContentPane().add(billReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 388, 270, -1));
 
         price.setEditable(false);
         price.setLabelText("Price");
+        getContentPane().add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 248, 280, 60));
 
         billTotal.setEditable(false);
         billTotal.setLabelText("Total");
+        getContentPane().add(billTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 388, 280, -1));
 
         billPaid.setLabelText("Paid");
+        getContentPane().add(billPaid, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 388, 260, -1));
 
         addToBillBtn.setBackground(new java.awt.Color(122, 180, 113));
         addToBillBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -292,6 +306,7 @@ public class Billing extends javax.swing.JFrame {
                 addToBillBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(addToBillBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 326, 50, -1));
 
         name.setEditable(false);
         name.setLabelText("Product name");
@@ -300,6 +315,7 @@ public class Billing extends javax.swing.JFrame {
                 nameActionPerformed(evt);
             }
         });
+        getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 188, 280, 60));
 
         okBtn3.setBackground(new java.awt.Color(98, 98, 157));
         okBtn3.setForeground(new java.awt.Color(255, 255, 255));
@@ -309,103 +325,11 @@ public class Billing extends javax.swing.JFrame {
                 okBtn3ActionPerformed(evt);
             }
         });
+        getContentPane().add(okBtn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 468, 110, 40));
 
         quantity.setLabelText("Quantity");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(370, 370, 370)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(staffNameLabel)
-                                .addGap(23, 23, 23)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(billDate, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                                    .addComponent(staffName)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(productId, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(240, 240, 240)
-                                .addComponent(findProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(addToBillBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(billTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(billPaid, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(billReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addComponent(okBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(160, 160, 160)
-                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(billDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel3)))
-                        .addGap(9, 9, 9)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(staffNameLabel)
-                            .addComponent(staffName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(productId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(findProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(1, 1, 1)
-                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(addToBillBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(billTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(billPaid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(billReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(okBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
+        getContentPane().add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 308, 220, 60));
+        getContentPane().add(staffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 49, 220, 37));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
