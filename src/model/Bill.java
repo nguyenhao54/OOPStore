@@ -43,7 +43,7 @@ public class Bill {
             this.totalCost += order.getCost();
         }
         this.paid = paid;
-        maxOrderId = 0;
+        maxOrderId = 1;
     }
     
     public int getBillId() {
