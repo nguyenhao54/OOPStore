@@ -25,6 +25,7 @@ public class ShiftInfo extends javax.swing.JDialog {
     private ArrayList<RegisteredShift> shiftList;
     private ShiftEventAction shiftEventAction;
     private Staff staff;
+    private DefaultTableModel model;
     
     public void setStaff(Staff s){
         this.staff = s;
@@ -101,9 +102,15 @@ public class ShiftInfo extends javax.swing.JDialog {
     
     private void initTable(){
         shiftEventAction = new ShiftEventAction() {
+            Message msg = new Message();
          @Override
          public void delete(RegisteredShift rs) {
-             System.out.println(rs.getRegisteredShift().getEndTime());
+             if(msg.showMessage("Delete this registered shift?")){
+                staff.deleteShift(rs.getId());
+                model =(DefaultTableModel) table1.getModel();
+                model.removeRow(table1.getSelectedRow());
+                msg.showDialog("Delete Order Id " + rs.getId() +" Successfully!","red");
+             }
              
          }
 
@@ -295,19 +302,18 @@ public class ShiftInfo extends javax.swing.JDialog {
             if(s != null){
                 LocalTime st=s.getStartTime();
                 LocalTime et=s.getEndTime();
-                
-                
-           try{
-                  String formattedText = date.getText().replaceAll("-", "/");
-                  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
-                  LocalDate realDate= LocalDate.parse(formattedText, formatter);
-                  RegisteredShift newShift = new RegisteredShift(realDate, s);
-                  staff.addShift(newShift);
-                  table1.addRow(newShift.toRowTable(shiftEventAction));
-                  }
-                  catch(Exception e){
-                  e.printStackTrace();
-                  }
+                try{
+                    String formattedText = date.getText().replaceAll("-", "/");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+                    LocalDate realDate= LocalDate.parse(formattedText, formatter);
+                    int id = staff.maxShiftId++;
+                    RegisteredShift newShift = new RegisteredShift(id, realDate, s);
+                    staff.addShift(newShift);
+                    table1.addRow(newShift.toRowTable(shiftEventAction));
+                    }
+                    catch(Exception e){
+                    e.printStackTrace();
+                }
             
             }else{
                 msg.showDialog("Shift not found!", "red");
