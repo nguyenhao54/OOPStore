@@ -20,7 +20,7 @@ public class Bill {
     private LocalDateTime date;
     private double totalCost;
     private double paid;
-    public int maxOrderId;
+    private int maxOrderId;
     
     public Bill(int id, Staff staff, ArrayList<Order> orderList, LocalDateTime date, double paid) {
         this.billId = id;
@@ -110,6 +110,18 @@ public class Bill {
                 this.orderList.remove(i);
             }
         }
+    }
+    
+    public int getMaxOrderId(){
+        return maxOrderId;
+    }
+    
+    public void setMaxOrderId(int newId){
+        this.maxOrderId = newId;
+    }
+    
+    public int getOrderIdAndIncrease(){
+        return maxOrderId++;
     }
     
     public Object[] toRowTable(BillEventAction event) {

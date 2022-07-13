@@ -116,7 +116,7 @@ public class ShiftInfo extends javax.swing.JDialog {
 
          @Override
          public void update(RegisteredShift rs) {
-            System.out.println("update");
+            msg.showDialog("Not support update registered shift", "red");
          }
      };
     }
@@ -306,7 +306,7 @@ public class ShiftInfo extends javax.swing.JDialog {
                     String formattedText = date.getText().replaceAll("-", "/");
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
                     LocalDate realDate= LocalDate.parse(formattedText, formatter);
-                    int id = staff.maxShiftId++;
+                    int id = staff.getMaxShiftIdAndIncrease();
                     RegisteredShift newShift = new RegisteredShift(id, realDate, s);
                     staff.addShift(newShift);
                     table1.addRow(newShift.toRowTable(shiftEventAction));

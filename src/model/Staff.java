@@ -34,7 +34,7 @@ public class Staff {
     double rate;
     private Date birthDate;
     private ArrayList<RegisteredShift> workedShifts;
-    public int maxShiftId;
+    private int maxShiftId;
     
     public Staff( int id,String name, String gender, String phone, double rate, Date birthDate) {
         this.staffId = id;
@@ -107,6 +107,18 @@ public class Staff {
             workedHour += i.getRegisteredShift().getHour();
         }
         return workedHour;
+    }
+    
+    public int getMaxShiftId(){
+        return maxShiftId;
+    }
+    
+    public void setMaxShiftId(int newId){
+        this.maxShiftId = newId;
+    }
+    
+    public int getMaxShiftIdAndIncrease(){
+        return maxShiftId++;
     }
     
     public void addShift(RegisteredShift shift){
