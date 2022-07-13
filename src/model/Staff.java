@@ -42,6 +42,7 @@ public class Staff {
         this.phone = phone;
         this.rate = rate;
         this.birthDate=birthDate;
+        workedShifts = new ArrayList<>();
     }
 
     public Staff() {
@@ -104,6 +105,10 @@ public class Staff {
             workedHour += i.getRegisteredShift().getHour();
         }
         return workedHour;
+    }
+    
+    public void addShift(RegisteredShift shift){
+        workedShifts.add(shift);
     }
     
     public double getSalary() {

@@ -17,12 +17,23 @@ import java.time.LocalDate;
 
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class ShiftInfo extends javax.swing.JDialog {
     private ArrayList<RegisteredShift> shiftList;
     private ShiftEventAction shiftEventAction;
+    private Staff staff;
+    
+    public void setStaff(Staff s){
+        this.staff = s;
+    }
+    
+    public Staff getStaff(){
+        return this.staff;
+    }
+            
     public boolean isOk() {
         return ok;
     }
@@ -36,6 +47,7 @@ public class ShiftInfo extends javax.swing.JDialog {
     
     public void showInfo(Staff staff){
         staffNameLabel1.setText(staff.getName());
+        setStaff(staff);
         if(staff.getWorkedShifts()!=null){
         for(RegisteredShift rS: staff.getWorkedShifts()){
            table1.addRow(rS.toRowTable(shiftEventAction));     
@@ -91,7 +103,7 @@ public class ShiftInfo extends javax.swing.JDialog {
         shiftEventAction = new ShiftEventAction() {
          @Override
          public void delete(RegisteredShift rs) {
-             System.out.println("delete");
+             System.out.println(rs.getRegisteredShift().getEndTime());
              
          }
 
@@ -260,8 +272,14 @@ public class ShiftInfo extends javax.swing.JDialog {
     private void findShiftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findShiftActionPerformed
         String id= shiftId.getText();
         Shift s= Dashboard.store.getShift(Integer.parseInt(id));
-        startTime.setText(s.getStartTime().toString());
-        endTime.setText(s.getEndTime().toString());
+        if(s == null){
+            Message msg = new Message();
+            msg.showDialog("Shift not found!", "red");
+        }else{
+            startTime.setText(s.getStartTime().toString());
+            endTime.setText(s.getEndTime().toString());
+        }
+        
         
     }//GEN-LAST:event_findShiftActionPerformed
 
@@ -277,17 +295,22 @@ public class ShiftInfo extends javax.swing.JDialog {
             if(s != null){
                 LocalTime st=s.getStartTime();
                 LocalTime et=s.getEndTime();
-
+                
                 
            try{
-               
-                  Date realDate=new SimpleDateFormat("dd-mm-yyyy").parse(date.getText());
-
+                  String formattedText = date.getText().replaceAll("-", "/");
+                  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+                  LocalDate realDate= LocalDate.parse(formattedText, formatter);
+                  RegisteredShift newShift = new RegisteredShift(realDate, s);
+                  staff.addShift(newShift);
+                  table1.addRow(newShift.toRowTable(shiftEventAction));
                   }
                   catch(Exception e){
                   e.printStackTrace();
                   }
             
+            }else{
+                msg.showDialog("Shift not found!", "red");
             }
         }
     }//GEN-LAST:event_registerActionPerformed
