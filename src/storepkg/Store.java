@@ -62,6 +62,7 @@ public class Store  {
         staffList.add(new Staff(6, "Trần Văn Quân", "Male", "0927727253", 1.8,new Date(1999,04,19)));
         staffList.add(new Staff(7, "Nguyễn Phương Anh", "Female", "0876635623", 1.2,new Date(2002,11,05)));
         staffList.add(new Staff(8, "Nguyễn Thị Phương Nga", "Female", "078288232", 1.6,new Date(2001-11-12)));
+        maxStaffId = staffList.size() + 1;
 
 
         
@@ -75,31 +76,33 @@ public class Store  {
     
         Shift temp= this.getShift(1);
         Staff a= this.findStaff(1);
-        System.out.println(new RegisteredShift(LocalDate.of(2022, 7, 12),temp));
-        a.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 7, 12),temp));
-        a.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 7, 13),temp));
-        a.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 7, 14),temp));
+        a.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 7, 12),temp));
+        a.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 7, 13),temp));
+        a.getWorkedShifts().add(new RegisteredShift(3, LocalDate.of(2022, 7, 14),temp));
+        a.maxShiftId = a.getWorkedShifts().size() + 1;;
 
-        temp= this.getShift(0);
+        temp= this.getShift(1);
         Staff b= this.findStaff(4);
-        b.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 7, 11),temp));
-        b.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 7, 12),temp));
-        b.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 7, 13),temp));
+        b.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 7, 11),temp));
+        b.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 7, 12),temp));
+        b.getWorkedShifts().add(new RegisteredShift(3, LocalDate.of(2022, 7, 13),temp));
+        b.maxShiftId = b.getWorkedShifts().size() + 1;
 
 
         temp= this.getShift(3);
         Staff c= this.findStaff(3);
-        c.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 6, 11),temp));
-        c.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 6, 12),temp));
-        c.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 6, 11),temp));
-        c.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 6, 12),temp));
+        c.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 6, 11),temp));
+        c.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 6, 12),temp));
+        c.getWorkedShifts().add(new RegisteredShift(3, LocalDate.of(2022, 6, 11),temp));
+        c.getWorkedShifts().add(new RegisteredShift(4, LocalDate.of(2022, 6, 12),temp));
+        c.maxShiftId = c.getWorkedShifts().size() + 1;
 
         temp= this.getShift(1);
         Staff d= this.findStaff(8);           
-        d.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 2, 11),temp));
+        d.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 2, 11),temp));
         temp= this.getShift(2);
-        d.getWorkedShifts().add(new RegisteredShift(LocalDate.of(2022, 1, 11),temp));
-
+        d.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 1, 11),temp));
+        d.maxShiftId = d.getWorkedShifts().size() + 1;
         
         
         
@@ -477,6 +480,11 @@ public class Store  {
     public ArrayList<Staff> getStaffList() {
         return staffList;
     }
+    
+    public void increaseMaxStaffId(){
+        maxStaffId += 1;
+    }
+    
     public int getMaxStaffId() {
         maxStaffId=0;
        for(Staff s:staffList){

@@ -34,6 +34,7 @@ public class Staff {
     double rate;
     private Date birthDate;
     private ArrayList<RegisteredShift> workedShifts;
+    public int maxShiftId;
     
     public Staff( int id,String name, String gender, String phone, double rate, Date birthDate) {
         this.staffId = id;
@@ -43,6 +44,7 @@ public class Staff {
         this.rate = rate;
         this.birthDate=birthDate;
         this.workedShifts=new ArrayList<>();
+        this.maxShiftId = 1;
     }
 
     public Staff() {
@@ -109,6 +111,14 @@ public class Staff {
     
     public void addShift(RegisteredShift shift){
         workedShifts.add(shift);
+    }
+    
+    public void deleteShift(int id){
+        for (int i = 0; i < this.workedShifts.size(); ++i) {
+            if (this.workedShifts.get(i).getId()== id) {
+                this.workedShifts.remove(i);
+            }
+        }
     }
     
     public double getSalary() {

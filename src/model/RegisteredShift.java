@@ -6,10 +6,25 @@ import javaswingdev.swing.table.ModelAction;
 public class RegisteredShift{
     private LocalDate registeredDate;
     private Shift registeredShift;
+    private int id;
     
-    public RegisteredShift(LocalDate d, Shift s){
+//    public RegisteredShift(LocalDate d, Shift s){
+//        registeredDate = d;
+//        registeredShift = s;
+//    }
+    
+    public RegisteredShift(int id, LocalDate d, Shift s){
+        this.id = id;
         registeredDate = d;
         registeredShift = s;
+    }
+    
+    public int getId(){
+        return this.id;
+    }
+    
+    public void setId(int id){
+        this.id = id;
     }
     /**
      * @return the registeredDate
@@ -39,6 +54,6 @@ public class RegisteredShift{
         this.registeredShift = registeredShift;
     }
     public Object[] toRowTable(ShiftEventAction event) {
-        return new Object[]{registeredShift.getShiftId(), registeredShift.getStartTime(), registeredShift.getEndTime(),registeredDate, new ModelAction(this, event)};
+        return new Object[]{this.getId(), registeredShift.getStartTime(), registeredShift.getEndTime(),registeredDate, new ModelAction(this, event)};
     }
 }
