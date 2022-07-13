@@ -189,7 +189,7 @@ public class Billing extends javax.swing.JFrame {
         name = new javaswingdev.raven.swing.TextField();
         okBtn3 = new javaswingdev.swing.Button();
         quantity = new javaswingdev.raven.swing.TextField();
-        staffName = new javax.swing.JLabel();
+        staffName = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(204, 204, 0));
         setUndecorated(true);
@@ -323,14 +323,13 @@ public class Billing extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(billDate, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(staffNameLabel)
-                                .addGap(33, 33, 33)
-                                .addComponent(staffName, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(23, 23, 23)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(billDate, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                                    .addComponent(staffName)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,12 +373,11 @@ public class Billing extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel3)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(staffNameLabel))
-                            .addComponent(staffName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(40, 40, 40)
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(staffNameLabel)
+                            .addComponent(staffName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -405,7 +403,8 @@ public class Billing extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(okBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
@@ -429,7 +428,7 @@ public class Billing extends javax.swing.JFrame {
                     }else{
 //                      Bill is not null => update
                         if(bill != null){
-                            int orderId = bill.maxOrderId++;
+                            int orderId = bill.getOrderIdAndIncrease();
                             order= new Order(orderId,pd,quan);
                             bill.addOrder(order);
                             billTotal.setText(Double.toString(bill.getTotalCost()));
@@ -498,7 +497,7 @@ public class Billing extends javax.swing.JFrame {
                 if(!checkNumeric(staffName.getText())){
                     allBillModel.setValueAt(bill.getTotalCost(),getAllBillTable().getSelectedRow() , 3);
                     bill.setPaid(Double.parseDouble(billPaid.getText()));
-                    setVisible(false);
+                    closeMenu();
                 }else{
                     Staff newStaff = Dashboard.store.findStaff(Integer.parseInt(staffName.getText()));
                     if(newStaff == null){
@@ -510,7 +509,7 @@ public class Billing extends javax.swing.JFrame {
 //                      Change info on all bill table
                         allBillModel.setValueAt(bill.getTotalCost(),getAllBillTable().getSelectedRow() , 3);
                         allBillModel.setValueAt(bill.getStaff().getName(),getAllBillTable().getSelectedRow() , 2);
-                        setVisible(false);
+                        closeMenu();
                     }
                 }
                 
@@ -539,7 +538,7 @@ public class Billing extends javax.swing.JFrame {
                         Dashboard.store.addBill(b);
                         setBill(b);
                         getAllBillTable().addRow(b.toRowTable(billEventAction));
-                        setVisible(false);
+                        closeMenu();
                     }
                 }
             }
@@ -579,7 +578,7 @@ public class Billing extends javax.swing.JFrame {
     private javaswingdev.raven.swing.TextField price;
     private javaswingdev.raven.swing.TextField productId;
     private javaswingdev.raven.swing.TextField quantity;
-    private javax.swing.JLabel staffName;
+    private javax.swing.JTextField staffName;
     private javax.swing.JLabel staffNameLabel;
     private javaswingdev.swing.table.Table table1;
     // End of variables declaration//GEN-END:variables
