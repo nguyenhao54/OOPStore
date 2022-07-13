@@ -5,6 +5,7 @@ import com.raven.datechooser.EventDateChooser;
 import com.raven.datechooser.SelectedAction;
 import com.raven.datechooser.SelectedDate;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import model.*;
 import javaswingdev.swing.table.ShiftEventAction;
 import org.jdesktop.animation.timing.Animator;
@@ -12,9 +13,12 @@ import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 import javaswingdev.form.Message;
 import java.util.Date;
+import java.time.LocalDate;
+
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class ShiftInfo extends javax.swing.JDialog {
     private ArrayList<RegisteredShift> shiftList;
@@ -37,6 +41,9 @@ public class ShiftInfo extends javax.swing.JDialog {
            table1.addRow(rS.toRowTable(shiftEventAction));     
         }
         }
+        
+                   table1.addRow(new RegisteredShift(LocalDate.of(2022, 1, 11),Dashboard.store.getShift(1)).toRowTable(shiftEventAction));     
+
         setVisible(true);
         
  
@@ -45,6 +52,7 @@ public class ShiftInfo extends javax.swing.JDialog {
     public ShiftInfo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        initTable();
         centerComponent();
          getContentPane().setBackground(Color.WHITE);
                  dateChooser.addEventDateChooser(new EventDateChooser() {
@@ -77,6 +85,21 @@ public class ShiftInfo extends javax.swing.JDialog {
         animator = new Animator(200, target);
         animator.setResolution(0);
         animator.setAcceleration(0.5f);
+    }
+    
+    private void initTable(){
+        shiftEventAction = new ShiftEventAction() {
+         @Override
+         public void delete(RegisteredShift rs) {
+             System.out.println("delete");
+             
+         }
+
+         @Override
+         public void update(RegisteredShift rs) {
+            System.out.println("update");
+         }
+     };
     }
 
     @SuppressWarnings("unchecked")
@@ -181,15 +204,20 @@ public class ShiftInfo extends javax.swing.JDialog {
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Shift", "Start", "End", "Date"
+                "Shift", "Start", "End", "Date", "Action"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(table1);
 
         addProductForm.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, -1, 240));
@@ -251,8 +279,14 @@ public class ShiftInfo extends javax.swing.JDialog {
                 LocalTime et=s.getEndTime();
 
                 
-                Date datestr=new Date(date.getText());
+           try{
+               
+                  Date realDate=new SimpleDateFormat("dd-mm-yyyy").parse(date.getText());
 
+                  }
+                  catch(Exception e){
+                  e.printStackTrace();
+                  }
             
             }
         }

@@ -28,6 +28,8 @@ public class TableCellAction extends DefaultCellEditor {
             cell = new Action(data, "bill");
         }else if(data.getOrder() != null){
             cell = new Action(data, "order");
+        }else if(data.getRegisteredShift()!=null){
+            cell=new Action(data,"register");
         }
 //        cell.setBackground(new Color(239, 244, 255));
         return cell;

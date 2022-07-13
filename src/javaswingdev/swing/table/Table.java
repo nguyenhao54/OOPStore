@@ -45,6 +45,9 @@ public class Table extends JTable {
                     else if(data.getOrder() != null){
                         cell = new Action(data, "order");
                     }
+                    else if(data.getRegisteredShift()!=null){
+                        cell=new Action(data,"register");
+                    }
 //                    if (selected) {
 //                        cell.setForeground(SystemColor.MAIN_COLOR_1);
 //                    } else {

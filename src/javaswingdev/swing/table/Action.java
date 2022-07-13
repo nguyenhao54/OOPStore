@@ -21,6 +21,8 @@ public class Action extends javax.swing.JPanel {
                     data.getBillEvent().update(data.getBill());
                 }else if(dataModel.equals("order")){
                     data.getOrderEvent().update(data.getOrder());
+                }else if(dataModel.equals("register")){
+                    data.getShiftEvent().update(data.getRegisteredShift());
                 }
                 
             }
@@ -36,6 +38,8 @@ public class Action extends javax.swing.JPanel {
                     data.getBillEvent().delete(data.getBill());
                 }else if(dataModel.equals("order")){
                     data.getOrderEvent().delete(data.getOrder());
+                }else if(dataModel.equals("register")){
+                    data.getShiftEvent().delete(data.getRegisteredShift());
                 }
             }
         });
