@@ -42,7 +42,7 @@ public class Staff {
         this.phone = phone;
         this.rate = rate;
         this.birthDate=birthDate;
-        workedShifts = new ArrayList<>();
+        this.workedShifts=new ArrayList<>();
     }
 
     public Staff() {

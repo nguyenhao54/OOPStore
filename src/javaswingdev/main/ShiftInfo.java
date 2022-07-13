@@ -54,7 +54,7 @@ public class ShiftInfo extends javax.swing.JDialog {
         }
         }
         
-                   table1.addRow(new RegisteredShift(LocalDate.of(2022, 1, 11),Dashboard.store.getShift(1)).toRowTable(shiftEventAction));     
+        //table1.addRow(new RegisteredShift(LocalDate.of(2022, 1, 11),Dashboard.store.getShift(1)).toRowTable(shiftEventAction));     
 
         setVisible(true);
         
