@@ -13,7 +13,7 @@ import java.time.Month;
 import java.text.SimpleDateFormat;  
 import java.time.LocalDate;
 import model.*;
-
+import java.text.ParseException;
  
 public class Store  {
     private final ArrayList<Staff> staffList;
@@ -29,7 +29,7 @@ public class Store  {
 //    public ArrayList<Staff> staffList;
     
 //  Default initiate
-    public Store(){
+    public Store() throws ParseException{
         productList = new ArrayList<>();
         productList.add(new Shirt(1, "Polo Shirt", 299000, "Teelab", "Áo polo", "Trà đá vỉa hè", 10, 100000, 69, 52, 21, 44.5));
         productList.add(new Shirt(2, "Jacket", 350000, "H&M", "Clothes", "Áo khoác", 12, 200000, 71, 54, 42, 46));
@@ -52,16 +52,23 @@ public class Store  {
         maxProductId = productList.size() + 1;
         
         staffList = new ArrayList<>();
-        
+//        Date bdate;
+//        try{
+      Date  bdate=new SimpleDateFormat("dd-mm-yyyy").parse("11-12-2001");
+//        }
+//        catch(Exception e){
+//        e.printStackTrace();
+//        }
+
                   
-        staffList.add(new Staff(1, "Nguyễn Đồng Đức Anh", "Male", "0858377316", 1.2, new Date()));
-        staffList.add(new Staff(2, "Nguyễn Thị Hà Giang", "Female", "0973567822", 1.2,new Date()));
-        staffList.add(new Staff(3, "Hoàng Trung Kiên", "Male", "0778237733", 1.2,new Date()));
-        staffList.add(new Staff(4, "Hoàng Đức Thiện", "Male", "0943453321", 1.9,new Date()));
-        staffList.add(new Staff(5, "Nguyễn Đức Tùng", "Male", "036663773", 1.2,new Date()));
-        staffList.add(new Staff(6, "Trần Văn Quân", "Male", "0927727253", 1.8,new Date(1999,04,19)));
-        staffList.add(new Staff(7, "Nguyễn Phương Anh", "Female", "0876635623", 1.2,new Date(2002,11,05)));
-        staffList.add(new Staff(8, "Nguyễn Thị Phương Nga", "Female", "078288232", 1.6,new Date(2001-11-12)));
+        staffList.add(new Staff(1, "Nguyễn Đồng Đức Anh", "Male", "0858377316", 1.2,bdate));
+        staffList.add(new Staff(2, "Nguyễn Thị Hà Giang", "Female", "0973567822", 1.2,bdate));
+        staffList.add(new Staff(3, "Hoàng Trung Kiên", "Male", "0778237733", 1.2,bdate));
+        staffList.add(new Staff(4, "Hoàng Đức Thiện", "Male", "0943453321", 1.9,bdate));
+        staffList.add(new Staff(5, "Nguyễn Đức Tùng", "Male", "036663773", 1.2,bdate));
+        staffList.add(new Staff(6, "Trần Văn Quân", "Male", "0927727253", 1.8,bdate));
+        staffList.add(new Staff(7, "Nguyễn Phương Anh", "Female", "0876635623", 1.2,bdate));
+        staffList.add(new Staff(8, "Nguyễn Thị Phương Nga", "Female", "078288232", 1.6,bdate));
         maxStaffId = staffList.size() + 1;
 
 
@@ -99,9 +106,9 @@ public class Store  {
 
         temp= this.getShift(1);
         Staff d= this.findStaff(8);           
-        d.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 2, 11),temp));
+        d.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 7, 11),temp));
         temp= this.getShift(2);
-        d.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 1, 11),temp));
+        d.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 7, 11),temp));
         d.setMaxShiftId(d.getWorkedShifts().size() + 1);
         
         
