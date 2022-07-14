@@ -167,6 +167,8 @@ public class Form_Salary extends javax.swing.JPanel {
     private void inputMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMonthActionPerformed
         // TODO add your handling code here:
         System.out.println(Integer.parseInt(inputMonth.getSelectedItem().toString()));
+        DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+        dtm.setRowCount(0);
         initTable(Integer.parseInt(inputMonth.getSelectedItem().toString()));
     }//GEN-LAST:event_inputMonthActionPerformed
 

@@ -104,7 +104,7 @@ public class Staff {
         workedHour = 0;
         for(RegisteredShift i : workedShifts)
         {            
-            if(/*((Integer.parseInt(i.getRegisteredDate().getMonth().toString()))== month)&&*/(i.getRegisteredDate().getYear()==year)){
+            if(i.getRegisteredDate().getMonth().toString().equals(String.valueOf(month))&&(i.getRegisteredDate().getYear()==year)){
             workedHour += i.getRegisteredShift().getHour();}
         }
         return workedHour;

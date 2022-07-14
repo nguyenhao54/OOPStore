@@ -127,16 +127,17 @@ public class Billing extends javax.swing.JFrame {
             Message msg=new Message();
             @Override
             public void delete(Order order) {
-             if(msg.showMessage("Delete this order?")){
+             if(msg.showMessage("Delete this order?"+order.getOrderId())){
                  Product orderProduct = order.getProduct();
 //               Give the order quantity back to product when delete order
                  orderProduct.setQuantity(orderProduct.getQuantity() + order.getQuantity());
                  System.out.println(order.getOrderId() + " - " + order.getProduct().getProductName());
+                 model.removeRow(table1.getSelectedRow());
+
                 bill.deleteOrder(order.getOrderId());
                 billTotal.setText(Double.toString(bill.getTotalCost()));
                 billReturn.setText(Double.toString(bill.getPaid() - bill.getTotalCost()));
                 model =(DefaultTableModel) table1.getModel();
-                model.removeRow(table1.getSelectedRow());
                 msg.showDialog("Delete Order Id " + order.getOrderId()+" Successfully!","red");
              }else {
                     System.out.println("User click Cancel");
@@ -145,7 +146,7 @@ public class Billing extends javax.swing.JFrame {
             
             @Override
             public void update(Order order) {
-                msg.showDialog("Remove and add new to update", "red");
+                msg.showDialog("Please emove and add new to update", "red");
             }
         };
         
