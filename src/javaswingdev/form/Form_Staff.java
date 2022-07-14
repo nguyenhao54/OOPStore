@@ -30,11 +30,11 @@ public class Form_Staff extends javax.swing.JPanel {
         }
        private void initTable(String gender) {
 //         store.readStaff();
-        Message msg=new Message();
+        
          eventAction = new EventAction() {
             @Override
             public void delete(Staff staff) {
-             
+             Message msg=new Message();
               if (msg.showMessage("Delete Staff : " + staff.getName())) {  
                   Dashboard.store.deleteStaff(staff.getStaffId());
                   model =(DefaultTableModel) table.getModel();

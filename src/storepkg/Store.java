@@ -122,20 +122,25 @@ public class Store  {
         
         billList = new ArrayList<>();
         ArrayList orders0 = new ArrayList<>(); 
-        orders0.add(orderList.get(0));
-        orders0.add(orderList.get(1));
+        orders0.add(new Order(1, this.getProduct(1), 2));
+        orders0.add(new Order(2, this.getProduct(4), 2));
+        orders0.add(new Order(3, this.getProduct(5), 2));
         billList.add(new Bill(1, this.findStaff(3), orders0, LocalDateTime.of(2022, Month.JUNE, 27, 14, 33, 23), 2000000));
         ArrayList orders1 = new ArrayList<>();
-        orders1.add(orderList.get(2));
+        orders1.add(new Order(1, this.getProduct(8), 2));
+        orders1.add(new Order(2, this.getProduct(12), 2));
+        orders1.add(new Order(3, this.getProduct(1), 2));
         billList.add(new Bill(2, this.findStaff(1), orders1, LocalDateTime.of(2022, Month.FEBRUARY, 23, 18, 22, 38), 1700000));
         ArrayList orders2 = new ArrayList<>();
-        orders2.add(orderList.get(3));
+        orders2.add(new Order(1, this.getProduct(4), 2));
+        orders2.add(new Order(2, this.getProduct(10), 2));
+        orders2.add(new Order(3, this.getProduct(6), 2));
         billList.add(new Bill(3, this.findStaff(2), orders2, LocalDateTime.of(2022, Month.JULY, 28, 6, 19, 20), 1800000));
         ArrayList orders3 = new ArrayList<>();
-        orders3.add(orderList.get(3));
-        orders3.add(orderList.get(4));
+        orders3.add(new Order(1, this.getProduct(13), 2));
+        orders3.add(new Order(2, this.getProduct(7), 2));
+        orders3.add(new Order(3, this.getProduct(11), 2));
         billList.add(new Bill(4, this.findStaff(6), orders3, LocalDateTime.of(2022, Month.APRIL, 28, 11, 22, 22), 2300000));
-        System.out.println(billList.get(2).getDate());
         maxBillId = billList.size() + 1;
         
      }
