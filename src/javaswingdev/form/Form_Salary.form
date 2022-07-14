@@ -175,6 +175,7 @@
             <StringItem index="11" value="12"/>
           </StringArray>
         </Property>
+        <Property name="selectedIndex" type="int" value="-1"/>
         <Property name="labeText" type="java.lang.String" value="Select Month"/>
       </Properties>
       <Events>

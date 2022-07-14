@@ -120,6 +120,7 @@ public class Form_Salary extends javax.swing.JPanel {
 
         inputMonth.setMaximumRowCount(12);
         inputMonth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        inputMonth.setSelectedIndex(-1);
         inputMonth.setLabeText("Select Month");
         inputMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,7 +166,8 @@ public class Form_Salary extends javax.swing.JPanel {
 
     private void inputMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMonthActionPerformed
         // TODO add your handling code here:
-        System.out.println(inputMonth.getSelectedItem());
+        System.out.println(Integer.parseInt(inputMonth.getSelectedItem().toString()));
+        initTable(Integer.parseInt(inputMonth.getSelectedItem().toString()));
     }//GEN-LAST:event_inputMonthActionPerformed
 
 
