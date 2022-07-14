@@ -1,5 +1,5 @@
 package javaswingdev.main;
-
+import java.text.ParseException;
 import storepkg.Store;
 import java.awt.Component;
 import javaswingdev.form.*;
@@ -9,7 +9,7 @@ public class Dashboard extends javax.swing.JFrame {
     
     private static Dashboard main;
     public static Store store;
-    public Dashboard() {
+    public Dashboard() throws ParseException{
         store = new Store();
         initComponents();
         init();

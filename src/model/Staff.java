@@ -99,12 +99,12 @@ public class Staff {
                 this.workedShifts = workedShifts;
             }
     double workedHour;
-    public double getWorkedHour(String month, String year)
+    public double getWorkedHour(int month, int year)
     {
         workedHour = 0;
         for(RegisteredShift i : workedShifts)
-        {  
-            if((i.getRegisteredDate().getMonth().toString().equals(month))&&(i.getRegisteredDate().getYear()==Integer.parseInt(year))){
+        {            
+            if(/*((Integer.parseInt(i.getRegisteredDate().getMonth().toString()))== month)&&*/(i.getRegisteredDate().getYear()==year)){
             workedHour += i.getRegisteredShift().getHour();}
         }
         return workedHour;
@@ -134,7 +134,7 @@ public class Staff {
         }
     }
     
-    public double getSalary(String month, String year) {
+    public double getSalary(int month, int year) {
 	return getWorkedHour(month, year)*rate;
 }
 
@@ -143,7 +143,7 @@ public class Staff {
         return new Object[]{staffId, name, gender, phone, rate, new ModelAction(this, event)};
     }
     
-    public Object[] toRowSalaryTable() {
-        return new Object[]{staffId, name, rate ,"1111", workedHour };
+    public Object[] toRowSalaryTable(int month, int year) {
+        return new Object[]{staffId, name, rate ,getWorkedHour(month,year),getSalary(month,year) };
     }
 }
