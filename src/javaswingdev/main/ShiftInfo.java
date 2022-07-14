@@ -226,7 +226,7 @@ public class ShiftInfo extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Shift", "Start", "End", "Date", "Action"
+                "Id", "Start", "End", "Date", "Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -238,6 +238,11 @@ public class ShiftInfo extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(table1);
+        if (table1.getColumnModel().getColumnCount() > 0) {
+            table1.getColumnModel().getColumn(0).setMinWidth(35);
+            table1.getColumnModel().getColumn(0).setPreferredWidth(35);
+            table1.getColumnModel().getColumn(0).setMaxWidth(35);
+        }
 
         addProductForm.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, -1, 240));
 
