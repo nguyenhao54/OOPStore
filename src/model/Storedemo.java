@@ -211,12 +211,12 @@ public class Storedemo {
         double sum = 0;
 //      Calculate salary for staff
         for(Staff s: staffList){
-            sum += s.getSalary();
+       //     sum += s.getSalary();
         }
         
 //      calculate salary for manager
         for(Manager m: managerList){
-            sum += m.getSalary();
+          //  sum += m.getSalary();
         }
         
         return sum;

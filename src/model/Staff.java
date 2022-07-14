@@ -99,12 +99,13 @@ public class Staff {
                 this.workedShifts = workedShifts;
             }
     double workedHour;
-    public double getWorkedHour()
+    public double getWorkedHour(String month, String year)
     {
         workedHour = 0;
         for(RegisteredShift i : workedShifts)
-        {
-            workedHour += i.getRegisteredShift().getHour();
+        {  
+            if((i.getRegisteredDate().getMonth().toString().equals(month))&&(i.getRegisteredDate().getYear()==Integer.parseInt(year))){
+            workedHour += i.getRegisteredShift().getHour();}
         }
         return workedHour;
     }
@@ -133,8 +134,8 @@ public class Staff {
         }
     }
     
-    public double getSalary() {
-	return getWorkedHour()*rate;
+    public double getSalary(String month, String year) {
+	return getWorkedHour(month, year)*rate;
 }
 
     public Object[] toRowTable(EventAction event) {

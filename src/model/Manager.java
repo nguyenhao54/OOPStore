@@ -20,8 +20,8 @@ public class Manager extends Staff{
                 super(id, name, gender, phone, rate, date);
             }
     @Override
-    public double getSalary() {
-	return getWorkedHour()*rate + bonus;
+    public double getSalary(String month, String year) {
+	return getWorkedHour(month, year)*rate + bonus;
 }
 
 }
