@@ -77,7 +77,7 @@ public class Store  {
         shiftList.add(new Shift(1, "06:00:00", "12:00:00", 6));
         shiftList.add(new Shift(2, "12:00:00", "18:00:00", 6));
         shiftList.add(new Shift(3, "18:00:00", "23:59:00", 6));
-        shiftList.add(new Shift(4, "23:00:00", "2:00:00", 3));
+        shiftList.add(new Shift(4, "23:00:00", "02:00:00", 3));
         
 
     
