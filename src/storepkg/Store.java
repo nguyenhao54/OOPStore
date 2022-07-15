@@ -74,10 +74,10 @@ public class Store  {
 
         
         shiftList = new ArrayList<>();
-        shiftList.add(new Shift(1, "08:00:00", "12:00:00", 4));
-        shiftList.add(new Shift(2, "12:00:00", "17:00:00", 5));
-        shiftList.add(new Shift(3, "17:00:00", "22:00:00", 5));
-        shiftList.add(new Shift(4, "08:00:00", "17:00:00", 9));
+        shiftList.add(new Shift(1, "06:00:00", "12:00:00", 6));
+        shiftList.add(new Shift(2, "12:00:00", "18:00:00", 6));
+        shiftList.add(new Shift(3, "18:00:00", "23:59:00", 6));
+        shiftList.add(new Shift(4, "08:00:00", "20:00:00", 12));
         
 
     
