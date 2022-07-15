@@ -9,6 +9,7 @@ package model;
  * @author T460S
  */
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import javaswingdev.swing.table.EventAction;
 import javaswingdev.swing.table.ModelAction;
 import java.util.ArrayList;
@@ -107,6 +108,19 @@ public class Staff {
         for(RegisteredShift i : workedShifts)
         {            
             if(i.getRegisteredDate().getMonthValue() == month && i.getRegisteredDate().getYear()== year){
+            workedHour += i.getRegisteredShift().getHour();
+            }
+        }
+        return workedHour;
+    }
+    
+    public double getWorkedHour()
+    {
+        LocalDate now = LocalDate.now();
+        workedHour = 0;
+        for(RegisteredShift i : workedShifts)
+        {            
+            if(i.getRegisteredDate().getMonthValue() == now.getMonthValue() && i.getRegisteredDate().getYear()== now.getYear()){
             workedHour += i.getRegisteredShift().getHour();
             }
         }

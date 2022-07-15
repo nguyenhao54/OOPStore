@@ -634,4 +634,14 @@ public class Store  {
          }
          return sum;
      }
+     
+     public int getMaxBillCount(Staff s){
+         int sum = 0;
+         for(Bill b: billList){
+             if(b.getStaff().getStaffId() == s.getStaffId()){
+                 sum++;
+             }
+         }
+         return sum;
+     }
 }   

@@ -217,7 +217,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javaswingdev.card.Card" name="cardstaff">
+    <Component class="javaswingdev.card.Card" name="cardStaff">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>

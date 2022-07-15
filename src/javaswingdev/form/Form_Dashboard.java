@@ -3,6 +3,7 @@ package javaswingdev.form;
 import java.text.DecimalFormat;
 import javaswingdev.card.ModelCard;
 import javaswingdev.main.Dashboard;
+import model.*;
 
 public class Form_Dashboard extends javax.swing.JPanel {
 
@@ -25,6 +26,11 @@ public class Form_Dashboard extends javax.swing.JPanel {
         card1.setData(new ModelCard(null, null, null, formattedIncome, "Report Gross Income"));
         card2.setData(new ModelCard(null, null, null, formattedExpense, "Report Store Expense"));
         card3.setData(new ModelCard(null, null, null, formattedProfit , "Report Gross Profit"));
+        
+        Staff bestStaff = Dashboard.store.getBestStaff();
+        cardStaff.setData(new ModelCard(null, null, null, bestStaff.getName(), "Best Performance Staff"));
+        workedlbl.setText(Double.toString(bestStaff.getWorkedHour()));
+        billcountlbl.setText(Integer.toString(Dashboard.store.getMaxBillCount(bestStaff)));
     }
 
     @SuppressWarnings("unchecked")
@@ -43,7 +49,7 @@ public class Form_Dashboard extends javax.swing.JPanel {
         profitlbl = new javax.swing.JLabel();
         sold = new javax.swing.JLabel();
         workedhour = new javax.swing.JLabel();
-        cardstaff = new javaswingdev.card.Card();
+        cardStaff = new javaswingdev.card.Card();
         card6 = new javaswingdev.card.Card();
         card1 = new javaswingdev.card.Card();
 
@@ -114,12 +120,12 @@ public class Form_Dashboard extends javax.swing.JPanel {
         workedhour.setText("Worked hours");
         add(workedhour, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 110, 80));
 
-        cardstaff.setForeground(new java.awt.Color(102, 102, 102));
-        cardstaff.setColor1(new java.awt.Color(255, 255, 102));
-        cardstaff.setColor2(new java.awt.Color(153, 153, 0));
-        cardstaff.setDescription("Best performance");
-        cardstaff.setValues("Nguyễn Đồng Đức Anh");
-        add(cardstaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 370, 400));
+        cardStaff.setForeground(new java.awt.Color(102, 102, 102));
+        cardStaff.setColor1(new java.awt.Color(255, 255, 102));
+        cardStaff.setColor2(new java.awt.Color(153, 153, 0));
+        cardStaff.setDescription("Best performance");
+        cardStaff.setValues("Nguyễn Đồng Đức Anh");
+        add(cardStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 370, 400));
 
         card6.setForeground(new java.awt.Color(102, 102, 102));
         card6.setColor1(new java.awt.Color(255, 255, 102));
@@ -140,7 +146,7 @@ public class Form_Dashboard extends javax.swing.JPanel {
     private javaswingdev.card.Card card2;
     private javaswingdev.card.Card card3;
     private javaswingdev.card.Card card6;
-    private javaswingdev.card.Card cardstaff;
+    private javaswingdev.card.Card cardStaff;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel profit;
