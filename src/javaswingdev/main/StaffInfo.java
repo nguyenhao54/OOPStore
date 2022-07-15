@@ -192,14 +192,12 @@ public class StaffInfo extends javax.swing.JDialog {
                   Staff newStaff = new Staff(id, name, gender, phone, Double.parseDouble(rate), realDate);
                   Dashboard.store.addStaff(newStaff);
                   setStaff(newStaff);
-                  setSuccess(true);;
+                  setSuccess(true);
               }catch(ParseException e){
                   e.printStackTrace();
                   setSuccess(false);
                   setStaff(null);
-              }
-              
-              
+              }   
             }
             //// this is for updating purpose 
             else 
