@@ -55,82 +55,82 @@ public class Form_Dashboard extends javax.swing.JPanel {
         card2.setDescription("Store Expense");
         card2.setIcon(javaswingdev.GoogleMaterialDesignIcon.PIE_CHART);
         card2.setValues("VND 0.00");
-        add(card2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
+        add(card2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, -1, 140));
 
         card3.setColor1(new java.awt.Color(95, 243, 140));
         card3.setColor2(new java.awt.Color(3, 157, 27));
         card3.setDescription("Gross Profit");
         card3.setIcon(javaswingdev.GoogleMaterialDesignIcon.RING_VOLUME);
         card3.setValues("VND 0.00");
-        add(card3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, -1, -1));
+        add(card3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, -1, 140));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_best_seller_110px.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 150, 140));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 150, 140));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_best_seller_110px.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 170, 120));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, 170, 120));
 
         workedlbl.setFont(new java.awt.Font("sansserif", 1, 52)); // NOI18N
         workedlbl.setForeground(new java.awt.Color(180, 174, 28));
         workedlbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         workedlbl.setText("300");
-        add(workedlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 220, 60));
+        add(workedlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 220, 60));
 
         profit.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         profit.setForeground(new java.awt.Color(102, 102, 102));
         profit.setText("Profit");
-        add(profit, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 400, 50, 80));
+        add(profit, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 440, 50, 80));
 
         billcountlbl.setFont(new java.awt.Font("sansserif", 1, 52)); // NOI18N
         billcountlbl.setForeground(new java.awt.Color(101, 112, 173));
         billcountlbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         billcountlbl.setText("300");
-        add(billcountlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, 280, 50));
+        add(billcountlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 520, 280, 50));
 
         bills.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         bills.setForeground(new java.awt.Color(102, 102, 102));
         bills.setText("Bills Count");
-        add(bills, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 90, 80));
+        add(bills, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 450, 90, 80));
 
         soldlbl.setFont(new java.awt.Font("sansserif", 1, 52)); // NOI18N
         soldlbl.setForeground(new java.awt.Color(180, 174, 28));
         soldlbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         soldlbl.setText("300");
-        add(soldlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, 220, 60));
+        add(soldlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, 220, 60));
 
         profitlbl.setFont(new java.awt.Font("sansserif", 1, 52)); // NOI18N
         profitlbl.setForeground(new java.awt.Color(101, 112, 173));
         profitlbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         profitlbl.setText("300");
-        add(profitlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 280, 50));
+        add(profitlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 520, 280, 50));
 
         sold.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         sold.setForeground(new java.awt.Color(102, 102, 102));
         sold.setText("Sold amount");
-        add(sold, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 300, 190, 50));
+        add(sold, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 340, 190, 50));
 
         workedhour.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         workedhour.setForeground(new java.awt.Color(102, 102, 102));
         workedhour.setText("Worked hours");
-        add(workedhour, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 110, 80));
+        add(workedhour, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 110, 80));
 
         cardstaff.setForeground(new java.awt.Color(102, 102, 102));
         cardstaff.setColor1(new java.awt.Color(255, 255, 102));
         cardstaff.setColor2(new java.awt.Color(153, 153, 0));
         cardstaff.setDescription("Best performance");
         cardstaff.setValues("Nguyễn Đồng Đức Anh");
-        add(cardstaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 370, 400));
+        add(cardstaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 370, 400));
 
         card6.setForeground(new java.awt.Color(102, 102, 102));
         card6.setColor1(new java.awt.Color(255, 255, 102));
         card6.setColor2(new java.awt.Color(153, 153, 0));
         card6.setDescription("Best seller");
         card6.setValues("Quần ");
-        add(card6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 380, 400));
+        add(card6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 380, 400));
 
         card1.setDescription("Gross Income");
         card1.setValues("VND 0.00");
-        add(card1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        add(card1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 140));
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
