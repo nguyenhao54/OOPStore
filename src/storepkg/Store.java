@@ -249,7 +249,7 @@ public class Store  {
 //            file.write(jStaffList.toJSONString()); 
 //            file.flush();
         try{
-            maxStaffId=getMaxStaffId() + 1;
+            maxStaffId=getMaxStaffIdAndIncrease();
             Date date=new SimpleDateFormat("dd-mm-yyyy").parse(strDate); 
             Staff newStaff= new Staff(getMaxStaffId(),name,gender,phone,Double.parseDouble(rate),date);
                 getStaffList().add(newStaff);
@@ -263,6 +263,10 @@ public class Store  {
         } 
         return true;
     }
+  
+  public void addStaff(Staff staff){
+      staffList.add(staff);
+  }
 
   
 // *****************************************************************   find Staff 
@@ -571,6 +575,10 @@ public class Store  {
     
     public void increaseMaxStaffId(){
         maxStaffId += 1;
+    }
+    
+    public int getMaxStaffIdAndIncrease(){
+        return maxStaffId++;
     }
     
     public int getMaxStaffId() {
