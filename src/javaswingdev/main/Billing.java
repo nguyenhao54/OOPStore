@@ -93,7 +93,7 @@ public class Billing extends javax.swing.JFrame {
     
     public Billing(java.awt.Frame parent, boolean modal) {
         initComponents();
-        table1.fixTable(jScrollPane2);
+
 //       Avoid focus to staff name text field
         jLabel3.requestFocusInWindow();
         initTable();
@@ -127,8 +127,10 @@ public class Billing extends javax.swing.JFrame {
             Message msg=new Message();
             @Override
             public void delete(Order order) {
+              System.out.println(table1.getSelectedRow());
+
              if(msg.showMessage("Delete this order?"+order.getOrderId())){
-                 Product orderProduct = order.getProduct();
+                Product orderProduct = order.getProduct();
 //               Give the order quantity back to product when delete order
                  orderProduct.setQuantity(orderProduct.getQuantity() + order.getQuantity());
                  System.out.println(order.getOrderId() + " - " + order.getProduct().getProductName());

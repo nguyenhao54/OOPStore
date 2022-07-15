@@ -85,23 +85,70 @@ public class Store  {
         Staff a= this.findStaff(1);
         a.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 7, 12),temp));
         a.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 7, 13),temp));
-        a.getWorkedShifts().add(new RegisteredShift(3, LocalDate.of(2022, 7, 14),temp));
+        a.getWorkedShifts().add(new RegisteredShift(3, LocalDate.of(2022, 7, 14),temp));        a.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 7, 12),temp));
+        a.getWorkedShifts().add(new RegisteredShift(4, LocalDate.of(2022, 7, 13),temp));
+        a.getWorkedShifts().add(new RegisteredShift(5, LocalDate.of(2022, 7, 14),temp));
         a.setMaxShiftId(a.getWorkedShifts().size() + 1);
 
         temp= this.getShift(1);
         Staff b= this.findStaff(4);
-        b.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 7, 11),temp));
-        b.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 7, 12),temp));
-        b.getWorkedShifts().add(new RegisteredShift(3, LocalDate.of(2022, 7, 13),temp));
+        b.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 6, 11),temp));
+        b.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 6, 12),temp));
+        b.getWorkedShifts().add(new RegisteredShift(3, LocalDate.of(2022, 6, 11),temp));
+        b.getWorkedShifts().add(new RegisteredShift(4, LocalDate.of(2022, 6, 12),temp));
+        b.getWorkedShifts().add(new RegisteredShift(5, LocalDate.of(2022, 7, 11),temp));
+        b.getWorkedShifts().add(new RegisteredShift(6, LocalDate.of(2022, 7, 12),temp));
+        b.getWorkedShifts().add(new RegisteredShift(7, LocalDate.of(2022, 7, 13),temp));
+        b.getWorkedShifts().add(new RegisteredShift(8, LocalDate.of(2022, 7, 14),temp));
+        b.getWorkedShifts().add(new RegisteredShift(9, LocalDate.of(2022, 7, 15),temp));
+        
+
+
         b.setMaxShiftId(b.getWorkedShifts().size() + 1);
 
 
+         temp= this.getShift(1);
+        Staff e= this.findStaff(2);
+        e.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 6, 11),temp));
+        e.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 6, 12),temp));
+        e.getWorkedShifts().add(new RegisteredShift(3, LocalDate.of(2022, 6, 11),temp));
+        e.getWorkedShifts().add(new RegisteredShift(4, LocalDate.of(2022, 6, 12),temp));
+        e.getWorkedShifts().add(new RegisteredShift(5, LocalDate.of(2022, 7, 11),temp));
+        e.getWorkedShifts().add(new RegisteredShift(6, LocalDate.of(2022, 7, 12),temp));
+        e.getWorkedShifts().add(new RegisteredShift(7, LocalDate.of(2022, 7, 13),temp));
+        e.getWorkedShifts().add(new RegisteredShift(8, LocalDate.of(2022, 7, 14),temp));
+        e.getWorkedShifts().add(new RegisteredShift(9, LocalDate.of(2022, 7, 15),temp));
+        
+
+
+        e.setMaxShiftId(b.getWorkedShifts().size() + 1);
+        
+        
         temp= this.getShift(3);
         Staff c= this.findStaff(3);
         c.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 6, 11),temp));
         c.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 6, 12),temp));
         c.getWorkedShifts().add(new RegisteredShift(3, LocalDate.of(2022, 6, 11),temp));
         c.getWorkedShifts().add(new RegisteredShift(4, LocalDate.of(2022, 6, 12),temp));
+        c.getWorkedShifts().add(new RegisteredShift(5, LocalDate.of(2022, 7, 11),temp));
+        c.getWorkedShifts().add(new RegisteredShift(6, LocalDate.of(2022, 7, 12),temp));
+        c.getWorkedShifts().add(new RegisteredShift(7, LocalDate.of(2022, 7, 13),temp));
+        c.getWorkedShifts().add(new RegisteredShift(8, LocalDate.of(2022, 7, 14),temp));
+        c.getWorkedShifts().add(new RegisteredShift(9, LocalDate.of(2022, 7, 15),temp));
+
+        c.setMaxShiftId(c.getWorkedShifts().size() + 1);
+        
+         c= this.findStaff(5);
+        c.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 6, 11),temp));
+        c.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 6, 12),temp));
+        c.getWorkedShifts().add(new RegisteredShift(3, LocalDate.of(2022, 6, 11),temp));
+        c.getWorkedShifts().add(new RegisteredShift(4, LocalDate.of(2022, 6, 12),temp));
+        c.getWorkedShifts().add(new RegisteredShift(5, LocalDate.of(2022, 7, 11),temp));
+        c.getWorkedShifts().add(new RegisteredShift(6, LocalDate.of(2022, 7, 12),temp));
+        c.getWorkedShifts().add(new RegisteredShift(7, LocalDate.of(2022, 7, 13),temp));
+        c.getWorkedShifts().add(new RegisteredShift(8, LocalDate.of(2022, 7, 14),temp));
+        c.getWorkedShifts().add(new RegisteredShift(9, LocalDate.of(2022, 7, 15),temp));
+
         c.setMaxShiftId(c.getWorkedShifts().size() + 1);
 
         temp= this.getShift(1);
@@ -109,8 +156,37 @@ public class Store  {
         d.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 7, 11),temp));
         temp= this.getShift(2);
         d.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 7, 11),temp));
+        d.getWorkedShifts().add(new RegisteredShift(3, LocalDate.of(2022, 7, 12),temp));
+        d.getWorkedShifts().add(new RegisteredShift(4, LocalDate.of(2022, 7, 13),temp));
+        d.getWorkedShifts().add(new RegisteredShift(5, LocalDate.of(2022, 7, 14),temp));
+
         d.setMaxShiftId(d.getWorkedShifts().size() + 1);
         
+        
+        temp= this.getShift(1);
+        Staff g= this.findStaff(7);           
+        g.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 7, 11),temp));
+        temp= this.getShift(2);
+        g.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 7, 11),temp));
+        g.getWorkedShifts().add(new RegisteredShift(3, LocalDate.of(2022, 7, 12),temp));
+        g.getWorkedShifts().add(new RegisteredShift(4, LocalDate.of(2022, 7, 13),temp));
+        g.getWorkedShifts().add(new RegisteredShift(5, LocalDate.of(2022, 7, 14),temp));
+
+        g.setMaxShiftId(d.getWorkedShifts().size() + 1);
+        
+        
+        temp= this.getShift(2);
+        Staff m= this.findStaff(6);           
+        m.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 7, 11),temp));
+        temp= this.getShift(3);
+        m.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 7, 11),temp));
+        m.getWorkedShifts().add(new RegisteredShift(3, LocalDate.of(2022, 7, 12),temp));
+        m.getWorkedShifts().add(new RegisteredShift(4, LocalDate.of(2022, 7, 13),temp));
+        m.getWorkedShifts().add(new RegisteredShift(5, LocalDate.of(2022, 7, 14),temp));
+        m.getWorkedShifts().add(new RegisteredShift(5, LocalDate.of(2022, 7, 15),temp));
+
+
+        g.setMaxShiftId(d.getWorkedShifts().size() + 1);
         
         
         
