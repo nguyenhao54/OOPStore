@@ -11,6 +11,7 @@ import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 import java.util.Date;
 import java.text.DateFormat;  
+import java.text.ParseException;
 import java.text.SimpleDateFormat; 
 //import storepkg.Store;
 //import javaswingdev.swing.table.EventAction;
@@ -184,22 +185,21 @@ public class StaffInfo extends javax.swing.JDialog {
 //           Store newSL=new Store();
 //           newSL.readStaff();
             if (staff==null){
-              id= Dashboard.store.getMaxStaffId() +1;
-              if (Dashboard.store.addStaff(name, phone, gender, rate, date)){
-                  try{
-                  setSuccess(true);
+              id= Dashboard.store.getMaxStaffIdAndIncrease();
+              System.out.println(id);
+              try{
                   Date realDate=new SimpleDateFormat("dd-mm-yyyy").parse(date);
-                  this.setStaff(new Staff(id,name,gender,phone,Double.parseDouble(rate),realDate)) ; 
-                  }
-                  catch(Exception e){
+                  Staff newStaff = new Staff(id, name, gender, phone, Double.parseDouble(rate), realDate);
+                  Dashboard.store.addStaff(newStaff);
+                  setStaff(newStaff);
+                  setSuccess(true);;
+              }catch(ParseException e){
                   e.printStackTrace();
-                  }
-                }
-           
-              else{
-               setSuccess(false);
-               setStaff(null);
+                  setSuccess(false);
+                  setStaff(null);
               }
+              
+              
             }
             //// this is for updating purpose 
             else 
@@ -208,7 +208,7 @@ public class StaffInfo extends javax.swing.JDialog {
                  try{
                  setSuccess(true);
                  Date realDate=new SimpleDateFormat("dd-mm-yyyy").parse(date);
-                 this.setStaff(new Staff(id,name,gender,phone,Double.parseDouble(rate),realDate)) ; 
+//                 this.setStaff(new Staff(id,name,gender,phone,Double.parseDouble(rate),realDate)) ; 
                  }
                  catch(Exception e){
                  e.printStackTrace();
