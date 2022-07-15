@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class Main extends javax.swing.JFrame {
     private static Main main;
-    public Main() {
+    public Main()  {
         initComponents();
         init();
     }
