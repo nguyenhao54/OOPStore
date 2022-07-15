@@ -225,7 +225,6 @@ public class Store  {
         orders3.add(new Order(3, this.getProduct(11), 2));
         billList.add(new Bill(4, this.findStaff(6), orders3, LocalDateTime.of(2022, Month.APRIL, 28, 11, 22, 22), 2300000));
         maxBillId = billList.size() + 1;
-        
      }
    // ***********************************************************************add new object
      public ArrayList<Staff> getSalaryList(){
@@ -603,6 +602,7 @@ public class Store  {
         }
         return sum;
     } 
+     
      public double getExpense(){
          double importPriceSum = 0;
          for(Bill b: billList){
@@ -611,5 +611,27 @@ public class Store  {
              }
          }
          return importPriceSum;
+     }
+     
+     public Staff getBestStaff(){
+         Staff bestStaff = staffList.get(0);
+         double maxHour = 0;
+         for(Staff s: staffList){
+             LocalDate now = LocalDate.now();
+             if(s.getWorkedHour(now.getMonthValue(), now.getYear()) > maxHour){
+                 bestStaff = s;
+                 maxHour = s.getWorkedHour(now.getMonthValue(), now.getYear());
+             }
+         }
+         return bestStaff;
+     }
+     
+     public double getTotalSalary(){
+         double sum = 0;
+         LocalDate now = LocalDate.now();
+         for(Staff s: staffList){
+             sum += s.getSalary(now.getMonthValue(), now.getYear());
+         }
+         return sum;
      }
 }   
