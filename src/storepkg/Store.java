@@ -85,7 +85,8 @@ public class Store  {
         Staff a= this.findStaff(1);
         a.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 7, 12),temp));
         a.getWorkedShifts().add(new RegisteredShift(2, LocalDate.of(2022, 7, 13),temp));
-        a.getWorkedShifts().add(new RegisteredShift(3, LocalDate.of(2022, 7, 14),temp));        a.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 7, 12),temp));
+        a.getWorkedShifts().add(new RegisteredShift(3, LocalDate.of(2022, 7, 14),temp));        
+        a.getWorkedShifts().add(new RegisteredShift(1, LocalDate.of(2022, 7, 12),temp));
         a.getWorkedShifts().add(new RegisteredShift(4, LocalDate.of(2022, 7, 13),temp));
         a.getWorkedShifts().add(new RegisteredShift(5, LocalDate.of(2022, 7, 14),temp));
         a.setMaxShiftId(a.getWorkedShifts().size() + 1);
@@ -604,13 +605,14 @@ public class Store  {
     } 
      
      public double getExpense(){
-         double importPriceSum = 0;
+         double expense = 0;
          for(Bill b: billList){
              for(Order o: b.getOrderList()){
-                 importPriceSum += o.getProduct().getImportPrice();
+                 expense += o.getProduct().getImportPrice();
              }
          }
-         return importPriceSum;
+         expense += getTotalSalary();
+         return expense;
      }
      
      public Staff getBestStaff(){
