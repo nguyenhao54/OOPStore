@@ -3,6 +3,9 @@ package javaswingdev.main;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.Color;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main extends javax.swing.JFrame {
     private static Main main;
@@ -158,9 +161,13 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        login();
+        try {
+            login();
+        } catch (ParseException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_button1ActionPerformed
-    private void login(){
+    private void login() throws ParseException{
         if(txtUser.getText().equals("bms") && txtPass.getText().equals("1")){
             this.setVisible(false);
             new Dashboard().setVisible(true);
@@ -221,7 +228,11 @@ public class Main extends javax.swing.JFrame {
 
     private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
     if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-         login();
+        try {
+            login();
+        } catch (ParseException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 

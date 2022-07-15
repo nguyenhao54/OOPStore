@@ -35,6 +35,7 @@ public class Staff {
     private Date birthDate;
     private ArrayList<RegisteredShift> workedShifts;
     private int maxShiftId;
+    private static double perHour = 20000;
     
     public Staff( int id,String name, String gender, String phone, double rate, Date birthDate) {
         this.staffId = id;
@@ -104,8 +105,9 @@ public class Staff {
         workedHour = 0;
         for(RegisteredShift i : workedShifts)
         {            
-            if(i.getRegisteredDate().getMonth().toString().equals(String.valueOf(month))&&(i.getRegisteredDate().getYear()==year)){
-            workedHour += i.getRegisteredShift().getHour();}
+            if(i.getRegisteredDate().getMonthValue() == month && i.getRegisteredDate().getYear()== year){
+            workedHour += i.getRegisteredShift().getHour();
+            }
         }
         return workedHour;
     }
@@ -135,7 +137,7 @@ public class Staff {
     }
     
     public double getSalary(int month, int year) {
-	return getWorkedHour(month, year)*rate;
+	return getWorkedHour(month, year)*rate*perHour;
 }
 
     public Object[] toRowTable(EventAction event) {

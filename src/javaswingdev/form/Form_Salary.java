@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package javaswingdev.form;
+import java.time.LocalDate;
 import javaswingdev.main.Dashboard;
 import javaswingdev.main.*;
 import javaswingdev.swing.table.ProductEventAction;
@@ -26,12 +27,12 @@ public class Form_Salary extends javax.swing.JPanel {
         initComponents();
         table.fixTable(jScrollPane1);
         
-        initTable(new Date().getMonth());
+        initTable(LocalDate.now().getMonthValue());
     }
     private void initTable(int month) {
      table.fixTable(jScrollPane1);
      for(Staff s: Dashboard.store.getStaffList()){
-         table.addRow(s.toRowSalaryTable(month, new Date().getYear()));
+         table.addRow(s.toRowSalaryTable(month, LocalDate.now().getYear()));
      }
   }
     /**
