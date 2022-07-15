@@ -68,7 +68,7 @@ public class Form_Dashboard extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 150, 140));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_best_seller_110px.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, 170, 120));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 170, 120));
 
         workedlbl.setFont(new java.awt.Font("sansserif", 1, 52)); // NOI18N
         workedlbl.setForeground(new java.awt.Color(180, 174, 28));

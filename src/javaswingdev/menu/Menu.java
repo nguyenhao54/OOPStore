@@ -34,7 +34,7 @@ public class Menu extends JPanel {
         add(scroll);
         addTitle("MAIN");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.DASHBOARD, "Dashboard"));
-        addTitle("STAFF Management");
+        addTitle("MANAGEMENT");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PEOPLE, "Staffs","All","Male","Female"));
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PAYMENT, "Manager"));
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.RECEIPT, "Salary"));
