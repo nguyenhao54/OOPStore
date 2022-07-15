@@ -105,10 +105,11 @@ public class Bill {
     }
     
     public void deleteOrder(int id) {
-       // System.out.println(this.orderList.size());
+        System.out.println(id);
         for (int i = 0; i < this.orderList.size(); i++) {
             if (this.orderList.get(i).getOrderId() == id) {
                 this.orderList.remove(i);
+                System.out.println("deleted" + id);
             }
         }
     }
