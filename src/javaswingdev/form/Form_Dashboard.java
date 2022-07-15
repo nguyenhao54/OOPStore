@@ -18,10 +18,10 @@ public class Form_Dashboard extends javax.swing.JPanel {
        double income = Dashboard.store.getIncome();
        DecimalFormat df = new DecimalFormat("###,###.##");
        df.setMaximumFractionDigits(8);
-       String formattedIncome = df.format(income) + "VND";
+       String formattedIncome = df.format(income) + " VND";
        double expense = Dashboard.store.getExpense();
-       String formattedExpense = df.format(expense) + "VND";
-       String formattedProfit = df.format(income-expense)+"VND";
+       String formattedExpense = df.format(expense) + " VND";
+       String formattedProfit = df.format(income-expense)+" VND";
         card1.setData(new ModelCard(null, null, null, formattedIncome, "Report Gross Income"));
         card2.setData(new ModelCard(null, null, null, formattedExpense, "Report Store Expense"));
         card3.setData(new ModelCard(null, null, null, formattedProfit , "Report Gross Profit"));

@@ -26,8 +26,9 @@ public class Form_Salary extends javax.swing.JPanel {
     public Form_Salary() {
         initComponents();
         table.fixTable(jScrollPane1);
-        
         initTable(LocalDate.now().getMonthValue());
+        SortFilter();
+
     }
     private void initTable(int month) {
      table.fixTable(jScrollPane1);
@@ -35,6 +36,42 @@ public class Form_Salary extends javax.swing.JPanel {
          table.addRow(s.toRowSalaryTable(month, LocalDate.now().getYear()));
      }
   }
+    
+    
+     private void SortFilter(){
+      rowSorter = new TableRowSorter<>(table.getModel());
+      table.setRowSorter(rowSorter);
+      searchField.getDocument().addDocumentListener(new DocumentListener(){
+      @Override 
+      public void insertUpdate(DocumentEvent e){
+           String text = searchField.getText();
+           if(text.trim().length()==0){
+               rowSorter.setRowFilter(null);
+           }
+           else{
+               rowSorter.setRowFilter(RowFilter.regexFilter("(?i)"+text));
+               
+           }
+       }
+      @Override
+      public void removeUpdate(DocumentEvent e){
+          String text= searchField.getText();
+          if(text.trim().length()==0){
+              rowSorter.setRowFilter(null);
+              
+          }else
+          {
+              rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" +text));
+          }
+      }
+         @Override
+            public void changedUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); 
+            }
+            
+    });
+              
+ }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,7 +84,7 @@ public class Form_Salary extends javax.swing.JPanel {
         roundPanel1 = new javaswingdev.swing.RoundPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javaswingdev.swing.table.Table();
-        textFieldAnimation1 = new swing.TextFieldAnimation();
+        searchField = new swing.TextFieldAnimation();
         inputMonth = new javaswingdev.swing.Combobox();
 
         setBackground(new java.awt.Color(243, 243, 243));
@@ -106,16 +143,16 @@ public class Form_Salary extends javax.swing.JPanel {
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        textFieldAnimation1.setForeground(new java.awt.Color(153, 153, 153));
-        textFieldAnimation1.setAnimationColor(new java.awt.Color(87, 97, 174));
-        textFieldAnimation1.addFocusListener(new java.awt.event.FocusAdapter() {
+        searchField.setForeground(new java.awt.Color(153, 153, 153));
+        searchField.setAnimationColor(new java.awt.Color(87, 97, 174));
+        searchField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                textFieldAnimation1FocusGained(evt);
+                searchFieldFocusGained(evt);
             }
         });
-        textFieldAnimation1.addActionListener(new java.awt.event.ActionListener() {
+        searchField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldAnimation1ActionPerformed(evt);
+                searchFieldActionPerformed(evt);
             }
         });
 
@@ -140,30 +177,35 @@ public class Form_Salary extends javax.swing.JPanel {
                         .addGap(34, 34, 34)
                         .addComponent(inputMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(textFieldAnimation1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textFieldAnimation1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(inputMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textFieldAnimation1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldAnimation1FocusGained
+    private void searchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldAnimation1FocusGained
+    }//GEN-LAST:event_searchFieldFocusGained
 
-    private void textFieldAnimation1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAnimation1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldAnimation1ActionPerformed
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+            String text = searchField.getText();
+       if (text.trim().length() == 0) {
+            rowSorter.setRowFilter(null);
+       } else {
+             rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+       }           // TODO add your handling code here:
+    }//GEN-LAST:event_searchFieldActionPerformed
 
     private void inputMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMonthActionPerformed
         // TODO add your handling code here:
@@ -179,7 +221,7 @@ public class Form_Salary extends javax.swing.JPanel {
     private javaswingdev.swing.Combobox inputMonth;
     private javax.swing.JScrollPane jScrollPane1;
     private javaswingdev.swing.RoundPanel roundPanel1;
+    private swing.TextFieldAnimation searchField;
     private javaswingdev.swing.table.Table table;
-    private swing.TextFieldAnimation textFieldAnimation1;
     // End of variables declaration//GEN-END:variables
 }

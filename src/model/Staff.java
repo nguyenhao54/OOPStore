@@ -8,6 +8,7 @@ package model;
  *
  * @author T460S
  */
+import java.text.DecimalFormat;
 import javaswingdev.swing.table.EventAction;
 import javaswingdev.swing.table.ModelAction;
 import java.util.ArrayList;
@@ -146,6 +147,9 @@ public class Staff {
     }
     
     public Object[] toRowSalaryTable(int month, int year) {
-        return new Object[]{staffId, name, rate ,getWorkedHour(month,year),getSalary(month,year) };
+               DecimalFormat df = new DecimalFormat("###,###.##");
+       df.setMaximumFractionDigits(8);
+       String formattedSalary = df.format(getSalary(month,year)) + " VND";
+        return new Object[]{staffId, name, rate ,getWorkedHour(month,year),formattedSalary };
     }
 }
