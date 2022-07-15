@@ -12,55 +12,47 @@ public class Form_Dashboard extends javax.swing.JPanel {
     }
 
     private void init() {
-        table.fixTable(jScrollPane1);
-        table.addRow(new Object[]{"1", "Mike Bhand", "mikebhand@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"2", "Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        table.addRow(new Object[]{"3", "Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        table.addRow(new Object[]{"4", "Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"5", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"6", "Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        table.addRow(new Object[]{"7", "Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        table.addRow(new Object[]{"8", "Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"9", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"10", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"11", "Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        table.addRow(new Object[]{"12", "Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        table.addRow(new Object[]{"13", "Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        table.addRow(new Object[]{"14", "Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
+    
 
         //  init card data
        double income = Dashboard.store.getIncome();
-       DecimalFormat df = new DecimalFormat("#");
+       DecimalFormat df = new DecimalFormat("###,###.##");
        df.setMaximumFractionDigits(8);
        String formattedIncome = df.format(income) + "VND";
        double expense = Dashboard.store.getExpense();
        String formattedExpense = df.format(expense) + "VND";
+       String formattedProfit = df.format(income-expense)+"VND";
         card1.setData(new ModelCard(null, null, null, formattedIncome, "Report Gross Income"));
-        card2.setData(new ModelCard(null, null, null, formattedExpense, "Report Gross Expense"));
-        card3.setData(new ModelCard(null, null, null, "VND 200.000", "Report Gross Profit"));
+        card2.setData(new ModelCard(null, null, null, formattedExpense, "Report Store Expense"));
+        card3.setData(new ModelCard(null, null, null, formattedProfit , "Report Gross Profit"));
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        card1 = new javaswingdev.card.Card();
         card2 = new javaswingdev.card.Card();
         card3 = new javaswingdev.card.Card();
-        roundPanel1 = new javaswingdev.swing.RoundPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javaswingdev.swing.table.Table();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        workedlbl = new javax.swing.JLabel();
+        profit = new javax.swing.JLabel();
+        billcountlbl = new javax.swing.JLabel();
+        bills = new javax.swing.JLabel();
+        soldlbl = new javax.swing.JLabel();
+        profitlbl = new javax.swing.JLabel();
+        sold = new javax.swing.JLabel();
+        workedhour = new javax.swing.JLabel();
+        cardstaff = new javaswingdev.card.Card();
+        card6 = new javaswingdev.card.Card();
+        card1 = new javaswingdev.card.Card();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        card1.setDescription("Gross Income");
-        card1.setValues("VND 0.00");
-        add(card1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
-
         card2.setColor1(new java.awt.Color(95, 211, 226));
         card2.setColor2(new java.awt.Color(26, 166, 170));
-        card2.setDescription("Gross Expense");
+        card2.setDescription("Store Expense");
         card2.setIcon(javaswingdev.GoogleMaterialDesignIcon.PIE_CHART);
         card2.setValues("VND 0.00");
         add(card2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
@@ -72,57 +64,90 @@ public class Form_Dashboard extends javax.swing.JPanel {
         card3.setValues("VND 0.00");
         add(card3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, -1, -1));
 
-        roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        roundPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        roundPanel1.setRound(10);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_best_seller_110px.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 150, 140));
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_best_seller_110px.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 170, 120));
 
-            },
-            new String [] {
-                "#", "Name", "Email", "Position", "Date Join"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
+        workedlbl.setFont(new java.awt.Font("sansserif", 1, 52)); // NOI18N
+        workedlbl.setForeground(new java.awt.Color(180, 174, 28));
+        workedlbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        workedlbl.setText("300");
+        add(workedlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 220, 60));
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(table);
-        if (table.getColumnModel().getColumnCount() > 0) {
-            table.getColumnModel().getColumn(0).setPreferredWidth(25);
-        }
+        profit.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        profit.setForeground(new java.awt.Color(102, 102, 102));
+        profit.setText("Profit");
+        add(profit, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 400, 50, 80));
 
-        javax.swing.GroupLayout roundPanel1Layout = new javax.swing.GroupLayout(roundPanel1);
-        roundPanel1.setLayout(roundPanel1Layout);
-        roundPanel1Layout.setHorizontalGroup(
-            roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roundPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        roundPanel1Layout.setVerticalGroup(
-            roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roundPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        billcountlbl.setFont(new java.awt.Font("sansserif", 1, 52)); // NOI18N
+        billcountlbl.setForeground(new java.awt.Color(101, 112, 173));
+        billcountlbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        billcountlbl.setText("300");
+        add(billcountlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, 280, 50));
 
-        add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 810, -1));
+        bills.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        bills.setForeground(new java.awt.Color(102, 102, 102));
+        bills.setText("Bills Count");
+        add(bills, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 90, 80));
+
+        soldlbl.setFont(new java.awt.Font("sansserif", 1, 52)); // NOI18N
+        soldlbl.setForeground(new java.awt.Color(180, 174, 28));
+        soldlbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        soldlbl.setText("300");
+        add(soldlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, 220, 60));
+
+        profitlbl.setFont(new java.awt.Font("sansserif", 1, 52)); // NOI18N
+        profitlbl.setForeground(new java.awt.Color(101, 112, 173));
+        profitlbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        profitlbl.setText("300");
+        add(profitlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 280, 50));
+
+        sold.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        sold.setForeground(new java.awt.Color(102, 102, 102));
+        sold.setText("Sold amount");
+        add(sold, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 300, 190, 50));
+
+        workedhour.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        workedhour.setForeground(new java.awt.Color(102, 102, 102));
+        workedhour.setText("Worked hours");
+        add(workedhour, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 110, 80));
+
+        cardstaff.setForeground(new java.awt.Color(102, 102, 102));
+        cardstaff.setColor1(new java.awt.Color(255, 255, 102));
+        cardstaff.setColor2(new java.awt.Color(153, 153, 0));
+        cardstaff.setDescription("Best performance");
+        cardstaff.setValues("Nguyễn Đồng Đức Anh");
+        add(cardstaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 370, 400));
+
+        card6.setForeground(new java.awt.Color(102, 102, 102));
+        card6.setColor1(new java.awt.Color(255, 255, 102));
+        card6.setColor2(new java.awt.Color(153, 153, 0));
+        card6.setDescription("Best seller");
+        card6.setValues("Quần ");
+        add(card6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 380, 400));
+
+        card1.setDescription("Gross Income");
+        card1.setValues("VND 0.00");
+        add(card1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel billcountlbl;
+    private javax.swing.JLabel bills;
     private javaswingdev.card.Card card1;
     private javaswingdev.card.Card card2;
     private javaswingdev.card.Card card3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javaswingdev.swing.RoundPanel roundPanel1;
-    private javaswingdev.swing.table.Table table;
+    private javaswingdev.card.Card card6;
+    private javaswingdev.card.Card cardstaff;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel profit;
+    private javax.swing.JLabel profitlbl;
+    private javax.swing.JLabel sold;
+    private javax.swing.JLabel soldlbl;
+    private javax.swing.JLabel workedhour;
+    private javax.swing.JLabel workedlbl;
     // End of variables declaration//GEN-END:variables
 }
