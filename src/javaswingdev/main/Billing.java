@@ -93,7 +93,7 @@ public class Billing extends javax.swing.JFrame {
     
     public Billing(java.awt.Frame parent, boolean modal) {
         initComponents();
-        table1.fixTable(jScrollPane2);
+
 //       Avoid focus to staff name text field
         jLabel3.requestFocusInWindow();
         initTable();
@@ -127,17 +127,20 @@ public class Billing extends javax.swing.JFrame {
             Message msg=new Message();
             @Override
             public void delete(Order order) {
+              System.out.println(table1.getSelectedRow());
+
              if(msg.showMessage("Delete this order?"+order.getOrderId())){
-                 Product orderProduct = order.getProduct();
+                Product orderProduct = order.getProduct();
 //               Give the order quantity back to product when delete order
-                 orderProduct.setQuantity(orderProduct.getQuantity() + order.getQuantity());
-                 System.out.println(order.getOrderId() + " - " + order.getProduct().getProductName());
-                 model.removeRow(table1.getSelectedRow());
+                orderProduct.setQuantity(orderProduct.getQuantity() + order.getQuantity());
+                System.out.println(order.getOrderId() + " - " + order.getProduct().getProductName());
+                model =(DefaultTableModel) table1.getModel();
+                System.out.println(table1.getSelectedRow());
+                model.removeRow(table1.getSelectedRow());
 
                 bill.deleteOrder(order.getOrderId());
                 billTotal.setText(Double.toString(bill.getTotalCost()));
                 billReturn.setText(Double.toString(bill.getPaid() - bill.getTotalCost()));
-                model =(DefaultTableModel) table1.getModel();
                 msg.showDialog("Delete Order Id " + order.getOrderId()+" Successfully!","red");
              }else {
                     System.out.println("User click Cancel");

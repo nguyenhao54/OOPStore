@@ -34,21 +34,18 @@ public class Menu extends JPanel {
         add(scroll);
         addTitle("MAIN");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.DASHBOARD, "Dashboard"));
-        addTitle("STAFF");
+        addTitle("STAFF Management");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PEOPLE, "Staffs","All","Male","Female"));
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PAYMENT, "Manager"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.RECEIPT, "Salary","Weekly","Monthly","Yearly"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.RECEIPT, "Salary"));
         addTitle("PRODUCTS");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.STORE, "Products", "All", "Tops", "Bottoms", "Shoes"));
-//        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PEOPLE, "Male", "Tops", "Bottoms","Shoes", "Accessory"));
-//        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PEOPLE, "Female", "Tops", "Bottoms","Shoes", "Bags","Accessory"));
-        addTitle("SHIFTS");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PERM_CONTACT_CALENDAR, "Callendar", "Monthly", "Weekly"));
         addTitle("BILLINGS");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.RECEIPT, "Bills", "Daily","Weekly", "Monthly"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.RECEIPT, "TurnOver", "Weekly", "Monthly","Yearly"));
         addTitle("STATISTIC");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ERROR, "View", "Monthly", "Yearly"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ERROR, "Staff"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ERROR, "Income"));
+
        
         
         
