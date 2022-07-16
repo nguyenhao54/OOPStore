@@ -151,8 +151,13 @@ public class Staff {
         }
     }
     
+//    Get salary of specific month
     public double getSalary(int month, int year) {
 	return getWorkedHour(month, year)*rate*perHour;
+}
+//    Get salary of this month
+    public double getSalary() {
+	return getWorkedHour()*rate*perHour;
 }
 
     public Object[] toRowTable(EventAction event) {
