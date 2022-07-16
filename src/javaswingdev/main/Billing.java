@@ -123,21 +123,33 @@ public class Billing extends javax.swing.JFrame {
         animator.setAcceleration(0.5f);
     }
     
+    private double getOrderListTotal(ArrayList<Order> orderList){
+        double sum = 0;
+        for(Order o: orderList){
+            sum += o.getCost();
+        }
+        return sum;
+    }
+    
     private void initTable() {
         orderEventAction = new OrderEventAction() {
             Message msg=new Message();
             @Override
             public void delete(Order order) {
-              System.out.println(table1.getSelectedRow());
-
              if(msg.showMessage("Delete this order?"+order.getOrderId())){
                 Product orderProduct = order.getProduct();
 //               Give the order quantity back to product when delete order
                  orderProduct.setQuantity(orderProduct.getQuantity() + order.getQuantity());
                  System.out.println(order.getOrderId() + " - " + order.getProduct().getProductName());
-                bill.deleteOrder(order.getOrderId());
-                billTotal.setText(Double.toString(bill.getTotalCost()));
-                billReturn.setText(Double.toString(bill.getPaid() - bill.getTotalCost()));
+                 if(bill != null){
+                    bill.deleteOrder(order.getOrderId());
+                    billTotal.setText(Double.toString(bill.getTotalCost()));
+                    billReturn.setText(Double.toString(bill.getPaid() - bill.getTotalCost()));
+                 }else{
+                     orderList.remove(order);
+                     billTotal.setText(Double.toString(getOrderListTotal(orderList)));
+                 }
+                
                 model =(DefaultTableModel) table1.getModel();
                 table1.getCellEditor().stopCellEditing();
                 model.removeRow(table1.getSelectedRow());
@@ -363,11 +375,7 @@ public class Billing extends javax.swing.JFrame {
                             int orderId = orderList.size() + 1;
                             order = new Order(orderId, pd, quan);
                             orderList.add(order);
-                            double sum = 0;
-                            for(Order o: orderList){
-                                sum += o.getCost();
-                            }
-                            billTotal.setText(Double.toString(sum));
+                            billTotal.setText(Double.toString(getOrderListTotal(orderList)));
                             pd.setQuantity(pd.getQuantity() - quan);
                             table1.addRow(order.toRowTable(orderEventAction));
                         }
