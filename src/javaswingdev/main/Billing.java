@@ -89,6 +89,8 @@ public class Billing extends javax.swing.JFrame {
         billReturn.setText(Double.toString(bill.getPaid() - bill.getTotalCost()));
         allBillModel = model;
         this.setAllBillTable(allBillTable);
+        cancelBtn.setVisible(false);
+        okBtn3.setAlignmentX(60);
         setVisible(true);
     }
     
@@ -208,6 +210,7 @@ public class Billing extends javax.swing.JFrame {
         okBtn3 = new javaswingdev.swing.Button();
         quantity = new javaswingdev.raven.swing.TextField();
         staffName = new javax.swing.JTextField();
+        roundPanel1 = new javaswingdev.swing.RoundPanel();
 
         setBackground(new java.awt.Color(204, 204, 0));
         setUndecorated(true);
@@ -299,7 +302,7 @@ public class Billing extends javax.swing.JFrame {
                 cancelBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(cancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 490, 120, 40));
+        getContentPane().add(cancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, 100, 30));
 
         billReturn.setEditable(false);
         billReturn.setLabelText("Return");
@@ -343,11 +346,14 @@ public class Billing extends javax.swing.JFrame {
                 okBtn3ActionPerformed(evt);
             }
         });
-        getContentPane().add(okBtn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 120, 40));
+        getContentPane().add(okBtn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, 120, 40));
 
         quantity.setLabelText("Quantity");
         getContentPane().add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 308, 220, 60));
         getContentPane().add(staffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 49, 220, 37));
+
+        roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -516,6 +522,7 @@ public class Billing extends javax.swing.JFrame {
     private javaswingdev.raven.swing.TextField price;
     private javaswingdev.raven.swing.TextField productId;
     private javaswingdev.raven.swing.TextField quantity;
+    private javaswingdev.swing.RoundPanel roundPanel1;
     private javax.swing.JTextField staffName;
     private javax.swing.JLabel staffNameLabel;
     private javaswingdev.swing.table.Table table1;
