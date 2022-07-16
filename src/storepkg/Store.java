@@ -24,7 +24,6 @@ public class Store  {
     public JSONArray jStaffList;
     private final ArrayList<Product> productList;
     public ArrayList<Shift> shiftList;
-    private final ArrayList<Order> orderList;
     private final ArrayList<Bill> billList;
 //    public ArrayList<Staff> staffList;
     
@@ -194,32 +193,17 @@ public class Store  {
 
         g.setMaxShiftId(d.getWorkedShifts().size() + 1);
         
-        
-        
-        
-        orderList = new ArrayList<>();
-        Product tempProduct = this.getProduct(1);
-        orderList.add(new Order(1, tempProduct, 2));
-        tempProduct = this.getProduct(2);
-        orderList.add(new Order(2, tempProduct, 2));
-        tempProduct = this.getProduct(4);
-        orderList.add(new Order(3, tempProduct, 2));
-        tempProduct = this.getProduct(10);
-        orderList.add(new Order(4, tempProduct, 2));
-        tempProduct = this.getProduct(5);
-        orderList.add(new Order(5, tempProduct, 2));
-        
         billList = new ArrayList<>();
         ArrayList orders0 = new ArrayList<>(); 
         orders0.add(new Order(1, this.getProduct(1), 2));
         orders0.add(new Order(2, this.getProduct(4), 2));
         orders0.add(new Order(3, this.getProduct(5), 2));
-        billList.add(new Bill(1, this.findStaff(3), orders0, LocalDateTime.of(2022, Month.JUNE, 27, 14, 33, 23), 2000000));
+        billList.add(new Bill(1, this.findStaff(3), orders0, LocalDateTime.of(2022, Month.JULY, 27, 14, 33, 23), 2000000));
         ArrayList orders1 = new ArrayList<>();
         orders1.add(new Order(1, this.getProduct(8), 2));
         orders1.add(new Order(2, this.getProduct(12), 2));
         orders1.add(new Order(3, this.getProduct(1), 2));
-        billList.add(new Bill(2, this.findStaff(1), orders1, LocalDateTime.of(2022, Month.FEBRUARY, 23, 18, 22, 38), 1700000));
+        billList.add(new Bill(2, this.findStaff(1), orders1, LocalDateTime.of(2022, Month.JULY, 23, 18, 22, 38), 1700000));
         ArrayList orders2 = new ArrayList<>();
         orders2.add(new Order(1, this.getProduct(4), 2));
         orders2.add(new Order(2, this.getProduct(10), 2));
@@ -231,7 +215,7 @@ public class Store  {
         orders3.add(new Order(1, this.getProduct(13), 2));
         orders3.add(new Order(2, this.getProduct(7), 2));
         orders3.add(new Order(3, this.getProduct(11), 2));
-        billList.add(new Bill(5, this.findStaff(6), orders3, LocalDateTime.of(2022, Month.APRIL, 28, 11, 22, 22), 2300000));
+        billList.add(new Bill(5, this.findStaff(6), orders3, LocalDateTime.of(2022, Month.JULY, 28, 11, 22, 22), 2300000));
         maxBillId = billList.size() + 1;
      }
    // ***********************************************************************add new object
@@ -602,18 +586,27 @@ public class Store  {
     public void addBill(Bill newBill){
         billList.add(newBill);
     }
-    
-     public double getIncome(){
+     
+//    Get income of specific month and year
+     public double getIncome(int month, int year){
         double sum = 0;
         for(Bill b: billList){
+            if(b.getDate().getMonthValue() == month && b.getDate().getYear() == year)
             sum += b.getTotalCost();
         }
         return sum;
     } 
      
-     public double getExpense(){
+     //    Default method get income this month
+     public double getIncome(){
+         LocalDate now = LocalDate.now();
+        return getIncome(now.getMonthValue(), now.getYear());
+    } 
+     
+     public double getExpense(int month, int year){
          double expense = 0;
          for(Bill b: billList){
+             if(b.getDate().getMonthValue() == month && b.getDate().getYear() == year)
              for(Order o: b.getOrderList()){
                  expense += o.getProduct().getImportPrice();
              }
@@ -622,12 +615,17 @@ public class Store  {
          return expense;
      }
      
+     public double getExpense(){
+         LocalDate now = LocalDate.now();
+        return getExpense(now.getMonthValue(), now.getYear());
+     }
+     
      public Staff getBestStaff(){
          Staff bestStaff = staffList.get(0);
          double maxHour = 0;
          for(Staff s: staffList){
              LocalDate now = LocalDate.now();
-             if(s.getWorkedHour(now.getMonthValue(), now.getYear()) > maxHour){
+             if(s.getWorkedHour() > maxHour){
                  bestStaff = s;
                  maxHour = s.getWorkedHour(now.getMonthValue(), now.getYear());
              }
