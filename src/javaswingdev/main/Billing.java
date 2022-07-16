@@ -14,6 +14,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javaswingdev.swing.table.BillEventAction;
 import model.Product;
+import javax.swing.DefaultCellEditor;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
@@ -138,7 +139,9 @@ public class Billing extends javax.swing.JFrame {
                 billTotal.setText(Double.toString(bill.getTotalCost()));
                 billReturn.setText(Double.toString(bill.getPaid() - bill.getTotalCost()));
                 model =(DefaultTableModel) table1.getModel();
+                table1.getCellEditor().stopCellEditing();
                 model.removeRow(table1.getSelectedRow());
+               
                 msg.showDialog("Delete Order Id " + order.getOrderId()+" Successfully!","red");
              }else {
                     System.out.println("User click Cancel");
@@ -147,7 +150,7 @@ public class Billing extends javax.swing.JFrame {
             
             @Override
             public void update(Order order) {
-                msg.showDialog("Please emove and add new to update", "red");
+                msg.showDialog("Please delete and add new", "red");
             }
         };
         
@@ -183,7 +186,6 @@ public class Billing extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         table1 = new javaswingdev.swing.table.Table();
         jLabel4 = new javax.swing.JLabel();
-        cancelBtn = new javaswingdev.swing.Button();
         billReturn = new javaswingdev.raven.swing.TextField();
         price = new javaswingdev.raven.swing.TextField();
         billTotal = new javaswingdev.raven.swing.TextField();
@@ -193,6 +195,7 @@ public class Billing extends javax.swing.JFrame {
         okBtn3 = new javaswingdev.swing.Button();
         quantity = new javaswingdev.raven.swing.TextField();
         staffName = new javax.swing.JTextField();
+        roundPanel1 = new javaswingdev.swing.RoundPanel();
 
         setBackground(new java.awt.Color(204, 204, 0));
         setUndecorated(true);
@@ -276,16 +279,6 @@ public class Billing extends javax.swing.JFrame {
         jLabel4.setText("Bill Info");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 100, 30));
 
-        cancelBtn.setBackground(new java.awt.Color(204, 75, 75));
-        cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
-        cancelBtn.setText("CANCEL");
-        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 468, 116, 40));
-
         billReturn.setEditable(false);
         billReturn.setLabelText("Return");
         getContentPane().add(billReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 388, 270, -1));
@@ -328,11 +321,14 @@ public class Billing extends javax.swing.JFrame {
                 okBtn3ActionPerformed(evt);
             }
         });
-        getContentPane().add(okBtn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 468, 110, 40));
+        getContentPane().add(okBtn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 468, 120, 40));
 
         quantity.setLabelText("Quantity");
         getContentPane().add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 308, 220, 60));
         getContentPane().add(staffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 49, 220, 37));
+
+        roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 880, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -477,14 +473,6 @@ public class Billing extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameActionPerformed
 
-    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        ok=false;
-        for(Order o: orderList){
-            o.getProduct().addQuantity(o.getQuantity());
-        }
-        closeMenu();
-    }//GEN-LAST:event_cancelBtnActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -495,7 +483,6 @@ public class Billing extends javax.swing.JFrame {
     private javaswingdev.raven.swing.TextField billPaid;
     private javaswingdev.raven.swing.TextField billReturn;
     private javaswingdev.raven.swing.TextField billTotal;
-    private javaswingdev.swing.Button cancelBtn;
     private javaswingdev.swing.Button findProduct;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -505,6 +492,7 @@ public class Billing extends javax.swing.JFrame {
     private javaswingdev.raven.swing.TextField price;
     private javaswingdev.raven.swing.TextField productId;
     private javaswingdev.raven.swing.TextField quantity;
+    private javaswingdev.swing.RoundPanel roundPanel1;
     private javax.swing.JTextField staffName;
     private javax.swing.JLabel staffNameLabel;
     private javaswingdev.swing.table.Table table1;

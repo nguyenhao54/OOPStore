@@ -108,6 +108,8 @@ public class ShiftInfo extends javax.swing.JDialog {
              if(msg.showMessage("Delete this registered shift?")){
                 staff.deleteShift(rs.getId());
                 model =(DefaultTableModel) table1.getModel();
+                table1.getCellEditor().stopCellEditing();
+
                 model.removeRow(table1.getSelectedRow());
                 msg.showDialog("Delete Order Id " + rs.getId() +" Successfully!","red");
              }
@@ -133,7 +135,6 @@ public class ShiftInfo extends javax.swing.JDialog {
         okBtn = new javaswingdev.swing.Button();
         jLabel1 = new javax.swing.JLabel();
         register = new javaswingdev.swing.Button();
-        cancelBtn = new javaswingdev.swing.Button();
         startTime = new javaswingdev.raven.swing.TextField();
         date = new javaswingdev.raven.swing.TextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -183,7 +184,7 @@ public class ShiftInfo extends javax.swing.JDialog {
                 okBtnActionPerformed(evt);
             }
         });
-        addProductForm.add(okBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 390, 116, 35));
+        addProductForm.add(okBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 390, 120, 35));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(106, 106, 164));
@@ -199,16 +200,6 @@ public class ShiftInfo extends javax.swing.JDialog {
             }
         });
         addProductForm.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 80, 30));
-
-        cancelBtn.setBackground(new java.awt.Color(204, 75, 75));
-        cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
-        cancelBtn.setText("CANCEL");
-        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelBtnActionPerformed(evt);
-            }
-        });
-        addProductForm.add(cancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 116, 34));
 
         startTime.setLabelText("StartTime");
         startTime.addActionListener(new java.awt.event.ActionListener() {
@@ -268,13 +259,8 @@ public class ShiftInfo extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_startTimeActionPerformed
 
-    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        ok = false;
-        closeMenu();
-    }//GEN-LAST:event_cancelBtnActionPerformed
-
     private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
-
+        closeMenu();
     }//GEN-LAST:event_okBtnActionPerformed
 
     private void shiftIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shiftIdActionPerformed
@@ -339,7 +325,6 @@ public class ShiftInfo extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javaswingdev.swing.RoundPanel addProductForm;
-    private javaswingdev.swing.Button cancelBtn;
     private javaswingdev.raven.swing.TextField date;
     private com.raven.datechooser.DateChooser dateChooser;
     private javaswingdev.raven.swing.TextField endTime;
