@@ -210,17 +210,25 @@ public class Store  {
         orders2.add(new Order(1, this.getProduct(4), 2));
         orders2.add(new Order(2, this.getProduct(10), 2));
         orders2.add(new Order(3, this.getProduct(6), 2));
+        ArrayList orders4 = new ArrayList<>();
+        orders4.add(new Order(1, this.getProduct(4), 2));
+        orders4.add(new Order(2, this.getProduct(10), 2));
+        orders4.add(new Order(3, this.getProduct(6), 2));
         billList.add(new Bill(3, this.findStaff(2), orders2, LocalDateTime.of(2022, Month.JULY, 18, 6, 19, 20), 5000000));
         billList.add(new Bill(4, this.findStaff(6), orders2, LocalDateTime.of(2022, Month.JULY, 18, 6, 19, 20), 5000000));
-        billList.add(new Bill(5, this.findStaff(6), orders2, LocalDateTime.now(), 5000000));
+        billList.add(new Bill(5, this.findStaff(6), orders4, LocalDateTime.of(2022, Month.JULY, 20, 5, 22, 22), 5000000));
         ArrayList orders3 = new ArrayList<>();
         orders3.add(new Order(1, this.getProduct(13), 2));
         orders3.add(new Order(2, this.getProduct(7), 2));
         orders3.add(new Order(3, this.getProduct(11), 2));
+        ArrayList orders5 = new ArrayList<>();
+        orders5.add(new Order(1, this.getProduct(13), 2));
+        orders5.add(new Order(2, this.getProduct(7), 2));
+        orders5.add(new Order(3, this.getProduct(11), 2));
         billList.add(new Bill(6, this.findStaff(6), orders3, LocalDateTime.of(2022, Month.JULY, 12, 11, 22, 22), 5000000));
         billList.add(new Bill(7, this.findStaff(6), orders3, LocalDateTime.of(2022, Month.JUNE, 15, 11, 22, 22), 5000000));
         billList.add(new Bill(8, this.findStaff(6), orders3, LocalDateTime.of(2022, Month.JUNE, 16, 11, 22, 22), 5000000));
-        billList.add(new Bill(8+1, this.findStaff(2), orders2, LocalDateTime.now(), 5000000));
+        billList.add(new Bill(8+1, this.findStaff(2), orders5, LocalDateTime.of(2022, Month.JULY, 20, 6, 22, 22), 5000000));
         billList.add(new Bill(8+2, this.findStaff(1), orders1, LocalDateTime.of(2022, Month.MARCH, 23, 18, 22, 38), 17000000));
 
         
