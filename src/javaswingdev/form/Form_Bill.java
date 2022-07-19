@@ -18,10 +18,10 @@ public class Form_Bill extends javax.swing.JPanel {
     private DefaultTableModel model;
     private TableRowSorter<TableModel> rowSorter;
     
-    public Form_Bill() {
+    public Form_Bill(String str) {
         initComponents();
         table.fixTable(jScrollPane1);
-        initTable();
+        initTable(str);
         SortFilter();
     }
     
@@ -33,7 +33,7 @@ public class Form_Bill extends javax.swing.JPanel {
         return billForm.getBill();
     }
     
-    private void initTable() {
+    private void initTable(String str) {
      billEventAction = new BillEventAction() {
          @Override
          public void delete(Bill bill) {
@@ -65,7 +65,7 @@ public class Form_Bill extends javax.swing.JPanel {
      };
 
      table.fixTable(jScrollPane1);
-     for(Bill b: Dashboard.store.getBillList()){
+     for(Bill b: Dashboard.store.getBillList(str)){
          table.addRow(b.toRowTable(billEventAction));
      }
   }

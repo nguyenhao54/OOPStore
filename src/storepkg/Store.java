@@ -203,19 +203,25 @@ public class Store  {
         orders1.add(new Order(1, this.getProduct(8), 2));
         orders1.add(new Order(2, this.getProduct(12), 2));
         orders1.add(new Order(3, this.getProduct(1), 2));
-        billList.add(new Bill(2, this.findStaff(1), orders1, LocalDateTime.of(2022, Month.JULY, 23, 18, 22, 38), 17000000));
+        billList.add(new Bill(2, this.findStaff(1), orders1, LocalDateTime.of(2022, Month.JULY, 23, 18, 22, 38), 17000000));   
         ArrayList orders2 = new ArrayList<>();
         orders2.add(new Order(1, this.getProduct(4), 2));
         orders2.add(new Order(2, this.getProduct(10), 2));
         orders2.add(new Order(3, this.getProduct(6), 2));
         billList.add(new Bill(3, this.findStaff(2), orders2, LocalDateTime.of(2022, Month.JULY, 28, 6, 19, 20), 5000000));
-         billList.add(new Bill(4, this.findStaff(6), orders2, LocalDateTime.of(2022, Month.JULY, 28, 6, 19, 20), 5000000));
-
+        billList.add(new Bill(4, this.findStaff(6), orders2, LocalDateTime.of(2022, Month.JULY, 28, 6, 19, 20), 5000000));
+        billList.add(new Bill(5, this.findStaff(6), orders2, LocalDateTime.now(), 5000000));
         ArrayList orders3 = new ArrayList<>();
         orders3.add(new Order(1, this.getProduct(13), 2));
         orders3.add(new Order(2, this.getProduct(7), 2));
         orders3.add(new Order(3, this.getProduct(11), 2));
-        billList.add(new Bill(5, this.findStaff(6), orders3, LocalDateTime.of(2022, Month.JULY, 28, 11, 22, 22), 5000000));
+        billList.add(new Bill(6, this.findStaff(6), orders3, LocalDateTime.of(2022, Month.JULY, 28, 11, 22, 22), 5000000));
+        billList.add(new Bill(7, this.findStaff(6), orders3, LocalDateTime.of(2022, Month.JUNE, 28, 11, 22, 22), 5000000));
+        billList.add(new Bill(8, this.findStaff(6), orders3, LocalDateTime.of(2022, Month.JUNE, 28, 11, 22, 22), 5000000));
+        billList.add(new Bill(8+1, this.findStaff(2), orders2, LocalDateTime.now(), 5000000));
+        billList.add(new Bill(8+2, this.findStaff(1), orders1, LocalDateTime.of(2022, Month.MARCH, 23, 18, 22, 38), 17000000));
+
+
         maxBillId = billList.size() + 1;
      }
    // ***********************************************************************add new object
@@ -409,8 +415,34 @@ public class Store  {
     
   
   // ****************************************************************************** Bill part
-  public ArrayList<Bill> getBillList() {
-      return billList;
+  public ArrayList<Bill> getBillList(String kind) {
+      
+      
+      ArrayList<Bill> Billkind= new ArrayList<>();
+      if (kind.equals("daily")){
+           for(Bill b:billList){
+          if (b.getDate().toLocalDate().getDayOfYear() == java.time.LocalDate.now().getDayOfYear()){
+              Billkind.add(b);
+          }    
+        }
+      }
+      else if (kind.equals("monthly")){
+          
+           for(Bill b:billList){
+           if (b.getDate().toLocalDate().getMonth() == java.time.LocalDate.now().getMonth()){
+              Billkind.add(b);
+          }
+        }
+      }
+      else {
+           for(Bill b:billList){
+           if (b.getDate().toLocalDate().getYear() == java.time.LocalDate.now().getYear()){
+              Billkind.add(b);
+          }
+        }   
+      }
+      
+      return Billkind;
   }
   
   public void deleteBill(int id){

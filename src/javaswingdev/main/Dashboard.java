@@ -50,9 +50,16 @@ public class Dashboard extends javax.swing.JFrame {
                  else if(index == 3 && indexSubMenu == 0){
                      showForm(new Form_Salary());
                  }
-                 else if(index == 5) {
-                     showForm(new Form_Bill());
+                 else if(index == 5 && indexSubMenu == 1) {
+                     showForm(new Form_Bill("daily"));
                  }
+                   else if(index == 5 && indexSubMenu == 2) {
+                     showForm(new Form_Bill("monthly"));
+                 }
+                     else if(index == 5 && indexSubMenu == 3) {
+                     showForm(new Form_Bill("yearly"));
+                 }
+                 
                 else{
                     showForm(new Form_Empty(index + " " + indexSubMenu));
                 }
