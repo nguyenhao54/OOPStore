@@ -36,19 +36,11 @@ public class Menu extends JPanel {
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.DASHBOARD, "Dashboard"));
         addTitle("MANAGEMENT");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PEOPLE, "Staffs","All","Male","Female"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PAYMENT, "Manager"));
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.RECEIPT, "Salary"));
         addTitle("PRODUCTS");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.STORE, "Products", "All", "Tops", "Bottoms", "Shoes"));
         addTitle("BILLINGS");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.RECEIPT, "Bills", "Daily","Weekly", "Monthly"));
-        addTitle("STATISTIC");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ERROR, "Staff"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ERROR, "Income"));
-
-       
-        
-        
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.RECEIPT, "Bills", "Daily","Weekly", "Monthly"));   
     }
 
     private JScrollPane createScroll() {

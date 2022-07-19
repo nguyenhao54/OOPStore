@@ -154,7 +154,6 @@ public class StaffInfo extends javax.swing.JDialog {
 
         alertLabel.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
         alertLabel.setForeground(new java.awt.Color(255, 0, 0));
-        alertLabel.setText("Please fill in blank fields");
         alertLabel.setPreferredSize(new java.awt.Dimension(208, 13));
         roundPanel1.add(alertLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 220, 30));
 
@@ -185,12 +184,12 @@ public class StaffInfo extends javax.swing.JDialog {
 //           Store newSL=new Store();
 //           newSL.readStaff();
             if (staff==null){
-              id= Dashboard.store.getMaxStaffIdAndIncrease();
+              id= Main.store.getMaxStaffIdAndIncrease();
               System.out.println(id);
               try{
                   Date realDate=new SimpleDateFormat("dd-mm-yyyy").parse(date);
                   Staff newStaff = new Staff(id, name, gender, phone, Double.parseDouble(rate), realDate);
-                  Dashboard.store.addStaff(newStaff);
+                  Main.store.addStaff(newStaff);
                   setStaff(newStaff);
                   setSuccess(true);
               }catch(ParseException e){
@@ -202,7 +201,7 @@ public class StaffInfo extends javax.swing.JDialog {
             //// this is for updating purpose 
             else 
               {id= staff.getStaffId();
-              if (Dashboard.store.updateStaff(id, name, phone, gender, rate, date)){
+              if (Main.store.updateStaff(id, name, phone, gender, rate, date)){
                  try{
                  setSuccess(true);
                  Date realDate=new SimpleDateFormat("dd-mm-yyyy").parse(date);

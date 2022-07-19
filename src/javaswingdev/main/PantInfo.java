@@ -220,7 +220,7 @@ public class PantInfo extends javax.swing.JDialog {
                     Pant newPant = new Pant(id, pName, Integer.parseInt(pPrice), pBrand, pCategory, 
                             pDescription, Integer.parseInt(pQuantity), Double.parseDouble(pImportPrice), Double.parseDouble(pPantLength), Double.parseDouble(pPantWidth),
                     Double.parseDouble(pButtWidth));
-                    Dashboard.store.addProduct(newPant);
+                    Main.store.addProduct(newPant);
                     this.setPant(newPant);
                     msg.showDialog("Add new pant successfully!","blue");
                     ok = true;
@@ -228,10 +228,10 @@ public class PantInfo extends javax.swing.JDialog {
                 }else{
                     int id = getPant().getProductId();
                     Message msg=new Message();
-                    Dashboard.store.updateProduct(id, pName, Double.parseDouble(pPrice), pBrand, pCategory, pDescription, 
+                    Main.store.updateProduct(id, pName, Double.parseDouble(pPrice), pBrand, pCategory, pDescription, 
                             Integer.parseInt(pQuantity), Double.parseDouble(pImportPrice), Double.parseDouble(pPantLength), Double.parseDouble(pPantWidth), 
                             Double.parseDouble(pButtWidth));
-                    setPant((Pant)Dashboard.store.getProduct(id));
+                    setPant((Pant)Main.store.getProduct(id));
                     msg.showDialog("Update pant id " + pant.getProductId()+ " successfully!","blue");
                     ok = true;
                 }

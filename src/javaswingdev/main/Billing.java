@@ -365,7 +365,7 @@ public class Billing extends javax.swing.JFrame {
                msg.showDialog("Please fill in id and quantity", "red");
            }else{
              int pid= Integer.parseInt(productId.getText());
-             Product pd= Dashboard.store.getProduct(pid);
+             Product pd= Main.store.getProduct(pid);
              Order order;
              if(pd != null){
                  Double pr=pd.getProductPrice();
@@ -409,7 +409,7 @@ public class Billing extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         int pid= Integer.parseInt(productId.getText());
-        Product pd= Dashboard.store.getProduct(pid);
+        Product pd= Main.store.getProduct(pid);
         if(pd!=null){
             name.setText(pd.getProductName());
             price.setText(Double.toString(pd.getProductPrice()));
@@ -443,7 +443,7 @@ public class Billing extends javax.swing.JFrame {
                     bill.setPaid(Double.parseDouble(billPaid.getText()));
                     closeMenu();
                 }else{
-                    Staff newStaff = Dashboard.store.findStaff(Integer.parseInt(staffName.getText()));
+                    Staff newStaff = Main.store.findStaff(Integer.parseInt(staffName.getText()));
                     if(newStaff == null){
                         msg.showDialog("Staff not found!", "red");
                     }else{
@@ -464,9 +464,9 @@ public class Billing extends javax.swing.JFrame {
             if(staffName.getText().equals("") || billPaid.getText().equals("")){
                 msg.showDialog("Fill in staff id & paid", "red");
             }else{
-                    int id = Dashboard.store.maxBillId++;
+                    int id = Main.store.maxBillId++;
                 int staffId = Integer.parseInt(staffName.getText());
-                Staff staff = Dashboard.store.findStaff(staffId);
+                Staff staff = Main.store.findStaff(staffId);
                 double paid = Double.parseDouble(billPaid.getText());
                 if(staff == null){
 
@@ -479,7 +479,7 @@ public class Billing extends javax.swing.JFrame {
                     if(Double.parseDouble(billPaid.getText()) < b.getTotalCost()){
                         msg.showDialog("Insufficient paid", "red");
                     }else{
-                        Dashboard.store.addBill(b);
+                        Main.store.addBill(b);
                         setBill(b);
                         getAllBillTable().addRow(b.toRowTable(billEventAction));
                         closeMenu();

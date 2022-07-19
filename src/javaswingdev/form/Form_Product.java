@@ -61,7 +61,7 @@ public class Form_Product extends javax.swing.JPanel {
 //             System.out.println(product);
              Message msg=new Message();
              if(msg.showMessage("Delete Product : " + product.getProductName())){
-                 Dashboard.store.deleteProduct(product.getProductId());
+                 Main.store.deleteProduct(product.getProductId());
                  model =(DefaultTableModel) table.getModel();
                  model.removeRow(table.getSelectedRow());
                  msg.showDialog("Delete Product Id " + product.getProductId()+" Successfully!","red");
@@ -88,7 +88,7 @@ public class Form_Product extends javax.swing.JPanel {
      };
 
      table.fixTable(jScrollPane1);
-     for(Product p: Dashboard.store.getProductList()){
+     for(Product p: Main.store.getProductList()){
          table.addRow(p.toRowTable(productEventAction));
      }
   }

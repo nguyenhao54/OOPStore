@@ -288,7 +288,7 @@ public class ShirtInfo extends javax.swing.JDialog {
                 Shirt newShirt = new Shirt(id, pName, Integer.parseInt(pPrice), pBrand, pCategory, 
                         pDescription, Integer.parseInt(pQuantity), Double.parseDouble(pImportPrice), Double.parseDouble(pShirtLength), Double.parseDouble(pChestWidth),
                 Double.parseDouble(pSleeveLength), Double.parseDouble(pShoulderWidth));
-                Dashboard.store.addProduct(newShirt);
+                Main.store.addProduct(newShirt);
                 this.setShirt(newShirt);
                 msg.showDialog("Add new shirt successfully!","blue");
                 ok = true;
@@ -296,10 +296,10 @@ public class ShirtInfo extends javax.swing.JDialog {
             }else{
                 int id = shirt.getProductId();
                 Message msg=new Message();
-                Dashboard.store.updateProduct(id, pName, Double.parseDouble(pPrice), pBrand, pCategory, pDescription, 
+                Main.store.updateProduct(id, pName, Double.parseDouble(pPrice), pBrand, pCategory, pDescription, 
                         Integer.parseInt(pQuantity), Double.parseDouble(pImportPrice), Double.parseDouble(pShirtLength), Double.parseDouble(pChestWidth), 
                         Double.parseDouble(pSleeveLength), Double.parseDouble(pShoulderWidth));
-                setShirt((Shirt)Dashboard.store.getProduct(id));
+                setShirt((Shirt)Main.store.getProduct(id));
                 msg.showDialog("Update shirt id " + shirt.getProductId()+ " successfully!","blue");
                 ok = true;
             }

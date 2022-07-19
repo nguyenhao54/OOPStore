@@ -16,16 +16,22 @@ import java.util.ArrayList;
 import java.util.Date;
 public class Staff {
 
-    /**
-     * @return the birthDate
-     */
+  
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password ;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
     public Date getBirthDate() {
         return birthDate;
     }
-
-    /**
-     * @param birthDate the birthDate to set
-     */
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
@@ -38,6 +44,9 @@ public class Staff {
     private ArrayList<RegisteredShift> workedShifts;
     private int maxShiftId;
     private static double perHour = 20000;
+    private String username;
+    private String password;
+            
     
     public Staff( int id,String name, String gender, String phone, double rate, Date birthDate) {
         this.staffId = id;
@@ -48,6 +57,8 @@ public class Staff {
         this.birthDate=birthDate;
         this.workedShifts=new ArrayList<>();
         this.maxShiftId = 1;
+        this.setUsername("useracc");
+        this.setPassword("12345");
     }
 
     public Staff() {

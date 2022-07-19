@@ -8,18 +8,19 @@ import javaswingdev.menu.EventMenuSelected;
 public class Dashboard extends javax.swing.JFrame {
     
     private static Dashboard main;
-    public static Store store;
-    public Dashboard() throws ParseException{
-        store = new Store();
+  
+    public Dashboard(int staffType) throws ParseException{
+   
         initComponents();
-        init();
+        init(staffType);
         
         
     }
     
-    private void init() {
+    private void init(int staffType) {
         main = this;
         titleBar.initJFram(this);
+        if(staffType==1){
         menu.addEvent(new EventMenuSelected() {
             @Override
             public void menuSelected(int index, int indexSubMenu) {
@@ -30,33 +31,33 @@ public class Dashboard extends javax.swing.JFrame {
                 {
                     showForm(new Form_Staff("all"));
                 }
-                   else if(index==1 &&indexSubMenu==2 ) 
+                 else if(index==1 &&indexSubMenu==2 ) 
                 {
-                    showForm(new Form_Staff("Male"));
+                showForm(new Form_Staff("Male"));
                 }
-                       else if(index==1 &&indexSubMenu==3 ) 
+                else if(index==1 &&indexSubMenu==3 ) 
                 {
                     showForm(new Form_Staff("Female"));
                 }
-                 else if(index == 4 && indexSubMenu == 1){
+                 else if(index == 3 && indexSubMenu == 1){
                      showForm(new Form_Product());
-                 }else if(index == 4 && indexSubMenu == 2){
+                 }else if(index == 3 && indexSubMenu == 2){
                      showForm(new Form_SingleProduct("tops"));
-                 }else if(index == 4 && indexSubMenu == 3){
+                 }else if(index == 3 && indexSubMenu == 3){
                      showForm(new Form_SingleProduct("bottoms"));
-                 }else if(index == 4 && indexSubMenu == 4){
+                 }else if(index == 3 && indexSubMenu == 4){
                      showForm(new Form_SingleProduct("shoes"));
                  }
-                 else if(index == 3 && indexSubMenu == 0){
+                 else if(index == 2 && indexSubMenu == 0){
                      showForm(new Form_Salary());
                  }
-                 else if(index == 5 && indexSubMenu == 1) {
+                 else if(index == 4 && indexSubMenu == 1) {
                      showForm(new Form_Bill("daily"));
                  }
-                   else if(index == 5 && indexSubMenu == 2) {
+                   else if(index == 4 && indexSubMenu == 2) {
                      showForm(new Form_Bill("monthly"));
                  }
-                     else if(index == 5 && indexSubMenu == 3) {
+                     else if(index == 4 && indexSubMenu == 3) {
                      showForm(new Form_Bill("yearly"));
                  }
                  
@@ -65,6 +66,45 @@ public class Dashboard extends javax.swing.JFrame {
                 }
             }
         });
+        }
+        else {
+             menu.addEvent(new EventMenuSelected() {
+            @Override
+            public void menuSelected(int index, int indexSubMenu) {
+                if (index == 0 && indexSubMenu == 0) {
+                    showForm(new Form_Dashboard());
+                } 
+                else if(index==1 ||index==2 ) 
+                {
+               showForm(new Form_Empty("No permission"));
+                }
+                 else if(index == 3 && indexSubMenu == 1){
+                     showForm(new Form_Product());
+                 }else if(index == 3 && indexSubMenu == 2){
+                     showForm(new Form_SingleProduct("tops"));
+                 }else if(index == 3 && indexSubMenu == 3){
+                     showForm(new Form_SingleProduct("bottoms"));
+                 }else if(index == 3 && indexSubMenu == 4){
+                     showForm(new Form_SingleProduct("shoes"));
+                 }
+               
+                 else if(index == 4 && indexSubMenu == 1) {
+                     showForm(new Form_Bill("daily"));
+                 }
+                   else if(index == 4 && indexSubMenu == 2) {
+                     showForm(new Form_Bill("monthly"));
+                 }
+                     else if(index == 4 && indexSubMenu == 3) {
+                     showForm(new Form_Bill("yearly"));
+                 }
+                 
+                else{
+                    showForm(new Form_Empty(index + " " + indexSubMenu));
+                }
+            }
+        });
+        }
+        
         menu.setSelectedIndex(0, 0);
     }
     

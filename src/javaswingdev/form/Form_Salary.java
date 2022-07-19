@@ -32,7 +32,7 @@ public class Form_Salary extends javax.swing.JPanel {
     }
     private void initTable(int month) {
      table.fixTable(jScrollPane1);
-     for(Staff s: Dashboard.store.getStaffList()){
+     for(Staff s: Main.store.getStaffList()){
          table.addRow(s.toRowSalaryTable(month, LocalDate.now().getYear()));
      }
   }

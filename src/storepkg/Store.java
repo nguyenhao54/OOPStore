@@ -16,7 +16,15 @@ import model.*;
 import java.text.ParseException;
  
 public class Store  {
+
+    /**
+     * @return the managerList
+     */
+    public ArrayList<Manager> getManagerList() {
+        return managerList;
+    }
     private final ArrayList<Staff> staffList;
+    private final ArrayList<Manager> managerList;
     private int maxStaffId;
     public static int maxProductId=0;
     public static int maxShiftId=0;
@@ -51,15 +59,7 @@ public class Store  {
         maxProductId = productList.size() + 1;
         
         staffList = new ArrayList<>();
-//        Date bdate;
-//        try{
-      Date  bdate=new SimpleDateFormat("dd-mm-yyyy").parse("11-12-2001");
-//        }
-//        catch(Exception e){
-//        e.printStackTrace();
-//        }
-
-                  
+         Date  bdate=new SimpleDateFormat("dd-mm-yyyy").parse("11-12-2001");           
         staffList.add(new Staff(1, "Nguyễn Đồng Đức Anh", "Male", "0858377316", 1.2,bdate));
         staffList.add(new Staff(2, "Nguyễn Thị Hà Giang", "Female", "0973567822", 1.2,bdate));
         staffList.add(new Staff(3, "Hoàng Trung Kiên", "Male", "0778237733", 1.2,bdate));
@@ -69,8 +69,10 @@ public class Store  {
         staffList.add(new Staff(7, "Nguyễn Phương Anh", "Female", "0876635623", 1.2,bdate));
         staffList.add(new Staff(8, "Nguyễn Thị Phương Nga", "Female", "078288232", 1.6,bdate));
         maxStaffId = staffList.size() + 1;
-
-
+  
+        
+        managerList = new ArrayList<>();
+        managerList.add(new Manager());
         
         shiftList = new ArrayList<>();
         shiftList.add(new Shift(1, "06:00:00", "12:00:00", 6));
@@ -221,7 +223,7 @@ public class Store  {
         billList.add(new Bill(8+1, this.findStaff(2), orders2, LocalDateTime.now(), 5000000));
         billList.add(new Bill(8+2, this.findStaff(1), orders1, LocalDateTime.of(2022, Month.MARCH, 23, 18, 22, 38), 17000000));
 
-
+        
         maxBillId = billList.size() + 1;
      }
    // ***********************************************************************add new object

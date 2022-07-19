@@ -49,11 +49,13 @@ public class ShiftInfo extends javax.swing.JDialog {
     public void showInfo(Staff staff){
         staffNameLabel1.setText(staff.getName());
         setStaff(staff);
+        table1.fixTable(jScrollPane1);
         if(staff.getWorkedShifts()!=null){
         for(RegisteredShift rS: staff.getWorkedShifts()){
            table1.addRow(rS.toRowTable(shiftEventAction));     
         }
         }
+        
         
         //table1.addRow(new RegisteredShift(LocalDate.of(2022, 1, 11),Dashboard.store.getShift(1)).toRowTable(shiftEventAction));     
 
@@ -269,7 +271,7 @@ public class ShiftInfo extends javax.swing.JDialog {
 
     private void findShiftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findShiftActionPerformed
         String id= shiftId.getText();
-        Shift s= Dashboard.store.getShift(Integer.parseInt(id));
+        Shift s= Main.store.getShift(Integer.parseInt(id));
         if(s == null){
             Message msg = new Message();
             msg.showDialog("Shift not found!", "red");
@@ -288,7 +290,7 @@ public class ShiftInfo extends javax.swing.JDialog {
             msg.showDialog("Please fill blank fields", "red");
         }else{
             int sid= Integer.parseInt(shiftId.getText());
-            Shift s= Dashboard.store.getShift(sid);
+            Shift s= Main.store.getShift(sid);
 
             if(s != null){
                 LocalTime st=s.getStartTime();

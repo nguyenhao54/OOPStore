@@ -3,6 +3,7 @@ package javaswingdev.form;
 import java.text.DecimalFormat;
 import javaswingdev.card.ModelCard;
 import javaswingdev.main.Dashboard;
+import javaswingdev.main.Main;
 import model.*;
 
 public class Form_Dashboard extends javax.swing.JPanel {
@@ -16,21 +17,21 @@ public class Form_Dashboard extends javax.swing.JPanel {
     
 
         //  init card data
-       double income = Dashboard.store.getIncome();
+       double income = Main.store.getIncome();
        DecimalFormat df = new DecimalFormat("###,###.##");
        df.setMaximumFractionDigits(8);
        String formattedIncome = df.format(income) + " VND";
-       double expense = Dashboard.store.getExpense();
+       double expense = Main.store.getExpense();
        String formattedExpense = df.format(expense) + " VND";
        String formattedProfit = df.format(income-expense)+" VND";
         card1.setData(new ModelCard(null, null, null, formattedIncome, "Report Gross Income"));
         card2.setData(new ModelCard(null, null, null, formattedExpense, "Report Store Expense"));
         card3.setData(new ModelCard(null, null, null, formattedProfit , "Report Gross Profit"));
         
-        Staff bestStaff = Dashboard.store.getBestStaff();
+        Staff bestStaff = Main.store.getBestStaff();
         cardStaff.setData(new ModelCard(null, null, null, bestStaff.getName(), "Best Performance Staff"));
         workedlbl.setText(Double.toString(bestStaff.getWorkedHour()));
-        billcountlbl.setText(Integer.toString(Dashboard.store.getMaxBillCount(bestStaff)));
+        billcountlbl.setText(Integer.toString(Main.store.getMaxBillCount(bestStaff)));
     }
 
     @SuppressWarnings("unchecked")

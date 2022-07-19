@@ -1,5 +1,4 @@
 package javaswingdev.form;
-import javaswingdev.main.Dashboard;
 import javaswingdev.main.*;
 import javaswingdev.swing.table.BillEventAction;
 import javax.swing.RowFilter;
@@ -40,7 +39,7 @@ public class Form_Bill extends javax.swing.JPanel {
 //             System.out.println(product);
              Message msg=new Message();
              if(msg.showMessage("Delete Bill?")){
-                 Dashboard.store.deleteBill(bill.getBillId());
+                 Main.store.deleteBill(bill.getBillId());
                  model =(DefaultTableModel) table.getModel();
                  model.removeRow(table.getSelectedRow());
                  msg.showDialog("Delete Product Id " + bill.getBillId()+" Successfully!","red");
@@ -65,7 +64,7 @@ public class Form_Bill extends javax.swing.JPanel {
      };
 
      table.fixTable(jScrollPane1);
-     for(Bill b: Dashboard.store.getBillList(str)){
+     for(Bill b: Main.store.getBillList(str)){
          table.addRow(b.toRowTable(billEventAction));
      }
   }

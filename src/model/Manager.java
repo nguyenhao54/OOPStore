@@ -5,7 +5,7 @@
  */
 package model;
 import java.util.Date;
-import javaswingdev.main.Dashboard;
+import javaswingdev.main.Main;
 
 /**
  *
@@ -13,13 +13,18 @@ import javaswingdev.main.Dashboard;
  */
 public class Manager extends Staff{
     private double bonus;
+    
     public Manager()
             {
                 super(1, "Hoang", "male", "134892", 1.2, new Date());
+                 this.setUsername("bms");
+                  this.setPassword("1");
             }
     public Manager( int id,String name, String gender, String phone, double rate, Date date )
             {
                 super(id, name, gender, phone, rate, date);
+                 this.setUsername("bms");
+                 this.setPassword("1");
             }
     @Override
     public double getSalary(int month, int year) {
@@ -30,9 +35,12 @@ public class Manager extends Staff{
      * @return the bonus
      */
     public double getBonus() {
-        double b= Dashboard.store.getIncome()- Dashboard.store.getExpense();
+        double b= Main.store.getIncome()- Main.store.getExpense();
         bonus=b*rate/12;
         return bonus;
-    }
+    }   
+  
+    
+ 
 
 }

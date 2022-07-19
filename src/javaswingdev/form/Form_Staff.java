@@ -1,4 +1,5 @@
 package javaswingdev.form;
+import javaswingdev.main.Main;
 import javaswingdev.main.Dashboard;
 import javaswingdev.swing.table.EventAction;
 import javaswingdev.main.StaffInfo;
@@ -36,7 +37,7 @@ public class Form_Staff extends javax.swing.JPanel {
             public void delete(Staff staff) {
              Message msg=new Message();
               if (msg.showMessage("Delete Staff : " + staff.getName())) {  
-                  Dashboard.store.deleteStaff(staff.getStaffId());
+                  Main.store.deleteStaff(staff.getStaffId());
                   model =(DefaultTableModel) table.getModel();
                   model.removeRow(table.getSelectedRow());
                    msg.showDialog("Delete Staff Successfully!","red");
@@ -83,7 +84,7 @@ public class Form_Staff extends javax.swing.JPanel {
          
         // append staffs info to the table
         table.fixTable(jScrollPane1);
-        for(Staff s:Dashboard.store.getStaffList()){
+        for(Staff s:Main.store.getStaffList()){
             if(s.getGender().equals(gender)||gender.equals("all"))
               table.addRow(s.toRowTable(eventAction));    
         }

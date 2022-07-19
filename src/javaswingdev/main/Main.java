@@ -6,10 +6,18 @@ import java.awt.Color;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import storepkg.Store;
 
 public class Main extends javax.swing.JFrame {
     private static Main main;
-    public Main()  {
+     public static Store store;
+    public Main() {
+        try{
+        store = new Store();
+        }
+        catch (ParseException e){
+            e.printStackTrace();
+        }
         initComponents();
         init();
     }
@@ -168,14 +176,18 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_button1ActionPerformed
     private void login() throws ParseException{
-        if(txtUser.getText().equals("bms") && txtPass.getText().equals("1")){
+        if(txtUser.getText().equals(store.getManagerList().get(0).getUsername()) && txtPass.getText().equals(store.getManagerList().get(0).getPassword())){
             this.setVisible(false);
-            new Dashboard().setVisible(true);
+            new Dashboard(1).setVisible(true);
         }else if(txtUser.getText().equals("") || txtPass.getText().equals("")){
            
          alertLabel.setVisible(true);
                alertLabel.setText("Please fill in blank fields");
-        }  
+        }
+        else  if(txtUser.getText().equals(store.findStaff(1).getUsername()) && txtPass.getText().equals(store.findStaff(1).getPassword())){
+            this.setVisible(false);
+            new Dashboard(2).setVisible(true);
+        }
         else
         {
                alertLabel.setVisible(true);
@@ -241,7 +253,7 @@ public class Main extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])  {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -268,7 +280,7 @@ public class Main extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+            public void run()  {
                 new Main().setVisible(true);
             }
         });

@@ -243,7 +243,7 @@ public class ShoesInfo extends javax.swing.JDialog {
                     int id = Store.maxProductId++;
                     Shoes newShoes = new Shoes(id, pName, Integer.parseInt(pPrice), pBrand, pCategory, 
                             pDescription, Integer.parseInt(pQuantity), Double.parseDouble(pImportPrice), Double.parseDouble(pFootLength));
-                    Dashboard.store.addProduct(newShoes);
+                    Main.store.addProduct(newShoes);
                     this.setShoes(newShoes);
                     msg.showDialog("Add new shoes successfully!","blue");
                     ok = true;
@@ -251,9 +251,9 @@ public class ShoesInfo extends javax.swing.JDialog {
                 }else{
                     int id = getShoes().getProductId();
                     Message msg=new Message();
-                    Dashboard.store.updateProduct(id, pName, Double.parseDouble(pPrice), pBrand, pCategory, pDescription, 
+                    Main.store.updateProduct(id, pName, Double.parseDouble(pPrice), pBrand, pCategory, pDescription, 
                             Integer.parseInt(pQuantity), Double.parseDouble(pImportPrice), Double.parseDouble(pFootLength));
-                    setShoes((Shoes)Dashboard.store.getProduct(id));
+                    setShoes((Shoes)Main.store.getProduct(id));
                     msg.showDialog("Update shoes id " + shoes.getProductId()+ " successfully!","blue");
                     ok = true;
                 }
