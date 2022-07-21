@@ -40,7 +40,7 @@ public class Menu extends JPanel {
         addTitle("PRODUCTS");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.STORE, "Products", "All", "Tops", "Bottoms", "Shoes"));
         addTitle("BILLINGS");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.RECEIPT, "Bills", "Daily","Weekly", "Monthly"));   
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.RECEIPT, "Bills", "Daily","Weekly", "Monthly","All"));   
     }
 
     private JScrollPane createScroll() {

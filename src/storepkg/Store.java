@@ -38,6 +38,8 @@ public class Store  {
 //  Default initiate
     public Store() throws ParseException{
         productList = new ArrayList<>();
+
+
         productList.add(new Shirt(1, "Polo Shirt", 299000, "Teelab", "Áo polo", "Trà đá vỉa hè", 10, 100000, 69, 52, 21, 44.5));
         productList.add(new Shirt(2, "Jacket", 350000, "H&M", "Clothes", "Áo khoác", 12, 200000, 71, 54, 42, 46));
         productList.add(new Shirt(3, "Vietnam Pride", 200000, "Bò sữa", "Áo phông", "Du lịch thì vô địch", 17, 125000, 69, 52, 21, 44.5));
@@ -444,12 +446,16 @@ public class Store  {
           }
         }
       }
-      else {
+      else if (kind.equals("yearly")) {
            for(Bill b:billList){
            if (b.getDate().toLocalDate().getYear() == java.time.LocalDate.now().getYear()){
               Billkind.add(b);
           }
         }   
+      }
+      else {
+          return billList;
+          
       }
       
       return Billkind;

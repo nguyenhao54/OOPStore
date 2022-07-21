@@ -60,6 +60,9 @@ public class Dashboard extends javax.swing.JFrame {
                      else if(index == 4 && indexSubMenu == 3) {
                      showForm(new Form_Bill("yearly"));
                  }
+                             else if(index == 4 && indexSubMenu == 4) {
+                     showForm(new Form_Bill("all"));
+                 }
                  
                 else{
                     showForm(new Form_Empty(index + " " + indexSubMenu));
