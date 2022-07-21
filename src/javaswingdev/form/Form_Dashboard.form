@@ -160,7 +160,7 @@
           <Color blue="1c" green="ae" red="b4" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="300"/>
+        <Property name="text" type="java.lang.String" value="125"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -177,11 +177,11 @@
           <Color blue="ad" green="70" red="65" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="300"/>
+        <Property name="text" type="java.lang.String" value="6.250.000VND"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="540" y="520" width="280" height="50"/>
+          <AbsoluteConstraints x="460" y="520" width="360" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -249,7 +249,7 @@
           <Color blue="0" green="99" red="99" type="rgb"/>
         </Property>
         <Property name="description" type="java.lang.String" value="Best seller"/>
-        <Property name="values" type="java.lang.String" value="Qu&#x1ea7;n "/>
+        <Property name="values" type="java.lang.String" value="Jeans Bermuda"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

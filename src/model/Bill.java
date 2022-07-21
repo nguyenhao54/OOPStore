@@ -4,6 +4,7 @@
  */
 package model;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javaswingdev.swing.table.ModelAction;
@@ -127,6 +128,9 @@ public class Bill {
     }
     
     public Object[] toRowTable(BillEventAction event) {
-        return new Object[]{billId, date, staff.getName(), totalCost, new ModelAction(this, event)};
+        DecimalFormat df = new DecimalFormat("###,###.##");
+       df.setMaximumFractionDigits(8);
+       String formattedTotalCost = df.format(totalCost) + " VND";
+        return new Object[]{billId, date, staff.getName(), formattedTotalCost, new ModelAction(this, event)};
     }
 }

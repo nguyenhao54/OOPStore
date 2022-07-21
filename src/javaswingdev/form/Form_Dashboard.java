@@ -102,14 +102,14 @@ public class Form_Dashboard extends javax.swing.JPanel {
         soldlbl.setFont(new java.awt.Font("sansserif", 1, 52)); // NOI18N
         soldlbl.setForeground(new java.awt.Color(180, 174, 28));
         soldlbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        soldlbl.setText("300");
+        soldlbl.setText("125");
         add(soldlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, 220, 60));
 
         profitlbl.setFont(new java.awt.Font("sansserif", 1, 52)); // NOI18N
         profitlbl.setForeground(new java.awt.Color(101, 112, 173));
         profitlbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        profitlbl.setText("300");
-        add(profitlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 520, 280, 50));
+        profitlbl.setText("6.250.000VND");
+        add(profitlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 360, 50));
 
         sold.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         sold.setForeground(new java.awt.Color(102, 102, 102));
@@ -132,7 +132,7 @@ public class Form_Dashboard extends javax.swing.JPanel {
         card6.setColor1(new java.awt.Color(255, 255, 102));
         card6.setColor2(new java.awt.Color(153, 153, 0));
         card6.setDescription("Best seller");
-        card6.setValues("Quần ");
+        card6.setValues("Jeans Bermuda");
         add(card6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 380, 400));
 
         card1.setDescription("Gross Income");
